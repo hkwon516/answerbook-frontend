@@ -1,0 +1,25 @@
+{
+  "name": "answerbook-front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "bootstrap": "npm i && lerna bootstrap",
+    "webapp": "lerna --stream --scope webapp run",
+    "admin": "lerna --stream --scope admin run",
+    "build": "lerna run build --stream"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-codesymphony/answerbook-front.git"
+  },
+  "author": "Kishan Thobhani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dev-codesymphony/answerbook-front/issues"
+  },
+  "homepage": "https://github.com/dev-codesymphony/answerbook-front#readme",
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
+}

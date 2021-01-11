@@ -1,0 +1,7 @@
+{
+  "packages": [
+    "apps/admin",
+    "apps/webapp"
+  ],
+  "version": "0.0.0"
+}
