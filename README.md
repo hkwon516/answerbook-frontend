@@ -3,6 +3,7 @@
 > First time developers  
 > `npm run setup`
 
+
 | Command Name       | Command             | Description                     |
 | ------------------ | ------------------- | ------------------------------- |
 | Bootstrap          | `npm run bootstrap` | install dependency all packages |
@@ -11,9 +12,8 @@
 | **Development**                                                            |
 | Admin Development  | `npm run admin dev` | start admin development server  |
 | WebApp Development | `npm run admin dev` | start admin development server  |
-
-_Note: all the above commands needs to be ran from root folder_
-
+| _all the above commands needs to be ran from root folder_                   |
+ 
 **Notes**
 
 Git Commit message format
