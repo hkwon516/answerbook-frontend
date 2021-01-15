@@ -19,6 +19,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Answer Book Admin</h1>
+        <Button color="primary">Hello World</Button>
       </main>
 
       
