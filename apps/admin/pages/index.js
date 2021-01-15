@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Parse from 'parse/dist/parse.min.js';
+import Parse from 'parse';
 
 Parse.initialize("answerbookApi");
 Parse.serverURL = 'http://localhost:9000/parse';
