@@ -22,8 +22,5 @@
   "homepage": "https://github.com/dev-codesymphony/answerbook-front#readme",
   "devDependencies": {
     "lerna": "^3.22.1"
-  },
-  "dependencies": {
-    "parse": "^2.19.0"
   }
 }
