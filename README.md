@@ -3,10 +3,14 @@
 > First time developers  
 > `npm run setup`
 
-`npm run bootstrap` - install dependency all packages
-`npm run build` - build all packages
-`npm run admin dev` - develop admin
-`npm run webapp dev` - develop webpp
+| Command Name       | Command             | Description                     |
+| ------------------ | ------------------- | ------------------------------- |
+| **Bootstrap**      | `npm run bootstrap` | install dependency all packages |
+| **Build**          | `npm run build`     | build all packages              |
+| **Setup**          | `npm run setup`     | sets the entire project up      |
+| Development        |
+| Admin Development  | `npm run admin dev` | start admin development server  |
+| WebApp Development | `npm run admin dev` | start admin development server  |
 
 _Note: all the above commands needs to be ran from root folder_
 
