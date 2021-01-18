@@ -2,9 +2,12 @@ import '../styles/globals.css'
 import { SnackbarProvider } from 'notistack'
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
   return (
-    <SnackbarProvider>
+    <SnackbarProvider maxSnack="2"
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'left',
+      }}>
       <Component {...pageProps} />
     </SnackbarProvider>
   )
