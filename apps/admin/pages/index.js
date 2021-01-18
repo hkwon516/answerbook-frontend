@@ -7,7 +7,9 @@ import Parse from 'parse';
 Parse.initialize("answerbookApi");
 Parse.serverURL = 'http://localhost:9000/parse';
 
+
 export default function Home() {
+
   return (
     <div className={styles.container}>
       <Head>
