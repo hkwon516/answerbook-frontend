@@ -15,7 +15,7 @@ export default function Home() {
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>Answer Book Admin</h1>
-        <Button color="primary" onClick={() => router.push("/anon/signUp")}>
+        <Button color="primary" onClick={() => router.push("/anon/signup")}>
           Sign Up
         </Button>
       </main>
