@@ -5,9 +5,6 @@ import { Component } from "react";
 
 class MessageButton extends Component {
   handleClick = () => {
-    // Avoid material-ui warnings. more info: https://material-ui.com/style/typography/#migration-to-typography-v2
-    // eslint-disable-next-line no-underscore-dangle
-    window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
     this.props.enqueueSnackbar("Welcome to admin", { variant: "success" });
   };
 
