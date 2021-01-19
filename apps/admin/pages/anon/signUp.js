@@ -13,100 +13,62 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import InputLabel from "@material-ui/core/InputLabel";
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-    color: theme.palette.common.white,
-    backgroundColor: theme.palette.common.black,
-  },
-  label: {
-    color: theme.palette.common.black,
-  },
-}));
+import { useFormik } from 'formik';
 
 export default function SignUp() {
-  const classes = useStyles();
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+    },
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
+      <div >
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
 
-        <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <InputLabel className={classes.label} required>Name</InputLabel>
+        <form noValidate onSubmit={formik.handleSubmit}>
               <TextField
-                autoComplete="fname"
-                name="firstName"
+                autoComplete="name"
+                name="name"
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
+                id="name"
                 label="Name"
+                onChange={formik.handleChange}
+                value={formik.values.name}
                 autoFocus
               />
-            </Grid>
-
-            <Grid item xs={12}>
-              <InputLabel className={classes.label} required>e-mail</InputLabel>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
-                id="lastName"
+                id="email"
                 label="Email"
-                name="lastName"
-                autoComplete="lname"
+                name="email"
+                autoComplete="email"
+                onChange={formik.handleChange}
+                value={formik.values.email}
               />
-            </Grid>
-
-            <Grid item xs={12}>
-            <InputLabel className={classes.label} required>Phone number</InputLabel>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
-                id="phone"
-                label="Number only"
+                id="phoneNumber"
+                label="Phone number"
                 name="phoneNumber"
                 autoComplete="Phone Number"
+                onChange={formik.handleChange}
+                value={formik.values.phoneNumber}
               />
-            </Grid>
-
-            <Grid item xs={12}>
-              <InputLabel xs={12} className={classes.label} required>Password</InputLabel>
               <TextField
                 variant="outlined"
                 required
@@ -116,11 +78,9 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={formik.handleChange}
+                value={formik.values.password}
               />
-            </Grid>
-
-            <Grid item xs={12}>
-              <InputLabel className={classes.label}>Password Confirmation</InputLabel>
               <TextField
                 variant="outlined"
                 required
@@ -130,23 +90,29 @@ export default function SignUp() {
                 type="password"
                 id="passwordConfirm"
                 autoComplete="current-password"
+                onChange={formik.handleChange}
+                value={formik.values.passwordConfirm}
               />
-            </Grid>
-
-            <Grid item xs={12}>
+              <InputLabel required>Position</InputLabel>
               <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+                control={<Checkbox value="positionTeacher" color="primary" />}
+                label="Teacher"
               />
-            </Grid>
-          </Grid>
+              <FormControlLabel
+                control={<Checkbox value="positionPublisher" color="primary" />}
+                label="Publisher"
+              />
+              <FormControlLabel
+                control={<Checkbox value="positionEtc" color="primary" />}
+                label="ETC"
+              />
 
           <Button
             type="submit"
             fullWidth
             variant="contained"
             // color="primary"
-            className={classes.submit}
+            // className={classes.submit}
           >
             Next
           </Button>
@@ -160,10 +126,6 @@ export default function SignUp() {
           </Grid>
         </form>
       </div>
-
-      <Box mt={5}>
-        <Copyright />
-      </Box>
     </Container>
   );
 }
