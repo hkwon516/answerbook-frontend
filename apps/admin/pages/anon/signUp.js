@@ -9,103 +9,120 @@ import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import InputLabel from "@material-ui/core/InputLabel";
-import { useFormik } from 'formik';
+
+import { InputLabel, Typography, Radio, RadioGroup } from "@material-ui/core";
+import { useFormik } from "formik";
+import * as yup from "yup";
 
 export default function SignUp() {
   const formik = useFormik({
     initialValues: {
-      name: '',
-      email: '',
+      name: "",
+      email: "",
+      position: "teacher",
     },
-    onSubmit: values => {
+    validationSchema: yup.object().shape({
+      name: yup.string().required(),
+    }),
+    onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },
   });
 
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div >
+      <div>
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
 
         <form noValidate onSubmit={formik.handleSubmit}>
-              <TextField
-                autoComplete="name"
-                name="name"
-                variant="outlined"
-                required
-                fullWidth
-                id="name"
-                label="Name"
-                onChange={formik.handleChange}
-                value={formik.values.name}
-                autoFocus
-              />
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email"
-                name="email"
-                autoComplete="email"
-                onChange={formik.handleChange}
-                value={formik.values.email}
-              />
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="phoneNumber"
-                label="Phone number"
-                name="phoneNumber"
-                autoComplete="Phone Number"
-                onChange={formik.handleChange}
-                value={formik.values.phoneNumber}
-              />
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                onChange={formik.handleChange}
-                value={formik.values.password}
-              />
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="passwordConfirm"
-                label="Password Confirmation"
-                type="password"
-                id="passwordConfirm"
-                autoComplete="current-password"
-                onChange={formik.handleChange}
-                value={formik.values.passwordConfirm}
-              />
-              <InputLabel required>Position</InputLabel>
-              <FormControlLabel
-                control={<Checkbox value="positionTeacher" color="primary" />}
-                label="Teacher"
-              />
-              <FormControlLabel
-                control={<Checkbox value="positionPublisher" color="primary" />}
-                label="Publisher"
-              />
-              <FormControlLabel
-                control={<Checkbox value="positionEtc" color="primary" />}
-                label="ETC"
-              />
+          <TextField
+            autoComplete="name"
+            name="name"
+            variant="outlined"
+            required
+            fullWidth
+            id="name"
+            label="Name"
+            onChange={formik.handleChange}
+            value={formik.values.name}
+            onBlur={formik.handleBlur}
+            autoFocus
+            helperText={formik.touched.name && formik.errors.name}
+            error={formik.touched.name && formik.errors.name}
+          />
+
+          <TextField
+            variant="outlined"
+            required
+            fullWidth
+            id="email"
+            label="Email"
+            name="email"
+            autoComplete="email"
+            onChange={formik.handleChange}
+            value={formik.values.email}
+          />
+          {formik.values.position === "teacher" && (
+            <TextField
+              variant="outlined"
+              required
+              fullWidth
+              id="phoneNumber"
+              label="Phone number"
+              name="phoneNumber"
+              autoComplete="Phone Number"
+              onChange={formik.handleChange}
+              value={formik.values.phoneNumber}
+            />
+          )}
+          <TextField
+            variant="outlined"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            onChange={formik.handleChange}
+            value={formik.values.password}
+          />
+          <TextField
+            variant="outlined"
+            required
+            fullWidth
+            name="passwordConfirm"
+            label="Password Confirmation"
+            type="password"
+            id="passwordConfirm"
+            autoComplete="current-password"
+            onChange={formik.handleChange}
+            value={formik.values.passwordConfirm}
+          />
+          <InputLabel required>Position</InputLabel>
+
+          <RadioGroup
+            aria-label="position"
+            name="position"
+            value={formik.values.position}
+            onChange={formik.handleChange}
+          >
+            <FormControlLabel
+              value="teacher"
+              control={<Radio />}
+              label="Teacher"
+            />
+            <FormControlLabel
+              value="publisher"
+              control={<Radio />}
+              label="Publisher"
+            />
+            <FormControlLabel value="etc" control={<Radio />} label="ETC" />
+          </RadioGroup>
 
           <Button
             type="submit"
