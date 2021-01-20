@@ -19,6 +19,7 @@ import {
 import InputComponent from "../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import Parse from "parse/dist/parse.min.js";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -27,6 +28,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+  const user = new Parse.User();
+  user.set("name", "name");
+  user.set("username", "email");
+  user.set("email", "email");
+  user.set("password", "password");
+  user.set("phoneNumber", "phoneNumber");
+  user.set("position", "position");
+  user.set("academyName", "academyName");
+  user.set("companyEmail", "companyEmail");
+  user.set("purpose", "purpose");
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -49,8 +61,17 @@ export default function SignUp() {
         .required()
         .oneOf([yup.ref("password")], "Password does not match"),
     }),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+
+    onSubmit: (props) => {
+      try {
+        user.signUp();
+        props.showSuccess("You are successfully sign up");
+        router.push("/login");
+      } catch (error) {
+        props.showError("Filed to sign up");
+      }
+
+      // alert(JSON.stringify(values, null, 2));
     },
   });
 
