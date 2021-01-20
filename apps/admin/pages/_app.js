@@ -7,29 +7,30 @@ import { CssBaseline } from "@material-ui/core";
 import { SnackbarProvider } from "notistack";
 
 function MyApp({ Component, pageProps, ...props }) {
-    React.useEffect(() => {
-        // Remove the server-side injected CSS.
-        const jssStyles = document.querySelector("#jss-server-side");
-        if (jssStyles) {
-            jssStyles.parentElement.removeChild(jssStyles);
-        }
-    }, []);
-    return (
-        <React.Fragment>
-            <ThemeProvider theme={theme}>
-                <SnackbarProvider
-                    maxSnack="2"
-                    anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "left",
-                    }}
-                >
-                    <CssBaseline />
-                    <Component {...props} {...pageProps} />
-                </SnackbarProvider>
-            </ThemeProvider>
-        </React.Fragment>
-    );
+  const ComponentExtended = withApp(Component);
+  React.useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector("#jss-server-side");
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
+  return (
+    <React.Fragment>
+      <ThemeProvider theme={theme}>
+        <SnackbarProvider
+          maxSnack="2"
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+        >
+          <CssBaseline />
+          <ComponentExtended {...props} {...pageProps} />
+        </SnackbarProvider>
+      </ThemeProvider>
+    </React.Fragment>
+  );
 }
 
-export default withApp(MyApp);
+export default MyApp;
