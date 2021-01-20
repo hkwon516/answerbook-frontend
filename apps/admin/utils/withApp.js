@@ -11,11 +11,11 @@ const withApp = (WrappedComponent) => {
     const t = getTranslation(router.locale);
 
     const showSuccess = (message) => {
-      snackbar.enqueueSnackbar(message);
+      snackbar.enqueueSnackbar(message, { variant: "success" });
     };
 
     const showError = (message) => {
-      snackbar.enqueueSnackbar(message);
+      snackbar.enqueueSnackbar(message, { variant: "error" });
     };
 
     return <WrappedComponent t={t} showSuccess={showSuccess} showError={showError} {...props} />;
