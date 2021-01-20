@@ -20,6 +20,7 @@ import InputComponent from "../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Parse from "parse";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -27,17 +28,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
-  const user = new Parse.User();
-  user.set("name", "name");
-  user.set("username", "email");
-  user.set("email", "email");
-  user.set("password", "password");
-  user.set("phoneNumber", "phoneNumber");
-  user.set("position", "position");
-  user.set("academyName", "academyName");
-  user.set("companyEmail", "companyEmail");
-  user.set("purpose", "purpose");
+export default function SignUp(props) {
+  const router = useRouter();
 
   const formik = useFormik({
     initialValues: {
@@ -62,16 +54,25 @@ export default function SignUp() {
         .oneOf([yup.ref("password")], "Password does not match"),
     }),
 
-    onSubmit: (props) => {
+    onSubmit: async (values) => {
       try {
-        user.signUp();
+        const user = new Parse.User();
+        user.set("name", values.name);
+        user.set("username", values.email);
+        user.set("email", values.email);
+        user.set("password", values.password);
+        user.set("phoneNumber", values.phoneNumber);
+        user.set("position", values.position);
+        user.set("academyName", values.academyName);
+        user.set("companyEmail", values.companyEmail);
+        user.set("purpose", values.purpose);
+
+        await user.signUp();
         props.showSuccess("You are successfully sign up");
         router.push("/login");
       } catch (error) {
         props.showError("Filed to sign up");
       }
-
-      // alert(JSON.stringify(values, null, 2));
     },
   });
 
