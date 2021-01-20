@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { LockOutlined } from "@material-ui/icons";
 import {
   Typography,
@@ -30,6 +30,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp(props) {
   const router = useRouter();
+
+  const action = (message) => (
+    <Fragment>
+      <Button
+        onClick={() => {
+          alert(message);
+        }}
+      >
+        Show Error
+      </Button>
+    </Fragment>
+  );
 
   const formik = useFormik({
     initialValues: {
@@ -71,7 +83,7 @@ export default function SignUp(props) {
         props.showSuccess("You are successfully sign up");
         router.push("/login");
       } catch (error) {
-        props.showError("Filed to sign up");
+        props.showError("Filed to sign up", action(error.message));
       }
     },
   });
