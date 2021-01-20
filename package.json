@@ -8,7 +8,7 @@
     "webapp": "lerna --stream --scope webapp run",
     "admin": "lerna --stream --scope admin run",
     "build": "lerna run build --stream",
-    "setup": "npm run bootstrap && npm run build"
+    "setup": "npm run bootstrap"
   },
   "repository": {
     "type": "git",

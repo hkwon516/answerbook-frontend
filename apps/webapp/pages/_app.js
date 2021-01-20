@@ -2,6 +2,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../utils/theme";
 import Head from "next/head";
 import "../styles/globals.css";
+import { SnackbarProvider } from "notistack";
 
 function MyApp({ Component, pageProps }) {
   React.useEffect(() => {
@@ -14,8 +15,16 @@ function MyApp({ Component, pageProps }) {
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
+        <SnackbarProvider
+          maxSnack="2"
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+        >
+          <CssBaseline />
+          <Component {...pageProps} />
+        </SnackbarProvider>
       </ThemeProvider>
     </React.Fragment>
   );
