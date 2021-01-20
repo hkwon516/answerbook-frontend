@@ -5,27 +5,27 @@ import getTranslation from "../utils/locales";
 import { useSnackbar } from "notistack";
 
 export default function withApp(WrappedComponent) {
-  // ...and returns another component...
   return function (props) {
-    const { enqueueSnackbar } = useSnackbar();
+    const snackbar = useSnackbar();
 
     const router = useRouter();
     const t = getTranslation(router.locale);
 
     const showSuccess = (message) => {
-      enqueueSnackbar(message);
+      if (snackbar) {
+        snackbar.enqueueSnackbar(message);
+      } else {
+        console.log(message);
+      }
     };
     const showError = (message) => {
-      enqueueSnackbar(message);
+      if (snackbar) {
+        snackbar.enqueueSnackbar(message);
+      } else {
+        console.log(message);
+      }
     };
 
-    return (
-      <WrappedComponent
-        t={t}
-        showSuccess={showSuccess}
-        showError={showError}
-        {...props}
-      />
-    );
+    return <WrappedComponent t={t} showSuccess={showSuccess} showError={showError} {...props} />;
   };
 }
