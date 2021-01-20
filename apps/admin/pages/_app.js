@@ -11,6 +11,7 @@ Parse.initialize("answerbookApi");
 Parse.serverURL = "http://localhost:1337/parse";
 
 function MyApp({ Component, pageProps, ...props }) {
+  const ComponentExtended = withApp(Component);
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
@@ -29,11 +30,11 @@ function MyApp({ Component, pageProps, ...props }) {
           }}
         >
           <CssBaseline />
-          <Component {...props} {...pageProps} />
+          <ComponentExtended {...props} {...pageProps} />
         </SnackbarProvider>
       </ThemeProvider>
     </React.Fragment>
   );
 }
 
-export default withApp(MyApp);
+export default MyApp;

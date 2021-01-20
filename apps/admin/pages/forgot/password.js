@@ -1,7 +1,13 @@
 import React from "react";
-import { LockOutlined } from "@material-ui/icons";
-import { Typography, Avatar, Button, Link, Grid, makeStyles, Container, Box } from "@material-ui/core";
-import InputComponent from "../component/generic/InputComponent";
+import {
+  Typography,
+  Button,
+  Grid,
+  makeStyles,
+  Container,
+  Box,
+} from "@material-ui/core";
+import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
@@ -11,15 +17,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login() {
+export default function forgotEmail() {
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      name: "",
+      phoneNumber: "",
     },
     validationSchema: yup.object().shape({
-      email: yup.string().required().email("Enter a valid email"),
-      password: yup.string().required(),
+      name: yup.string().required(),
+      phoneNumber: yup.number().required(),
     }),
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
@@ -38,15 +44,8 @@ export default function Login() {
                 <Box mb={3}>
                   <Grid container direction="column" alignItems="center">
                     <Grid item>
-                      <Box mb={1}>
-                        <Avatar>
-                          <LockOutlined />
-                        </Avatar>
-                      </Box>
-                    </Grid>
-                    <Grid item>
                       <Typography component="h1" variant="h5">
-                        Login
+                      Please put your name and your email.
                       </Typography>
                     </Grid>
                   </Grid>
@@ -55,14 +54,13 @@ export default function Login() {
 
               <Grid item xs={12}>
                 <InputComponent
+                  autoComplete="name"
+                  name="name"
                   variant="outlined"
-                  margin="normal"
                   required
                   fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
+                  id="name"
+                  label="Name"
                   autoFocus
                   formik={formik}
                 />
@@ -74,11 +72,10 @@ export default function Login() {
                   margin="normal"
                   required
                   fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
+                  name="email"
+                  label="Email"
+                  id="email"
+                  autoComplete="email"
                   formik={formik}
                 />
               </Grid>
@@ -86,29 +83,8 @@ export default function Login() {
               <Grid item xs={12}>
                 <Box mt={3}>
                   <Button type="submit" fullWidth variant="contained">
-                    Login
+                    OK
                   </Button>
-                </Box>
-              </Grid>
-
-              <Grid item xs>
-                <Box mt={2}>
-                  <Link href="forgot/password" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Box>
-
-                <Box>
-                  <Link href="forgot/email" variant="body2">
-                    Forgot Email?
-                  </Link>
-                </Box>
-              </Grid>
-              <Grid item>
-                <Box mt={2}>
-                  <Link href="/signup" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
                 </Box>
               </Grid>
             </Grid>
