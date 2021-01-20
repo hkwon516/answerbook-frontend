@@ -1,7 +1,6 @@
 import React from "react";
 import { LockOutlined } from "@material-ui/icons";
 import {
-  InputLabel,
   Typography,
   Radio,
   RadioGroup,
@@ -96,45 +95,35 @@ export default function SignUp() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <InputComponent
                   variant="outlined"
                   required
                   fullWidth
                   id="email"
                   label="Email"
                   size="small"
-                  margin={(formik.touched.email && formik.errors.email ? true : false) ? "dense" : "normal"}
                   name="email"
                   autoComplete="email"
-                  onChange={formik.handleChange}
-                  value={formik.values.email}
-                  onBlur={formik.handleBlur}
-                  helperText={formik.touched.email && formik.errors.email}
-                  error={formik.touched.email && formik.errors.email ? true : false}
+                  formik={formik}
                 />
               </Grid>
 
               <Grid item xs={12}>
-                <TextField
+                <InputComponent
                   variant="outlined"
                   required
                   fullWidth
                   id="phoneNumber"
                   size="small"
-                  margin={(formik.touched.phoneNumber && formik.errors.phoneNumber ? true : false) ? "dense" : "normal"}
                   label="Phone number"
                   name="phoneNumber"
                   autoComplete="Phone Number"
-                  onChange={formik.handleChange}
-                  value={formik.values.phoneNumber}
-                  onBlur={formik.handleBlur}
-                  helperText={formik.touched.phoneNumber && formik.errors.phoneNumber}
-                  error={formik.touched.phoneNumber && formik.errors.phoneNumber ? true : false}
+                  formik={formik}
                 />
               </Grid>
 
               <Grid item xs={12}>
-                <TextField
+                <InputComponent
                   variant="outlined"
                   required
                   fullWidth
@@ -143,18 +132,13 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   size="small"
-                  margin={(formik.touched.password && formik.errors.password ? true : false) ? "dense" : "normal"}
                   autoComplete="current-password"
-                  onChange={formik.handleChange}
-                  value={formik.values.password}
-                  onBlur={formik.handleBlur}
-                  helperText={formik.touched.password && formik.errors.password}
-                  error={formik.touched.password && formik.errors.password ? true : false}
+                  formik={formik}
                 />
               </Grid>
 
               <Grid item xs={12}>
-                <TextField
+                <InputComponent
                   variant="outlined"
                   required
                   fullWidth
@@ -163,13 +147,8 @@ export default function SignUp() {
                   type="password"
                   id="passwordConfirm"
                   size="small"
-                  margin={(formik.touched.passwordConfirm && formik.errors.passwordConfirm ? true : false) ? "dense" : "normal"}
                   autoComplete="current-password"
-                  onChange={formik.handleChange}
-                  value={formik.values.passwordConfirm}
-                  onBlur={formik.handleBlur}
-                  helperText={formik.touched.passwordConfirm && formik.errors.passwordConfirm}
-                  error={formik.touched.passwordConfirm && formik.errors.passwordConfirm ? true : false}
+                  formik={formik}
                 />
               </Grid>
 
@@ -251,8 +230,8 @@ export default function SignUp() {
               </Grid>
 
               <Grid item xs={12}>
-                <Box textAlign="right" mt={1}>
-                  <Link href="#" variant="body2">
+                <Box textAlign="right" mt={2}>
+                  <Link href="/login" variant="body2">
                     Already have an account? Sign in
                   </Link>
                 </Box>
