@@ -1,24 +1,37 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Button } from '@material-ui/core';
+import { Button } from "@material-ui/core";
+import Link from "next/link";
 
-import Parse from 'parse';
-import MessageButton from './../component/MessageButton.js'
-import { withSnackbar } from "notistack";
+import Parse from "parse";
 
 Parse.initialize("answerbookApi");
-Parse.serverURL = 'http://localhost:9000/parse';
+Parse.serverURL = "http://localhost:9000/parse";
 
-function Home() {
+export default function Home(props) {
   return (
     <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>Answer Book WebApp</h1>
-        <MessageButton />
-      </main>
+      <Head>
+        <title>Answerbook Webapp</title>
+        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+      </Head>
 
+      <main className={styles.main}>
+        <h1 className={styles.title}>{props.t("welcomeToAnswerbook")}</h1>
+        <Button color="primary">{props.t("hello")}</Button>
+
+        <Link href="/" locale="ko">
+          <a>Translate to Korea</a>
+        </Link>
+      </main>
     </div>
   );
 }
-
-export default withSnackbar(Home);
