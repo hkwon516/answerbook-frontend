@@ -7,7 +7,7 @@ import {
   Container,
   Box,
 } from "@material-ui/core";
-import InputComponent from "../component/generic/InputComponent";
+import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
@@ -73,7 +73,7 @@ export default function forgotEmail() {
                   required
                   fullWidth
                   name="phoneNumber"
-                  label="phoneNumber"
+                  label="Phone Number"
                   id="phoneNumber"
                   autoComplete="Phone Number"
                   formik={formik}
