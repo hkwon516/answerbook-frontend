@@ -19,7 +19,7 @@ import {
 import InputComponent from "../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import Parse from "parse/dist/parse.min.js";
+import Parse from "parse";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
