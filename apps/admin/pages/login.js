@@ -1,15 +1,6 @@
 import React from "react";
 import { LockOutlined } from "@material-ui/icons";
-import {
-  Typography,
-  Avatar,
-  Button,
-  Link,
-  Grid,
-  makeStyles,
-  Container,
-  Box,
-} from "@material-ui/core";
+import { Typography, Avatar, Button, Link, Grid, makeStyles, Container, Box } from "@material-ui/core";
 import InputComponent from "../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -107,12 +98,11 @@ export default function Login() {
                   </Link>
                 </Box>
 
-                <Box mt={2}>
+                <Box>
                   <Link href="forgot/email" variant="body2">
                     Forgot Email?
                   </Link>
                 </Box>
-
               </Grid>
               <Grid item>
                 <Box mt={2}>
