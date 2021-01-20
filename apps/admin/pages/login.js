@@ -102,13 +102,13 @@ export default function Login() {
 
               <Grid item xs>
                 <Box mt={2}>
-                  <Link href="#" variant="body2">
+                  <Link href="forgot/password" variant="body2">
                     Forgot password?
                   </Link>
                 </Box>
 
                 <Box mt={2}>
-                  <Link href="#" variant="body2">
+                  <Link href="forgot/email" variant="body2">
                     Forgot Email?
                   </Link>
                 </Box>
