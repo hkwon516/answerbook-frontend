@@ -7,7 +7,7 @@ import {
   Container,
   Box,
 } from "@material-ui/core";
-import InputComponent from "../component/generic/InputComponent";
+import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
 

@@ -115,7 +115,7 @@ export default function SignUp() {
                   fullWidth
                   id="phoneNumber"
                   size="small"
-                  label="Phone number"
+                  label="Phone Number"
                   name="phoneNumber"
                   autoComplete="Phone Number"
                   formik={formik}
