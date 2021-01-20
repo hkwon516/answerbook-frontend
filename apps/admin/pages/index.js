@@ -4,11 +4,6 @@ import { Button } from "@material-ui/core";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import Parse from "parse";
-
-Parse.initialize("answerbookApi");
-Parse.serverURL = "http://localhost:9000/parse";
-
 const Home = (props) => {
   const router = useRouter();
   return (
