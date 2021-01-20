@@ -5,22 +5,28 @@ import getTranslation from "../utils/locales";
 import { useSnackbar } from "notistack";
 
 export default function withApp(WrappedComponent) {
-    // ...and returns another component...
-    return function (props) {
-        const { enqueueSnackbar } = useSnackbar();
+  return function (props) {
+    const snackbar = useSnackbar();
 
-        const router = useRouter();
-        const t = getTranslation(router.locale);
+    const router = useRouter();
+    const t = getTranslation(router.locale);
 
-        const showSuccess = (message, option) => {
-            enqueueSnackbar(message, option);
-            console.log(message, option);
-        };
-        const showError = (message) => {
-            // enqueueSnackbar(message);
-            console.log(message);
-        };
-
-        return <WrappedComponent t={t} showSuccess={showSuccess} showError={showError} {...props} />;
+    const showSuccess = (message) => {
+      console.log(snackbar);
+      if (snackbar) {
+        snackbar.enqueueSnackbar(message);
+      } else {
+        console.log(message);
+      }
     };
+    const showError = (message) => {
+      if (snackbar) {
+        snackbar.enqueueSnackbar(message);
+      } else {
+        console.log(message);
+      }
+    };
+
+    return <WrappedComponent t={t} showSuccess={showSuccess} showError={showError} {...props} />;
+  };
 }
