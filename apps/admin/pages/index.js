@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { Button } from "@material-ui/core";
 import Link from "next/link";
@@ -6,6 +7,7 @@ import { useRouter } from "next/router";
 import { withSnackbar } from "notistack";
 
 import Parse from "parse";
+import MessageButton from "../component/MessageButton";
 
 Parse.initialize("answerbookApi");
 Parse.serverURL = "http://localhost:9000/parse";
@@ -26,6 +28,14 @@ export default function Home(props) {
                 <Button color="primary" onClick={() => router.push("/signup")}>
                     Sign Up
                 </Button>
+                <Button color="primary" variant="contained" onClick={(e) => props.showSuccess("Success Message", false)}>
+                    Success.
+                </Button>
+                <br />
+                <Button color="primary" variant="contained" onClick={(e) => props.showError("Error Message", false)}>
+                    Error.
+                </Button>
+                <br />
                 <Link href="/" locale="ko">
                     <a>Translate to Korea</a>
                 </Link>
