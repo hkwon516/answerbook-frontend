@@ -5,8 +5,9 @@ import Head from "next/head";
 import "../styles/globals.css";
 import { SnackbarProvider } from "notistack";
 import { CssBaseline } from "@material-ui/core";
+import withApp from "../utils/withApp";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, ...props }) {
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
@@ -25,11 +26,11 @@ function MyApp({ Component, pageProps }) {
           }}
         >
           <CssBaseline />
-          <Component {...pageProps} />
+          <Component {...props} {...pageProps} />
         </SnackbarProvider>
       </ThemeProvider>
     </React.Fragment>
   );
 }
 
-export default MyApp;
+export default withApp(MyApp);
