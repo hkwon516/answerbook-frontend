@@ -1,5 +1,6 @@
 import { Container, Grid, makeStyles } from "@material-ui/core";
 import React from "react";
+import withApp from "../../utils/withApp";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -9,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
 
 const AnonLayout = (props) => {
   const classes = useStyles();
-
   return (
     <Container component="main" maxWidth="xs">
       <Grid container alignItems="center" className={classes.wrapper}>
@@ -19,4 +19,4 @@ const AnonLayout = (props) => {
   );
 };
 
-export default AnonLayout;
+export default withApp(AnonLayout);

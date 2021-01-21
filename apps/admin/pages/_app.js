@@ -4,26 +4,29 @@ import getTheme from "../utils/theme";
 import withApp from "../utils/withApp";
 import { CssBaseline } from "@material-ui/core";
 import { SnackbarProvider } from "notistack";
-import Parse from "parse";
-import { useRouter } from "next/router";
 import AnonLayout from "../component/layouts/AnonLayout";
 import Head from "next/head";
-
-Parse.initialize("answerbookApi");
-Parse.serverURL = "http://localhost:9000/parse";
+import parse from "../utils/parse";
+import UserLayout from "../component/layouts/UserLayout";
 
 function MyApp({ Component, pageProps, ...props }) {
+  const ComponentExtended = withApp(Component);
+  const user = parse.User.current();
+
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
+
+    if (user) {
+      props.router.push("/user");
+    }
   }, []);
 
-  const router = useRouter();
-  let Layout = AnonLayout;
-  const ComponentExtended = withApp(Component);
+  let Layout = user ? UserLayout : AnonLayout;
+
   return (
     <React.Fragment>
       <Head>
@@ -39,8 +42,8 @@ function MyApp({ Component, pageProps, ...props }) {
           }}
         >
           <CssBaseline />
-          <Layout {...props} {...pageProps}>
-            <ComponentExtended {...props} {...pageProps} />
+          <Layout user={user} {...pageProps}>
+            <ComponentExtended user={user} {...pageProps} />
           </Layout>
         </SnackbarProvider>
       </ThemeProvider>
