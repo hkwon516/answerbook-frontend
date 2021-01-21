@@ -23,14 +23,14 @@ export default function SignUp(props) {
       purpose: "",
     },
     validationSchema: yup.object().shape({
-      name: yup.string().required(),
-      email: yup.string().required().email("Enter a valid email"),
-      phoneNumber: yup.number().required(),
-      password: yup.string().required(),
+      name: yup.string().required(props.translate("nameRequired")),
+      email: yup.string().required(props.translate("emailRequired")).email(props.translate("emailValidate")),
+      phoneNumber: yup.number(props.translate("phoneNumberValidate")).required(props.translate("phoneNumberRequired")),
+      password: yup.string().required(props.translate("passwordRequired")),
       passwordConfirm: yup
         .string()
-        .required()
-        .oneOf([yup.ref("password")], "Password does not match"),
+        .required(props.translate("passwordConfirmationRequired"))
+        .oneOf([yup.ref("password")], props.translate("passwordValidate")),
     }),
 
     onSubmit: async (values) => {
@@ -60,21 +60,21 @@ export default function SignUp(props) {
       <Grid container justify={"center"}>
         <Grid item xs={12}>
           <Box mb={2} textAlign="left">
-            <Typography variant="h4">Sign Up</Typography>
+            <Typography variant="h4">{props.translate("signup")}</Typography>
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <InputComponent autoComplete="name" name="name" required fullWidth label="Name" size="small" autoFocus formik={formik} />
+          <InputComponent autoComplete="name" name="name" required fullWidth label={props.translate("name")} size="small" autoFocus formik={formik} />
         </Grid>
         <Grid item xs={12}>
-          <InputComponent required fullWidth label="Email" size="small" name="email" autoComplete="email" formik={formik} />
+          <InputComponent required fullWidth label={props.translate("email")} size="small" name="email" autoComplete="email" formik={formik} />
         </Grid>
         <Grid item xs={12}>
           <InputComponent
             required
             fullWidth
             size="small"
-            label="Phone Number"
+            label={props.translate("phoneNumber")}
             name="phoneNumber"
             autoComplete="Phone Number"
             formik={formik}
@@ -85,7 +85,7 @@ export default function SignUp(props) {
             required
             fullWidth
             name="password"
-            label="Password"
+            label={props.translate("password")}
             type="password"
             size="small"
             autoComplete="current-password"
@@ -97,7 +97,7 @@ export default function SignUp(props) {
             required
             fullWidth
             name="passwordConfirm"
-            label="Password Confirmation"
+            label={props.translate("passwordConfirmation")}
             type="password"
             size="small"
             autoComplete="current-password"
@@ -110,7 +110,7 @@ export default function SignUp(props) {
               required
               fullWidth
               name="academyName"
-              label="Academy Name"
+              label={props.translate("academyName")}
               size="small"
               autoComplete="Company Name"
               formik={formik}
@@ -122,7 +122,7 @@ export default function SignUp(props) {
             <InputComponent
               fullWidth
               name="companyEmail"
-              label="Company Email"
+              label={props.translate("companyEmail")}
               id="companyEmail"
               size="small"
               autoComplete="Company Email"
@@ -133,7 +133,7 @@ export default function SignUp(props) {
 
         {formik.values.position === "etc" && (
           <Grid item xs={12}>
-            <InputComponent fullWidth name="purpose" label="Purpose of signing up" size="small" autoComplete="purpose" formik={formik} />
+            <InputComponent fullWidth name="purpose" label={props.translate("purpose")} size="small" autoComplete="purpose" formik={formik} />
           </Grid>
         )}
 
@@ -142,25 +142,25 @@ export default function SignUp(props) {
             margin={(formik.touched.position && formik.errors.position ? true : false) ? "dense" : "normal"}
             error={formik.touched.position && formik.errors.position ? true : false}
           >
-            <FormLabel>Position</FormLabel>
+            <FormLabel>{props.translate("position")}</FormLabel>
 
-            <RadioGroup row={true} aria-label="position" name="position" value={formik.values.position} onChange={formik.handleChange}>
-              <FormControlLabel value="teacher" control={<Radio />} label="Teacher" />
-              <FormControlLabel value="publisher" control={<Radio />} label="Publisher" />
-              <FormControlLabel value="etc" control={<Radio />} label="ETC" />
+            <RadioGroup row={true} aria-label="position"  name="position" value={formik.values.position} onChange={formik.handleChange}>
+              <FormControlLabel value="teacher" control={<Radio />} label={props.translate("teacher")} />
+              <FormControlLabel value="publisher" control={<Radio />} label={props.translate("publisher")} />
+              <FormControlLabel value="etc" control={<Radio />} label={props.translate("etc")} />
             </RadioGroup>
           </FormControl>
         </Grid>
         <Grid item xs={12}>
           <Button type="submit" color="secondary" fullWidth variant="contained">
-            Next
+            {props.translate("btnNext")}
           </Button>
         </Grid>
 
         <Grid item xs={12}>
           <Box mt={2} textAlign="center">
             <Typography variant="body1">
-              Already have an account? <LinkComponent href="/login">Log In</LinkComponent>
+              {props.translate("ifAlreadyHaveAccount")} <LinkComponent href="/login">Log In</LinkComponent>
             </Typography>
           </Box>
         </Grid>
