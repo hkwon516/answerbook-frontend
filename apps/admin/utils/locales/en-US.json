@@ -28,5 +28,8 @@
   "forgotPassword": "Forgot password?",
   "forgotEmail": "Forgot Email?",
   "btnLogin": "Login",
-  "dontHaveAccount": "Don't have an account?"
+  "dontHaveAccount": "Don't have an account?",
+  "pageForgotEmailSubtitle": "Please write down your Name and Phone Number",
+  "btnOk": "OK",
+  "pageForgotPasswordSubtitle": "Please put your name and your email"
 }
