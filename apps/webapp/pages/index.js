@@ -14,19 +14,13 @@ export default function Home(props) {
       <Head>
         <title>Answerbook Webapp</title>
         <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>{props.t("welcomeToAnswerbook")}</h1>
-        <Button color="primary">{props.t("hello")}</Button>
+        <h1 className={styles.title}>{props.translate("welcomeToAnswerbook")}</h1>
+        <Button color="primary">{props.translate("hello")}</Button>
 
         <Link href="/" locale="ko">
           <a>Translate to Korea</a>
