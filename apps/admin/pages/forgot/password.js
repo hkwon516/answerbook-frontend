@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function forgotEmail() {
+export default function forgotEmail(props) {
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -25,72 +25,54 @@ export default function forgotEmail() {
     },
     validationSchema: yup.object().shape({
       name: yup.string().required(),
-      phoneNumber: yup.number().required(),
+      email: yup.string().required(props.translate("emailRequired")).email(props.translate("emailValidate")),
     }),
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },
   });
 
-  const classes = useStyles();
-
   return (
-    <Container component="main" maxWidth="xs">
-      <Grid container alignItems="center" className={classes.wrapper}>
-        <Grid item>
-          <form noValidate onSubmit={formik.handleSubmit}>
-            <Grid container justify={"center"}>
-              <Grid item xs={12}>
-                <Box mb={3}>
-                  <Grid container direction="column" alignItems="center">
-                    <Grid item>
-                      <Typography component="h1" variant="h5">
-                      Please put your name and your email.
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </Box>
-              </Grid>
-
-              <Grid item xs={12}>
-                <InputComponent
-                  autoComplete="name"
-                  name="name"
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="name"
-                  label="Name"
-                  autoFocus
-                  formik={formik}
-                />
-              </Grid>
-
-              <Grid item xs={12}>
-                <InputComponent
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="email"
-                  label="Email"
-                  id="email"
-                  autoComplete="email"
-                  formik={formik}
-                />
-              </Grid>
-
-              <Grid item xs={12}>
-                <Box mt={3}>
-                  <Button type="submit" fullWidth variant="contained">
-                    OK
-                  </Button>
-                </Box>
-              </Grid>
-            </Grid>
-          </form>
+    <form noValidate onSubmit={formik.handleSubmit}>
+      <Grid container justify={"center"}>
+        <Grid item xs={12}>
+          <Box mb={2} textAlign="left">
+          <Typography variant="h4">Forgot Password</Typography>
+            <Typography variant="h5">{props.translate("pageForgotPasswordSubtitle")}</Typography>
+          </Box>
+        </Grid>
+        <Grid item xs={12}>
+          <InputComponent
+            required
+            fullWidth
+            id="name"
+            label={props.translate("name")}
+            name="name"
+            autoComplete="name"
+            autoFocus
+            formik={formik}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <InputComponent
+            required
+            fullWidth
+            id="email"
+            label={props.translate("emailAddress")}
+            name="email"
+            autoComplete="email"
+            autoFocus
+            formik={formik}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Box mt={3}>
+            <Button color="secondary" type="submit" fullWidth variant="contained">
+              {props.translate("btnNext")}
+            </Button>
+          </Box>
         </Grid>
       </Grid>
-    </Container>
+    </form>
   );
 }
