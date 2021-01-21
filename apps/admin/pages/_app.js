@@ -1,17 +1,18 @@
 import React from "react";
 import { ThemeProvider } from "@material-ui/core/styles";
-import theme from "../utils/theme";
+import getTheme from "../utils/theme";
 import withApp from "../utils/withApp";
-import "../styles/globals.css";
 import { CssBaseline } from "@material-ui/core";
 import { SnackbarProvider } from "notistack";
 import Parse from "parse";
+import { useRouter } from "next/router";
+import AnonLayout from "../component/layouts/AnonLayout";
+import Head from "next/head";
 
 Parse.initialize("answerbookApi");
 Parse.serverURL = "http://localhost:9000/parse";
 
 function MyApp({ Component, pageProps, ...props }) {
-  const ComponentExtended = withApp(Component);
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
@@ -19,9 +20,17 @@ function MyApp({ Component, pageProps, ...props }) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
+
+  const router = useRouter();
+  let Layout = AnonLayout;
+  const ComponentExtended = withApp(Component);
   return (
     <React.Fragment>
-      <ThemeProvider theme={theme}>
+      <Head>
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+        <title>Answerbook Admin</title>
+      </Head>
+      <ThemeProvider theme={getTheme()}>
         <SnackbarProvider
           maxSnack="2"
           anchorOrigin={{
@@ -30,7 +39,9 @@ function MyApp({ Component, pageProps, ...props }) {
           }}
         >
           <CssBaseline />
-          <ComponentExtended {...props} {...pageProps} />
+          <Layout {...props} {...pageProps}>
+            <ComponentExtended {...props} {...pageProps} />
+          </Layout>
         </SnackbarProvider>
       </ThemeProvider>
     </React.Fragment>
