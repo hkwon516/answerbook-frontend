@@ -160,7 +160,7 @@ export default function SignUp(props) {
         <Grid item xs={12}>
           <Box mt={2} textAlign="center">
             <Typography variant="body1">
-              Already have an account? <LinkComponent href="/login">Log In</LinkComponent>
+              Already have an account? <LinkComponent href="/">Log In</LinkComponent>
             </Typography>
           </Box>
         </Grid>
