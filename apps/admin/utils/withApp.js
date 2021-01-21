@@ -8,7 +8,7 @@ const withApp = (WrappedComponent) => {
     const snackbar = useSnackbar();
 
     const router = useRouter();
-    const t = getTranslation(router.locale);
+    const translate = getTranslation(router.locale);
 
     const showSuccess = (message) => {
       snackbar.enqueueSnackbar(message, { variant: "success" });
@@ -18,7 +18,7 @@ const withApp = (WrappedComponent) => {
       snackbar.enqueueSnackbar(message, { variant: "error" });
     };
 
-    return <WrappedComponent t={t} showSuccess={showSuccess} showError={showError} {...props} />;
+    return <WrappedComponent translate={translate} showSuccess={showSuccess} showError={showError} {...props} />;
   };
   return ExtendedWithApp;
 };

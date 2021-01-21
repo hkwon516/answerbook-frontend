@@ -68,10 +68,10 @@ export default function SignUp(props) {
         user.set("purpose", values.purpose);
 
         await user.signUp();
-        props.showSuccess("You are successfully sign up");
+        props.showSuccess(props.translate("signupSuccess"));
         router.push("/login");
       } catch (error) {
-        props.showError("Filed to sign up");
+        props.showError(error.message);
       }
     },
   });

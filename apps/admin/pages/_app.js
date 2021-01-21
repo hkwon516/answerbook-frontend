@@ -8,7 +8,7 @@ import { SnackbarProvider } from "notistack";
 import Parse from "parse";
 
 Parse.initialize("answerbookApi");
-Parse.serverURL = "http://localhost:1337/parse";
+Parse.serverURL = "http://localhost:9000/parse";
 
 function MyApp({ Component, pageProps, ...props }) {
   const ComponentExtended = withApp(Component);
