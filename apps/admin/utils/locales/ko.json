@@ -23,6 +23,10 @@
   "passwordConfirmationRequired": "비밀번호 확인은 필수 필드입니다.",
   "btnNext": "다음",
   "ifAlreadyHaveAccount": "이미 계정이 있습니까? 로그인",
-  "login": "로그인"
-  
+  "login": "로그인",
+  "emailAddress": "이메일 주소",
+  "forgotPassword": "비밀번호를 잊으 셨나요?",
+  "forgotEmail": "이메일을 잊으 셨나요?",
+  "btnLogin": "로그인",
+  "dontHaveAccount": "계정이 없으십니까?"
 }

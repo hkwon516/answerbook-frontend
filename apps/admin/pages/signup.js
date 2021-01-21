@@ -64,10 +64,27 @@ export default function SignUp(props) {
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <InputComponent autoComplete="name" name="name" required fullWidth label={props.translate("name")} size="small" autoFocus formik={formik} />
+          <InputComponent
+            autoComplete="name"
+            name="name"
+            required
+            fullWidth
+            label={props.translate("name")}
+            size="small"
+            autoFocus
+            formik={formik}
+          />
         </Grid>
         <Grid item xs={12}>
-          <InputComponent required fullWidth label={props.translate("email")} size="small" name="email" autoComplete="email" formik={formik} />
+          <InputComponent
+            required
+            fullWidth
+            label={props.translate("email")}
+            size="small"
+            name="email"
+            autoComplete="email"
+            formik={formik}
+          />
         </Grid>
         <Grid item xs={12}>
           <InputComponent
@@ -133,7 +150,14 @@ export default function SignUp(props) {
 
         {formik.values.position === "etc" && (
           <Grid item xs={12}>
-            <InputComponent fullWidth name="purpose" label={props.translate("purpose")} size="small" autoComplete="purpose" formik={formik} />
+            <InputComponent
+              fullWidth
+              name="purpose"
+              label={props.translate("purpose")}
+              size="small"
+              autoComplete="purpose"
+              formik={formik}
+            />
           </Grid>
         )}
 
@@ -144,7 +168,7 @@ export default function SignUp(props) {
           >
             <FormLabel>{props.translate("position")}</FormLabel>
 
-            <RadioGroup row={true} aria-label="position"  name="position" value={formik.values.position} onChange={formik.handleChange}>
+            <RadioGroup row={true} aria-label="position" name="position" value={formik.values.position} onChange={formik.handleChange}>
               <FormControlLabel value="teacher" control={<Radio />} label={props.translate("teacher")} />
               <FormControlLabel value="publisher" control={<Radio />} label={props.translate("publisher")} />
               <FormControlLabel value="etc" control={<Radio />} label={props.translate("etc")} />
@@ -160,7 +184,7 @@ export default function SignUp(props) {
         <Grid item xs={12}>
           <Box mt={2} textAlign="center">
             <Typography variant="body1">
-              {props.translate("ifAlreadyHaveAccount")} <LinkComponent href="/login">Log In</LinkComponent>
+              {props.translate("ifAlreadyHaveAccount")} <LinkComponent href="/login">{props.translate("login")}</LinkComponent>
             </Typography>
           </Box>
         </Grid>
