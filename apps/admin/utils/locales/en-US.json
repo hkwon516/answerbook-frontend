@@ -23,6 +23,10 @@
   "passwordValidate": "Password does not match",
   "btnNext": "Next",
   "ifAlreadyHaveAccount": "Already have an account?",
-  "login": "Log In"
-  
+  "login": "Log In",
+  "emailAddress": "Email Address",
+  "forgotPassword": "Forgot password?",
+  "forgotEmail": "Forgot Email?",
+  "btnLogin": "Login",
+  "dontHaveAccount": "Don't have an account?"
 }

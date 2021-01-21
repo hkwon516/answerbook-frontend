@@ -6,15 +6,15 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import LinkComponent from "../component/generic/LinkComponent";
 
-export default function Login() {
+export default function Login(props) {
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
     validationSchema: yup.object().shape({
-      email: yup.string().required().email("Enter a valid email"),
-      password: yup.string().required(),
+      email: yup.string().required(props.translate("emailRequired")).email(props.translate("emailValidate")),
+      password: yup.string().required(props.translate("passwordRequired")),
     }),
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
@@ -26,11 +26,20 @@ export default function Login() {
       <Grid container justify={"center"}>
         <Grid item xs={12}>
           <Box mb={2} textAlign="left">
-            <Typography variant="h4">Log In</Typography>
+            <Typography variant="h4">{props.translate("login")}</Typography>
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <InputComponent required fullWidth id="email" label="Email Address" name="email" autoComplete="email" autoFocus formik={formik} />
+          <InputComponent
+            required
+            fullWidth
+            id="email"
+            label={props.translate("emailAddress")}
+            name="email"
+            autoComplete="email"
+            autoFocus
+            formik={formik}
+          />
         </Grid>
         <Grid item xs={12}>
           <InputComponent
@@ -38,7 +47,7 @@ export default function Login() {
             required
             fullWidth
             name="password"
-            label="Password"
+            label={props.translate("password")}
             type="password"
             id="password"
             autoComplete="current-password"
@@ -48,24 +57,24 @@ export default function Login() {
         <Grid item xs={12}>
           <Box textAlign="right" mt={2}>
             <Box>
-              <LinkComponent href="forgot/password">Forgot password?</LinkComponent>
+              <LinkComponent href="forgot/password">{props.translate("forgotPassword")}</LinkComponent>
             </Box>
             <Box>
-              <LinkComponent href="forgot/email">Forgot Email?</LinkComponent>
+              <LinkComponent href="forgot/email">{props.translate("forgotEmail")}</LinkComponent>
             </Box>
           </Box>
         </Grid>
         <Grid item xs={12}>
           <Box mt={3}>
             <Button color="secondary" type="submit" fullWidth variant="contained">
-              Login
+              {props.translate("btnLogin")}
             </Button>
           </Box>
         </Grid>
         <Grid item xs={12}>
           <Box mt={2} textAlign="center">
             <Typography variant="body1">
-              Don't have an account? <LinkComponent href="/signup">Sign Up</LinkComponent>
+              {props.translate("dontHaveAccount")} <LinkComponent href="/signup">{props.translate("signup")}</LinkComponent>
             </Typography>
           </Box>
         </Grid>
