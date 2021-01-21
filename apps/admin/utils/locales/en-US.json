@@ -1,3 +1,28 @@
 {
-  "signupSuccess": "Thank you for signing up."
+  "signupSuccess": "Thank you for signing up.",
+  "signup": "Sign up",
+  "name": "Name",
+  "email": "Email",
+  "phoneNumber":"Phone Number",
+  "password": "Password",
+  "academyName": "Academy Name",
+  "companyEmail": "Company Email",
+  "purpose": "Purpose of signing up",
+  "position": "Position",
+  "teacher": "Teacher",
+  "publisher": "Publisher",
+  "etc": "ETC",
+  "passwordConfirmation": "Password Confirmation",
+  "nameRequired": "Name is a required field.",
+  "emailRequired": "Email is a required field.",
+  "emailValidate": "Please enter a valid email.",
+  "phoneNumberRequired": "Name is a required field.",
+  "phoneNumberValidate": "Please enter Numbers only.",
+  "passwordRequired": "Password is a required field.",
+  "passwordConfirmationRequired": "Password Confirmation is a required field.",
+  "passwordValidate": "Password does not match",
+  "btnNext": "Next",
+  "ifAlreadyHaveAccount": "Already have an account?",
+  "login": "Log In"
+  
 }
