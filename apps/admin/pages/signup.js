@@ -184,7 +184,7 @@ export default function SignUp(props) {
         <Grid item xs={12}>
           <Box mt={2} textAlign="center">
             <Typography variant="body1">
-              {props.translate("ifAlreadyHaveAccount")} <LinkComponent href="/login">{props.translate("login")}</LinkComponent>
+              {props.translate("ifAlreadyHaveAccount")} <LinkComponent href="/">{props.translate("login")}</LinkComponent>
             </Typography>
           </Box>
         </Grid>
