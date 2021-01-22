@@ -1,4 +1,18 @@
-import { Avatar, Box, Button, Drawer, Grid, IconButton, makeStyles, Popover, Typography } from "@material-ui/core";
+import {
+  Avatar,
+  Box,
+  Button,
+  Drawer,
+  Grid,
+  IconButton,
+  makeStyles,
+  Popover,
+  Typography,
+  colors,
+  List,
+  ListItemText,
+  ListItem,
+} from "@material-ui/core";
 import React from "react";
 import withApp from "../../utils/withApp";
 import SaveIcon from "@material-ui/icons/Save";
@@ -24,7 +38,7 @@ const UserLayout = (props) => {
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
-
+  console.log(props.theme.palette.primary);
   return (
     <>
       <Grid container>
@@ -44,30 +58,43 @@ const UserLayout = (props) => {
                 </Grid>
               </Box>
               <Grid item>
-                <Box b={0} fullWidth={true}>
+                <Box p={2} onClick={handleClick} fullWidth={true} bgcolor="secondary.dark" style={{ cursor: "pointer" }}>
                   <Popover
                     id={id}
                     open={open}
                     anchorEl={anchorEl}
                     onClose={handleClose}
                     anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "left",
-                    }}
-                    transformOrigin={{
                       vertical: "center",
                       horizontal: "left",
                     }}
+                    transformOrigin={{
+                      vertical: "bottom",
+                      horizontal: "left",
+                    }}
+                    elevation={1}
                   >
-                    <Typography className={classes.typography}>SignOut</Typography>
-                  </Popover>
-                  <Grid onClick={handleClick}>
-                    <Grid item xs={12} sm={6}>
-                      <Avatar size="small">VV</Avatar>
+                    <Grid container>
+                      <Grid item xs={12}>
+                        <List>
+                          <ListItem>
+                            <ListItemText secondary="Sign Out" />
+                          </ListItem>
+                        </List>
+                      </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <Typography variant="body1">Full Name</Typography>
-                      <Typography>email@example.com</Typography>
+                  </Popover>
+                  <Grid container alignItems="center">
+                    <Grid item>
+                      <Avatar style={{ backgroundColor: props.theme.palette.secondary.light }} size="small">
+                        VV
+                      </Avatar>
+                    </Grid>
+                    <Grid item>
+                      <Box ml={1}>
+                        <Typography variant="body2">Full Name</Typography>
+                        <Typography variant="caption">email@example.com</Typography>
+                      </Box>
                     </Grid>
                   </Grid>
                 </Box>
