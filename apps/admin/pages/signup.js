@@ -10,6 +10,18 @@ import LinkComponent from "../component/generic/LinkComponent";
 export default function SignUp(props) {
   const router = useRouter();
 
+  const action = (message) => (
+    <Fragment>
+      <Button
+        onClick={() => {
+          alert(message);
+        }}
+      >
+        Show Error
+      </Button>
+    </Fragment>
+  );
+
   const formik = useFormik({
     initialValues: {
       name: "",
