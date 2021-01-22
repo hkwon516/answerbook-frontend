@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import getTranslation from "../utils/locales";
 import { useSnackbar } from "notistack";
 import parse from "../utils/parse";
+import getTheme from "./theme";
 
 const withApp = (WrappedComponent) => {
   const ExtendedWithApp = (props) => {
@@ -18,8 +19,9 @@ const withApp = (WrappedComponent) => {
     const showError = (message) => {
       snackbar.enqueueSnackbar(message, { variant: "error" });
     };
-
-    return <WrappedComponent parse={parse} translate={translate} showSuccess={showSuccess} showError={showError} {...props} />;
+    return (
+      <WrappedComponent theme={getTheme()} parse={parse} translate={translate} showSuccess={showSuccess} showError={showError} {...props} />
+    );
   };
   return ExtendedWithApp;
 };
