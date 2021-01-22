@@ -31,5 +31,6 @@
   "dontHaveAccount": "Don't have an account?",
   "pageForgotEmailSubtitle": "Please write down your Name and Phone Number",
   "btnOk": "OK",
-  "pageForgotPasswordSubtitle": "Please put your name and your email"
+  "pageForgotPasswordSubtitle": "Please put your name and your email",
+  "btnWait": "Please wait..."
 }

@@ -12,8 +12,8 @@ const withApp = (WrappedComponent) => {
     const router = useRouter();
     const translate = getTranslation(router.locale);
 
-    const showSuccess = (message) => {
-      snackbar.enqueueSnackbar(message, { variant: "success" });
+    const showSuccess = (message, options = {}) => {
+      snackbar.enqueueSnackbar(message, { variant: "success", ...options });
     };
 
     const showError = (message, options = {}) => {
