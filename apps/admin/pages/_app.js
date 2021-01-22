@@ -20,7 +20,8 @@ function MyApp({ Component, pageProps, ...props }) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
 
-    if (user) {
+    console.log(props.router);
+    if (user && !props.router.pathname.includes("user")) {
       props.router.push("/user");
     }
   }, []);
