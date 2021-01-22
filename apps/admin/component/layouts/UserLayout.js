@@ -13,7 +13,7 @@ import {
   ListItemText,
   ListItem,
 } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
 import withApp from "../../utils/withApp";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -89,7 +89,6 @@ const UserLayout = (props) => {
     },
   });
 
-  console.log(props.children);
   return (
     <>
       <Grid container fullWidth={true}>
@@ -154,7 +153,7 @@ const UserLayout = (props) => {
           </Box>
         </Grid>
         <Grid item xs={12} md={10}>
-          {props.children}
+          {props.isBrowser ? <></> : props.children}
         </Grid>
       </Grid>
     </>

@@ -45,10 +45,12 @@ const Settings = (props) => {
       }
     },
   });
+  console.log("etioewrh  ", props.user, props.isBrowser);
+  // console.log("etioewrh  ", props.user.get("name"));
 
   return (
     <Grid container justify={"center"}>
-      <Grid item xs={12} md={4} >
+      <Grid item xs={12} md={4}>
         <form noValidate onSubmit={formik.handleSubmit}>
           <Grid container justify={"center"}>
             <Grid item xs={12}>

@@ -16,8 +16,8 @@ const withApp = (WrappedComponent) => {
       snackbar.enqueueSnackbar(message, { variant: "success" });
     };
 
-    const showError = (message) => {
-      snackbar.enqueueSnackbar(message, { variant: "error" });
+    const showError = (message, options = {}) => {
+      snackbar.enqueueSnackbar(message, { variant: "error", ...options });
     };
     return (
       <WrappedComponent theme={getTheme()} parse={parse} translate={translate} showSuccess={showSuccess} showError={showError} {...props} />
