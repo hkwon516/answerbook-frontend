@@ -39,6 +39,7 @@ const UserLayout = (props) => {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
   console.log(props.theme.palette.primary);
+  const avatarCharacter = props.user.get("name").split("");
   return (
     <>
       <Grid container>
@@ -87,13 +88,13 @@ const UserLayout = (props) => {
                   <Grid container alignItems="center">
                     <Grid item>
                       <Avatar style={{ backgroundColor: props.theme.palette.secondary.light }} size="small">
-                        VV
+                        {avatarCharacter[0].toUpperCase()}
                       </Avatar>
                     </Grid>
                     <Grid item>
                       <Box ml={1}>
-                        <Typography variant="body2">Full Name</Typography>
-                        <Typography variant="caption">email@example.com</Typography>
+                        <Typography variant="body2">{props.user.get("name")}</Typography>
+                        <Typography variant="caption">{props.user.getEmail()}</Typography>
                       </Box>
                     </Grid>
                   </Grid>
