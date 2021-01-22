@@ -89,74 +89,74 @@ const UserLayout = (props) => {
     },
   });
 
-  return (
-    <>
-      <Grid container fullWidth={true}>
-        <Grid item xs={12} md={2}>
-          <Box bgcolor="secondary.main" height="100vh">
-            <Grid container direction="column" justify="space-between" style={{ height: "100%" }}>
-              <Box p={2}>
-                <Grid item>
+  return props.isBrowser ? (
+    <Grid container fullWidth={true}>
+      <Grid item xs={12} md={2}>
+        <Box bgcolor="secondary.main" height="100vh">
+          <Grid container direction="column" justify="space-between" style={{ height: "100%" }}>
+            <Box p={2}>
+              <Grid item>
+                <Grid container>
+                  <Grid item xs={12}>
+                    logo
+                  </Grid>
+                  <Grid item xs={12}>
+                    naivgation
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Box>
+            <Grid item>
+              <Box p={2} onClick={handleClick} fullWidth={true} bgcolor="secondary.dark" style={{ cursor: "pointer" }}>
+                <Popover
+                  id={id}
+                  open={open}
+                  anchorEl={anchorEl}
+                  onClose={handleClose}
+                  anchorOrigin={{
+                    vertical: "center",
+                    horizontal: "left",
+                  }}
+                  transformOrigin={{
+                    vertical: "bottom",
+                    horizontal: "left",
+                  }}
+                  elevation={1}
+                >
                   <Grid container>
                     <Grid item xs={12}>
-                      logo
+                      <List>
+                        <ListItem>
+                          <ListItemText secondary="Sign Out" />
+                        </ListItem>
+                      </List>
                     </Grid>
-                    <Grid item xs={12}>
-                      naivgation
-                    </Grid>
+                  </Grid>
+                </Popover>
+                <Grid container alignItems="center">
+                  <Grid item>
+                    <Avatar style={{ backgroundColor: props.theme.palette.secondary.light }} size="small">
+                      {props.user.get("name").split("")[0].toUpperCase()}
+                    </Avatar>
+                  </Grid>
+                  <Grid item>
+                    <Box ml={1}>
+                      <Typography variant="body2">{props.user.get("name")}</Typography>
+                      <Typography variant="caption">{props.user.getEmail()}</Typography>
+                    </Box>
                   </Grid>
                 </Grid>
               </Box>
-              <Grid item>
-                <Box p={2} onClick={handleClick} fullWidth={true} bgcolor="secondary.dark" style={{ cursor: "pointer" }}>
-                  <Popover
-                    id={id}
-                    open={open}
-                    anchorEl={anchorEl}
-                    onClose={handleClose}
-                    anchorOrigin={{
-                      vertical: "center",
-                      horizontal: "left",
-                    }}
-                    transformOrigin={{
-                      vertical: "bottom",
-                      horizontal: "left",
-                    }}
-                    elevation={1}
-                  >
-                    <Grid container>
-                      <Grid item xs={12}>
-                        <List>
-                          <ListItem>
-                            <ListItemText secondary="Sign Out" />
-                          </ListItem>
-                        </List>
-                      </Grid>
-                    </Grid>
-                  </Popover>
-                  <Grid container alignItems="center">
-                    <Grid item>
-                      <Avatar style={{ backgroundColor: props.theme.palette.secondary.light }} size="small">
-                        VV
-                      </Avatar>
-                    </Grid>
-                    <Grid item>
-                      <Box ml={1}>
-                        <Typography variant="body2">Full Name</Typography>
-                        <Typography variant="caption">email@example.com</Typography>
-                      </Box>
-                    </Grid>
-                  </Grid>
-                </Box>
-              </Grid>
             </Grid>
-          </Box>
-        </Grid>
-        <Grid item xs={12} md={10}>
-          {props.isBrowser ? <></> : props.children}
-        </Grid>
+          </Grid>
+        </Box>
       </Grid>
-    </>
+      <Grid item xs={12} md={10}>
+        {props.children}
+      </Grid>
+    </Grid>
+  ) : (
+    <></>
   );
 };
 

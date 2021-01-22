@@ -33,7 +33,7 @@ export default function SignUp(props) {
         .oneOf([yup.ref("password")], props.translate("passwordValidate")),
     }),
 
-    onSubmit: async (values) => {
+    onSubmit: async (values, actions) => {
       try {
         const user = new Parse.User();
         user.set("name", values.name);
@@ -42,9 +42,7 @@ export default function SignUp(props) {
         user.set("password", values.password);
         user.set("phoneNumber", values.phoneNumber);
         user.set("position", values.position);
-        user.set("academyName", values.academyName);
-        user.set("companyEmail", values.companyEmail);
-        user.set("purpose", values.purpose);
+        user.set("information", { academyName: values.academyName, companyEmail: values.companyEmail, purpose: values.purpose });
 
         await user.signUp();
         props.showSuccess(props.translate("signupSuccess"));
@@ -52,6 +50,7 @@ export default function SignUp(props) {
       } catch (error) {
         props.showError(error.message);
       }
+      actions.setSubmitting(false);
     },
   });
 
@@ -176,8 +175,8 @@ export default function SignUp(props) {
           </FormControl>
         </Grid>
         <Grid item xs={12}>
-          <Button type="submit" color="secondary" fullWidth variant="contained">
-            {props.translate("btnNext")}
+          <Button type="submit" color="secondary" fullWidth variant="contained" disabled={formik.isSubmitting}>
+            {!formik.isSubmitting ? props.translate("btnNext") : props.translate("btnWait")}
           </Button>
         </Grid>
 
