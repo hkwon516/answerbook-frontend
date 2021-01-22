@@ -15,7 +15,10 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import withApp from "../../utils/withApp";
-import SaveIcon from "@material-ui/icons/Save";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import Parse from "parse";
+import InputComponent from "../../component/generic/InputComponent";
 
 const useStyles = makeStyles((theme) => ({
   typography: {
@@ -38,10 +41,58 @@ const UserLayout = (props) => {
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
+
   console.log(props.theme.palette.primary);
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      phoneNumber: "",
+      password: "",
+      passwordConfirm: "",
+      position: "teacher",
+      academyName: "",
+      companyEmail: "",
+      purpose: "",
+    },
+    validationSchema: yup.object().shape({
+      name: yup.string().required(props.translate("nameRequired")),
+      email: yup.string().required(props.translate("emailRequired")).email(props.translate("emailValidate")),
+      phoneNumber: yup.number(props.translate("phoneNumberValidate")).required(props.translate("phoneNumberRequired")),
+      password: yup.string().required(props.translate("passwordRequired")),
+      passwordConfirm: yup
+        .string()
+        .required(props.translate("passwordConfirmationRequired"))
+        .oneOf([yup.ref("password")], props.translate("passwordValidate")),
+    }),
+
+    onSubmit: async (values) => {
+      try {
+        const user = new Parse.User();
+        user.set("name", values.name);
+        user.set("username", values.email);
+        user.set("email", values.email);
+        user.set("password", values.password);
+        user.set("phoneNumber", values.phoneNumber);
+        user.set("position", values.position);
+        user.set("academyName", values.academyName);
+        user.set("companyEmail", values.companyEmail);
+        user.set("purpose", values.purpose);
+
+        await user.signUp();
+        props.showSuccess(props.translate("signupSuccess"));
+        router.push("/login");
+      } catch (error) {
+        props.showError(error.message);
+      }
+    },
+  });
+
+  console.log(props.children);
   return (
     <>
-      <Grid container>
+      <Grid container fullWidth={true}>
         <Grid item xs={12} md={2}>
           <Box bgcolor="secondary.main" height="100vh">
             <Grid container direction="column" justify="space-between" style={{ height: "100%" }}>
@@ -101,6 +152,9 @@ const UserLayout = (props) => {
               </Grid>
             </Grid>
           </Box>
+        </Grid>
+        <Grid item xs={12} md={10}>
+          {props.children}
         </Grid>
       </Grid>
     </>
