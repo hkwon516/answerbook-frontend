@@ -39,14 +39,12 @@ const Settings = (props) => {
 
     onSubmit: async (values) => {
       try {
-        console.log("Settings");
+        console.log(values);
       } catch (error) {
         props.showError(error.message);
       }
     },
   });
-  console.log("etioewrh  ", props.user, props.isBrowser);
-  // console.log("etioewrh  ", props.user.get("name"));
 
   return (
     <Grid container justify={"center"}>
