@@ -12,12 +12,12 @@ const withApp = (WrappedComponent) => {
     const router = useRouter();
     const translate = getTranslation(router.locale);
 
-    const showSuccess = (message) => {
-      snackbar.enqueueSnackbar(message, { variant: "success" });
+    const showSuccess = (message, options = {}) => {
+      snackbar.enqueueSnackbar(message, { variant: "success", ...options });
     };
 
-    const showError = (message, action) => {
-      snackbar.enqueueSnackbar(message, { variant: "error", action });
+    const showError = (message, options = {}) => {
+      snackbar.enqueueSnackbar(message, { variant: "error", ...options });
     };
     return (
       <WrappedComponent theme={getTheme()} parse={parse} translate={translate} showSuccess={showSuccess} showError={showError} {...props} />
