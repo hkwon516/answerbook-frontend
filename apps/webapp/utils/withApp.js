@@ -7,8 +7,8 @@ export default function withApp(WrappedComponent) {
   // ...and returns another component...
   return function (props) {
     const router = useRouter();
-    const t = getTranslation(router.locale);
+    const translate = getTranslation(router.locale);
 
-    return <WrappedComponent t={t} {...props} />;
+    return <WrappedComponent translate={translate} {...props} />;
   };
 }
