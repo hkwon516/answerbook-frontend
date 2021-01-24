@@ -6,9 +6,10 @@
   "scripts": {
     "bootstrap": "npm i && lerna bootstrap",
     "webapp": "lerna --stream --scope webapp run",
-    "admin": "lerna --stream --scope admin run",
+    "admin": "lerna --stream --scope @answerbook-ke/admin run",
     "build": "lerna run build --stream",
-    "setup": "npm run bootstrap"
+    "setup": "npm run bootstrap",
+    "staging": "vercel"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/dev-codesymphony/answerbook-front#readme",
   "devDependencies": {
-    "lerna": "^3.22.1"
+    "lerna": "^3.22.1",
+    "vercel": "^21.1.0"
   }
 }

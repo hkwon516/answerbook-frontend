@@ -3,12 +3,11 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/core/styles";
 import getTheme from "../utils/theme";
 
-export default class MyDocument extends Document {
+export default class DocumentExtended extends Document {
   render() {
     const theme = getTheme();
-
     return (
-      <Html lang="en">
+      <Html lang={this.props.__NEXT_DATA__.locale}>
         <Head>
           <meta name="theme-color" content={theme.palette.primary.main} />
 
@@ -28,7 +27,7 @@ export default class MyDocument extends Document {
 
 // `getInitialProps` belongs to `_document` (instead of `_app`),
 // it's compatible with server-side generation (SSG).
-MyDocument.getInitialProps = async (ctx) => {
+DocumentExtended.getInitialProps = async (ctx) => {
   // Resolution order
   //
   // On the server:

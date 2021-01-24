@@ -6,7 +6,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import LinkComponent from "../component/generic/LinkComponent";
 
-export default function Login(props) {
+function Login(props) {
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -16,8 +16,14 @@ export default function Login(props) {
       email: yup.string().required(props.translate("emailRequired")).email(props.translate("emailValidate")),
       password: yup.string().required(props.translate("passwordRequired")),
     }),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values, actions) => {
+      try {
+        await props.onLogin(values.email, values.password);
+      } catch (error) {
+        props.showError(error.message);
+      }
+
+      actions.setSubmitting(false);
     },
   });
 
@@ -65,9 +71,9 @@ export default function Login(props) {
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <Box mt={3}>
-            <Button color="secondary" type="submit" fullWidth variant="contained">
-              {props.translate("btnLogin")}
+          <Box mt={2}>
+            <Button color="secondary" type="submit" fullWidth variant="contained" disabled={formik.isSubmitting}>
+              {!formik.isSubmitting ? props.translate("btnLogin") : props.translate("btnWait")}
             </Button>
           </Box>
         </Grid>
@@ -82,3 +88,5 @@ export default function Login(props) {
     </form>
   );
 }
+
+export default Login;

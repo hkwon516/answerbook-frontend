@@ -9,6 +9,6 @@ const locales = {
 export default (key) => {
   const transaltions = locales[key];
   return (id) => {
-    return transaltions[id];
+    return transaltions[id] ? transaltions[id] : "NA";
   };
 };

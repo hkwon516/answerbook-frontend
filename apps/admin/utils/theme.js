@@ -9,8 +9,6 @@ let theme = {
     },
     secondary: {
       main: "#FFBD2F",
-      dark: "#F9AA2B",
-      contrastText: "#fff",
     },
   },
   typography: {
