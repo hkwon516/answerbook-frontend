@@ -14,7 +14,7 @@ export default function SignUp(props) {
     initialValues: {
       name: "",
       email: "",
-      phoneNumber: "",
+      phone: "",
       password: "",
       passwordConfirm: "",
       position: "teacher",
@@ -25,7 +25,7 @@ export default function SignUp(props) {
     validationSchema: yup.object().shape({
       name: yup.string().required(props.translate("nameRequired")),
       email: yup.string().required(props.translate("emailRequired")).email(props.translate("emailValidate")),
-      phoneNumber: yup.number(props.translate("phoneNumberValidate")).required(props.translate("phoneNumberRequired")),
+      phone: yup.number(props.translate("phoneValidate")).required(props.translate("phoneRequired")),
       password: yup.string().required(props.translate("passwordRequired")),
       passwordConfirm: yup
         .string()
@@ -40,7 +40,7 @@ export default function SignUp(props) {
         user.set("username", values.email);
         user.set("email", values.email);
         user.set("password", values.password);
-        user.set("phoneNumber", values.phoneNumber);
+        user.set("phone", values.phone);
         user.set("position", values.position);
         user.set("information", { academyName: values.academyName, companyEmail: values.companyEmail, purpose: values.purpose });
 
@@ -90,8 +90,8 @@ export default function SignUp(props) {
             required
             fullWidth
             size="small"
-            label={props.translate("phoneNumber")}
-            name="phoneNumber"
+            label={props.translate("phone")}
+            name="phone"
             autoComplete="Phone Number"
             formik={formik}
           />

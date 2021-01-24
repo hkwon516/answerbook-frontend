@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Typography,
-  Button,
-  Grid,
-  makeStyles,
-  Container,
-  Box,
-} from "@material-ui/core";
+import { Typography, Button, Grid, makeStyles, Container, Box } from "@material-ui/core";
 import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -21,7 +14,7 @@ export default function forgotEmail(props) {
   const formik = useFormik({
     initialValues: {
       name: "",
-      phoneNumber: "",
+      phone: "",
     },
     validationSchema: yup.object().shape({
       name: yup.string().required(),
@@ -37,22 +30,11 @@ export default function forgotEmail(props) {
       <Grid container justify={"center"}>
         <Grid item xs={12}>
           <Box mb={2} textAlign="left">
-          <Typography variant="h4">Forgot Password</Typography>
-            <Typography variant="h5">{props.translate("pageForgotPasswordSubtitle")}</Typography>
+            <Typography variant="h4">Forgot Password</Typography>
+            <Typography variant="body1">{props.translate("pageForgotPasswordSubtitle")}</Typography>
           </Box>
         </Grid>
-        <Grid item xs={12}>
-          <InputComponent
-            required
-            fullWidth
-            id="name"
-            label={props.translate("name")}
-            name="name"
-            autoComplete="name"
-            autoFocus
-            formik={formik}
-          />
-        </Grid>
+
         <Grid item xs={12}>
           <InputComponent
             required
@@ -66,9 +48,9 @@ export default function forgotEmail(props) {
           />
         </Grid>
         <Grid item xs={12}>
-          <Box mt={3}>
+          <Box mt={2}>
             <Button color="secondary" type="submit" fullWidth variant="contained">
-              {props.translate("btnNext")}
+              Send Email Link
             </Button>
           </Box>
         </Grid>

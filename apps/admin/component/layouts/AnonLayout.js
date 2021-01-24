@@ -1,6 +1,5 @@
 import { Container, Grid, makeStyles } from "@material-ui/core";
 import React from "react";
-import withApp from "../../utils/withApp";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -19,4 +18,4 @@ const AnonLayout = (props) => {
   );
 };
 
-export default withApp(AnonLayout);
+export default AnonLayout;

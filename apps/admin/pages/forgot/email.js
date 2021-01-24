@@ -4,22 +4,26 @@ import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-
 export default function forgotEmail(props) {
   const formik = useFormik({
     initialValues: {
       name: "",
-      phoneNumber: "",
+      phone: "",
     },
     validationSchema: yup.object().shape({
       name: yup.string().required(props.translate("nameRequired")),
-      phoneNumber: yup.number(props.translate("phoneNumberValidate")).required(props.translate("phoneNumberRequired")),
+      phone: yup.number(props.translate("phoneValidate")).required(props.translate("phoneRequired")),
     }),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values, actions) => {
+      try {
+        const user = await props.parse.Cloud.run("findEmail");
+        console.log(user);
+      } catch (error) {
+        props.showError(error.message);
+      }
+      actions.setSubmitting(false);
     },
   });
-
 
   return (
     <form noValidate onSubmit={formik.handleSubmit}>
@@ -27,37 +31,19 @@ export default function forgotEmail(props) {
         <Grid item xs={12}>
           <Box mb={2} textAlign="left">
             <Typography variant="h4">Forgot Email</Typography>
-            <Typography variant="subtitle1">{props.translate("pageForgotEmailSubtitle")}</Typography>
+            <Typography variant="body1">{props.translate("pageForgotEmailSubtitle")}</Typography>
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <InputComponent
-            required
-            fullWidth
-            id="name"
-            label={props.translate("name")}
-            name="name"
-            autoComplete="name"
-            autoFocus
-            formik={formik}
-          />
+          <InputComponent required fullWidth label={props.translate("name")} name="name" autoComplete="name" autoFocus formik={formik} />
         </Grid>
         <Grid item xs={12}>
-          <InputComponent
-            required
-            fullWidth
-            id="email"
-            label={props.translate("emailAddress")}
-            name="email"
-            autoComplete="email"
-            autoFocus
-            formik={formik}
-          />
+          <InputComponent required fullWidth label={props.translate("phone")} name="phone" autoComplete="phone" formik={formik} />
         </Grid>
         <Grid item xs={12}>
-          <Box mt={3}>
-            <Button color="secondary" type="submit" fullWidth variant="contained">
-              {props.translate("btnOk")}
+          <Box mt={2}>
+            <Button color="secondary" type="submit" fullWidth variant="contained" disabled={formik.isSubmitting}>
+              {!formik.isSubmitting ? "Retrieve" : props.translate("btnWait")}
             </Button>
           </Box>
         </Grid>

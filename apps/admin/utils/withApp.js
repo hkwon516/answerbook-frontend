@@ -1,16 +1,81 @@
-import React from "react";
-import { useRouter } from "next/router";
+import React, { useState, useEffect, useContext } from "react";
 import getTranslation from "../utils/locales";
 import { useSnackbar } from "notistack";
 import parse from "../utils/parse";
 import getTheme from "./theme";
+import UserLayout from "../component/layouts/UserLayout";
+import AnonLayout from "../component/layouts/AnonLayout";
+import { LinearProgress, withWidth } from "@material-ui/core";
+import AppContext from "../utils/AppContext";
+
+const withUser = (WrappedComponent) => {
+  class ExtendedWithUser extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        user: parse.User.current(),
+        loading: true,
+      };
+      this.onLogin = this.onLogin.bind(this);
+      this.resolveUser = this.resolveUser.bind(this);
+      this.onLogout = this.onLogout.bind(this);
+    }
+
+    resolveUser = async () => {
+      const user = await parse.User.currentAsync();
+      this.setState({ user });
+    };
+
+    onLogout = async () => {
+      this.setState({ loading: true });
+
+      await parse.User.logOut();
+      this.setState({ user: undefined });
+    };
+
+    onLogin = async (username, password) => {
+      try {
+        this.setState({ loading: true });
+        const user = await parse.User.logIn(username, password, { usePost: true });
+
+        this.setState({ user });
+      } catch (error) {
+        throw error;
+      }
+
+      this.setState({ loading: false });
+    };
+
+    componentDidMount = () => {
+      this.resolveUser();
+    };
+
+    render = () => {
+      return (
+        <AppContext.Provider value={{ user: this.state.user, loading: this.state.loading }}>
+          <WrappedComponent
+            {...this.props}
+            onLogin={this.onLogin}
+            onLogout={this.onLogout}
+            setUser={(user) => {
+              this.setState({ user });
+            }}
+          />
+        </AppContext.Provider>
+      );
+    };
+  }
+
+  return ExtendedWithUser;
+};
 
 const withApp = (WrappedComponent) => {
   const ExtendedWithApp = (props) => {
+    const contexts = useContext(AppContext);
+    const [isBrowser, setIsBrowser] = useState(false);
     const snackbar = useSnackbar();
 
-    const router = useRouter();
-    const translate = getTranslation(router.locale);
+    const isAuthenticatedRoute = props.router.pathname.includes("user");
 
     const showSuccess = (message, options = {}) => {
       snackbar.enqueueSnackbar(message, { variant: "success", ...options });
@@ -19,11 +84,51 @@ const withApp = (WrappedComponent) => {
     const showError = (message, options = {}) => {
       snackbar.enqueueSnackbar(message, { variant: "error", ...options });
     };
-    return (
-      <WrappedComponent theme={getTheme()} parse={parse} translate={translate} showSuccess={showSuccess} showError={showError} {...props} />
+
+    useEffect(() => {
+      setIsBrowser(true);
+      const jssStyles = document.querySelector("#jss-server-side");
+      if (jssStyles) {
+        jssStyles.parentElement.removeChild(jssStyles);
+      }
+    }, []);
+
+    useEffect(() => {
+      if (contexts.user && !isAuthenticatedRoute) {
+        props.router.push("/user");
+      }
+
+      if (!contexts.user && isAuthenticatedRoute) {
+        props.router.push("/");
+      }
+    }, [contexts.user]);
+
+    const translate = getTranslation(props.router.locale);
+    const isMobile = props.width === "xs" || props.width === "sm";
+
+    const commonProps = {
+      ...props,
+
+      user: contexts.user,
+      isBrowser,
+      theme: getTheme(),
+      parse,
+      translate,
+      showSuccess,
+      showError,
+      isMobile,
+    };
+
+    const Layout = commonProps.user && isAuthenticatedRoute ? UserLayout : AnonLayout;
+    return commonProps.loading || (isAuthenticatedRoute && !commonProps.user) ? (
+      <LinearProgress color="secondary" variant="indeterminate" />
+    ) : (
+      <Layout {...commonProps}>
+        <WrappedComponent {...commonProps} />
+      </Layout>
     );
   };
-  return ExtendedWithApp;
+  return withWidth()(withUser(ExtendedWithApp));
 };
 
 export default withApp;

@@ -1,0 +1,4 @@
+{
+  "appId": "answerbookApi",
+  "serverURL": "https://answerbook-ke-staging.herokuapp.com/parse"
+}
