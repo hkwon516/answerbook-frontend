@@ -38,7 +38,7 @@ const GeneralComponent = (props) => {
       <Paper elevation={1}>
         <Box p={2} pt={1} pb={1}>
           <Typography style={{ opacity: 0.5 }} variant="body2">
-            Security
+            {props.translate("pages.user.settings.forms.labels.security")}
           </Typography>
         </Box>
         <Divider />
@@ -49,7 +49,7 @@ const GeneralComponent = (props) => {
                 required
                 fullWidth
                 name="password"
-                label="New Password"
+                label={props.translate("pages.user.settings.forms.fields.newPassword")}
                 type="password"
                 size="small"
                 autoComplete="Company Name"
@@ -62,7 +62,7 @@ const GeneralComponent = (props) => {
                 required
                 fullWidth
                 name="passwordConfirm"
-                label={props.translate("passwordConfirmation")}
+                label={props.translate("pages.user.settings.forms.fields.confirmPassword")}
                 type="password"
                 size="small"
                 autoComplete="current-password"
@@ -71,7 +71,7 @@ const GeneralComponent = (props) => {
             </Grid>
             <Grid item xs={12}>
               <Button type="submit" color="secondary" size="small" disabled={formik.isSubmitting}>
-                {!formik.isSubmitting ? "Confirm" : props.translate("layout.buttons.wait")}
+                {!formik.isSubmitting ? props.translate("pages.user.settings.forms.buttons.confirm") : props.translate("layout.buttons.wait")}
               </Button>
             </Grid>
           </Grid>
