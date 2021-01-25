@@ -129,9 +129,7 @@ const withApp = (WrappedComponent) => {
 
     const Layout = commonProps.user && isAuthenticatedRoute ? UserLayout : AnonLayout;
 
-    return commonProps.loading || (isAuthenticatedRoute && !commonProps.user) ? (
-      <LinearProgress color="secondary" variant="indeterminate" />
-    ) : (
+    return (
       <>
         <Head>
           <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
@@ -139,10 +137,13 @@ const withApp = (WrappedComponent) => {
         </Head>
         <ThemeProvider theme={commonProps.theme}>
           <CssBaseline />
-
-          <Layout {...commonProps}>
-            <WrappedComponent {...commonProps} />
-          </Layout>
+          {commonProps.loading || (isAuthenticatedRoute && !commonProps.user) ? (
+            <LinearProgress color="secondary" variant="indeterminate" />
+          ) : (
+            <Layout {...commonProps}>
+              <WrappedComponent {...commonProps} />
+            </Layout>
+          )}
         </ThemeProvider>
       </>
     );
