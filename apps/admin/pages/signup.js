@@ -51,7 +51,7 @@ export default function SignUp(props) {
 
         await user.signUp();
         props.showSuccess(props.translate("pages.anon.signup.success"));
-        router.push("/login");
+        router.push("/user");
       } catch (error) {
         props.showError(error.message);
       }
