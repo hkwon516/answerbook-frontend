@@ -37,11 +37,6 @@ export default function SignUp(props) {
         .required(props.translate("pages.anon.signup.form.validation.passwordConfirmationRequired"))
         .oneOf([yup.ref("password")], props.translate("pages.anon.signup.form.validation.passwordValidate")),
       academyName: yup.string().required(props.translate("pages.anon.signup.form.validation.academyNameRequired")),
-      companyEmail: yup
-        .string()
-        .required(props.translate("pages.anon.signup.form.validation.companyEmailRequired"))
-        .email(props.translate("pages.anon.signup.form.validation.comapnyEmailValidate")),
-      purpose: yup.string().required(props.translate("pages.anon.signup.form.validation.purposeRequired")),
     }),
 
     onSubmit: async (values, actions) => {
@@ -147,7 +142,6 @@ export default function SignUp(props) {
         {formik.values.position === "publisher" && (
           <Grid item xs={12}>
             <InputComponent
-              required
               fullWidth
               name="companyEmail"
               label={props.translate("pages.anon.signup.form.fields.companyEmail")}
@@ -162,7 +156,6 @@ export default function SignUp(props) {
         {formik.values.position === "etc" && (
           <Grid item xs={12}>
             <InputComponent
-              required
               fullWidth
               name="purpose"
               label={props.translate("pages.anon.signup.form.fields.purpose")}
