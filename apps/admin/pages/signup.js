@@ -31,7 +31,10 @@ export default function SignUp(props) {
       phone: yup
         .number(props.translate("pages.anon.signup.form.validation.phoneValidate"))
         .required(props.translate("pages.anon.signup.form.validation.phoneRequired")),
-      password: yup.string().required(props.translate("pages.anon.signup.form.validation.passwordRequired")),
+      password: yup
+        .string()
+        .required(props.translate("pages.anon.signup.form.validation.passwordRequired"))
+        .min(6, props.translate("pages.anon.signup.form.validation.passwordLength")),
       passwordConfirm: yup
         .string()
         .required(props.translate("pages.anon.signup.form.validation.passwordConfirmationRequired"))

@@ -37,7 +37,6 @@
           }
         }
       },
-
       "forgetPassword": {
         "title": "비밀번호를 잊으 셨나요",
         "subtitle": "귀하의 이름과 이메일을 입력하십시오",
@@ -81,6 +80,7 @@
             "phoneRequired": "이름은 필수 필드입니다",
             "phoneValidate": "숫자 만 입력하세요",
             "passwordRequired": "비밀번호는 필수 필드입니다",
+            "passwordLength": "비밀번호는 6 자 이상이어야합니다",
             "passwordConfirmationRequired": "비밀번호 확인은 필수 필드입니다",
             "passwordValidate": "비밀번호가 일치하지 않습니다",
             "academyNameRequired": "아카데미 이름은 필수 필드입니다",
@@ -111,6 +111,39 @@
         }
       }
     },
-    "user": {}
+    "user": {
+      "dashboard": {
+        "labelmyAccount": "내 계정"
+      },
+      "sidebar": {
+        "profile": {
+          "buttonManageAccount": "계정 관리",
+          "buttonSignOut": "로그 아웃"
+        }
+      },
+      "settings": {
+        "forms": {
+          "labels": {
+            "general": "일반",
+            "information": "정보",
+            "security": "보안",
+            "position": "위치"
+          },
+          "fields": {
+            "name": "이름",
+            "id": "신분증",
+            "email": "이메일 주소",
+            "phone": "전화 번호",
+            "academyName": "아카데미 이름",
+            "newPassword": "새 비밀번호",
+            "confirmPassword": "비밀번호 확인"
+          },
+          "buttons": {
+            "update": "최신 정보",
+            "confirm": "확인"
+          }
+        }
+      }
+    }
   }
 }
