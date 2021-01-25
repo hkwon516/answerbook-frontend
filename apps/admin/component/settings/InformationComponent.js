@@ -42,7 +42,7 @@ const InformationComponent = (props) => {
       <Paper elevation={1}>
         <Box p={2} pt={1} pb={1}>
           <Typography style={{ opacity: 0.5 }} variant="body2">
-            Information
+            {props.translate("pages.user.settings.forms.labels.information")}
           </Typography>
         </Box>
         <Divider />
@@ -56,7 +56,7 @@ const InformationComponent = (props) => {
                 fullWidth
                 disabled
                 inputProps={{ style: { textTransform: "capitalize" } }}
-                label={props.translate("position")}
+                label={props.translate("pages.user.settings.forms.labels.position")}
                 size="small"
                 formik={formik}
               />
@@ -76,7 +76,7 @@ const InformationComponent = (props) => {
 
             <Grid item xs={12}>
               <Button type="submit" color="secondary" size="small" disabled={props.isSubmitting}>
-                {!formik.isSubmitting ? "Update" : props.translate("layout.buttons.wait")}
+                {!formik.isSubmitting ? props.translate("pages.user.settings.forms.buttons.update") : props.translate("layout.buttons.wait")}
               </Button>
             </Grid>
           </Grid>
