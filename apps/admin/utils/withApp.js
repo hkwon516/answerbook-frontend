@@ -116,6 +116,13 @@ const withApp = (WrappedComponent) => {
 
     const commonProps = {
       ...props,
+      onLogout: async () => {
+        try {
+          await props.onLogout();
+        } catch (error) {
+          showError(error.message);
+        }
+      },
       changeLanguage,
       user: contexts.user,
       isBrowser,
