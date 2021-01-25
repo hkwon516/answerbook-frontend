@@ -7,6 +7,10 @@ import UserLayout from "../component/layouts/UserLayout";
 import AnonLayout from "../component/layouts/AnonLayout";
 import { LinearProgress, withWidth } from "@material-ui/core";
 import AppContext from "../utils/AppContext";
+import { ThemeProvider } from "@material-ui/core/styles";
+import { CssBaseline } from "@material-ui/core";
+import { SnackbarProvider } from "notistack";
+import Head from "next/head";
 
 const withUser = (WrappedComponent) => {
   class ExtendedWithUser extends React.Component {
@@ -106,12 +110,16 @@ const withApp = (WrappedComponent) => {
     const translate = getTranslation(props.router.locale);
     const isMobile = props.width === "xs" || props.width === "sm";
 
+    const changeLanguage = (locale) => {
+      props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
+    };
+
     const commonProps = {
       ...props,
-
+      changeLanguage,
       user: contexts.user,
       isBrowser,
-      theme: getTheme(),
+      theme: getTheme(props.router.locale),
       parse,
       translate,
       showSuccess,
@@ -120,12 +128,31 @@ const withApp = (WrappedComponent) => {
     };
 
     const Layout = commonProps.user && isAuthenticatedRoute ? UserLayout : AnonLayout;
+
     return commonProps.loading || (isAuthenticatedRoute && !commonProps.user) ? (
       <LinearProgress color="secondary" variant="indeterminate" />
     ) : (
-      <Layout {...commonProps}>
-        <WrappedComponent {...commonProps} />
-      </Layout>
+      <>
+        <Head>
+          <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+          <title>Answerbook Admin</title>
+        </Head>
+        <ThemeProvider theme={commonProps.theme}>
+          <SnackbarProvider
+            maxSnack="2"
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+          >
+            <CssBaseline />
+
+            <Layout {...commonProps}>
+              <WrappedComponent {...commonProps} />
+            </Layout>
+          </SnackbarProvider>
+        </ThemeProvider>
+      </>
     );
   };
   return withWidth()(withUser(ExtendedWithApp));

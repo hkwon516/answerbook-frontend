@@ -71,7 +71,7 @@ const GeneralComponent = (props) => {
             </Grid>
             <Grid item xs={12}>
               <Button type="submit" color="secondary" size="small" disabled={formik.isSubmitting}>
-                {!formik.isSubmitting ? "Confirm" : props.translate("btnWait")}
+                {!formik.isSubmitting ? "Confirm" : props.translate("layout.buttons.wait")}
               </Button>
             </Grid>
           </Grid>

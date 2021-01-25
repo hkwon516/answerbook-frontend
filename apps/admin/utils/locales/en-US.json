@@ -1,36 +1,103 @@
 {
-  "signupSuccess": "Thank you for signing up.",
-  "signup": "Sign up",
-  "name": "Name",
-  "email": "Email",
-  "phone": "Phone Number",
-  "password": "Password",
-  "academyName": "Academy Name",
-  "companyEmail": "Company Email",
-  "purpose": "Purpose of signing up",
-  "position": "Position",
-  "teacher": "Teacher",
-  "publisher": "Publisher",
-  "etc": "ETC",
-  "passwordConfirmation": "Password Confirmation",
-  "nameRequired": "Name is a required field.",
-  "emailRequired": "Email is a required field.",
-  "emailValidate": "Please enter a valid email.",
-  "phoneRequired": "Name is a required field.",
-  "phoneValidate": "Please enter Numbers only.",
-  "passwordRequired": "Password is a required field.",
-  "passwordConfirmationRequired": "Password Confirmation is a required field.",
-  "passwordValidate": "Password does not match",
-  "btnNext": "Next",
-  "ifAlreadyHaveAccount": "Already have an account?",
-  "login": "Log In",
-  "emailAddress": "Email Address",
-  "forgotPassword": "Forgot password?",
-  "forgotEmail": "Forgot Email?",
-  "btnLogin": "Login",
-  "dontHaveAccount": "Don't have an account?",
-  "pageForgotEmailSubtitle": "Please write down your Name and Phone Number",
-  "btnOk": "OK",
-  "pageForgotPasswordSubtitle": "Please put your name and your email",
-  "btnWait": "Please wait..."
+  "layout": {
+    "language": {
+      "label": "Language",
+      "english": "English",
+      "korean": "Korean"
+    },
+    "buttons": {
+      "next": "Next",
+      "ok": "OK",
+      "wait": "Please wait..."
+    }
+  },
+  "pages": {
+    "anon": {
+      "forgetEmail": {
+        "subtitle": "Please write down your Name and Phone Number",
+        "title": "Forgot Email",
+        "form": {
+          "fields": {
+            "name": "Name",
+            "phone": "Phone Number",
+            "btnSubmit": "Retrieve"
+          },
+          "validation": {
+            "nameRequired": "Name is a required field",
+            "phoneRequired": "phone is a required field",
+            "phoneValidate": "Please enter Numbers only."
+          }
+        }
+      },
+      "forgetPassword": {
+        "title": "Forgot Password",
+        "subtitle": "Please put your name and your email",
+        "form": {
+          "fields": {
+            "email": "Email",
+            "btnSubmit": "Send Email Link"
+          },
+          "validation": {
+            "emailRequired": "Email is a required field",
+            "emailValidate": "Please enter a valid email"
+          }
+        }
+      },
+      "signup": {
+        "success": "Thank you for signing up",
+        "title": "Sign Up",
+        "links": {
+          "login": "Already have an account?"
+        },
+        "form": {
+          "fields": {
+            "name": "Name",
+            "email": "Email",
+            "phone": "Phone Number",
+            "password": "Password",
+            "academyName": "Academy Name",
+            "companyEmail": "Company Email",
+            "purpose": "Purpose of signing up",
+            "position": "Position",
+            "teacher": "Teacher",
+            "publisher": "Publisher",
+            "etc": "ETC",
+            "passwordConfirmation": "Password Confirmation",
+            "btnSignup": "Sign Up"
+          },
+          "validation": {
+            "nameRequired": "Name is a required field.",
+            "emailRequired": "Email is a required field.",
+            "emailValidate": "Please enter a valid email.",
+            "phoneRequired": "Name is a required field.",
+            "phoneValidate": "Please enter Numbers only.",
+            "passwordRequired": "Password is a required field.",
+            "passwordConfirmationRequired": "Password Confirmation is a required field.",
+            "passwordValidate": "Password does not match"
+          }
+        }
+      },
+      "login": {
+        "title": "Log In",
+        "links": {
+          "forgotPassword": "Forgot password?",
+          "forgotEmail": "Forgot Email?",
+          "signup": "Don't have an account?"
+        },
+        "form": {
+          "fields": {
+            "email": "Email Address",
+            "password": "Password",
+            "btnLogin": "Login"
+          },
+          "validation": {
+            "emailRequired": "Email is a required field.",
+            "emailValidate": "Please enter a valid email.",
+            "passwordRequired": "Password is a required field."
+          }
+        }
+      }
+    },
+    "user": {}
+  }
 }
