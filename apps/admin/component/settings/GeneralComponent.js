@@ -38,7 +38,7 @@ const GeneralComponent = (props) => {
       <Paper elevation={1}>
         <Box p={2} pt={1} pb={1}>
           <Typography style={{ opacity: 0.5 }} variant="body2">
-            General
+            {props.translate("pages.user.settings.forms.labels.general")}
           </Typography>
         </Box>
         <Divider />
@@ -57,14 +57,14 @@ const GeneralComponent = (props) => {
             </Grid>
 
             <Grid item xs={12}>
-              <InputComponent disabled required fullWidth label="ID" size="small" name="id" formik={formik} />
+              <InputComponent disabled required fullWidth label={props.translate("pages.user.settings.forms.fields.id")} size="small" name="id" formik={formik} />
             </Grid>
 
             <Grid item xs={12}>
               <InputComponent
                 required
                 fullWidth
-                label={props.translate("emailAddress")}
+                label={props.translate("pages.user.settings.forms.fields.email")}
                 size="small"
                 name="email"
                 autoComplete="email"
@@ -76,7 +76,7 @@ const GeneralComponent = (props) => {
                 required
                 fullWidth
                 size="small"
-                label={props.translate("phone")}
+                label={props.translate("pages.user.settings.forms.fields.phone")}
                 name="phone"
                 autoComplete="Phone Number"
                 formik={formik}
@@ -84,7 +84,7 @@ const GeneralComponent = (props) => {
             </Grid>
             <Grid item xs={12}>
               <Button type="submit" color="secondary" size="small" disabled={props.isSubmitting}>
-                {!formik.isSubmitting ? "Update" : props.translate("layout.buttons.wait")}
+                {!formik.isSubmitting ? props.translate("pages.user.settings.forms.buttons.update") : props.translate("layout.buttons.wait")}
               </Button>
             </Grid>
           </Grid>

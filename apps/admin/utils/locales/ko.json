@@ -119,6 +119,29 @@
           "buttonManageAccount": "계정 관리",
           "buttonSignOut": "로그 아웃"
         }
+      },
+      "settings": {
+        "forms": {
+          "labels": {
+            "general": "일반",
+            "information": "정보",
+            "security": "보안",
+            "position": "위치"
+          },
+          "fields": {
+            "name": "이름",
+            "id": "신분증",
+            "email": "이메일 주소",
+            "phone": "전화 번호",
+            "academyName": "아카데미 이름",
+            "newPassword": "새 비밀번호",
+            "confirmPassword": "비밀번호 확인"
+          },
+          "buttons": {
+            "update": "최신 정보",
+            "confirm": "확인"
+          }
+        }
       }
     }
   }

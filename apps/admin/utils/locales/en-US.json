@@ -119,6 +119,29 @@
           "buttonManageAccount": "Manage Account",
           "buttonSignOut": "Signout"
         }
+      },
+      "settings": {
+        "forms": {
+          "labels": {
+            "general": "General",
+            "information": "Information",
+            "security": "Security",
+            "position": "Position"
+          },
+          "fields": {
+            "name": "Name",
+            "id": "Id",
+            "email": "Email Address",
+            "phone": "Phone Number",
+            "academyName": "Academy Name",
+            "newPassword": "New Password",
+            "confirmPassword": "Confirm Password"
+          },
+          "buttons": {
+            "update": "Update",
+            "confirm": "Confirm"
+          }
+        }
       }
     }
   }
