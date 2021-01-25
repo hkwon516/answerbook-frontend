@@ -82,7 +82,11 @@
             "phoneValidate": "숫자 만 입력하세요",
             "passwordRequired": "비밀번호는 필수 필드입니다",
             "passwordConfirmationRequired": "비밀번호 확인은 필수 필드입니다",
-            "passwordValidate": "비밀번호가 일치하지 않습니다"
+            "passwordValidate": "비밀번호가 일치하지 않습니다",
+            "academyNameRequired": "아카데미 이름은 필수 필드입니다",
+            "companyEmailRequired": "Comapny 이메일은 필수 필드입니다",
+            "comapnyEmailValidate": "유효한 comapmny 이메일을 입력하십시오",
+            "purposeRequired": "가입 목적은 필수 필드입니다"
           }
         }
       },
