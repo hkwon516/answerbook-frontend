@@ -110,6 +110,16 @@
         }
       }
     },
-    "user": {}
+    "user": {
+      "dashboard": {
+        "labelmyAccount": "My Account"
+      },
+      "sidebar": {
+        "profile": {
+          "buttonManageAccount": "Manage Account",
+          "buttonSignOut": "Signout"
+        }
+      }
+    }
   }
 }

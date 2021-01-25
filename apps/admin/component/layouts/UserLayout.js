@@ -116,7 +116,7 @@ const UserLayout = (props) => {
                 <MenuIcon />
               </IconButton>
               <Typography style={{ overflow: "hidden" }} variant="subtitle2" color="inherit">
-                My Account
+                {props.translate("pages.user.dashboard.labelmyAccount")}
               </Typography>
             </Toolbar>
           </AppBar>
@@ -190,7 +190,7 @@ const UserLayout = (props) => {
                           >
                             <ListItemText
                               secondaryTypographyProps={{ style: { fontWeight: 500 }, variant: "caption" }}
-                              secondary="Manage Account"
+                              secondary={props.translate("pages.user.sidebar.profile.buttonManageAccount")}
                             />
                           </ListItem>
                           <ListItem
@@ -201,7 +201,7 @@ const UserLayout = (props) => {
                           >
                             <ListItemText
                               secondaryTypographyProps={{ style: { fontWeight: 500 }, variant: "caption" }}
-                              secondary="Signout"
+                              secondary={props.translate("pages.user.sidebar.profile.buttonSignOut")}
                             />
                           </ListItem>
                         </List>
