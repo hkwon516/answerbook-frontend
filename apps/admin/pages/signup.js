@@ -181,7 +181,7 @@ export default function SignUp(props) {
         </Grid>
         <Grid item xs={12}>
           <Button type="submit" color="secondary" fullWidth variant="contained" disabled={formik.isSubmitting}>
-            {!formik.isSubmitting ? props.translate("btnNext") : props.translate("layout.buttons.wait")}
+            {!formik.isSubmitting ? props.translate("layout.buttons.next") : props.translate("layout.buttons.wait")}
           </Button>
         </Grid>
 
