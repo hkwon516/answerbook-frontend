@@ -6,10 +6,12 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import LinkComponent from "../component/generic/LinkComponent";
 
-function Login(props) {
+const Login = (props) => {
+  console.log(props.router.query);
+
   const formik = useFormik({
     initialValues: {
-      email: "",
+      email: props.router.query.email || "",
       password: "",
     },
     validationSchema: yup.object().shape({
@@ -91,6 +93,6 @@ function Login(props) {
       </Grid>
     </form>
   );
-}
+};
 
 export default Login;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Button, Grid, makeStyles, Container, Box } from "@material-ui/core";
+import { Typography, Button, Grid, Box } from "@material-ui/core";
 import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -18,8 +18,13 @@ export default function forgotEmail(props) {
     }),
     onSubmit: async (values, actions) => {
       try {
-        const user = await props.parse.Cloud.run("findEmail");
-        console.log(user);
+        const email = await props.parse.Cloud.run("findEmail", values);
+        if (email) {
+          props.showSuccess(props.translate("pages.anon.forgetEmail.form.messages.200"));
+          props.router.push({ pathname: "/", query: { email } });
+        } else {
+          throw new Error(props.translate("pages.anon.forgetEmail.form.messages.404"));
+        }
       } catch (error) {
         props.showError(error.message);
       }

@@ -80,13 +80,14 @@ const withApp = (WrappedComponent) => {
     const snackbar = useSnackbar();
 
     const isAuthenticatedRoute = props.router.pathname.includes("user");
+    const translate = getTranslation(props.router.locale);
 
     const showSuccess = (message, options = {}) => {
-      snackbar.enqueueSnackbar(message, { variant: "success", ...options });
+      snackbar.enqueueSnackbar(message || translate("layout.toast.success"), { variant: "success", ...options });
     };
 
     const showError = (message, options = {}) => {
-      snackbar.enqueueSnackbar(message, { variant: "error", ...options });
+      snackbar.enqueueSnackbar(message || translate("layout.toast.error"), { variant: "error", ...options });
     };
 
     useEffect(() => {
@@ -107,7 +108,6 @@ const withApp = (WrappedComponent) => {
       }
     }, [contexts.user]);
 
-    const translate = getTranslation(props.router.locale);
     const isMobile = props.width === "xs" || props.width === "sm";
 
     const changeLanguage = (locale) => {
@@ -138,19 +138,11 @@ const withApp = (WrappedComponent) => {
           <title>Answerbook Admin</title>
         </Head>
         <ThemeProvider theme={commonProps.theme}>
-          <SnackbarProvider
-            maxSnack="2"
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "right",
-            }}
-          >
-            <CssBaseline />
+          <CssBaseline />
 
-            <Layout {...commonProps}>
-              <WrappedComponent {...commonProps} />
-            </Layout>
-          </SnackbarProvider>
+          <Layout {...commonProps}>
+            <WrappedComponent {...commonProps} />
+          </Layout>
         </ThemeProvider>
       </>
     );

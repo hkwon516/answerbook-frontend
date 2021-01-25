@@ -7,12 +7,10 @@ const locales = {
   ko: flatten(ko),
 };
 
-console.log(locales);
-
 export default (key) => {
   const transaltions = locales[key];
   return (id) => {
     const translation = transaltions[id];
-    return translation || "NA";
+    return translation;
   };
 };
