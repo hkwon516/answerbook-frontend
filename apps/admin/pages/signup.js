@@ -27,7 +27,7 @@ export default function SignUp(props) {
       email: yup
         .string()
         .required(props.translate("pages.anon.signup.form.validation.emailRequired"))
-        .email(props.translate("ages.anon.signup.form.validation.emailValidate")),
+        .email(props.translate("pages.anon.signup.form.validation.emailValidate")),
       phone: yup
         .number(props.translate("pages.anon.signup.form.validation.phoneValidate"))
         .required(props.translate("pages.anon.signup.form.validation.phoneRequired")),
