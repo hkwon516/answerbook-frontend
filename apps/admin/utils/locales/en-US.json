@@ -9,6 +9,10 @@
       "next": "Next",
       "ok": "OK",
       "wait": "Please wait..."
+    },
+    "toast": {
+      "success": "Success",
+      "error": "Error"
     }
   },
   "pages": {
@@ -17,6 +21,10 @@
         "subtitle": "Please write down your Name and Phone Number",
         "title": "Forgot Email",
         "form": {
+          "messages": {
+            "404": "Email not found",
+            "200": "Email found. You can continue to login"
+          },
           "fields": {
             "name": "Name",
             "phone": "Phone Number",

@@ -1,13 +1,21 @@
 import React from "react";
 import withApp from "../utils/withApp";
-import Head from "next/head";
+import { SnackbarProvider } from "notistack";
 
 const MyApp = ({ Component, pageProps, ...props }) => {
   const ComponentExtended = withApp(Component);
 
   return (
     <React.Fragment>
-      <ComponentExtended {...pageProps} {...props} />
+      <SnackbarProvider
+        maxSnack="2"
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "right",
+        }}
+      >
+        <ComponentExtended {...pageProps} {...props} />
+      </SnackbarProvider>
     </React.Fragment>
   );
 };
