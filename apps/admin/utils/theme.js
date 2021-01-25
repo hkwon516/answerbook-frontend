@@ -1,6 +1,7 @@
 import { createMuiTheme } from "@material-ui/core/styles";
+import deepmerge from "deepmerge";
 
-let theme = {
+const theme = {
   spacing: 12,
   palette: {
     text: {},
@@ -24,8 +25,14 @@ let theme = {
   },
 };
 
+const themeKO = {
+  typography: {
+    fontFamily: "Spoqa Han Sans Neo, sans-serif",
+  },
+};
+
 const getTheme = (languageKey = "en-US") => {
-  return createMuiTheme(theme);
+  return createMuiTheme(languageKey === "en-US" ? theme : deepmerge(theme, themeKO));
 };
 
 export default getTheme;

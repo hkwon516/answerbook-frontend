@@ -13,8 +13,11 @@ function Login(props) {
       password: "",
     },
     validationSchema: yup.object().shape({
-      email: yup.string().required(props.translate("emailRequired")).email(props.translate("emailValidate")),
-      password: yup.string().required(props.translate("passwordRequired")),
+      email: yup
+        .string()
+        .required(props.translate("pages.anon.login.form.validation.emailRequired"))
+        .email(props.translate("pages.anon.login.form.validation.emailValidate")),
+      password: yup.string().required(props.translate("pages.anon.login.form.validation.passwordRequired")),
     }),
     onSubmit: async (values, actions) => {
       try {
@@ -32,7 +35,7 @@ function Login(props) {
       <Grid container justify={"center"}>
         <Grid item xs={12}>
           <Box mb={2} textAlign="left">
-            <Typography variant="h4">{props.translate("login")}</Typography>
+            <Typography variant="h4">{props.translate("pages.anon.login.title")}</Typography>
           </Box>
         </Grid>
         <Grid item xs={12}>
@@ -40,7 +43,7 @@ function Login(props) {
             required
             fullWidth
             id="email"
-            label={props.translate("emailAddress")}
+            label={props.translate("pages.anon.login.form.fields.email")}
             name="email"
             autoComplete="email"
             autoFocus
@@ -53,7 +56,7 @@ function Login(props) {
             required
             fullWidth
             name="password"
-            label={props.translate("password")}
+            label={props.translate("pages.anon.login.form.fields.password")}
             type="password"
             id="password"
             autoComplete="current-password"
@@ -63,24 +66,25 @@ function Login(props) {
         <Grid item xs={12}>
           <Box textAlign="right" mt={2}>
             <Box>
-              <LinkComponent href="forgot/password">{props.translate("forgotPassword")}</LinkComponent>
+              <LinkComponent href="forgot/password">{props.translate("pages.anon.login.links.forgotPassword")}</LinkComponent>
             </Box>
             <Box>
-              <LinkComponent href="forgot/email">{props.translate("forgotEmail")}</LinkComponent>
+              <LinkComponent href="forgot/email">{props.translate("pages.anon.login.links.forgotEmail")}</LinkComponent>
             </Box>
           </Box>
         </Grid>
         <Grid item xs={12}>
           <Box mt={2}>
             <Button color="secondary" type="submit" fullWidth variant="contained" disabled={formik.isSubmitting}>
-              {!formik.isSubmitting ? props.translate("btnLogin") : props.translate("btnWait")}
+              {!formik.isSubmitting ? props.translate("pages.anon.login.form.fields.btnLogin") : props.translate("layout.buttons.wait")}
             </Button>
           </Box>
         </Grid>
         <Grid item xs={12}>
           <Box mt={2} textAlign="center">
             <Typography variant="body1">
-              {props.translate("dontHaveAccount")} <LinkComponent href="/signup">{props.translate("signup")}</LinkComponent>
+              {props.translate("pages.anon.login.links.signup")}{" "}
+              <LinkComponent href="/signup">{props.translate("pages.anon.signup.title")}</LinkComponent>
             </Typography>
           </Box>
         </Grid>

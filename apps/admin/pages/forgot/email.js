@@ -11,8 +11,10 @@ export default function forgotEmail(props) {
       phone: "",
     },
     validationSchema: yup.object().shape({
-      name: yup.string().required(props.translate("nameRequired")),
-      phone: yup.number(props.translate("phoneValidate")).required(props.translate("phoneRequired")),
+      name: yup.string().required(props.translate("pages.anon.forgetEmail.form.validation.nameRequired")),
+      phone: yup
+        .number(props.translate("pages.anon.forgetEmail.form.validation.phoneValidate"))
+        .required(props.translate("pages.anon.forgetEmail.form.validation.phoneRequired")),
     }),
     onSubmit: async (values, actions) => {
       try {
@@ -30,20 +32,37 @@ export default function forgotEmail(props) {
       <Grid container justify={"center"}>
         <Grid item xs={12}>
           <Box mb={2} textAlign="left">
-            <Typography variant="h4">Forgot Email</Typography>
-            <Typography variant="body1">{props.translate("pageForgotEmailSubtitle")}</Typography>
+            <Typography variant="h4">{props.translate("pages.anon.forgetEmail.title")}</Typography>
+            <Typography variant="body1">{props.translate("pages.anon.forgetEmail.subtitle")}</Typography>
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <InputComponent required fullWidth label={props.translate("name")} name="name" autoComplete="name" autoFocus formik={formik} />
+          <InputComponent
+            required
+            fullWidth
+            label={props.translate("pages.anon.forgetEmail.form.fields.name")}
+            name="name"
+            autoComplete="name"
+            autoFocus
+            formik={formik}
+          />
         </Grid>
         <Grid item xs={12}>
-          <InputComponent required fullWidth label={props.translate("phone")} name="phone" autoComplete="phone" formik={formik} />
+          <InputComponent
+            required
+            fullWidth
+            label={props.translate("pages.anon.forgetEmail.form.fields.phone")}
+            name="phone"
+            autoComplete="phone"
+            formik={formik}
+          />
         </Grid>
         <Grid item xs={12}>
           <Box mt={2}>
             <Button color="secondary" type="submit" fullWidth variant="contained" disabled={formik.isSubmitting}>
-              {!formik.isSubmitting ? "Retrieve" : props.translate("btnWait")}
+              {!formik.isSubmitting
+                ? props.translate("pages.anon.forgetEmail.form.fields.btnSubmit")
+                : props.translate("layout.buttons.wait")}
             </Button>
           </Box>
         </Grid>

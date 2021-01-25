@@ -18,7 +18,10 @@ export default function forgotEmail(props) {
     },
     validationSchema: yup.object().shape({
       name: yup.string().required(),
-      email: yup.string().required(props.translate("emailRequired")).email(props.translate("emailValidate")),
+      email: yup
+        .string()
+        .required(props.translate("pages.anon.forgetPassword.form.validation.emailRequired"))
+        .email(props.translate("pages.anon.forgetPassword.form.validation.emailValidate")),
     }),
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
@@ -30,8 +33,8 @@ export default function forgotEmail(props) {
       <Grid container justify={"center"}>
         <Grid item xs={12}>
           <Box mb={2} textAlign="left">
-            <Typography variant="h4">Forgot Password</Typography>
-            <Typography variant="body1">{props.translate("pageForgotPasswordSubtitle")}</Typography>
+            <Typography variant="h4">{props.translate("pages.anon.forgetPassword.title")}</Typography>
+            <Typography variant="body1">{props.translate("pages.anon.forgetPassword.subtitle")}</Typography>
           </Box>
         </Grid>
 
@@ -40,7 +43,7 @@ export default function forgotEmail(props) {
             required
             fullWidth
             id="email"
-            label={props.translate("emailAddress")}
+            label={props.translate("pages.anon.login.form.fields.email")}
             name="email"
             autoComplete="email"
             autoFocus
@@ -50,7 +53,7 @@ export default function forgotEmail(props) {
         <Grid item xs={12}>
           <Box mt={2}>
             <Button color="secondary" type="submit" fullWidth variant="contained">
-              Send Email Link
+              {props.translate("pages.anon.forgetPassword.form.fields.btnSubmit")}{" "}
             </Button>
           </Box>
         </Grid>

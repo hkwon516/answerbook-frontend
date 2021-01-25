@@ -23,14 +23,19 @@ export default function SignUp(props) {
       purpose: "",
     },
     validationSchema: yup.object().shape({
-      name: yup.string().required(props.translate("nameRequired")),
-      email: yup.string().required(props.translate("emailRequired")).email(props.translate("emailValidate")),
-      phone: yup.number(props.translate("phoneValidate")).required(props.translate("phoneRequired")),
-      password: yup.string().required(props.translate("passwordRequired")),
+      name: yup.string().required(props.translate("pages.anon.signup.form.validation.nameRequired")),
+      email: yup
+        .string()
+        .required(props.translate("pages.anon.signup.form.validation.emailRequired"))
+        .email(props.translate("ages.anon.signup.form.validation.emailValidate")),
+      phone: yup
+        .number(props.translate("pages.anon.signup.form.validation.phoneValidate"))
+        .required(props.translate("pages.anon.signup.form.validation.phoneRequired")),
+      password: yup.string().required(props.translate("pages.anon.signup.form.validation.passwordRequired")),
       passwordConfirm: yup
         .string()
-        .required(props.translate("passwordConfirmationRequired"))
-        .oneOf([yup.ref("password")], props.translate("passwordValidate")),
+        .required(props.translate("pages.anon.signup.form.validation.passwordConfirmationRequired"))
+        .oneOf([yup.ref("password")], props.translate("pages.anon.signup.form.validation.passwordValidate")),
     }),
 
     onSubmit: async (values, actions) => {
@@ -45,7 +50,7 @@ export default function SignUp(props) {
         user.set("information", { academyName: values.academyName, companyEmail: values.companyEmail, purpose: values.purpose });
 
         await user.signUp();
-        props.showSuccess(props.translate("signupSuccess"));
+        props.showSuccess(props.translate("pages.anon.signup.success"));
         router.push("/login");
       } catch (error) {
         props.showError(error.message);
@@ -59,7 +64,7 @@ export default function SignUp(props) {
       <Grid container justify={"center"}>
         <Grid item xs={12}>
           <Box mb={2} textAlign="left">
-            <Typography variant="h4">{props.translate("signup")}</Typography>
+            <Typography variant="h4">{props.translate("pages.anon.signup.title")}</Typography>
           </Box>
         </Grid>
         <Grid item xs={12}>
@@ -68,7 +73,7 @@ export default function SignUp(props) {
             name="name"
             required
             fullWidth
-            label={props.translate("name")}
+            label={props.translate("pages.anon.signup.form.fields.name")}
             size="small"
             autoFocus
             formik={formik}
@@ -78,7 +83,7 @@ export default function SignUp(props) {
           <InputComponent
             required
             fullWidth
-            label={props.translate("email")}
+            label={props.translate("pages.anon.signup.form.fields.email")}
             size="small"
             name="email"
             autoComplete="email"
@@ -90,7 +95,7 @@ export default function SignUp(props) {
             required
             fullWidth
             size="small"
-            label={props.translate("phone")}
+            label={props.translate("pages.anon.signup.form.fields.phone")}
             name="phone"
             autoComplete="Phone Number"
             formik={formik}
@@ -101,7 +106,7 @@ export default function SignUp(props) {
             required
             fullWidth
             name="password"
-            label={props.translate("password")}
+            label={props.translate("pages.anon.signup.form.fields.password")}
             type="password"
             size="small"
             autoComplete="current-password"
@@ -113,7 +118,7 @@ export default function SignUp(props) {
             required
             fullWidth
             name="passwordConfirm"
-            label={props.translate("passwordConfirmation")}
+            label={props.translate("pages.anon.signup.form.fields.passwordConfirmation")}
             type="password"
             size="small"
             autoComplete="current-password"
@@ -126,7 +131,7 @@ export default function SignUp(props) {
               required
               fullWidth
               name="academyName"
-              label={props.translate("academyName")}
+              label={props.translate("pages.anon.signup.form.fields.academyName")}
               size="small"
               autoComplete="Company Name"
               formik={formik}
@@ -138,7 +143,7 @@ export default function SignUp(props) {
             <InputComponent
               fullWidth
               name="companyEmail"
-              label={props.translate("companyEmail")}
+              label={props.translate("pages.anon.signup.form.fields.companyEmail")}
               id="companyEmail"
               size="small"
               autoComplete="Company Email"
@@ -152,7 +157,7 @@ export default function SignUp(props) {
             <InputComponent
               fullWidth
               name="purpose"
-              label={props.translate("purpose")}
+              label={props.translate("pages.anon.signup.form.fields.purpose")}
               size="small"
               autoComplete="purpose"
               formik={formik}
@@ -165,25 +170,26 @@ export default function SignUp(props) {
             margin={(formik.touched.position && formik.errors.position ? true : false) ? "dense" : "normal"}
             error={formik.touched.position && formik.errors.position ? true : false}
           >
-            <FormLabel>{props.translate("position")}</FormLabel>
+            <FormLabel>{props.translate("pages.anon.signup.form.fields.position")}</FormLabel>
 
             <RadioGroup row={true} aria-label="position" name="position" value={formik.values.position} onChange={formik.handleChange}>
-              <FormControlLabel value="teacher" control={<Radio />} label={props.translate("teacher")} />
-              <FormControlLabel value="publisher" control={<Radio />} label={props.translate("publisher")} />
-              <FormControlLabel value="etc" control={<Radio />} label={props.translate("etc")} />
+              <FormControlLabel value="teacher" control={<Radio />} label={props.translate("pages.anon.signup.form.fields.teacher")} />
+              <FormControlLabel value="publisher" control={<Radio />} label={props.translate("pages.anon.signup.form.fields.publisher")} />
+              <FormControlLabel value="etc" control={<Radio />} label={props.translate("pages.anon.signup.form.fields.etc")} />
             </RadioGroup>
           </FormControl>
         </Grid>
         <Grid item xs={12}>
           <Button type="submit" color="secondary" fullWidth variant="contained" disabled={formik.isSubmitting}>
-            {!formik.isSubmitting ? props.translate("btnNext") : props.translate("btnWait")}
+            {!formik.isSubmitting ? props.translate("btnNext") : props.translate("layout.buttons.wait")}
           </Button>
         </Grid>
 
         <Grid item xs={12}>
           <Box mt={2} textAlign="center">
             <Typography variant="body1">
-              {props.translate("ifAlreadyHaveAccount")} <LinkComponent href="/">{props.translate("login")}</LinkComponent>
+              {props.translate("pages.anon.signup.links.login")}{" "}
+              <LinkComponent href="/">{props.translate("pages.anon.login.title")}</LinkComponent>
             </Typography>
           </Box>
         </Grid>
