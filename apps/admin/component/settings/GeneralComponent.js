@@ -50,7 +50,7 @@ const GeneralComponent = (props) => {
                 name="name"
                 required
                 fullWidth
-                label={props.translate("name")}
+                label={props.translate("pages.user.settings.forms.fields.name")}
                 size="small"
                 formik={formik}
               />
