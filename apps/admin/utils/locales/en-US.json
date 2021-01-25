@@ -80,6 +80,7 @@
             "phoneRequired": "Name is a required field.",
             "phoneValidate": "Please enter Numbers only.",
             "passwordRequired": "Password is a required field.",
+            "passwordLength": "Password should be minimum 6 chars",
             "passwordConfirmationRequired": "Password Confirmation is a required field.",
             "passwordValidate": "Password does not match",
             "academyNameRequired": "Academy name is a required field",
