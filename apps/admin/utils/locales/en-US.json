@@ -126,8 +126,11 @@
           "labels": {
             "general": "General",
             "information": "Information",
-            "security": "Change Password",
-            "position": "Position"
+            "security": "Security",
+            "position": "Position",
+            "academyName": "Academy Name",
+            "companyEmail":"Company Email",
+            "purpose":"Purpose of signing up"
           },
           "fields": {
             "name": "Name",
