@@ -3,6 +3,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import InputComponent from "../../component/generic/InputComponent";
+import LanguageComponent from "../generic/LanguageComponent";
 const GeneralComponent = (props) => {
   const formik = useFormik({
     initialValues: {
@@ -57,7 +58,15 @@ const GeneralComponent = (props) => {
             </Grid>
 
             <Grid item xs={12}>
-              <InputComponent disabled required fullWidth label={props.translate("pages.user.settings.forms.fields.id")} size="small" name="id" formik={formik} />
+              <InputComponent
+                disabled
+                required
+                fullWidth
+                label={props.translate("pages.user.settings.forms.fields.id")}
+                size="small"
+                name="id"
+                formik={formik}
+              />
             </Grid>
 
             <Grid item xs={12}>
@@ -84,7 +93,9 @@ const GeneralComponent = (props) => {
             </Grid>
             <Grid item xs={12}>
               <Button type="submit" color="secondary" size="small" disabled={props.isSubmitting}>
-                {!formik.isSubmitting ? props.translate("pages.user.settings.forms.buttons.update") : props.translate("layout.buttons.wait")}
+                {!formik.isSubmitting
+                  ? props.translate("pages.user.settings.forms.buttons.update")
+                  : props.translate("layout.buttons.wait")}
               </Button>
             </Grid>
           </Grid>

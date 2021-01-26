@@ -40,11 +40,6 @@ export default function SignUp(props) {
         .required(props.translate("pages.anon.signup.form.validation.passwordConfirmationRequired"))
         .oneOf([yup.ref("password")], props.translate("pages.anon.signup.form.validation.passwordValidate")),
       academyName: yup.string().required(props.translate("pages.anon.signup.form.validation.academyNameRequired")),
-      companyEmail: yup
-        .string()
-        .required(props.translate("pages.anon.signup.form.validation.companyEmailRequired"))
-        .email(props.translate("pages.anon.signup.form.validation.comapnyEmailValidate")),
-      purpose: yup.string().required(props.translate("pages.anon.signup.form.validation.purposeRequired")),
     }),
 
     onSubmit: async (values, actions) => {
@@ -150,7 +145,6 @@ export default function SignUp(props) {
         {formik.values.position === "publisher" && (
           <Grid item xs={12}>
             <InputComponent
-              required
               fullWidth
               name="companyEmail"
               label={props.translate("pages.anon.signup.form.fields.companyEmail")}
@@ -165,7 +159,6 @@ export default function SignUp(props) {
         {formik.values.position === "etc" && (
           <Grid item xs={12}>
             <InputComponent
-              required
               fullWidth
               name="purpose"
               label={props.translate("pages.anon.signup.form.fields.purpose")}
@@ -192,7 +185,7 @@ export default function SignUp(props) {
         </Grid>
         <Grid item xs={12}>
           <Button type="submit" color="secondary" fullWidth variant="contained" disabled={formik.isSubmitting}>
-            {!formik.isSubmitting ? props.translate("layout.buttons.next") : props.translate("layout.buttons.wait")}
+            {!formik.isSubmitting ? props.translate("pages.anon.signup.form.fields.btnSignup") : props.translate("layout.buttons.wait")}
           </Button>
         </Grid>
 

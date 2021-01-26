@@ -10,7 +10,9 @@ const Settings = (props) => {
       <Box mt={2}>
         <Grid container justify="center">
           <Grid item xs={12} md={4} sm={6}>
-            <GeneralComponent {...props} />
+            <Box mt={2}>
+              <GeneralComponent {...props} />
+            </Box>
             <Box mt={2}>
               <InformationComponent {...props} />
             </Box>

@@ -18,6 +18,7 @@ import React, { useContext } from "react";
 import MenuIcon from "@material-ui/icons/Menu";
 import clsx from "clsx";
 import { useRouter } from "next/router";
+import LanguageComponent from "../generic/LanguageComponent";
 
 const getDrawerWidth = (theme) => theme.breakpoints.values.sm / 2;
 const useStyles = makeStyles((theme) => {
@@ -73,28 +74,12 @@ const UserLayout = (props) => {
   const router = useRouter();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const popoverOpen = Boolean(anchorEl);
-  const id = popoverOpen ? "simple-popover" : undefined;
-
   const drawerWidth = getDrawerWidth(props.theme);
   const popperWidth = drawerWidth - drawerWidth * 0.1;
 
   return (
     <>
-      <Grid
-        container
-        onClick={() => {
-          if (anchorEl) handleClose();
-        }}
-      >
+      <Grid container>
         <Grid item xs={12}>
           <AppBar
             className={clsx(classes.appBar, {
@@ -128,16 +113,15 @@ const UserLayout = (props) => {
             open={drawerOpen}
             variant="persistent"
           >
-            <Box bgcolor={colors.grey[200]} height="100vh" op>
+            <Box bgcolor={colors.grey[200]} height="100vh">
               <Grid container direction="column" justify="space-between" style={{ height: "100%" }}>
-                <Box p={3}>
-                  <Grid item>
-                    <Grid container>
-                      <Grid item xs={12}>
-                        {/* <LogoComponent width={30} /> */}
-                      </Grid>
-                      <Grid item xs={12}>
-                        {/* <Box mt={5}>
+                <Grid item>
+                  <Grid container>
+                    <Grid item xs={12}>
+                      {/* <LogoComponent width={30} /> */}
+                    </Grid>
+                    <Grid item xs={12}>
+                      {/* <Box mt={5}>
                         <List dense>
                           <ListItem selected button>
                             <ListItemIcon>
@@ -159,54 +143,65 @@ const UserLayout = (props) => {
                           </ListItem>
                         </List>
                       </Box> */}
-                      </Grid>
                     </Grid>
                   </Grid>
-                </Box>
+                </Grid>
                 <Grid item>
-                  <Box p={1.5} onClick={handleClick} bgcolor={colors.grey[300]} style={{ cursor: "pointer" }}>
-                    <Popover
-                      id={id}
-                      open={popoverOpen}
-                      anchorEl={anchorEl}
-                      onClose={handleClose}
-                      anchorOrigin={{
-                        vertical: "center",
-                        horizontal: "left",
-                      }}
-                      transformOrigin={{
-                        vertical: "bottom",
-                        horizontal: "left",
-                      }}
-                      elevation={1}
-                    >
-                      <Box width={popperWidth}>
-                        <List disablePadding dense>
-                          <ListItem
-                            button
-                            onClick={() => {
-                              router.push("/user/settings");
-                            }}
-                          >
-                            <ListItemText
-                              secondaryTypographyProps={{ style: { fontWeight: 500 }, variant: "caption" }}
-                              secondary={props.translate("pages.user.sidebar.profile.buttonManageAccount")}
-                            />
-                          </ListItem>
-                          <ListItem
-                            button
-                            onClick={() => {
-                              props.onLogout();
-                            }}
-                          >
-                            <ListItemText
-                              secondaryTypographyProps={{ style: { fontWeight: 500 }, variant: "caption" }}
-                              secondary={props.translate("pages.user.sidebar.profile.buttonSignOut")}
-                            />
-                          </ListItem>
-                        </List>
-                      </Box>
-                    </Popover>
+                  <Popover
+                    open={Boolean(anchorEl)}
+                    anchorEl={anchorEl}
+                    onClose={() => {
+                      setAnchorEl(null);
+                    }}
+                    anchorOrigin={{
+                      vertical: "center",
+                      horizontal: "left",
+                    }}
+                    transformOrigin={{
+                      vertical: "bottom",
+                      horizontal: "left",
+                    }}
+                    elevation={1}
+                  >
+                    <Box width={popperWidth}>
+                      <List disablePadding dense>
+                        <ListItem>
+                          <LanguageComponent {...props} />
+                        </ListItem>
+                        <ListItem
+                          button
+                          onClick={() => {
+                            router.push("/user/settings");
+                          }}
+                        >
+                          <ListItemText
+                            secondaryTypographyProps={{ style: { fontWeight: 500 }, variant: "caption" }}
+                            secondary={props.translate("pages.user.sidebar.profile.buttonManageAccount")}
+                          />
+                        </ListItem>
+                        <ListItem
+                          button
+                          onClick={() => {
+                            props.onLogout();
+                          }}
+                        >
+                          <ListItemText
+                            secondaryTypographyProps={{ style: { fontWeight: 500 }, variant: "caption" }}
+                            secondary={props.translate("pages.user.sidebar.profile.buttonSignOut")}
+                          />
+                        </ListItem>
+                      </List>
+                    </Box>
+                  </Popover>
+
+                  <Box
+                    p={1.5}
+                    onClick={(e) => {
+                      setAnchorEl(e.currentTarget);
+                    }}
+                    bgcolor={colors.grey[300]}
+                    style={{ cursor: "pointer" }}
+                  >
                     <Box style={{ opacity: 0.8 }}>
                       <Grid container alignItems="center">
                         <Grid item>
@@ -234,14 +229,15 @@ const UserLayout = (props) => {
               </Grid>
             </Box>
           </Drawer>
-          <main
+
+          <Box
             className={clsx({
               [classes.content]: !props.isMobile,
               [classes.contentShift]: drawerOpen,
             })}
           >
             {props.children}
-          </main>
+          </Box>
         </Grid>
       </Grid>
     </>
