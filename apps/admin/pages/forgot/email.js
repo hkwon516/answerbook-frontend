@@ -3,6 +3,7 @@ import { Typography, Button, Grid, Box } from "@material-ui/core";
 import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import LinkComponent from "../../component/generic/LinkComponent";
 
 export default function forgotEmail(props) {
   const formik = useFormik({
@@ -69,6 +70,15 @@ export default function forgotEmail(props) {
                 ? props.translate("pages.anon.forgetEmail.form.fields.btnSubmit")
                 : props.translate("layout.buttons.wait")}
             </Button>
+          </Box>
+        </Grid>
+        <Grid item xs={12}>
+          <Box mt={2} textAlign="center">
+            <Typography variant="body1">
+              {props.translate("pages.anon.forgetPassword.form.links.loginPrefix")}{" "}
+              <LinkComponent href="/">{props.translate("pages.anon.forgetPassword.form.links.login")}</LinkComponent>{" "}
+              {props.translate("pages.anon.forgetPassword.form.links.loginSuffix")}
+            </Typography>
           </Box>
         </Grid>
       </Grid>

@@ -3,6 +3,7 @@ import { Typography, Button, Grid, makeStyles, Container, Box } from "@material-
 import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import LinkComponent from "../../component/generic/LinkComponent";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -55,6 +56,15 @@ export default function forgotEmail(props) {
             <Button color="secondary" type="submit" fullWidth variant="contained">
               {props.translate("pages.anon.forgetPassword.form.fields.btnSubmit")}{" "}
             </Button>
+          </Box>
+        </Grid>
+        <Grid item xs={12}>
+          <Box mt={2} textAlign="center">
+            <Typography variant="body1">
+              {props.translate("pages.anon.forgetPassword.form.links.loginPrefix")}{" "}
+              <LinkComponent href="/">{props.translate("pages.anon.forgetPassword.form.links.login")}</LinkComponent>{" "}
+              {props.translate("pages.anon.forgetPassword.form.links.loginSuffix")}
+            </Typography>
           </Box>
         </Grid>
       </Grid>
