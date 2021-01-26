@@ -144,6 +144,12 @@
           "buttons": {
             "update": "최신 정보",
             "confirm": "확인"
+          },
+          "validation": {
+            "passwordRequired": "비밀번호는 필수 필드입니다",
+            "passwordLength": "비밀번호는 6 자 이상이어야합니다",
+            "passwordConfirmationRequired": "비밀번호 확인은 필수 필드입니다",
+            "passwordValidate": "비밀번호가 일치하지 않습니다"
           }
         }
       }
