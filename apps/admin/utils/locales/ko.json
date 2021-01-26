@@ -48,6 +48,11 @@
           "validation": {
             "emailRequired": "이메일은 필수 필드입니다",
             "emailValidate": "유효한 이메일을 입력하십시오"
+          },
+          "links": {
+            "loginPrefix": "돌아 가기",
+            "login": "로그인",
+            "loginSuffix": "페이지"
           }
         }
       },
