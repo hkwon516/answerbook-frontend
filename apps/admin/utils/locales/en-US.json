@@ -127,7 +127,10 @@
             "general": "General",
             "information": "Information",
             "security": "Security",
-            "position": "Position"
+            "position": "Position",
+            "academyName": "Academy Name",
+            "companyEmail":"Company Email",
+            "purpose":"Purpose of signing up"
           },
           "fields": {
             "name": "Name",

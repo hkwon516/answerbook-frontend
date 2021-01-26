@@ -127,7 +127,10 @@
             "general": "일반",
             "information": "정보",
             "security": "보안",
-            "position": "위치"
+            "position": "위치",
+            "academyName": "아카데미 이름",
+            "companyEmail":"회사 이메일",
+            "purpose":"가입 목적"
           },
           "fields": {
             "name": "이름",
