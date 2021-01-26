@@ -48,6 +48,11 @@
           "validation": {
             "emailRequired": "Email is a required field",
             "emailValidate": "Please enter a valid email"
+          },
+          "links": {
+            "loginPrefix": "Go back to",
+            "login": "Log in",
+            "loginSuffix": "page"
           }
         }
       },
