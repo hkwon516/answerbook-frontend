@@ -143,6 +143,7 @@
             "email": "Email Address",
             "phone": "Phone Number",
             "academyName": "Academy Name",
+            "currentPassword": "Current Password",
             "newPassword": "New Password",
             "confirmPassword": "Confirm Password"
           },
