@@ -4,6 +4,11 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import InputComponent from "../../component/generic/InputComponent";
 const InformationComponent = (props) => {
+  const informationPositionLabelMapping = {
+    teacher: props.translate("pages.user.settings.forms.labels.academyName"),
+    publisher: props.translate("pages.user.settings.forms.labels.companyName"),
+    etc: props.translate("pages.user.settings.forms.labels.purpose"),
+  };
   const informationPositionMapping = {
     teacher: "academyName",
     publisher: "companyEmail",
@@ -66,7 +71,7 @@ const InformationComponent = (props) => {
               <InputComponent
                 required
                 fullWidth
-                label={props.translate(informationPositionMapping[position])}
+                label={informationPositionLabelMapping[position]}
                 size="small"
                 name="positionInformation"
                 autoComplete="positionInformation"
@@ -76,7 +81,9 @@ const InformationComponent = (props) => {
 
             <Grid item xs={12}>
               <Button type="submit" color="secondary" size="small" disabled={props.isSubmitting}>
-                {!formik.isSubmitting ? props.translate("pages.user.settings.forms.buttons.update") : props.translate("layout.buttons.wait")}
+                {!formik.isSubmitting
+                  ? props.translate("pages.user.settings.forms.buttons.update")
+                  : props.translate("layout.buttons.wait")}
               </Button>
             </Grid>
           </Grid>
