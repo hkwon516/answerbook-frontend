@@ -3,7 +3,7 @@
     "language": {
       "label": "Language",
       "english": "English",
-      "korean": "Korean"
+      "korean": "한국어"
     },
     "buttons": {
       "next": "Next",
@@ -22,7 +22,7 @@
         "title": "Forgot Email",
         "form": {
           "messages": {
-            "404": "Email not found",
+            "404": "Email not found for given details",
             "200": "Email found. You can continue to login"
           },
           "fields": {
@@ -39,7 +39,7 @@
       },
       "forgetPassword": {
         "title": "Forgot Password",
-        "subtitle": "Please put your name and your email",
+        "subtitle": "Please put your email",
         "form": {
           "fields": {
             "email": "Email",
@@ -118,7 +118,7 @@
       "sidebar": {
         "profile": {
           "buttonManageAccount": "Manage Account",
-          "buttonSignOut": "Signout"
+          "buttonSignOut": "Sign out"
         }
       },
       "settings": {
