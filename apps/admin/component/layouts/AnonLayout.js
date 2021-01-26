@@ -1,6 +1,5 @@
-import { Container, Grid, makeStyles, MenuItem, Select, Typography, Box, FormControl, InputLabel } from "@material-ui/core";
-import React, { useState } from "react";
-import { useRouter } from "next/router";
+import { Container, Grid, makeStyles, Box } from "@material-ui/core";
+import React from "react";
 import LanguageSwitcherComponent from "../generic/LanguageComponent";
 
 const useStyles = makeStyles((theme) => ({
@@ -15,8 +14,10 @@ const AnonLayout = (props) => {
   return (
     <Container component="main" maxWidth="xs">
       <Grid container alignItems="center" className={classes.wrapper}>
-        <Grid item>
+        <Grid item xs={12}>
           <Box>{props.children}</Box>
+        </Grid>
+        <Grid item xs={5}>
           <LanguageSwitcherComponent {...props} />
         </Grid>
       </Grid>
