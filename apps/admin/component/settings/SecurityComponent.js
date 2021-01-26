@@ -12,11 +12,14 @@ const GeneralComponent = (props) => {
       passwordConfirm: "",
     },
     validationSchema: yup.object().shape({
-      password: yup.string().min(6).required(props.translate("passwordRequired")),
+      password: yup
+        .string()
+        .required(props.translate("pages.user.settings.forms.validation.passwordRequired"))
+        .min(6, props.translate("pages.user.settings.forms.validation.passwordLength")),
       passwordConfirm: yup
         .string()
-        .required(props.translate("passwordConfirmationRequired"))
-        .oneOf([yup.ref("password")], props.translate("passwordValidate")),
+        .required(props.translate("pages.user.settings.forms.validation.passwordConfirmationRequired"))
+        .oneOf([yup.ref("password")], props.translate("pages.user.settings.forms.validation.passwordValidate")),
     }),
 
     onSubmit: async (values, actions) => {
@@ -71,7 +74,9 @@ const GeneralComponent = (props) => {
             </Grid>
             <Grid item xs={12}>
               <Button type="submit" color="secondary" size="small" disabled={formik.isSubmitting}>
-                {!formik.isSubmitting ? props.translate("pages.user.settings.forms.buttons.confirm") : props.translate("layout.buttons.wait")}
+                {!formik.isSubmitting
+                  ? props.translate("pages.user.settings.forms.buttons.confirm")
+                  : props.translate("layout.buttons.wait")}
               </Button>
             </Grid>
           </Grid>
