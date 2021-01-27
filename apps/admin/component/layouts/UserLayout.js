@@ -176,7 +176,7 @@ const UserLayout = (props) => {
                         >
                           <ListItemText
                             secondaryTypographyProps={{ style: { fontWeight: 500 }, variant: "caption" }}
-                            secondary={props.translate("pages.user.sidebar.profile.buttonManageAccount")}
+                            secondary={props.translate("userPages.sidebar.buttonManageAccount")}
                           />
                         </ListItem>
                         <ListItem
@@ -187,7 +187,7 @@ const UserLayout = (props) => {
                         >
                           <ListItemText
                             secondaryTypographyProps={{ style: { fontWeight: 500 }, variant: "caption" }}
-                            secondary={props.translate("pages.user.sidebar.profile.buttonSignOut")}
+                            secondary={props.translate("userPages.sidebar.buttonSignOut")}
                           />
                         </ListItem>
                       </List>
