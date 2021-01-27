@@ -5,6 +5,7 @@ import InputComponent from "../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import LinkComponent from "../component/generic/LinkComponent";
+import parse from "../utils/parse";
 
 const Login = (props) => {
   const formik = useFormik({
@@ -21,6 +22,7 @@ const Login = (props) => {
     }),
     onSubmit: async (values, actions) => {
       try {
+        await parse.User.requestEmailVerification(values.email);
         await props.onLogin(values.email, values.password);
       } catch (error) {
         props.showError(error.message);
