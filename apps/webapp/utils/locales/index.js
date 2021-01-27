@@ -1,14 +1,16 @@
 import ko from "./ko.json";
 import enUS from "./en-US.json";
+import flatten from "flat";
 
 const locales = {
-  "en-US": enUS,
-  ko,
+  "en-US": flatten(enUS),
+  ko: flatten(ko),
 };
 
 export default (key) => {
   const transaltions = locales[key];
   return (id) => {
-    return transaltions[id] ? transaltions[id] : "NA";
+    const translation = transaltions[id];
+    return translation;
   };
 };
