@@ -3,6 +3,7 @@ import { Typography, Button, Grid, makeStyles, Container, Box } from "@material-
 import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import parse from "../../utils/parse";
 import LinkComponent from "../../component/generic/LinkComponent";
 
 const useStyles = makeStyles((theme) => ({
@@ -14,18 +15,21 @@ const useStyles = makeStyles((theme) => ({
 export default function forgotPassword(props) {
   const formik = useFormik({
     initialValues: {
-      name: "",
-      phone: "",
+      email: "",
     },
     validationSchema: yup.object().shape({
-      name: yup.string().required(),
       email: yup
         .string()
         .required(props.translate("pages.anon.forgetPassword.form.validation.emailRequired"))
         .email(props.translate("pages.anon.forgetPassword.form.validation.emailValidate")),
     }),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+      try {
+        await parse.User.requestPasswordReset(values.email);
+        alert(JSON.stringify(values, null, 2));
+      } catch (error) {
+        props.showError(error.message);
+      }
     },
   });
 
