@@ -7,8 +7,6 @@ import * as yup from "yup";
 import LinkComponent from "../component/generic/LinkComponent";
 
 const Login = (props) => {
-  console.log(props.router.query);
-
   const formik = useFormik({
     initialValues: {
       email: props.router.query.email || "",
