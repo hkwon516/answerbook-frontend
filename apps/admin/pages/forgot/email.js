@@ -24,7 +24,7 @@ export default function forgotEmail(props) {
           props.showSuccess(props.translate("anonPages.forgetEmail.msg200"));
           props.router.push({ pathname: "/", query: { email } });
         } else {
-          throw new Error(props.translate("anonPages.forgetEmail.404"));
+          throw new Error(props.translate("anonPages.forgetEmail.msg404"));
         }
       } catch (error) {
         props.showError(error.message);

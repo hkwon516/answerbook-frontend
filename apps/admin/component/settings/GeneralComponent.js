@@ -13,9 +13,17 @@ const GeneralComponent = (props) => {
       phone: props.user.get("phone"),
     },
     validationSchema: yup.object().shape({
-      name: yup.string().required(props.translate("nameRequired")),
-      email: yup.string().required(props.translate("emailRequired")).email(props.translate("emailValidate")),
-      phone: yup.number(props.translate("phoneValidate")).required(props.translate("phoneRequired")),
+      name: yup
+        .string()
+        .required(props.translate("userPages.settings.passwordRequired")),
+      email: yup
+        .string()
+        .required(props.translate("userPages.settings.emailRequired"))
+        .email(props.translate("emailValidate")),
+      phone: yup
+        .number(props.translate("userPages.settings.phoneValidate"))
+        .required(props.translate("userPages.settings.phoneValidate"))
+        .typeError(props.translate("userPages.settings.phoneValidate")),
     }),
 
     onSubmit: async (values, actions) => {
@@ -25,7 +33,7 @@ const GeneralComponent = (props) => {
         props.user.set("phone", values.phone);
         const user = await props.user.save();
         props.setUser(user);
-        props.showSuccess("Successfully Updated");
+        props.showSuccess(props.translate("userPages.settings.lblSuccessMsg"));
       } catch (error) {
         props.showError(error.message);
       }
@@ -39,7 +47,7 @@ const GeneralComponent = (props) => {
       <Paper elevation={1}>
         <Box p={2} pt={1} pb={1}>
           <Typography style={{ opacity: 0.5 }} variant="body2">
-            {props.translate("pages.user.settings.forms.labels.general")}
+            {props.translate("userPages.settings.lblGeneral")}
           </Typography>
         </Box>
         <Divider />
@@ -51,7 +59,7 @@ const GeneralComponent = (props) => {
                 name="name"
                 required
                 fullWidth
-                label={props.translate("pages.user.settings.forms.fields.name")}
+                label={props.translate("userPages.settings.fieldName")}
                 size="small"
                 formik={formik}
               />
@@ -62,7 +70,7 @@ const GeneralComponent = (props) => {
                 disabled
                 required
                 fullWidth
-                label={props.translate("pages.user.settings.forms.fields.id")}
+                label={props.translate("userPages.settings.fieldId")}
                 size="small"
                 name="id"
                 formik={formik}
@@ -73,7 +81,7 @@ const GeneralComponent = (props) => {
               <InputComponent
                 required
                 fullWidth
-                label={props.translate("pages.user.settings.forms.fields.email")}
+                label={props.translate("userPages.settings.fieldEmail")}
                 size="small"
                 name="email"
                 autoComplete="email"
@@ -85,7 +93,7 @@ const GeneralComponent = (props) => {
                 required
                 fullWidth
                 size="small"
-                label={props.translate("pages.user.settings.forms.fields.phone")}
+                label={props.translate("userPages.settings.fieldPhone")}
                 name="phone"
                 autoComplete="Phone Number"
                 formik={formik}
@@ -94,8 +102,8 @@ const GeneralComponent = (props) => {
             <Grid item xs={12}>
               <Button type="submit" color="secondary" size="small" disabled={props.isSubmitting}>
                 {!formik.isSubmitting
-                  ? props.translate("pages.user.settings.forms.buttons.update")
-                  : props.translate("layout.buttons.wait")}
+                  ? props.translate("userPages.settings.btnUpdate")
+                  : props.translate("app.btnWait")}
               </Button>
             </Grid>
           </Grid>

@@ -26,7 +26,7 @@ const LanguageComponent = (props) => {
           size="small"
           endIcon={<ArrowDropDownIcon fontSize="small" />}
         >
-          {props.router.locale === "en-US" ? props.translate("app.langEnglish") : props.translate("layout.language.korean")}
+          {props.router.locale === "en-US" ? props.translate("app.langEnglish") : props.translate("app.langKorean")}
         </Button>
 
         <Menu anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>

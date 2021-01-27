@@ -5,9 +5,9 @@ import * as yup from "yup";
 import InputComponent from "../../component/generic/InputComponent";
 const InformationComponent = (props) => {
   const informationPositionLabelMapping = {
-    teacher: props.translate("pages.user.settings.forms.labels.academyName"),
-    publisher: props.translate("pages.user.settings.forms.labels.companyName"),
-    etc: props.translate("pages.user.settings.forms.labels.purpose"),
+    teacher: props.translate("userPages.settings.lblAcademyName"),
+    publisher: props.translate("userPages.settings.lblCompanyName"),
+    etc: props.translate("userPages.settings.lblPurpose"),
   };
   const informationPositionMapping = {
     teacher: "academyName",
@@ -33,7 +33,7 @@ const InformationComponent = (props) => {
         props.user.set("information", { ...intialInformation, [informationPositionMapping[position]]: values.positionInformation });
         const user = await props.user.save();
         props.setUser(user);
-        props.showSuccess("Successfully Updated");
+        props.showSuccess(props.translate("userPages.settings.lblSuccessMsg"));
       } catch (error) {
         props.showError(error.message);
       }
@@ -47,7 +47,7 @@ const InformationComponent = (props) => {
       <Paper elevation={1}>
         <Box p={2} pt={1} pb={1}>
           <Typography style={{ opacity: 0.5 }} variant="body2">
-            {props.translate("pages.user.settings.forms.labels.information")}
+            {props.translate("userPages.settings.lblInformation")}
           </Typography>
         </Box>
         <Divider />
@@ -61,7 +61,7 @@ const InformationComponent = (props) => {
                 fullWidth
                 disabled
                 inputProps={{ style: { textTransform: "capitalize" } }}
-                label={props.translate("pages.user.settings.forms.labels.position")}
+                label={props.translate("userPages.settings.lblPosition")}
                 size="small"
                 formik={formik}
               />
@@ -82,8 +82,8 @@ const InformationComponent = (props) => {
             <Grid item xs={12}>
               <Button type="submit" color="secondary" size="small" disabled={props.isSubmitting}>
                 {!formik.isSubmitting
-                  ? props.translate("pages.user.settings.forms.buttons.update")
-                  : props.translate("layout.buttons.wait")}
+                  ? props.translate("userPages.settings.btnUpdate")
+                  : props.translate("app.btnWait")}
               </Button>
             </Grid>
           </Grid>

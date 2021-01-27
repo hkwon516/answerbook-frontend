@@ -15,16 +15,16 @@ const GeneralComponent = (props) => {
     validationSchema: yup.object().shape({
       currentPassword: yup
         .string()
-        .required(props.translate("pages.user.settings.forms.validation.passwordRequired"))
-        .min(6, props.translate("pages.user.settings.forms.validation.passwordLength")),
+        .required(props.translate("userPages.settings.passwordRequired"))
+        .min(6, props.translate("userPages.settings.passwordLength")),
       password: yup
         .string()
-        .required(props.translate("pages.user.settings.forms.validation.passwordRequired"))
-        .min(6, props.translate("pages.user.settings.forms.validation.passwordLength")),
+        .required(props.translate("userPages.settings.passwordRequired"))
+        .min(6, props.translate("userPages.settings.passwordLength")),
       passwordConfirm: yup
         .string()
-        .required(props.translate("pages.user.settings.forms.validation.passwordConfirmationRequired"))
-        .oneOf([yup.ref("password")], props.translate("pages.user.settings.forms.validation.passwordValidate")),
+        .required(props.translate("userPages.settings.passwordConfirmationRequired"))
+        .oneOf([yup.ref("password")], props.translate("userPages.settings.passwordValidate")),
     }),
 
     onSubmit: async (values, actions) => {
@@ -32,7 +32,7 @@ const GeneralComponent = (props) => {
         await props.user.verifyPassword(values.currentPassword);
         props.user.set("password", values.password);
         await props.user.save();
-        props.showSuccess("Password updated successfully");
+        props.showSuccess(props.translate("userPages.settings.lblPasswordUpdateMsg"));
         actions.resetForm();
       } catch (error) {
         props.showError(error.message);
@@ -47,7 +47,7 @@ const GeneralComponent = (props) => {
       <Paper elevation={1}>
         <Box p={2} pt={1} pb={1}>
           <Typography style={{ opacity: 0.5 }} variant="body2">
-            {props.translate("pages.user.settings.forms.labels.security")}
+            {props.translate("userPages.settings.lblSecurity")}
           </Typography>
         </Box>
         <Divider />
@@ -58,7 +58,7 @@ const GeneralComponent = (props) => {
                 required
                 fullWidth
                 name="currentPassword"
-                label={props.translate("pages.user.settings.forms.fields.currentPassword")}
+                label={props.translate("userPages.settings.fieldCurrentPassword")}
                 type="password"
                 size="small"
                 autoComplete="current-password"
@@ -71,7 +71,7 @@ const GeneralComponent = (props) => {
                 required
                 fullWidth
                 name="password"
-                label={props.translate("pages.user.settings.forms.fields.newPassword")}
+                label={props.translate("userPages.settings.fieldNewPassword")}
                 type="password"
                 size="small"
                 autoComplete="password"
@@ -84,7 +84,7 @@ const GeneralComponent = (props) => {
                 required
                 fullWidth
                 name="passwordConfirm"
-                label={props.translate("pages.user.settings.forms.fields.confirmPassword")}
+                label={props.translate("userPages.settings.fieldConfirmPassword")}
                 type="password"
                 size="small"
                 autoComplete="confirm-password"
@@ -94,8 +94,8 @@ const GeneralComponent = (props) => {
             <Grid item xs={12}>
               <Button type="submit" color="secondary" size="small" disabled={formik.isSubmitting}>
                 {!formik.isSubmitting
-                  ? props.translate("pages.user.settings.forms.buttons.confirm")
-                  : props.translate("layout.buttons.wait")}
+                  ? props.translate("userPages.settings.btnConfirm")
+                  : props.translate("app.btnWait")}
               </Button>
             </Grid>
           </Grid>
