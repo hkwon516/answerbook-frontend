@@ -1,167 +1,113 @@
 {
-  "layout": {
-    "language": {
-      "label": "Language",
-      "english": "English",
-      "korean": "한국어"
+  "app": {
+    "langLabel": "Language",
+    "langEnglish": "English",
+    "langKorean": "한국어",
+    "btnNext": "Next",
+    "btnOk": "OK",
+    "btnWait": "Please wait...",
+    "toastSuccess": "Success",
+    "toastError": "Error"
+  },
+  "anonPages": {
+    "forgetEmail": {
+      "subtitle": "Please write down your Name and Phone Number",
+      "title": "Forgot Email",
+      "linkRememberEmail": "Remember Email?",
+      "linkLogin": "Sign in",
+      "msg404": "Email not found for given details.",
+      "msg200": "Email found. You can continue to login.",
+      "fieldName": "Name",
+      "fieldPhone": "Phone Number",
+      "btnSubmit": "Retrieve",
+      "nameRequired": "Name is a required field.",
+      "phoneRequired": "Phone is a required field.",
+      "phoneValidate": "Please enter Numbers only."
     },
-    "buttons": {
-      "next": "Next",
-      "ok": "OK",
-      "wait": "Please wait..."
+    "forgetPassword": {
+      "title": "Forgot Password",
+      "subtitle": "Please put your email",
+      "linkRememberPassword": "Remember password?",
+      "linkLogin": "Sign in",
+      "fieldEmail": "Email",
+      "btnSubmit": "Send Email Link",
+      "emailRequired": "Email is a required field.",
+      "emailValidate": "Please enter a valid email."
     },
-    "toast": {
-      "success": "Success",
-      "error": "Error"
+    "signup": {
+      "msgSuccess": "Thank you for signing up to Answerbook",
+      "title": "Sign Up",
+      "linkLogin": "Already have an account?",
+      "fieldName": "Name",
+      "fieldEmail": "Email",
+      "fieldPhone": "Phone Number",
+      "fieldPassword": "Password",
+      "fieldAcademyName": "Academy Name",
+      "fieldCompanyEmail": "Company Email",
+      "fieldPurpose": "Purpose of signing up",
+      "fieldPosition": "Position",
+      "fieldTeacher": "Teacher",
+      "fieldPublisher": "Publisher",
+      "fieldEtc": "ETC",
+      "fieldPasswordConfirmation": "Password Confirmation",
+      "btnSignup": "Sign Up",
+      "nameRequired": "Name is a required field.",
+      "emailRequired": "Email is a required field.",
+      "emailValidate": "Please enter a valid email.",
+      "phoneRequired": "Phone number is a required field.",
+      "phoneValidate": "Please enter Numbers only.",
+      "passwordRequired": "Password is a required field.",
+      "passwordLength": "Password should be minimum 6 characters",
+      "passwordConfirmationRequired": "Password Confirmation is a required field.",
+      "passwordValidate": "Password does not match.",
+      "academyNameRequired": "Academy name is a required field.",
+      "companyEmailRequired": "Comapny email is a required field.",
+      "comapnyEmailValidate": "Please enter a valid comapmny email.",
+      "purposeRequired": "Purpose of signing up is a required field."
+    },
+    "login": {
+      "title": "Log In",
+      "linkForgotPassword": "Forgot password?",
+      "linkForgotEmail": "Forgot Email?",
+      "linkSignup": "Don't have an account?",
+      "fieldEmail": "Email Address",
+      "fieldPassword": "Password",
+      "btnLogin": "Login",
+      "emailRequired": "Email is a required field.",
+      "emailValidate": "Please enter a valid email.",
+      "passwordRequired": "Password is a required field."
     }
   },
-  "pages": {
-    "anon": {
-      "forgetEmail": {
-        "subtitle": "Please write down your Name and Phone Number",
-        "title": "Forgot Email",
-        "links": {
-          "loginLabel": "Remember Email?",
-          "loginLink": "Sign in"
-        },
-        "form": {
-          "messages": {
-            "404": "Email not found for given details",
-            "200": "Email found. You can continue to login"
-          },
-          "fields": {
-            "name": "Name",
-            "phone": "Phone Number",
-            "btnSubmit": "Retrieve"
-          },
-          "validation": {
-            "nameRequired": "Name is a required field",
-            "phoneRequired": "phone is a required field",
-            "phoneValidate": "Please enter Numbers only."
-          }
-        }
-      },
-      "forgetPassword": {
-        "title": "Forgot Password",
-        "subtitle": "Please put your email",
-        "links": {
-          "loginLabel": "Remember password?",
-          "loginLink": "Sign in"
-        },
-        "form": {
-          "fields": {
-            "email": "Email",
-            "btnSubmit": "Send Email Link"
-          },
-          "validation": {
-            "emailRequired": "Email is a required field",
-            "emailValidate": "Please enter a valid email"
-          }
-        }
-      },
-      "signup": {
-        "success": "Thank you for signing up",
-        "title": "Sign Up",
-        "links": {
-          "login": "Already have an account?"
-        },
-        "form": {
-          "fields": {
-            "name": "Name",
-            "email": "Email",
-            "phone": "Phone Number",
-            "password": "Password",
-            "academyName": "Academy Name",
-            "companyEmail": "Company Email",
-            "purpose": "Purpose of signing up",
-            "position": "Position",
-            "teacher": "Teacher",
-            "publisher": "Publisher",
-            "etc": "ETC",
-            "passwordConfirmation": "Password Confirmation",
-            "btnSignup": "Sign Up"
-          },
-          "validation": {
-            "nameRequired": "Name is a required field.",
-            "emailRequired": "Email is a required field.",
-            "emailValidate": "Please enter a valid email.",
-            "phoneRequired": "Name is a required field.",
-            "phoneValidate": "Please enter Numbers only.",
-            "passwordRequired": "Password is a required field.",
-            "passwordLength": "Password should be minimum 6 chars",
-            "passwordConfirmationRequired": "Password Confirmation is a required field.",
-            "passwordValidate": "Password does not match",
-            "academyNameRequired": "Academy name is a required field",
-            "companyEmailRequired": "Comapny email is a required field.",
-            "comapnyEmailValidate": "Please enter a valid comapmny email.",
-            "purposeRequired": "Purpose of signing up is a required field"
-          }
-        }
-      },
-      "login": {
-        "title": "Log In",
-        "links": {
-          "forgotPassword": "Forgot password?",
-          "forgotEmail": "Forgot Email?",
-          "signup": "Don't have an account?"
-        },
-        "form": {
-          "fields": {
-            "email": "Email Address",
-            "password": "Password",
-            "btnLogin": "Login"
-          },
-          "validation": {
-            "emailRequired": "Email is a required field.",
-            "emailValidate": "Please enter a valid email.",
-            "passwordRequired": "Password is a required field."
-          }
-        }
-      }
+  "userPages": {
+    "dashboard": {
+      "labelmyAccount": "My Account"
     },
-    "user": {
-      "dashboard": {
-        "labelmyAccount": "My Account"
-      },
-      "sidebar": {
-        "profile": {
-          "buttonManageAccount": "Manage Account",
-          "buttonSignOut": "Sign out"
-        }
-      },
-      "settings": {
-        "forms": {
-          "labels": {
-            "general": "General",
-            "information": "Information",
-            "security": "Security",
-            "position": "Position",
-            "academyName": "Academy Name",
-            "companyEmail": "Company Email",
-            "purpose": "Purpose of signing up"
-          },
-          "fields": {
-            "name": "Name",
-            "id": "Id",
-            "email": "Email Address",
-            "phone": "Phone Number",
-            "academyName": "Academy Name",
-            "currentPassword": "Current Password",
-            "newPassword": "New Password",
-            "confirmPassword": "Confirm Password"
-          },
-          "buttons": {
-            "update": "Update",
-            "confirm": "Confirm"
-          },
-          "validation": {
-            "passwordRequired": "Password is a required field.",
-            "passwordLength": "Password should be minimum 6 chars",
-            "passwordConfirmationRequired": "Password Confirmation is a required field.",
-            "passwordValidate": "Password does not match"
-          }
-        }
-      }
+    "sidebar": {
+      "buttonManageAccount": "Manage Account",
+      "buttonSignOut": "Sign out"
+    },
+    "settings": {
+      "lblGeneral": "General",
+      "lblInformation": "Information",
+      "lblSecurity": "Change Password",
+      "lblPosition": "Position",
+      "lblAcademyName": "Academy Name",
+      "lblCompanyEmail": "Company Email",
+      "lblPurpose": "Purpose of signing up",
+      "fieldName": "Name",
+      "fieldId": "Id",
+      "fieldEmail": "Email Address",
+      "fieldPhone": "Phone Number",
+      "fieldAcademyName": "Academy Name",
+      "fieldCurrentPassword": "Current Password",
+      "fieldNewPassword": "New Password",
+      "fieldConfirmPassword": "Confirm Password",
+      "btnUpdate": "Update",
+      "btnConfirm": "Confirm",
+      "passwordRequired": "Password is a required field.",
+      "passwordLength": "Password should be minimum 6 characters",
+      "passwordConfirmationRequired": "Password Confirmation is a required field.",
+      "passwordValidate": "Password does not match."
     }
   }
 }
