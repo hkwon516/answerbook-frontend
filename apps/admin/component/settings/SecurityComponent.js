@@ -29,6 +29,7 @@ const GeneralComponent = (props) => {
 
     onSubmit: async (values, actions) => {
       try {
+        await props.user.verifyPassword(values.currentPassword);
         props.user.set("password", values.password);
         await props.user.save();
         props.showSuccess("Password updated successfully");
