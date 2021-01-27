@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function forgotEmail(props) {
+export default function forgotPassword(props) {
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -61,9 +61,10 @@ export default function forgotEmail(props) {
         <Grid item xs={12}>
           <Box mt={2} textAlign="center">
             <Typography variant="body1">
-              {props.translate("pages.anon.forgetPassword.form.links.loginPrefix")}{" "}
-              <LinkComponent href="/">{props.translate("pages.anon.forgetPassword.form.links.login")}</LinkComponent>{" "}
-              {props.translate("pages.anon.forgetPassword.form.links.loginSuffix")}
+              {props.translate("pages.anon.forgetPassword.links.loginLabel")}{" "}
+              <LinkComponent {...props} href="/">
+                {props.translate("pages.anon.forgetPassword.links.loginLink")}
+              </LinkComponent>
             </Typography>
           </Box>
         </Grid>

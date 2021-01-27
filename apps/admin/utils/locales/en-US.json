@@ -20,6 +20,10 @@
       "forgetEmail": {
         "subtitle": "Please write down your Name and Phone Number",
         "title": "Forgot Email",
+        "links": {
+          "loginLabel": "Remember Email?",
+          "loginLink": "Sign in"
+        },
         "form": {
           "messages": {
             "404": "Email not found for given details",
@@ -40,6 +44,10 @@
       "forgetPassword": {
         "title": "Forgot Password",
         "subtitle": "Please put your email",
+        "links": {
+          "loginLabel": "Remember password?",
+          "loginLink": "Sign in"
+        },
         "form": {
           "fields": {
             "email": "Email",
@@ -48,11 +56,6 @@
           "validation": {
             "emailRequired": "Email is a required field",
             "emailValidate": "Please enter a valid email"
-          },
-          "links": {
-            "loginPrefix": "Go back to",
-            "login": "Log in",
-            "loginSuffix": "page"
           }
         }
       },
@@ -134,8 +137,8 @@
             "security": "Security",
             "position": "Position",
             "academyName": "Academy Name",
-            "companyEmail":"Company Email",
-            "purpose":"Purpose of signing up"
+            "companyEmail": "Company Email",
+            "purpose": "Purpose of signing up"
           },
           "fields": {
             "name": "Name",

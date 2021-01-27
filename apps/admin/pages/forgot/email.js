@@ -75,9 +75,10 @@ export default function forgotEmail(props) {
         <Grid item xs={12}>
           <Box mt={2} textAlign="center">
             <Typography variant="body1">
-              {props.translate("pages.anon.forgetPassword.form.links.loginPrefix")}{" "}
-              <LinkComponent href="/">{props.translate("pages.anon.forgetPassword.form.links.login")}</LinkComponent>{" "}
-              {props.translate("pages.anon.forgetPassword.form.links.loginSuffix")}
+              {props.translate("pages.anon.forgetEmail.links.loginLabel")}{" "}
+              <LinkComponent {...props} href="/">
+                {props.translate("pages.anon.forgetEmail.links.loginLink")}
+              </LinkComponent>
             </Typography>
           </Box>
         </Grid>
