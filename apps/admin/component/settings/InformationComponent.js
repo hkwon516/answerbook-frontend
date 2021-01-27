@@ -24,8 +24,7 @@ const InformationComponent = (props) => {
       positionInformation: positionInformation,
     },
     validationSchema: yup.object().shape({
-      position: yup.string().required(props.translate("nameRequired")),
-      positionInformation: yup.string().required(props.translate("emailRequired")),
+      positionInformation: yup.string().required(props.translate("userPages.settings.positionRequired")),
     }),
 
     onSubmit: async (values, actions) => {

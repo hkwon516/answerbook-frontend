@@ -111,7 +111,8 @@
       "passwordConfirmationRequired": "비밀번호 확인은 필수 필드입니다.",
       "passwordValidate": "비밀번호가 일치하지 않습니다.",
       "emailRequired": "이메일은 필수 필드입니다.",
-      "phoneValidate": "숫자 만 입력하세요."
+      "phoneValidate": "숫자 만 입력하세요.",
+      "positionRequired": "직위는 필수 필드입니다."
     }
   }
 }
