@@ -101,7 +101,7 @@ const UserLayout = (props) => {
                 <MenuIcon />
               </IconButton>
               <Typography style={{ overflow: "hidden" }} variant="subtitle2" color="inherit">
-                {props.translate("pages.user.dashboard.labelmyAccount")}
+                {props.translate("userPages.dashboard.labelmyAccount")}
               </Typography>
             </Toolbar>
           </AppBar>
