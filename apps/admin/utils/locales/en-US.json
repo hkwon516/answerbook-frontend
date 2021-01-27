@@ -111,7 +111,8 @@
       "passwordConfirmationRequired": "Password Confirmation is a required field.",
       "passwordValidate": "Password does not match.",
       "emailRequired": "Email is a required field.",
-      "phoneValidate": "Please enter Numbers only."
+      "phoneValidate": "Please enter Numbers only.",
+      "positionRequired": "Position is a required field."
     }
   }
 }
