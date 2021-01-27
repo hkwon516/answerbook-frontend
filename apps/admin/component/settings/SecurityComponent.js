@@ -8,10 +8,15 @@ import MenuIcon from "@material-ui/icons/Menu";
 const GeneralComponent = (props) => {
   const formik = useFormik({
     initialValues: {
+      currentPassword: "",
       password: "",
       passwordConfirm: "",
     },
     validationSchema: yup.object().shape({
+      currentPassword: yup
+        .string()
+        .required(props.translate("pages.user.settings.forms.validation.passwordRequired"))
+        .min(6, props.translate("pages.user.settings.forms.validation.passwordLength")),
       password: yup
         .string()
         .required(props.translate("pages.user.settings.forms.validation.passwordRequired"))
@@ -51,11 +56,24 @@ const GeneralComponent = (props) => {
               <InputComponent
                 required
                 fullWidth
+                name="currentPassword"
+                label={props.translate("pages.user.settings.forms.fields.currentPassword")}
+                type="password"
+                size="small"
+                autoComplete="current-password"
+                formik={formik}
+              />
+            </Grid>
+
+            <Grid item xs={12}>
+              <InputComponent
+                required
+                fullWidth
                 name="password"
                 label={props.translate("pages.user.settings.forms.fields.newPassword")}
                 type="password"
                 size="small"
-                autoComplete="Company Name"
+                autoComplete="password"
                 formik={formik}
               />
             </Grid>
@@ -68,7 +86,7 @@ const GeneralComponent = (props) => {
                 label={props.translate("pages.user.settings.forms.fields.confirmPassword")}
                 type="password"
                 size="small"
-                autoComplete="current-password"
+                autoComplete="confirm-password"
                 formik={formik}
               />
             </Grid>
