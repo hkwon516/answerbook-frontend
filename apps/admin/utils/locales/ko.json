@@ -82,6 +82,11 @@
     }
   },
   "userPages": {
+    "layout": {
+      "alertUnverifedAccount": "계정 이메일이 확인되지 않았습니다. 받은 링크를 따르십시오. 지금 이메일로 확인하세요",
+      "buttonResendVerification": "확인 이메일을 다시 보내",
+      "messageVerificationEmail": "확인 이메일이 성공적으로 전송되었습니다"
+    },
     "dashboard": {
       "labelmyAccount": "내 계정"
     },

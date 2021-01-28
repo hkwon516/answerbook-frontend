@@ -22,7 +22,6 @@ const Login = (props) => {
     }),
     onSubmit: async (values, actions) => {
       try {
-        await parse.User.requestEmailVerification(values.email);
         await props.onLogin(values.email, values.password);
       } catch (error) {
         if (error.code === 101 || error.code === 205) {
