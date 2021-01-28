@@ -1,0 +1,4 @@
+{
+  "appId": "answerbookApi",
+  "serverURL": "http://localhost:9000/parse"
+}
