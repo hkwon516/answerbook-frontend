@@ -1,167 +1,118 @@
 {
-  "layout": {
-    "language": {
-      "label": "언어",
-      "english": "English",
-      "korean": "한국어"
+  "app": {
+    "langLabel": "언어",
+    "langEnglish": "English",
+    "langKorean": "한국어",
+    "btnNext": "다음",
+    "btnOk": "확인",
+    "btnWait": "기다려주세요 ...",
+    "toastSuccess": "성공",
+    "toastError": "오류"
+  },
+  "anonPages": {
+    "forgetEmail": {
+      "subtitle": "이름과 전화 번호를 적어주세요",
+      "title": "이메일 분실",
+      "linkRememberEmail": "이메일을 기억하십니까?",
+      "linkLogin": "로그인",
+      "msg404": "주어진 세부 사항에 대한 이메일을 찾을 수 없습니다.",
+      "msg200": "이메일을 찾았습니다. 계속 로그인 할 수 있습니다.",
+      "fieldName": "이름",
+      "fieldPhone": "전화 번호",
+      "btnSubmit": "검색",
+      "nameRequired": "이름은 필수 필드입니다.",
+      "phoneRequired": "이름은 필수 필드입니다",
+      "phoneValidate": "숫자 만 입력하세요."
     },
-    "buttons": {
-      "next": "다음",
-      "ok": "확인",
-      "wait": "기다려주세요 ..."
+    "forgetPassword": {
+      "title": "비밀번호를 잊으 셨나요",
+      "subtitle": "이메일을 넣어주세요",
+      "linkRememberPassword": "비밀번호를 기억하십니까?",
+      "linkLogin": "로그인",
+      "fieldEmail": "이메일",
+      "btnSubmit": "이메일 링크 보내기",
+      "emailRequired": "이메일은 필수 필드입니다.",
+      "emailValidate": "유효한 이메일을 입력하십시오."
     },
-    "toast": {
-      "success": "성공",
-      "error": "오류"
+    "signup": {
+      "msgSuccess": "Answerbook에 가입 해 주셔서 감사합니다.",
+      "title": "가입하기",
+      "linkLogin": "이미 계정이 있습니까? 로그인",
+      "fieldName": "이름",
+      "fieldEmail": "이메일",
+      "fieldPhone": "전화 번호",
+      "fieldPassword": "암호",
+      "fieldAcademyName": "아카데미 이름",
+      "fieldCompanyEmail": "회사 이메일",
+      "fieldPurpose": "가입 목적",
+      "fieldPosition": "위치",
+      "fieldTeacher": "선생님",
+      "fieldPublisher": "발행자",
+      "fieldEtc": "기타",
+      "fieldPasswordConfirmation": "비밀번호 확인",
+      "btnSignup": "가입하기",
+      "nameRequired": "이름은 필수 필드입니다.",
+      "emailRequired": "이메일은 필수 필드입니다.",
+      "emailValidate": "유효한 이메일을 입력하십시오.",
+      "phoneRequired": "전화 번호는 필수 필드입니다.",
+      "phoneValidate": "숫자 만 입력하세요.",
+      "passwordRequired": "비밀번호는 필수 필드입니다.",
+      "passwordLength": "비밀번호는 6 자 이상이어야합니다.",
+      "passwordConfirmationRequired": "비밀번호 확인은 필수 필드입니다.",
+      "passwordValidate": "비밀번호가 일치하지 않습니다.",
+      "academyNameRequired": "아카데미 이름은 필수 필드입니다.",
+      "companyEmailRequired": "Comapny 이메일은 필수 필드입니다.",
+      "comapnyEmailValidate": "유효한 comapmny 이메일을 입력하십시오.",
+      "purposeRequired": "가입 목적은 필수 항목입니다."
+    },
+    "login": {
+      "title": "로그인",
+      "linkForgotPassword": "비밀번호를 잊으 셨나요?",
+      "linkForgotEmail": "이메일을 잊으 셨나요?",
+      "linkSignup": "계정이 없으십니까?",
+      "fieldEmail": "이메일 주소",
+      "fieldPassword": "암호",
+      "btnLogin": "로그인",
+      "emailRequired": "이메일은 필수 필드입니다.",
+      "emailValidate": "유효한 이메일을 입력하십시오.",
+      "passwordRequired": "비밀번호는 필수 필드입니다."
     }
   },
-  "pages": {
-    "anon": {
-      "forgetEmail": {
-        "subtitle": "이름과 전화 번호를 적어주세요",
-        "title": "이메일 분실",
-        "links": {
-          "loginLabel": "이메일을 기억하십니까?",
-          "loginLink": "로그인"
-        },
-        "form": {
-          "messages": {
-            "404": "주어진 세부 사항에 대한 이메일을 찾을 수 없습니다.",
-            "200": "이메일을 찾았습니다. 계속 로그인 할 수 있습니다"
-          },
-          "fields": {
-            "name": "이름",
-            "phone": "전화 번호",
-            "btnSubmit": "검색"
-          },
-          "validation": {
-            "nameRequired": "이름은 필수 필드입니다.",
-            "phoneRequired": "이름은 필수 필드입니다",
-            "phoneValidate": "숫자 만 입력하세요"
-          }
-        }
-      },
-      "forgetPassword": {
-        "title": "비밀번호를 잊으 셨나요",
-        "subtitle": "이메일을 넣어주세요",
-        "links": {
-          "loginLabel": "비밀번호를 기억하십니까?",
-          "loginLink": "로그인"
-        },
-        "form": {
-          "fields": {
-            "email": "이메일",
-            "btnSubmit": "이메일 링크 보내기"
-          },
-          "validation": {
-            "emailRequired": "이메일은 필수 필드입니다",
-            "emailValidate": "유효한 이메일을 입력하십시오"
-          }
-        }
-      },
-      "signup": {
-        "success": "가입 해주셔서 감사합니다",
-        "title": "가입하기",
-        "links": {
-          "login": "이미 계정이 있습니까? 로그인"
-        },
-        "form": {
-          "fields": {
-            "name": "이름",
-            "email": "이메일",
-            "phone": "전화 번호",
-            "password": "암호",
-            "academyName": "아카데미 이름",
-            "companyEmail": "회사 이메일",
-            "purpose": "가입 목적",
-            "position": "위치",
-            "teacher": "선생님",
-            "publisher": "발행자",
-            "etc": "기타",
-            "passwordConfirmation": "비밀번호 확인",
-            "btnSignup": "가입하기"
-          },
-          "validation": {
-            "nameRequired": "이름은 필수 필드입니다",
-            "emailRequired": "이메일은 필수 필드입니다",
-            "emailValidate": "유효한 이메일을 입력하십시오",
-            "phoneRequired": "이름은 필수 필드입니다",
-            "phoneValidate": "숫자 만 입력하세요",
-            "passwordRequired": "비밀번호는 필수 필드입니다",
-            "passwordLength": "비밀번호는 6 자 이상이어야합니다",
-            "passwordConfirmationRequired": "비밀번호 확인은 필수 필드입니다",
-            "passwordValidate": "비밀번호가 일치하지 않습니다",
-            "academyNameRequired": "아카데미 이름은 필수 필드입니다",
-            "companyEmailRequired": "Comapny 이메일은 필수 필드입니다",
-            "comapnyEmailValidate": "유효한 comapmny 이메일을 입력하십시오",
-            "purposeRequired": "가입 목적은 필수 필드입니다"
-          }
-        }
-      },
-      "login": {
-        "title": "로그인",
-        "links": {
-          "forgotPassword": "비밀번호를 잊으 셨나요?",
-          "forgotEmail": "이메일을 잊으 셨나요?",
-          "signup": "계정이 없으십니까?"
-        },
-        "form": {
-          "fields": {
-            "email": "이메일 주소",
-            "password": "암호",
-            "btnLogin": "로그인"
-          },
-          "validation": {
-            "emailRequired": "이메일은 필수 필드입니다",
-            "emailValidate": "유효한 이메일을 입력하십시오",
-            "passwordRequired": "비밀번호는 필수 입력란입니다"
-          }
-        }
-      }
+  "userPages": {
+    "dashboard": {
+      "labelmyAccount": "내 계정"
     },
-    "user": {
-      "dashboard": {
-        "labelmyAccount": "내 계정"
-      },
-      "sidebar": {
-        "profile": {
-          "buttonManageAccount": "계정 관리",
-          "buttonSignOut": "로그 아웃"
-        }
-      },
-      "settings": {
-        "forms": {
-          "labels": {
-            "general": "일반",
-            "information": "정보",
-            "security": "보안",
-            "position": "위치",
-            "academyName": "아카데미 이름",
-            "companyEmail": "회사 이메일",
-            "purpose": "가입 목적"
-          },
-          "fields": {
-            "name": "이름",
-            "id": "신분증",
-            "email": "이메일 주소",
-            "phone": "전화 번호",
-            "academyName": "아카데미 이름",
-            "currentPassword": "현재 비밀번호",
-            "newPassword": "새 비밀번호",
-            "confirmPassword": "비밀번호 확인"
-          },
-          "buttons": {
-            "update": "최신 정보",
-            "confirm": "확인"
-          },
-          "validation": {
-            "passwordRequired": "비밀번호는 필수 필드입니다",
-            "passwordLength": "비밀번호는 6 자 이상이어야합니다",
-            "passwordConfirmationRequired": "비밀번호 확인은 필수 필드입니다",
-            "passwordValidate": "비밀번호가 일치하지 않습니다"
-          }
-        }
-      }
+    "sidebar": {
+      "buttonManageAccount": "계정 관리",
+      "buttonSignOut": "로그 아웃"
+    },
+    "settings": {
+      "lblSuccessMsg": "성공적으로 업데이트 됨",
+      "lblPasswordUpdateMsg": "비밀번호가 성공적으로 업데이트되었습니다.",
+      "lblGeneral": "일반",
+      "lblInformation": "정보",
+      "lblSecurity": "보안",
+      "lblPosition": "위치",
+      "lblAcademyName": "아카데미 이름",
+      "lblCompanyEmail": "회사 이메일",
+      "lblPurpose": "가입 목적",
+      "fieldName": "이름",
+      "fieldId": "신분증",
+      "fieldEmail": "이메일 주소",
+      "fieldPhone": "전화 번호",
+      "fieldAcademyName": "아카데미 이름",
+      "fieldCurrentPassword": "현재 비밀번호",
+      "fieldNewPassword": "새 비밀번호",
+      "fieldConfirmPassword": "비밀번호 확인",
+      "btnUpdate": "최신 정보",
+      "btnConfirm": "확인",
+      "passwordRequired": "비밀번호는 필수 필드입니다.",
+      "passwordLength": "비밀번호는 6 자 이상이어야합니다.",
+      "passwordConfirmationRequired": "비밀번호 확인은 필수 필드입니다.",
+      "passwordValidate": "비밀번호가 일치하지 않습니다.",
+      "emailRequired": "이메일은 필수 필드입니다.",
+      "phoneValidate": "숫자 만 입력하세요.",
+      "positionRequired": "직위는 필수 필드입니다."
     }
   }
 }
