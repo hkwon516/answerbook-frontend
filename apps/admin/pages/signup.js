@@ -23,23 +23,23 @@ export default function SignUp(props) {
       purpose: "",
     },
     validationSchema: yup.object().shape({
-      name: yup.string().required(props.translate("pages.anon.signup.form.validation.nameRequired")),
+      name: yup.string().required(props.translate("anonPages.signup.nameRequired")),
       email: yup
         .string()
-        .required(props.translate("pages.anon.signup.form.validation.emailRequired"))
-        .email(props.translate("pages.anon.signup.form.validation.emailValidate")),
+        .required(props.translate("anonPages.signup.emailRequired"))
+        .email(props.translate("anonPages.signup.emailValidate")),
       phone: yup
-        .number(props.translate("pages.anon.signup.form.validation.phoneValidate"))
-        .required(props.translate("pages.anon.signup.form.validation.phoneRequired")),
+        .number(props.translate("anonPages.signup.phoneValidate"))
+        .required(props.translate("anonPages.signup.phoneRequired")),
       password: yup
         .string()
-        .required(props.translate("pages.anon.signup.form.validation.passwordRequired"))
-        .min(6, props.translate("pages.anon.signup.form.validation.passwordLength")),
+        .required(props.translate("anonPages.signup.passwordRequired"))
+        .min(6, props.translate("anonPages.signup.passwordLength")),
       passwordConfirm: yup
         .string()
-        .required(props.translate("pages.anon.signup.form.validation.passwordConfirmationRequired"))
-        .oneOf([yup.ref("password")], props.translate("pages.anon.signup.form.validation.passwordValidate")),
-      academyName: yup.string().required(props.translate("pages.anon.signup.form.validation.academyNameRequired")),
+        .required(props.translate("anonPages.signup.passwordConfirmationRequired"))
+        .oneOf([yup.ref("password")], props.translate("anonPages.signup.passwordValidate")),
+      academyName: yup.string().required(props.translate("anonPages.signup.academyNameRequired")),
     }),
 
     onSubmit: async (values, actions) => {
@@ -54,7 +54,7 @@ export default function SignUp(props) {
         user.set("information", { academyName: values.academyName, companyEmail: values.companyEmail, purpose: values.purpose });
 
         await user.signUp();
-        props.showSuccess(props.translate("pages.anon.signup.success"));
+        props.showSuccess(props.translate("anonPages.signup.success"));
         router.push("/user");
       } catch (error) {
         props.showError(error.message);
@@ -68,7 +68,7 @@ export default function SignUp(props) {
       <Grid container justify={"center"}>
         <Grid item xs={12}>
           <Box mb={2} textAlign="left">
-            <Typography variant="h4">{props.translate("pages.anon.signup.title")}</Typography>
+            <Typography variant="h4">{props.translate("anonPages.signup.title")}</Typography>
           </Box>
         </Grid>
         <Grid item xs={12}>
@@ -77,7 +77,7 @@ export default function SignUp(props) {
             name="name"
             required
             fullWidth
-            label={props.translate("pages.anon.signup.form.fields.name")}
+            label={props.translate("anonPages.signup.fieldName")}
             size="small"
             autoFocus
             formik={formik}
@@ -87,7 +87,7 @@ export default function SignUp(props) {
           <InputComponent
             required
             fullWidth
-            label={props.translate("pages.anon.signup.form.fields.email")}
+            label={props.translate("anonPages.signup.fieldEmail")}
             size="small"
             name="email"
             autoComplete="email"
@@ -99,7 +99,7 @@ export default function SignUp(props) {
             required
             fullWidth
             size="small"
-            label={props.translate("pages.anon.signup.form.fields.phone")}
+            label={props.translate("anonPages.signup.fieldPhone")}
             name="phone"
             autoComplete="Phone Number"
             formik={formik}
@@ -110,7 +110,7 @@ export default function SignUp(props) {
             required
             fullWidth
             name="password"
-            label={props.translate("pages.anon.signup.form.fields.password")}
+            label={props.translate("anonPages.signup.fieldPassword")}
             type="password"
             size="small"
             autoComplete="current-password"
@@ -122,7 +122,7 @@ export default function SignUp(props) {
             required
             fullWidth
             name="passwordConfirm"
-            label={props.translate("pages.anon.signup.form.fields.passwordConfirmation")}
+            label={props.translate("anonPages.signup.fieldPasswordConfirmation")}
             type="password"
             size="small"
             autoComplete="current-password"
@@ -135,7 +135,7 @@ export default function SignUp(props) {
               required
               fullWidth
               name="academyName"
-              label={props.translate("pages.anon.signup.form.fields.academyName")}
+              label={props.translate("anonPages.signup.fieldAcademyName")}
               size="small"
               autoComplete="Company Name"
               formik={formik}
@@ -147,7 +147,7 @@ export default function SignUp(props) {
             <InputComponent
               fullWidth
               name="companyEmail"
-              label={props.translate("pages.anon.signup.form.fields.companyEmail")}
+              label={props.translate("anonPages.signup.fieldCompanyEmail")}
               id="companyEmail"
               size="small"
               autoComplete="Company Email"
@@ -161,7 +161,7 @@ export default function SignUp(props) {
             <InputComponent
               fullWidth
               name="purpose"
-              label={props.translate("pages.anon.signup.form.fields.purpose")}
+              label={props.translate("anonPages.signup.fieldPurpose")}
               size="small"
               autoComplete="purpose"
               formik={formik}
@@ -174,26 +174,26 @@ export default function SignUp(props) {
             margin={(formik.touched.position && formik.errors.position ? true : false) ? "dense" : "normal"}
             error={formik.touched.position && formik.errors.position ? true : false}
           >
-            <FormLabel>{props.translate("pages.anon.signup.form.fields.position")}</FormLabel>
+            <FormLabel>{props.translate("anonPages.signup.fieldPosition")}</FormLabel>
 
             <RadioGroup row={true} aria-label="position" name="position" value={formik.values.position} onChange={formik.handleChange}>
-              <FormControlLabel value="teacher" control={<Radio />} label={props.translate("pages.anon.signup.form.fields.teacher")} />
-              <FormControlLabel value="publisher" control={<Radio />} label={props.translate("pages.anon.signup.form.fields.publisher")} />
-              <FormControlLabel value="etc" control={<Radio />} label={props.translate("pages.anon.signup.form.fields.etc")} />
+              <FormControlLabel value="teacher" control={<Radio />} label={props.translate("anonPages.signup.fieldTeacher")} />
+              <FormControlLabel value="publisher" control={<Radio />} label={props.translate("anonPages.signup.fieldPublisher")} />
+              <FormControlLabel value="etc" control={<Radio />} label={props.translate("anonPages.signup.fieldEtc")} />
             </RadioGroup>
           </FormControl>
         </Grid>
         <Grid item xs={12}>
           <Button type="submit" color="secondary" fullWidth variant="contained" disabled={formik.isSubmitting}>
-            {!formik.isSubmitting ? props.translate("pages.anon.signup.form.fields.btnSignup") : props.translate("layout.buttons.wait")}
+            {!formik.isSubmitting ? props.translate("anonPages.signup.btnSignup") : props.translate("app.btnWait")}
           </Button>
         </Grid>
 
         <Grid item xs={12}>
           <Box mt={2} textAlign="center">
             <Typography variant="body1">
-              {props.translate("pages.anon.signup.links.login")}{" "}
-              <LinkComponent href="/">{props.translate("pages.anon.login.title")}</LinkComponent>
+              {props.translate("anonPages.signup.linkLogin")}{" "}
+              <LinkComponent href="/">{props.translate("anonPages.login.title")}</LinkComponent>
             </Typography>
           </Box>
         </Grid>
