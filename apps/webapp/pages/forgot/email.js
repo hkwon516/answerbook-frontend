@@ -12,19 +12,19 @@ export default function forgotEmail(props) {
       phone: "",
     },
     validationSchema: yup.object().shape({
-      name: yup.string().required(props.translate("anonPages.forgetEmail.nameRequired")),
+      name: yup.string().required(props.translate("pages.anon.forgetEmail.form.validation.nameRequired")),
       phone: yup
-        .number(props.translate("anonPages.forgetEmail.phoneValidate"))
-        .required(props.translate("anonPages.forgetEmail.phoneRequired")),
+        .number(props.translate("pages.anon.forgetEmail.form.validation.phoneValidate"))
+        .required(props.translate("pages.anon.forgetEmail.form.validation.phoneRequired")),
     }),
     onSubmit: async (values, actions) => {
       try {
         const email = await props.parse.Cloud.run("findEmail", values);
         if (email) {
-          props.showSuccess(props.translate("anonPages.forgetEmail.message200"));
+          props.showSuccess(props.translate("pages.anon.forgetEmail.form.messages.200"));
           props.router.push({ pathname: "/", query: { email } });
         } else {
-          throw new Error(props.translate("anonPages.forgetEmail.message404"));
+          throw new Error(props.translate("pages.anon.forgetEmail.form.messages.404"));
         }
       } catch (error) {
         props.showError(error.message);
@@ -34,22 +34,19 @@ export default function forgotEmail(props) {
   });
 
   return (
-    <>
-      {props.getTitle("anonPages.forgetEmail.title")}
-
-      <form noValidate onSubmit={formik.handleSubmit}>
-        <Grid container justify={"center"}>
+    <form noValidate onSubmit={formik.handleSubmit}>
+      <Grid container justify={"center"}>
           <Grid item xs={12}>
             <Box mb={2} textAlign="left">
-              <Typography variant="h4">{props.translate("anonPages.forgetEmail.title")}</Typography>
-              <Typography variant="body1">{props.translate("anonPages.forgetEmail.subtitle")}</Typography>
+              <Typography variant="h4">{props.translate("pages.anon.forgetEmail.title")}</Typography>
+              <Typography variant="body1">{props.translate("pages.anon.forgetEmail.subtitle")}</Typography>
             </Box>
           </Grid>
           <Grid item xs={12}>
             <InputComponent
               required
               fullWidth
-              label={props.translate("anonPages.forgetEmail.fieldName")}
+              label={props.translate("pages.anon.forgetEmail.form.fields.name")}
               name="name"
               autoComplete="name"
               autoFocus
@@ -60,7 +57,7 @@ export default function forgotEmail(props) {
             <InputComponent
               required
               fullWidth
-              label={props.translate("anonPages.forgetEmail.fieldPhone")}
+              label={props.translate("pages.anon.forgetEmail.form.fields.phone")}
               name="phone"
               autoComplete="phone"
               formik={formik}
@@ -69,22 +66,23 @@ export default function forgotEmail(props) {
           <Grid item xs={12}>
             <Box mt={2}>
               <Button color="secondary" type="submit" fullWidth variant="contained" disabled={formik.isSubmitting}>
-                {!formik.isSubmitting ? props.translate("anonPages.forgetEmail.buttonSubmit") : props.translate("app.buttonWait")}
+                {!formik.isSubmitting
+                  ? props.translate("pages.anon.forgetEmail.form.fields.btnSubmit")
+                  : props.translate("layout.buttons.wait")}
               </Button>
             </Box>
           </Grid>
           <Grid item xs={12}>
             <Box mt={2} textAlign="center">
               <Typography variant="body1">
-                {props.translate("anonPages.forgetEmail.loginPrefix")}{" "}
+                {props.translate("pages.anon.forgetEmail.links.loginLabel")}{" "}
                 <LinkComponent {...props} href="/">
-                  {props.translate("anonPages.forgetEmail.linkLogin")}
+                  {props.translate("pages.anon.forgetEmail.links.loginLink")}
                 </LinkComponent>
               </Typography>
             </Box>
           </Grid>
-        </Grid>
-      </form>
-    </>
+      </Grid>
+    </form>
   );
 }
