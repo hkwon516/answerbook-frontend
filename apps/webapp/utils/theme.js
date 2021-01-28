@@ -35,4 +35,4 @@ const themeKO = {
     return createMuiTheme(languageKey === "en-US" ? theme : deepmerge(theme, themeKO));
   };
 
-export default createMuiTheme(theme);
+export default getTheme;

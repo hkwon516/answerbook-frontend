@@ -32,7 +32,7 @@ export default function forgotPassword(props) {
   return (
     <form noValidate onSubmit={formik.handleSubmit}>
       <Grid container justify={"center"}>
-        <Grid item xs={12} md={4}>
+        
           <Grid item xs={12}>
             <Box mb={2} textAlign="left">
               <Typography variant="h4">{props.translate("pages.anon.forgetPassword.title")}</Typography>
@@ -69,7 +69,6 @@ export default function forgotPassword(props) {
               </Typography>
             </Box>
           </Grid>
-        </Grid>
       </Grid>
     </form>
   );
