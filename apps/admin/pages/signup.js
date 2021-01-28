@@ -52,7 +52,7 @@ export default function SignUp(props) {
         user.set("information", { academyName: values.academyName, companyEmail: values.companyEmail, purpose: values.purpose });
 
         await user.signUp();
-        props.showSuccess(props.translate("anonPages.signup.success"));
+        props.showSuccess(props.translate("anonPages.signup.messageSuccess"));
         router.push("/user");
       } catch (error) {
         if (error.code === 202) {
