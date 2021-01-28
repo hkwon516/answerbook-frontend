@@ -19,7 +19,7 @@ const GeneralComponent = (props) => {
       email: yup
         .string()
         .required(props.translate("userPages.settings.emailRequired"))
-        .email(props.translate("emailValidate")),
+        .email(props.translate("userPages.settings.emailValidate")),
       phone: yup
         .number(props.translate("userPages.settings.phoneValidate"))
         .required(props.translate("userPages.settings.phoneValidate"))
@@ -33,7 +33,7 @@ const GeneralComponent = (props) => {
         props.user.set("phone", values.phone);
         const user = await props.user.save();
         props.setUser(user);
-        props.showSuccess(props.translate("userPages.settings.lblSuccessMsg"));
+        props.showSuccess(props.translate("userPages.settings.labelSuccessMessage"));
       } catch (error) {
         props.showError(error.message);
       }
@@ -47,7 +47,7 @@ const GeneralComponent = (props) => {
       <Paper elevation={1}>
         <Box p={2} pt={1} pb={1}>
           <Typography style={{ opacity: 0.5 }} variant="body2">
-            {props.translate("userPages.settings.lblGeneral")}
+            {props.translate("userPages.settings.labelGeneral")}
           </Typography>
         </Box>
         <Divider />
@@ -102,8 +102,8 @@ const GeneralComponent = (props) => {
             <Grid item xs={12}>
               <Button type="submit" color="secondary" size="small" disabled={props.isSubmitting}>
                 {!formik.isSubmitting
-                  ? props.translate("userPages.settings.btnUpdate")
-                  : props.translate("app.btnWait")}
+                  ? props.translate("userPages.settings.buttonUpdate")
+                  : props.translate("app.buttonWait")}
               </Button>
             </Grid>
           </Grid>

@@ -32,7 +32,7 @@ const GeneralComponent = (props) => {
         await props.user.verifyPassword(values.currentPassword);
         props.user.set("password", values.password);
         await props.user.save();
-        props.showSuccess(props.translate("userPages.settings.lblPasswordUpdateMsg"));
+        props.showSuccess(props.translate("userPages.settings.labelPasswordUpdateMessage"));
         actions.resetForm();
       } catch (error) {
         props.showError(error.message);
@@ -47,7 +47,7 @@ const GeneralComponent = (props) => {
       <Paper elevation={1}>
         <Box p={2} pt={1} pb={1}>
           <Typography style={{ opacity: 0.5 }} variant="body2">
-            {props.translate("userPages.settings.lblSecurity")}
+            {props.translate("userPages.settings.labelSecurity")}
           </Typography>
         </Box>
         <Divider />
@@ -94,8 +94,8 @@ const GeneralComponent = (props) => {
             <Grid item xs={12}>
               <Button type="submit" color="secondary" size="small" disabled={formik.isSubmitting}>
                 {!formik.isSubmitting
-                  ? props.translate("userPages.settings.btnConfirm")
-                  : props.translate("app.btnWait")}
+                  ? props.translate("userPages.settings.buttonConfirm")
+                  : props.translate("app.buttonWait")}
               </Button>
             </Grid>
           </Grid>

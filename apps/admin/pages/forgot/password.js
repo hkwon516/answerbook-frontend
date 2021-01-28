@@ -61,14 +61,14 @@ export default function forgotPassword(props) {
           <Grid item xs={12}>
             <Box mt={2}>
               <Button color="secondary" type="submit" fullWidth variant="contained">
-                {props.translate("anonPages.forgetPassword.btnSubmit")}{" "}
+                {props.translate("anonPages.forgetPassword.buttonSubmit")}{" "}
               </Button>
             </Box>
           </Grid>
           <Grid item xs={12}>
             <Box mt={2} textAlign="center">
               <Typography variant="body1">
-                {props.translate("anonPages.forgetPassword.linkRememberPassword")}{" "}
+                {props.translate("anonPages.forgetPassword.loginPrefix")}{" "}
                 <LinkComponent {...props} href="/">
                   {props.translate("anonPages.forgetPassword.linkLogin")}
                 </LinkComponent>
