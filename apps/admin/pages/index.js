@@ -83,14 +83,14 @@ const Login = (props) => {
           <Grid item xs={12}>
             <Box mt={2}>
               <Button color="secondary" type="submit" fullWidth variant="contained" disabled={formik.isSubmitting}>
-                {!formik.isSubmitting ? props.translate("anonPages.login.btnLogin") : props.translate("app.btnWait")}
+                {!formik.isSubmitting ? props.translate("anonPages.login.buttonLogin") : props.translate("app.buttonWait")}
               </Button>
             </Box>
           </Grid>
           <Grid item xs={12}>
             <Box mt={2} textAlign="center">
               <Typography variant="body1">
-                {props.translate("anonPages.login.linkSignup")}{" "}
+                {props.translate("anonPages.login.signupPrefix")}{" "}
                 <LinkComponent href="/signup">{props.translate("anonPages.signup.title")}</LinkComponent>
               </Typography>
             </Box>
