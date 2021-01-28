@@ -36,7 +36,6 @@ export default function forgotEmail(props) {
   return (
     <form noValidate onSubmit={formik.handleSubmit}>
       <Grid container justify={"center"}>
-        <Grid item xs={12} md={4}>
           <Grid item xs={12}>
             <Box mb={2} textAlign="left">
               <Typography variant="h4">{props.translate("pages.anon.forgetEmail.title")}</Typography>
@@ -83,7 +82,6 @@ export default function forgotEmail(props) {
               </Typography>
             </Box>
           </Grid>
-        </Grid>
       </Grid>
     </form>
   );
