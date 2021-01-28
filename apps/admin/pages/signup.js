@@ -55,7 +55,11 @@ export default function SignUp(props) {
         props.showSuccess(props.translate("anonPages.signup.success"));
         router.push("/user");
       } catch (error) {
-        props.showError(error.message);
+        if (error.code === 202) {
+          props.showError(props.translate("anonPages.signup.messageAccountExists"));
+        } else {
+          props.showError(error.message);
+        }
       }
       actions.setSubmitting(false);
     },

@@ -25,7 +25,11 @@ const Login = (props) => {
         await parse.User.requestEmailVerification(values.email);
         await props.onLogin(values.email, values.password);
       } catch (error) {
-        props.showError(error.message);
+        if (error.code === 101 || error.code === 205) {
+          props.showError(props.translate("anonPages.login.messageInvalidCredentials"));
+        } else {
+          props.showError(error.message);
+        }
       }
 
       actions.setSubmitting(false);
