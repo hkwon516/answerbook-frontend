@@ -190,14 +190,14 @@ export default function SignUp(props) {
           </Grid>
           <Grid item xs={12}>
             <Button type="submit" color="secondary" fullWidth variant="contained" disabled={formik.isSubmitting}>
-              {!formik.isSubmitting ? props.translate("anonPages.signup.btnSignup") : props.translate("app.btnWait")}
+              {!formik.isSubmitting ? props.translate("anonPages.signup.buttonSignup") : props.translate("app.buttonWait")}
             </Button>
           </Grid>
 
           <Grid item xs={12}>
             <Box mt={2} textAlign="center">
               <Typography variant="body1">
-                {props.translate("anonPages.signup.linkLogin")}{" "}
+                {props.translate("anonPages.signup.loginPrefix")}{" "}
                 <LinkComponent href="/">{props.translate("anonPages.login.title")}</LinkComponent>
               </Typography>
             </Box>

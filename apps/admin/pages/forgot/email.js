@@ -21,10 +21,10 @@ export default function forgotEmail(props) {
       try {
         const email = await props.parse.Cloud.run("findEmail", values);
         if (email) {
-          props.showSuccess(props.translate("anonPages.forgetEmail.msg200"));
+          props.showSuccess(props.translate("anonPages.forgetEmail.message200"));
           props.router.push({ pathname: "/", query: { email } });
         } else {
-          throw new Error(props.translate("anonPages.forgetEmail.msg404"));
+          throw new Error(props.translate("anonPages.forgetEmail.message404"));
         }
       } catch (error) {
         props.showError(error.message);
@@ -69,14 +69,14 @@ export default function forgotEmail(props) {
           <Grid item xs={12}>
             <Box mt={2}>
               <Button color="secondary" type="submit" fullWidth variant="contained" disabled={formik.isSubmitting}>
-                {!formik.isSubmitting ? props.translate("anonPages.forgetEmail.btnSubmit") : props.translate("app.btnWait")}
+                {!formik.isSubmitting ? props.translate("anonPages.forgetEmail.buttonSubmit") : props.translate("app.buttonWait")}
               </Button>
             </Box>
           </Grid>
           <Grid item xs={12}>
             <Box mt={2} textAlign="center">
               <Typography variant="body1">
-                {props.translate("anonPages.forgetEmail.linkRememberEmail")}{" "}
+                {props.translate("anonPages.forgetEmail.loginPrefix")}{" "}
                 <LinkComponent {...props} href="/">
                   {props.translate("anonPages.forgetEmail.linkLogin")}
                 </LinkComponent>
