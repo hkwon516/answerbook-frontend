@@ -62,8 +62,8 @@
       "passwordConfirmationRequired": "Password Confirmation is a required field.",
       "passwordValidate": "Password does not match.",
       "academyNameRequired": "Academy name is a required field.",
-      "companyEmailRequired": "Comapny email is a required field.",
-      "comapnyEmailValidate": "Please enter a valid comapmny email.",
+      "companyEmailRequired": "Company email is a required field.",
+      "comapnyEmailValidate": "Please enter a valid company email.",
       "purposeRequired": "Purpose of signing up is a required field.",
       "messageAccountExists": "Account with above email already exists. Please try Signing In."
     },
