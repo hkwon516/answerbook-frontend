@@ -1,5 +1,6 @@
 {
   "app": {
+    "title": "Answerbook Admin",
     "langLabel": "Language",
     "langEnglish": "English",
     "langKorean": "한국어",

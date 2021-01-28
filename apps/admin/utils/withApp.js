@@ -114,6 +114,14 @@ const withApp = (WrappedComponent) => {
       props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
     };
 
+    const getTitle = (pageKey) => {
+      return (
+        <Head>
+          <title>{`${translate("app.title")} | ${translate(pageKey)}`}</title>
+        </Head>
+      );
+    };
+
     const commonProps = {
       ...props,
       onLogout: async () => {
@@ -124,6 +132,7 @@ const withApp = (WrappedComponent) => {
         }
       },
       changeLanguage,
+      getTitle,
       user: contexts.user,
       isBrowser,
       theme: getTheme(props.router.locale),
@@ -135,7 +144,6 @@ const withApp = (WrappedComponent) => {
     };
 
     const Layout = commonProps.user && isAuthenticatedRoute ? UserLayout : AnonLayout;
-
     return (
       <>
         <Head>
