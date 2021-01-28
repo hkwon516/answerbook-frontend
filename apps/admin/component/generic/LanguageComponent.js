@@ -17,7 +17,7 @@ const LanguageComponent = (props) => {
   return (
     <Grid container style={{ width: "100%" }} justify="space-between" alignItems="center">
       <Grid item>
-        <Typography variant="caption">{props.translate("layout.language.label")}</Typography>
+        <Typography variant="caption">{props.translate("app.langLabel")}</Typography>
       </Grid>
       <Grid item>
         <Button
@@ -26,15 +26,15 @@ const LanguageComponent = (props) => {
           size="small"
           endIcon={<ArrowDropDownIcon fontSize="small" />}
         >
-          {props.router.locale === "en-US" ? props.translate("layout.language.english") : props.translate("layout.language.korean")}
+          {props.router.locale === "en-US" ? props.translate("app.langEnglish") : props.translate("app.langKorean")}
         </Button>
 
         <Menu anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
           <MenuItem dense onClick={() => handleClose("en-US")}>
-            {props.translate("layout.language.english")}
+            {props.translate("app.langEnglish")}
           </MenuItem>
           <MenuItem dense onClick={() => handleClose("ko")}>
-            {props.translate("layout.language.korean")}
+            {props.translate("app.langKorean")}
           </MenuItem>
         </Menu>
       </Grid>

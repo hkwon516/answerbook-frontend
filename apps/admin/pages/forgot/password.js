@@ -3,6 +3,7 @@ import { Typography, Button, Grid, makeStyles, Container, Box } from "@material-
 import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import parse from "../../utils/parse";
 import LinkComponent from "../../component/generic/LinkComponent";
 
 const useStyles = makeStyles((theme) => ({
@@ -14,18 +15,21 @@ const useStyles = makeStyles((theme) => ({
 export default function forgotPassword(props) {
   const formik = useFormik({
     initialValues: {
-      name: "",
-      phone: "",
+      email: "",
     },
     validationSchema: yup.object().shape({
-      name: yup.string().required(),
       email: yup
         .string()
-        .required(props.translate("pages.anon.forgetPassword.form.validation.emailRequired"))
-        .email(props.translate("pages.anon.forgetPassword.form.validation.emailValidate")),
+        .required(props.translate("anonPages.forgetPassword.emailRequired"))
+        .email(props.translate("anonPages.forgetPassword.emailValidate")),
     }),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+      try {
+        await parse.User.requestPasswordReset(values.email);
+        alert(JSON.stringify(values, null, 2));
+      } catch (error) {
+        props.showError(error.message);
+      }
     },
   });
 
@@ -34,8 +38,8 @@ export default function forgotPassword(props) {
       <Grid container justify={"center"}>
         <Grid item xs={12}>
           <Box mb={2} textAlign="left">
-            <Typography variant="h4">{props.translate("pages.anon.forgetPassword.title")}</Typography>
-            <Typography variant="body1">{props.translate("pages.anon.forgetPassword.subtitle")}</Typography>
+            <Typography variant="h4">{props.translate("anonPages.forgetPassword.title")}</Typography>
+            <Typography variant="body1">{props.translate("anonPages.forgetPassword.subtitle")}</Typography>
           </Box>
         </Grid>
 
@@ -44,7 +48,7 @@ export default function forgotPassword(props) {
             required
             fullWidth
             id="email"
-            label={props.translate("pages.anon.login.form.fields.email")}
+            label={props.translate("anonPages.login.fieldEmail")}
             name="email"
             autoComplete="email"
             autoFocus
@@ -54,16 +58,16 @@ export default function forgotPassword(props) {
         <Grid item xs={12}>
           <Box mt={2}>
             <Button color="secondary" type="submit" fullWidth variant="contained">
-              {props.translate("pages.anon.forgetPassword.form.fields.btnSubmit")}{" "}
+              {props.translate("anonPages.forgetPassword.btnSubmit")}{" "}
             </Button>
           </Box>
         </Grid>
         <Grid item xs={12}>
           <Box mt={2} textAlign="center">
             <Typography variant="body1">
-              {props.translate("pages.anon.forgetPassword.links.loginLabel")}{" "}
+              {props.translate("anonPages.forgetPassword.linkRememberPassword")}{" "}
               <LinkComponent {...props} href="/">
-                {props.translate("pages.anon.forgetPassword.links.loginLink")}
+                {props.translate("anonPages.forgetPassword.linkLogin")}
               </LinkComponent>
             </Typography>
           </Box>
