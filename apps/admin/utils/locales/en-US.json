@@ -17,7 +17,7 @@
       "linkRememberEmail": "Remember Email?",
       "linkLogin": "Sign in",
       "msg404": "Email not found for given details.",
-      "msg200": "Email found. You can continue to login.",
+      "msg200": "Email found. You can continue to Signing In.",
       "fieldName": "Name",
       "fieldPhone": "Phone Number",
       "btnSubmit": "Retrieve",
@@ -64,19 +64,21 @@
       "academyNameRequired": "Academy name is a required field.",
       "companyEmailRequired": "Comapny email is a required field.",
       "comapnyEmailValidate": "Please enter a valid comapmny email.",
-      "purposeRequired": "Purpose of signing up is a required field."
+      "purposeRequired": "Purpose of signing up is a required field.",
+      "messageAccountExists": "Account with above email already exists. Please try Signing In."
     },
     "login": {
-      "title": "Log In",
+      "title": "Sign In",
       "linkForgotPassword": "Forgot password?",
       "linkForgotEmail": "Forgot Email?",
       "linkSignup": "Don't have an account?",
       "fieldEmail": "Email Address",
       "fieldPassword": "Password",
-      "btnLogin": "Login",
+      "btnLogin": "Sign In",
       "emailRequired": "Email is a required field.",
       "emailValidate": "Please enter a valid email.",
-      "passwordRequired": "Password is a required field."
+      "passwordRequired": "Password is a required field.",
+      "messageInvalidCredentials": "Invalid Email/Password"
     }
   },
   "userPages": {

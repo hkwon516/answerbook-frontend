@@ -64,7 +64,8 @@
       "academyNameRequired": "아카데미 이름은 필수 필드입니다.",
       "companyEmailRequired": "Comapny 이메일은 필수 필드입니다.",
       "comapnyEmailValidate": "유효한 comapmny 이메일을 입력하십시오.",
-      "purposeRequired": "가입 목적은 필수 항목입니다."
+      "purposeRequired": "가입 목적은 필수 항목입니다.",
+      "messageAccountExists": "위 이메일이있는 계정이 이미 존재합니다. 로그인을 시도하십시오."
     },
     "login": {
       "title": "로그인",
@@ -76,7 +77,8 @@
       "btnLogin": "로그인",
       "emailRequired": "이메일은 필수 필드입니다.",
       "emailValidate": "유효한 이메일을 입력하십시오.",
-      "passwordRequired": "비밀번호는 필수 필드입니다."
+      "passwordRequired": "비밀번호는 필수 필드입니다.",
+      "messageInvalidCredentials": "잘못된 이메일 / 비밀번호"
     }
   },
   "userPages": {
