@@ -34,45 +34,49 @@ export default function forgotPassword(props) {
   });
 
   return (
-    <form noValidate onSubmit={formik.handleSubmit}>
-      <Grid container justify={"center"}>
-        <Grid item xs={12}>
-          <Box mb={2} textAlign="left">
-            <Typography variant="h4">{props.translate("anonPages.forgetPassword.title")}</Typography>
-            <Typography variant="body1">{props.translate("anonPages.forgetPassword.subtitle")}</Typography>
-          </Box>
-        </Grid>
+    <>
+      {props.getTitle("anonPages.forgetPassword.title")}
 
-        <Grid item xs={12}>
-          <InputComponent
-            required
-            fullWidth
-            id="email"
-            label={props.translate("anonPages.login.fieldEmail")}
-            name="email"
-            autoComplete="email"
-            autoFocus
-            formik={formik}
-          />
+      <form noValidate onSubmit={formik.handleSubmit}>
+        <Grid container justify={"center"}>
+          <Grid item xs={12}>
+            <Box mb={2} textAlign="left">
+              <Typography variant="h4">{props.translate("anonPages.forgetPassword.title")}</Typography>
+              <Typography variant="body1">{props.translate("anonPages.forgetPassword.subtitle")}</Typography>
+            </Box>
+          </Grid>
+
+          <Grid item xs={12}>
+            <InputComponent
+              required
+              fullWidth
+              id="email"
+              label={props.translate("anonPages.login.fieldEmail")}
+              name="email"
+              autoComplete="email"
+              autoFocus
+              formik={formik}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Box mt={2}>
+              <Button color="secondary" type="submit" fullWidth variant="contained">
+                {props.translate("anonPages.forgetPassword.btnSubmit")}{" "}
+              </Button>
+            </Box>
+          </Grid>
+          <Grid item xs={12}>
+            <Box mt={2} textAlign="center">
+              <Typography variant="body1">
+                {props.translate("anonPages.forgetPassword.linkRememberPassword")}{" "}
+                <LinkComponent {...props} href="/">
+                  {props.translate("anonPages.forgetPassword.linkLogin")}
+                </LinkComponent>
+              </Typography>
+            </Box>
+          </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <Box mt={2}>
-            <Button color="secondary" type="submit" fullWidth variant="contained">
-              {props.translate("anonPages.forgetPassword.btnSubmit")}{" "}
-            </Button>
-          </Box>
-        </Grid>
-        <Grid item xs={12}>
-          <Box mt={2} textAlign="center">
-            <Typography variant="body1">
-              {props.translate("anonPages.forgetPassword.linkRememberPassword")}{" "}
-              <LinkComponent {...props} href="/">
-                {props.translate("anonPages.forgetPassword.linkLogin")}
-              </LinkComponent>
-            </Typography>
-          </Box>
-        </Grid>
-      </Grid>
-    </form>
+      </form>
+    </>
   );
 }
