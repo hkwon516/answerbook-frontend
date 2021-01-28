@@ -1,5 +1,18 @@
 import React from "react";
-import { Typography, Button, Grid, Box, FormControl, IconButton } from "@material-ui/core";
+import {
+  Typography,
+  Button,
+  Grid,
+  Box,
+  FormControl,
+  IconButton,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+  MenuItem,
+  InputLabel,
+  Select,
+} from "@material-ui/core";
 import InputComponent from "../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -7,10 +20,7 @@ import Parse from "parse";
 import { useRouter } from "next/router";
 import LinkComponent from "../component/generic/LinkComponent";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
-import Select from "@material-ui/core/Select";
 import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -20,9 +30,19 @@ const useStyles = makeStyles((theme) => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
+  largeIcon: {
+    width: 50,
+    height: 50 ,
+  },
+  largeButton:{
+    width:100,
+    height:100,
+  },
 }));
 
 export default function SignUp(props) {
+  const classes = useStyles();
+
   const router = useRouter();
   const [email, setEmail] = React.useState("");
   const [school, setSchool] = React.useState("");
@@ -53,7 +73,7 @@ export default function SignUp(props) {
         .min(6, props.translate("pages.anon.signup.form.validation.passwordLength")),
       selectEmail: yup.string().required(props.translate("pages.anon.signup.form.validation.academyNameRequired")),
       nickname: yup.string().required("Nickname is required"),
-      school: yup.string().required("School field is required")
+      school: yup.string().required("School field is required"),
     }),
 
     onSubmit: async (values, actions) => {
@@ -77,16 +97,24 @@ export default function SignUp(props) {
     },
   });
 
+  const [state, setState] = React.useState({
+    checkedA: true,
+  });
+
+  const handleCheckbox = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
+
   return (
     <form noValidate onSubmit={formik.handleSubmit}>
       <Grid container justify={"center"}>
         <Grid item xs={12}>
-          <Box mb={2} textAlign="center">
+          <Box mb={1} textAlign="center">
             <Typography variant="h4">{props.translate("pages.anon.signup.answerbookTitle")}</Typography>
             <Typography variant="subtitle1">{props.translate("pages.anon.signup.answerbookSubtitle")}</Typography>
 
-            <IconButton variant="contained" component="label" size="medium">
-              <CameraAltIcon />
+            <IconButton variant="contained" component="label" className={classes.largeButton}>
+              <CameraAltIcon className={classes.largeIcon}/>
               <input type="file" hidden />
             </IconButton>
           </Box>
@@ -215,6 +243,16 @@ export default function SignUp(props) {
               </FormControl>
             </Box>
           </Grid>
+        </Grid>
+
+        <Grid item xs={12}>
+          <Box></Box>
+          <FormGroup row>
+            <FormControlLabel
+              control={<Checkbox checked={state.checkedA} onChange={handleCheckbox} name="checkedA" />}
+              label="I agree to the terms of use and the collection policy of personal information."
+            />
+          </FormGroup>
         </Grid>
 
         <Grid item xs={12}>
