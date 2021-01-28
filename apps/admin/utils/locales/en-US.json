@@ -82,6 +82,11 @@
     }
   },
   "userPages": {
+    "layout": {
+      "alertUnverifedAccount": "Your account email is unverifed. Please follow the link you received via. email & verify now.",
+      "buttonResendVerification": "Resend Verification Email",
+      "messageVerificationEmail": "Verification Email sent successfully"
+    },
     "dashboard": {
       "labelmyAccount": "My Account"
     },

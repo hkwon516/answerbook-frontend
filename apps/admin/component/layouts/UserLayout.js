@@ -13,11 +13,14 @@ import {
   AppBar,
   Toolbar,
   IconButton,
+  Button,
 } from "@material-ui/core";
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import MenuIcon from "@material-ui/icons/Menu";
 import clsx from "clsx";
 import { useRouter } from "next/router";
+import Alert from "@material-ui/lab/Alert";
+import WarningIcon from "@material-ui/icons/Warning";
 import LanguageComponent from "../generic/LanguageComponent";
 
 const getDrawerWidth = (theme) => theme.breakpoints.values.sm / 2;
@@ -51,28 +54,29 @@ const useStyles = makeStyles((theme) => {
     },
     content: {
       flexGrow: 1,
-      padding: theme.spacing(3),
+
       transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
-      marginLeft: -drawerWidth,
     },
     contentShift: {
       transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.enteringScreen,
       }),
-      marginLeft: 0,
+      marginLeft: drawerWidth,
     },
   };
 });
 
 const UserLayout = (props) => {
+  const [accountVerification, setAccountVerification] = useState(props.user.get("emailVerified"));
+  console.log(accountVerification);
   const classes = useStyles();
-  const [drawerOpen, setDrawerOpen] = React.useState(props.isMobile ? false : true);
+  const [drawerOpen, setDrawerOpen] = useState(props.isMobile ? false : true);
   const router = useRouter();
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const drawerWidth = getDrawerWidth(props.theme);
   const popperWidth = drawerWidth - drawerWidth * 0.1;
@@ -229,14 +233,35 @@ const UserLayout = (props) => {
               </Grid>
             </Box>
           </Drawer>
-
           <Box
-            className={clsx({
-              [classes.content]: !props.isMobile,
-              [classes.contentShift]: drawerOpen,
+            className={clsx(classes.content, {
+              [classes.contentShift]: drawerOpen && !props.isMobile,
             })}
           >
-            {props.children}
+            <>
+              {!accountVerification && (
+                <Alert
+                  action={
+                    <Button
+                      onClick={async () => {
+                        await props.parse.User.requestEmailVerification(props.user.get("username"));
+                        props.showSuccess(props.translate("userPages.layout.messageVerificationEmail"));
+                        setAccountVerification(true);
+                      }}
+                      color="inherit"
+                      size="small"
+                    >
+                      {props.translate("userPages.layout.buttonResendVerification")}
+                    </Button>
+                  }
+                  icon={<WarningIcon />}
+                  severity="warning"
+                >
+                  {props.translate("userPages.layout.alertUnverifedAccount")}
+                </Alert>
+              )}
+              {props.children}
+            </>
           </Box>
         </Grid>
       </Grid>
