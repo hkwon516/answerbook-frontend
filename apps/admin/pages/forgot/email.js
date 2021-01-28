@@ -12,19 +12,19 @@ export default function forgotEmail(props) {
       phone: "",
     },
     validationSchema: yup.object().shape({
-      name: yup.string().required(props.translate("pages.anon.forgetEmail.form.validation.nameRequired")),
+      name: yup.string().required(props.translate("anonPages.forgetEmail.nameRequired")),
       phone: yup
-        .number(props.translate("pages.anon.forgetEmail.form.validation.phoneValidate"))
-        .required(props.translate("pages.anon.forgetEmail.form.validation.phoneRequired")),
+        .number(props.translate("anonPages.forgetEmail.phoneValidate"))
+        .required(props.translate("anonPages.forgetEmail.phoneRequired")),
     }),
     onSubmit: async (values, actions) => {
       try {
         const email = await props.parse.Cloud.run("findEmail", values);
         if (email) {
-          props.showSuccess(props.translate("pages.anon.forgetEmail.form.messages.200"));
+          props.showSuccess(props.translate("anonPages.forgetEmail.msg200"));
           props.router.push({ pathname: "/", query: { email } });
         } else {
-          throw new Error(props.translate("pages.anon.forgetEmail.form.messages.404"));
+          throw new Error(props.translate("anonPages.forgetEmail.msg404"));
         }
       } catch (error) {
         props.showError(error.message);
@@ -38,15 +38,15 @@ export default function forgotEmail(props) {
       <Grid container justify={"center"}>
         <Grid item xs={12}>
           <Box mb={2} textAlign="left">
-            <Typography variant="h4">{props.translate("pages.anon.forgetEmail.title")}</Typography>
-            <Typography variant="body1">{props.translate("pages.anon.forgetEmail.subtitle")}</Typography>
+            <Typography variant="h4">{props.translate("anonPages.forgetEmail.title")}</Typography>
+            <Typography variant="body1">{props.translate("anonPages.forgetEmail.subtitle")}</Typography>
           </Box>
         </Grid>
         <Grid item xs={12}>
           <InputComponent
             required
             fullWidth
-            label={props.translate("pages.anon.forgetEmail.form.fields.name")}
+            label={props.translate("anonPages.forgetEmail.fieldName")}
             name="name"
             autoComplete="name"
             autoFocus
@@ -57,7 +57,7 @@ export default function forgotEmail(props) {
           <InputComponent
             required
             fullWidth
-            label={props.translate("pages.anon.forgetEmail.form.fields.phone")}
+            label={props.translate("anonPages.forgetEmail.fieldPhone")}
             name="phone"
             autoComplete="phone"
             formik={formik}
@@ -67,17 +67,17 @@ export default function forgotEmail(props) {
           <Box mt={2}>
             <Button color="secondary" type="submit" fullWidth variant="contained" disabled={formik.isSubmitting}>
               {!formik.isSubmitting
-                ? props.translate("pages.anon.forgetEmail.form.fields.btnSubmit")
-                : props.translate("layout.buttons.wait")}
+                ? props.translate("anonPages.forgetEmail.btnSubmit")
+                : props.translate("app.btnWait")}
             </Button>
           </Box>
         </Grid>
         <Grid item xs={12}>
           <Box mt={2} textAlign="center">
             <Typography variant="body1">
-              {props.translate("pages.anon.forgetEmail.links.loginLabel")}{" "}
+              {props.translate("anonPages.forgetEmail.linkRememberEmail")}{" "}
               <LinkComponent {...props} href="/">
-                {props.translate("pages.anon.forgetEmail.links.loginLink")}
+                {props.translate("anonPages.forgetEmail.linkLogin")}
               </LinkComponent>
             </Typography>
           </Box>
