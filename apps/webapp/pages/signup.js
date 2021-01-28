@@ -41,17 +41,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp(props) {
-  const classes = useStyles();
 
-  const router = useRouter();
-  const [email, setEmail] = React.useState("");
-  const [school, setSchool] = React.useState("");
-  const [grade, setGrade] = React.useState("");
+  const School = Parse.Object.extend("School");
+  const school = new School();
+  const query = new Parse.Query(School);
 
-  const handleChange = (event) => {
-    setEmail(event.target.value);
-    setSchool(event.target.value);
-    setGrade(event.target.value);
+  const getSchool = async () => {
+    const results = await query.find();
+
+    for (let i = 0; i < results.length; i++) {
+      const object = results[i];
+      console.log(object.id + " - " + object.get("name"));
+    }
   };
 
   const formik = useFormik({
@@ -63,6 +64,7 @@ export default function SignUp(props) {
       nickname: "",
       school: "",
       selectSchool: "",
+      selectGrade: "",
     },
     validationSchema: yup.object().shape({
       name: yup.string().required(props.translate("pages.anon.signup.form.validation.nameRequired")),
@@ -71,27 +73,32 @@ export default function SignUp(props) {
         .string()
         .required(props.translate("pages.anon.signup.form.validation.passwordRequired"))
         .min(6, props.translate("pages.anon.signup.form.validation.passwordLength")),
-      selectEmail: yup.string().required(props.translate("pages.anon.signup.form.validation.academyNameRequired")),
+      // selectEmail: yup.string().required(props.translate("pages.anon.signup.form.validation.academyNameRequired")),
       nickname: yup.string().required("Nickname is required"),
       school: yup.string().required("School field is required"),
     }),
 
     onSubmit: async (values, actions) => {
       try {
-        const user = new Parse.User();
-        user.set("name", values.name);
-        user.set("username", values.email);
-        user.set("email", values.email);
-        user.set("password", values.password);
-        user.set("phone", values.phone);
-        user.set("position", values.position);
-        user.set("information", { academyName: values.academyName, companyEmail: values.companyEmail, purpose: values.purpose });
+        getSchool();
 
-        await user.signUp();
-        props.showSuccess(props.translate("pages.anon.signup.success"));
-        router.push("/user");
+        school.set("name", values.school);
+
+        school.save().then(
+          (school) => {
+            alert("Successfully data added - " + school.get("name"));
+          },
+          (error) => {
+            alert("Failed to save the data - " + error.message);
+          }
+        );
+
+        // await user.signUp();
+        // props.showSuccess(props.translate("pages.anon.signup.success"));
+        // router.push("/user");
       } catch (error) {
-        props.showError(error.message);
+        alert(error.message);
+        // props.showError(error.message);
       }
       actions.setSubmitting(false);
     },
@@ -132,7 +139,7 @@ export default function SignUp(props) {
           />
         </Grid>
         <Grid container>
-          <Grid item xs={12} sm={5}>
+          <Grid item xs={12} sm={6}>
             <InputComponent
               required
               fullWidth
@@ -144,35 +151,28 @@ export default function SignUp(props) {
             />
           </Grid>
 
-          <Grid item xs={12} sm={1}>
-            <Box mt={3}>
-              <Typography>@</Typography>
-            </Box>
-          </Grid>
-
           <Grid item xs={12} sm={6}>
-            <Box>
+            <Box ml={2}>
               <FormControl variant="filled" margin={"normal"} fullWidth size="small">
-                <InputLabel name="selectEmail" id="selectEmail">
-                  Choose an email
-                </InputLabel>
-                <Select labelId="selectEmail" id="simple-select-filled1" value={email} onChange={handleChange}>
+                <InputLabel>Choose an email</InputLabel>
+                <Select labelId="selectEmail" id="simple-select-filled1" name="selectEmail" onChange={formik.handleChange}>
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={"naver.com"}>naver.com</MenuItem>
-                  <MenuItem value={"hanmail.net"}>hanmail.net</MenuItem>
-                  <MenuItem value={"daum.net"}>daum.net</MenuItem>
-                  <MenuItem value={"gmail.net"}>gmail.net</MenuItem>
-                  <MenuItem value={"nate.com"}>nate.com</MenuItem>
-                  <MenuItem value={"icloud.com"}>icloud.com</MenuItem>
-                  <MenuItem value={"hotmail.com"}>hotmail.com</MenuItem>
-                  <MenuItem value={"yahoo.co.kr"}>yahoo.co.kr</MenuItem>
+                  <MenuItem value={"@naver.com"}>naver.com</MenuItem>
+                  <MenuItem value={"@hanmail.net"}>hanmail.net</MenuItem>
+                  <MenuItem value={"@daum.net"}>daum.net</MenuItem>
+                  <MenuItem value={"@gmail.net"}>gmail.net</MenuItem>
+                  <MenuItem value={"@nate.com"}>nate.com</MenuItem>
+                  <MenuItem value={"@icloud.com"}>icloud.com</MenuItem>
+                  <MenuItem value={"@hotmail.com"}>hotmail.com</MenuItem>
+                  <MenuItem value={"@yahoo.co.kr"}>yahoo.co.kr</MenuItem>
                 </Select>
               </FormControl>
             </Box>
           </Grid>
         </Grid>
+
         <Grid item xs={12}>
           <InputComponent
             required
@@ -213,10 +213,8 @@ export default function SignUp(props) {
           <Grid item xs={12} sm={6}>
             <Box>
               <FormControl variant="filled" margin={"normal"} fullWidth>
-                <InputLabel name="selectSchool" id="selectSchool">
-                  School
-                </InputLabel>
-                <Select labelId="selectSchool" id="simple-select-filled2" value={school} onChange={handleChange}>
+                <InputLabel>School</InputLabel>
+                <Select labelId="selectSchool" id="simple-select-filled2" name="selectSchool" onChange={formik.handleChange}>
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
@@ -231,8 +229,8 @@ export default function SignUp(props) {
           <Grid item xs={12} sm={6}>
             <Box ml={2}>
               <FormControl variant="filled" margin={"normal"} fullWidth>
-                <InputLabel id="selectGrade">Grade</InputLabel>
-                <Select labelId="selectGrade" id="simple-select-filled3" value={grade} onChange={handleChange}>
+                <InputLabel>Grade</InputLabel>
+                <Select labelId="selectGrade" id="simple-select-filled3" name="selectGrade" onChange={formik.handleChange}>
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
