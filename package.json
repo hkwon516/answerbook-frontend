@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "bootstrap": "npm i && lerna bootstrap",
-    "webapp": "lerna --stream --scope webapp run",
+    "webapp": "lerna --stream --scope @answerbook-ke/webapp run",
     "admin": "lerna --stream --scope @answerbook-ke/admin run",
     "build": "lerna run build --stream",
     "setup": "npm run bootstrap",

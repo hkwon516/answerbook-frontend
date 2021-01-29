@@ -8,7 +8,7 @@ const LinkComponent = (props) => {
   const router = useRouter();
   return (
     <Link href={props.href} passHref locale={router.locale}>
-      <MUILink color={"secondary"}>{props.children}</MUILink>
+      <MUILink color={props.color || "secondary"}>{props.children}</MUILink>
     </Link>
   );
 };

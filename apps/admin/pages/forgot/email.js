@@ -35,7 +35,7 @@ export default function forgotEmail(props) {
 
   return (
     <>
-      {props.getTitle("anonPages.forgetEmail.title")}
+      {props.setTitlePageKey("anonPages.forgetEmail.title")}
 
       <form noValidate onSubmit={formik.handleSubmit}>
         <Grid container justify={"center"}>

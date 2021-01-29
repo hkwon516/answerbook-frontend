@@ -1,11 +1,11 @@
 import React from "react";
-
+import Head from "next/head";
 import { Typography, Button, Grid, Box } from "@material-ui/core";
 import InputComponent from "../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import LinkComponent from "../component/generic/LinkComponent";
-
+import ButtonComponent from "../component/generic/ButtonComponent";
 const Login = (props) => {
   const formik = useFormik({
     initialValues: {
@@ -15,15 +15,19 @@ const Login = (props) => {
     validationSchema: yup.object().shape({
       email: yup
         .string()
-        .required(props.translate("pages.anon.login.form.validation.emailRequired"))
-        .email(props.translate("pages.anon.login.form.validation.emailValidate")),
-      password: yup.string().required(props.translate("pages.anon.login.form.validation.passwordRequired")),
+        .required(props.translate("anonPages.login.emailRequired"))
+        .email(props.translate("anonPages.login.emailValidate")),
+      password: yup.string().required(props.translate("anonPages.login.passwordRequired")),
     }),
     onSubmit: async (values, actions) => {
       try {
         await props.onLogin(values.email, values.password);
       } catch (error) {
-        props.showError(error.message);
+        if (error.code === 101 || error.code === 205) {
+          props.showError(props.translate("anonPages.login.messageInvalidCredentials"));
+        } else {
+          props.showError(error.message);
+        }
       }
 
       actions.setSubmitting(false);
@@ -31,12 +35,13 @@ const Login = (props) => {
   });
 
   return (
-    <form noValidate onSubmit={formik.handleSubmit}>
-      <Grid container justify="center">
-        
+    <>
+      {props.setTitlePageKey("anonPages.login.title")}
+      <form noValidate onSubmit={formik.handleSubmit}>
+        <Grid container justify={"center"}>
           <Grid item xs={12}>
             <Box mb={2} textAlign="left">
-              <Typography variant="h4">{props.translate("pages.anon.login.title")}</Typography>
+              <Typography variant="h4">{props.translate("anonPages.login.title")}</Typography>
             </Box>
           </Grid>
           <Grid item xs={12}>
@@ -44,7 +49,7 @@ const Login = (props) => {
               required
               fullWidth
               id="email"
-              label={props.translate("pages.anon.login.form.fields.email")}
+              label={props.translate("anonPages.login.fieldEmail")}
               name="email"
               autoComplete="email"
               autoFocus
@@ -57,7 +62,7 @@ const Login = (props) => {
               required
               fullWidth
               name="password"
-              label={props.translate("pages.anon.login.form.fields.password")}
+              label={props.translate("anonPages.login.fieldPassword")}
               type="password"
               id="password"
               autoComplete="current-password"
@@ -67,31 +72,28 @@ const Login = (props) => {
           <Grid item xs={12}>
             <Box textAlign="right" mt={2}>
               <Box>
-                <LinkComponent href="forgot/password">{props.translate("pages.anon.login.links.forgotPassword")}</LinkComponent>
-              </Box>
-              <Box>
-                <LinkComponent href="forgot/email">{props.translate("pages.anon.login.links.forgotEmail")}</LinkComponent>
+                <LinkComponent href="forgot/password">{props.translate("anonPages.login.linkForgotPassword")}</LinkComponent>
               </Box>
             </Box>
           </Grid>
           <Grid item xs={12}>
             <Box mt={2}>
-              <Button color="secondary" type="submit" fullWidth variant="contained" disabled={formik.isSubmitting}>
-                {!formik.isSubmitting ? props.translate("pages.anon.login.form.fields.btnLogin") : props.translate("layout.buttons.wait")}
-              </Button>
+              <ButtonComponent color="secondary" type="submit" fullWidth variant="contained" disabled={formik.isSubmitting}>
+                {!formik.isSubmitting ? props.translate("anonPages.login.buttonLogin") : props.translate("app.buttonWait")}
+              </ButtonComponent>
             </Box>
           </Grid>
           <Grid item xs={12}>
             <Box mt={2} textAlign="center">
               <Typography variant="body1">
-                {props.translate("pages.anon.login.links.signup")}{" "}
-                <LinkComponent href="/signup">{props.translate("pages.anon.signup.title")}</LinkComponent>
+                {props.translate("anonPages.login.linkSignupText")}{" "}
+                <LinkComponent href="/signup/step1">{props.translate("anonPages.login.linkSignup")}</LinkComponent>
               </Typography>
             </Box>
           </Grid>
-      
-      </Grid>
-    </form>
+        </Grid>
+      </form>
+    </>
   );
 };
 

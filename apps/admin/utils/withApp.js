@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import getTranslation from "../utils/locales";
 import { useSnackbar } from "notistack";
-import parse from "../utils/parse";
+import getParse from "../utils/parse";
 import getTheme from "./theme";
 import UserLayout from "../component/layouts/UserLayout";
 import AnonLayout from "../component/layouts/AnonLayout";
@@ -16,8 +16,12 @@ const withUser = (WrappedComponent) => {
   class ExtendedWithUser extends React.Component {
     constructor(props) {
       super(props);
+
+      this.parse = getParse();
+      console.log("here", this.parse);
+
       this.state = {
-        user: parse.User.current(),
+        user: this.parse.User.current(),
         loading: true,
       };
       this.onLogin = this.onLogin.bind(this);
@@ -26,21 +30,21 @@ const withUser = (WrappedComponent) => {
     }
 
     resolveUser = async () => {
-      const user = await parse.User.currentAsync();
+      const user = await this.parse.User.currentAsync();
       this.setState({ user });
     };
 
     onLogout = async () => {
       this.setState({ loading: true });
 
-      await parse.User.logOut();
+      await this.parse.User.logOut();
       this.setState({ user: undefined });
     };
 
     onLogin = async (username, password) => {
       try {
         this.setState({ loading: true });
-        const user = await parse.User.logIn(username, password, { usePost: true });
+        const user = await this.parse.User.logIn(username, password, { usePost: true });
 
         this.setState({ user });
       } catch (error) {
@@ -59,6 +63,7 @@ const withUser = (WrappedComponent) => {
         <AppContext.Provider value={{ user: this.state.user, loading: this.state.loading }}>
           <WrappedComponent
             {...this.props}
+            parse={this.parse}
             onLogin={this.onLogin}
             onLogout={this.onLogout}
             setUser={(user) => {
@@ -75,12 +80,14 @@ const withUser = (WrappedComponent) => {
 
 const withApp = (WrappedComponent) => {
   const ExtendedWithApp = (props) => {
+    const translate = getTranslation(props.router.locale);
+
     const contexts = useContext(AppContext);
     const [isBrowser, setIsBrowser] = useState(false);
     const snackbar = useSnackbar();
+    const [titlePageKey, setTitlePageKey] = useState(undefined);
 
     const isAuthenticatedRoute = props.router.pathname.includes("user");
-    const translate = getTranslation(props.router.locale);
 
     const showSuccess = (message, options = {}) => {
       snackbar.enqueueSnackbar(message || translate("layout.toast.success"), { variant: "success", ...options });
@@ -114,12 +121,13 @@ const withApp = (WrappedComponent) => {
       props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
     };
 
-    const getTitle = (pageKey) => {
-      return (
-        <Head>
-          <title>{`${translate("app.title")} | ${translate(pageKey)}`}</title>
-        </Head>
-      );
+    const changePage = (pathname) => {
+      props.router.push("/", "/", { locale: props.router.locale });
+    };
+
+    const getTitle = (prefix = true) => {
+      const pageTitle = titlePageKey && translate(titlePageKey) ? translate(titlePageKey) : undefined;
+      return prefix ? `${translate("app.title")}` : null + pageTitle ? ` | ${translate(pageTitle)}` : null;
     };
 
     const commonProps = {
@@ -133,14 +141,17 @@ const withApp = (WrappedComponent) => {
       },
       changeLanguage,
       getTitle,
+      setTitlePageKey: (pageKey) => {
+        setTitlePageKey(pageKey);
+      },
       user: contexts.user,
       isBrowser,
       theme: getTheme(props.router.locale),
-      parse,
       translate,
       showSuccess,
       showError,
       isMobile,
+      changePage,
     };
 
     const Layout = commonProps.user && isAuthenticatedRoute ? UserLayout : AnonLayout;
@@ -148,7 +159,6 @@ const withApp = (WrappedComponent) => {
       <>
         <Head>
           <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-          <title>Answerbook Admin</title>
         </Head>
         <ThemeProvider theme={commonProps.theme}>
           <CssBaseline />

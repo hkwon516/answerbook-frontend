@@ -7,7 +7,7 @@ import SecurityComponent from "../../component/settings/SecurityComponent";
 const Settings = (props) => {
   return (
     <>
-      {props.getTitle("userPages.settings.title")}
+      {props.setTitlePageKey("userPages.settings.title")}
 
       <Box mt={2}>
         <Grid container justify="center">

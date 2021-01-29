@@ -5,7 +5,6 @@ import InputComponent from "../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import LinkComponent from "../component/generic/LinkComponent";
-import parse from "../utils/parse";
 
 const Login = (props) => {
   const formik = useFormik({
@@ -37,7 +36,7 @@ const Login = (props) => {
 
   return (
     <>
-      {props.getTitle("anonPages.login.title")}
+      {props.setTitlePageKey("anonPages.login.title")}
       <form noValidate onSubmit={formik.handleSubmit}>
         <Grid container justify={"center"}>
           <Grid item xs={12}>

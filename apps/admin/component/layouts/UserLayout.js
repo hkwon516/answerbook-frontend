@@ -22,6 +22,7 @@ import { useRouter } from "next/router";
 import Alert from "@material-ui/lab/Alert";
 import WarningIcon from "@material-ui/icons/Warning";
 import LanguageComponent from "../generic/LanguageComponent";
+import Head from "next/head";
 
 const getDrawerWidth = (theme) => theme.breakpoints.values.sm / 2;
 const useStyles = makeStyles((theme) => {
@@ -72,7 +73,6 @@ const useStyles = makeStyles((theme) => {
 
 const UserLayout = (props) => {
   const [accountVerification, setAccountVerification] = useState(props.user.get("emailVerified"));
-  console.log(accountVerification);
   const classes = useStyles();
   const [drawerOpen, setDrawerOpen] = useState(props.isMobile ? false : true);
   const router = useRouter();
@@ -83,6 +83,9 @@ const UserLayout = (props) => {
 
   return (
     <>
+      <Head>
+        <title>{props.getTitle()}</title>
+      </Head>
       <Grid container>
         <Grid item xs={12}>
           <AppBar
@@ -105,7 +108,7 @@ const UserLayout = (props) => {
                 <MenuIcon />
               </IconButton>
               <Typography style={{ overflow: "hidden" }} variant="subtitle2" color="inherit">
-                {props.translate("userPages.dashboard.labelmyAccount")}
+                {props.getTitle(false)}
               </Typography>
             </Toolbar>
           </AppBar>

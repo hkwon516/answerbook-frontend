@@ -6,7 +6,6 @@ const locales = {
   "en-US": flatten(enUS),
   ko: flatten(ko),
 };
-
 export default (key) => {
   const transaltions = locales[key];
   return (id) => {

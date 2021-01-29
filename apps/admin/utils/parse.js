@@ -1,7 +1,14 @@
-import Parse from "parse";
 import config from "../config/";
+import Parse from "parse";
+export default () => {
+  let parse = Parse;
+  if (typeof window == "undefined") {
+    Parse = require("parse/node");
+  } else {
+    parse = Parse;
+  }
 
-Parse.initialize(config.appId);
-Parse.serverURL = config.serverURL;
-
-export default Parse;
+  parse.initialize(config.appId);
+  parse.serverURL = config.serverURL;
+  return parse;
+};

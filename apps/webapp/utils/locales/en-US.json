@@ -1,171 +1,131 @@
-{   
-    "layout": {
-      "language": {
-        "label": "Language",
-        "english": "English",
-        "korean": "한국어"
-      },
-      "buttons": {
-        "next": "Next",
-        "ok": "OK",
-        "wait": "Please wait..."
-      },
-      "toast": {
-        "success": "Success",
-        "error": "Error"
-      }
+{
+  "app": {
+    "title": "Answerbook Admin",
+    "langLabel": "Language",
+    "langEnglish": "English",
+    "langKorean": "한국어",
+    "buttonNext": "Next",
+    "buttonOk": "OK",
+    "buttonWait": "Please wait...",
+    "toastSuccess": "Success",
+    "toastError": "Error"
+  },
+  "anonPages": {
+    "signupStep1": {
+      "title": "Answerbook",
+      "subtitle1": "with friends in ANSERBOOK",
+      "subtitle2": "Study together as a Mentor and Mentee",
+      "buttonEmailSignup": "Sign up using Email"
     },
-    "pages": {
-      "anon": {
-        "forgetEmail": {
-          "subtitle": "Please write down your Name and Phone Number",
-          "title": "Forgot Email",
-          "links": {
-            "loginLabel": "Remember Email?",
-            "loginLink": "Sign in"
-          },
-          "form": {
-            "messages": {
-              "404": "Email not found for given details",
-              "200": "Email found. You can continue to login"
-            },
-            "fields": {
-              "name": "Name",
-              "phone": "Phone Number",
-              "btnSubmit": "Retrieve"
-            },
-            "validation": {
-              "nameRequired": "Name is a required field",
-              "phoneRequired": "phone is a required field",
-              "phoneValidate": "Please enter Numbers only."
-            }
-          }
-        },
-        "forgetPassword": {
-          "title": "Forgot Password",
-          "subtitle": "Please put your email",
-          "links": {
-            "loginLabel": "Remember password?",
-            "loginLink": "Sign in"
-          },
-          "form": {
-            "fields": {
-              "email": "Email",
-              "btnSubmit": "Send Email Link"
-            },
-            "validation": {
-              "emailRequired": "Email is a required field",
-              "emailValidate": "Please enter a valid email"
-            }
-          }
-        },
-        "signup": {
-          "answerbookTitle": "ANSWERBOOK",
-          "answerbookSubtitle": "Make an Answerbook Account",
-          "success": "Thank you for signing up",
-          "title": "Sign Up",
-          "links": {
-            "login": "Already have an account?"
-          },
-          "form": {
-            "fields": {
-              "name": "Name",
-              "email": "Email",
-              "phone": "Phone Number",
-              "password": "Password",
-              "school": "School",
-              "companyEmail": "Company Email",
-              "purpose": "Purpose of signing up",
-              "position": "Position",
-              "teacher": "Teacher",
-              "publisher": "Publisher",
-              "etc": "ETC",
-              "nickname": "Nickname",
-              "btnSignup": "Sign Up",
-              "grade" : "Grade"
-            },
-            "validation": {
-              "nameRequired": "Name is a required field.",
-              "emailRequired": "Email is a required field.",
-              "emailValidate": "Please enter a valid email.",
-              "phoneRequired": "Name is a required field.",
-              "phoneValidate": "Please enter Numbers only.",
-              "passwordRequired": "Password is a required field.",
-              "passwordLength": "Password should be minimum 6 chars",
-              "passwordConfirmationRequired": "Password Confirmation is a required field.",
-              "passwordValidate": "Password does not match",
-              "academyNameRequired": "Academy name is a required field",
-              "companyEmailRequired": "Comapny email is a required field.",
-              "comapnyEmailValidate": "Please enter a valid comapmny email.",
-              "purposeRequired": "Purpose of signing up is a required field"
-            }
-          }
-        },
-        "login": {
-          "title": "Log In",
-          "links": {
-            "forgotPassword": "Forgot password?",
-            "forgotEmail": "Forgot Email?",
-            "signup": "Don't have an account?"
-          },
-          "form": {
-            "fields": {
-              "email": "Email Address",
-              "password": "Password",
-              "btnLogin": "Login"
-            },
-            "validation": {
-              "emailRequired": "Email is a required field.",
-              "emailValidate": "Please enter a valid email.",
-              "passwordRequired": "Password is a required field."
-            }
-          }
-        }
-      },
-      "user": {
-        "dashboard": {
-          "labelmyAccount": "My Account"
-        },
-        "sidebar": {
-          "profile": {
-            "buttonManageAccount": "Manage Account",
-            "buttonSignOut": "Sign out"
-          }
-        },
-        "settings": {
-          "forms": {
-            "labels": {
-              "general": "General",
-              "information": "Information",
-              "security": "Security",
-              "position": "Position",
-              "academyName": "Academy Name",
-              "companyEmail": "Company Email",
-              "purpose": "Purpose of signing up"
-            },
-            "fields": {
-              "name": "Name",
-              "id": "Id",
-              "email": "Email Address",
-              "phone": "Phone Number",
-              "academyName": "Academy Name",
-              "currentPassword": "Current Password",
-              "newPassword": "New Password",
-              "confirmPassword": "Confirm Password"
-            },
-            "buttons": {
-              "update": "Update",
-              "confirm": "Confirm"
-            },
-            "validation": {
-              "passwordRequired": "Password is a required field.",
-              "passwordLength": "Password should be minimum 6 chars",
-              "passwordConfirmationRequired": "Password Confirmation is a required field.",
-              "passwordValidate": "Password does not match"
-            }
-          }
-        }
-      }
+    "signupStep2": {
+      "subtitle1": "Answerbook",
+      "subtitle2": "Create an ANSWERBOOK account!",
+      "messageSuccess": "Thank you for signing up to Answerbook",
+      "title": "Sign Up",
+      "linkLogin": "Sign in",
+
+      "linkLoginText": "Already have an account?",
+      "fieldName": "Name",
+      "fieldUsername": "Email",
+      "fieldPassword": "Password",
+      "fieldNickname": "Nickname",
+      "fieldSchool": "School",
+      "labelToc": "I agree to the terms of use and privacy policy.",
+      "fieldGrade": "Grade",
+      "buttonSignup": "Sign Up",
+      "nameRequired": "Name is a required field.",
+      "emailRequired": "Email is a required field.",
+      "emailValidate": "Please enter a valid email.",
+      "passwordRequired": "Password is a required field.",
+      "passwordLength": "Password should be minimum 6 characters",
+      "passwordConfirmationRequired": "Password Confirmation is a required field.",
+      "passwordValidate": "Password does not match.",
+      "messageAccountExists": "Account with above email already exists. Please try Signing In."
+    },
+    "forgetEmail": {
+      "subtitle": "Please write down your Name and Phone Number",
+      "title": "Forgot Email",
+      "loginPrefix": "Remember Email?",
+      "linkLogin": "Sign in",
+      "message404": "Email not found for given details.",
+      "message200": "Email found. You can continue to Signing In.",
+      "fieldName": "Name",
+      "fieldPhone": "Phone Number",
+      "buttonSubmit": "Retrieve",
+      "nameRequired": "Name is a required field.",
+      "phoneRequired": "Phone is a required field.",
+      "phoneValidate": "Please enter Numbers only."
+    },
+    "forgetPassword": {
+      "title": "Forgot Password",
+      "subtitle": "Please put your email",
+      "loginPrefix": "Remember password?",
+      "linkLogin": "Sign in",
+      "fieldEmail": "Email",
+      "buttonSubmit": "Send Email Link",
+      "emailRequired": "Email is a required field.",
+      "emailValidate": "Please enter a valid email."
+    },
+    "login": {
+      "title": "Sign In",
+
+      "linkForgotPassword": "Forgot password?",
+      "linkForgotEmail": "Forgot Email?",
+      "linkSignupText": "Don't have an account?",
+      "linkSignup": "Sign up",
+      "fieldEmail": "Email Address",
+      "fieldPassword": "Password",
+      "buttonLogin": "Sign In",
+      "emailRequired": "Email is a required field.",
+      "emailValidate": "Please enter a valid email.",
+      "passwordRequired": "Password is a required field.",
+      "messageInvalidCredentials": "Invalid Email/Password"
+    }
+  },
+  "userPages": {
+    "layout": {
+      "alertUnverifedAccount": "Your account email is unverifed. Please follow the link you received via. email & verify now.",
+      "buttonResendVerification": "Resend Verification Email",
+      "messageVerificationEmail": "Verification Email sent successfully"
+    },
+    "confirm": {
+      "title": "Membership registration completed",
+      "subtitle1": "Hello,",
+      "subtitle2": "Welcome to ANSERBOOK!",
+      "subtitle3": "Become a new Mentor and Mentee and start studying together.",
+      "buttonStart": "Get Started",
+      "linkSignout": "Sign out"
+    },
+    "dashboard": {
+      "labelmyAccount": "My Account"
+    },
+    "settings": {
+      "labelSuccessMessage": "Successfully Updated",
+      "labelPasswordUpdateMessage": "Password updated successfully",
+      "labelGeneral": "General",
+      "labelInformation": "Information",
+      "labelSecurity": "Change Password",
+      "labelCompanyEmail": "Company Email",
+      "labelPurpose": "Purpose of signing up",
+      "fieldName": "Name",
+      "fieldId": "Id",
+      "fieldEmail": "Email Address",
+      "fieldPhone": "Phone Number",
+      "fieldAcademyName": "Academy Name",
+      "fieldPosition": "Position",
+      "fieldCurrentPassword": "Current Password",
+      "fieldNewPassword": "New Password",
+      "fieldConfirmPassword": "Confirm Password",
+      "buttonUpdate": "Update",
+      "buttonConfirm": "Confirm",
+      "passwordRequired": "Password is a required field.",
+      "passwordLength": "Password should be minimum 6 characters",
+      "passwordConfirmationRequired": "Password Confirmation is a required field.",
+      "passwordValidate": "Password does not match.",
+      "emailRequired": "Email is a required field.",
+      "emailValidate": "Please enter a valid email.",
+      "phoneValidate": "Please enter Numbers only.",
+      "positionRequired": "Position is a required field."
     }
   }
-  
+}

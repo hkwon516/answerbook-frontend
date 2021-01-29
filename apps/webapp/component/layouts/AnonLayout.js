@@ -17,8 +17,10 @@ const AnonLayout = (props) => {
         <Grid item xs={12}>
           <Box>{props.children}</Box>
         </Grid>
-        <Grid item xs={5}>
-          <LanguageSwitcherComponent {...props} />
+        <Grid item xs={6}>
+          <Box mb={2}>
+            <LanguageSwitcherComponent {...props} />
+          </Box>
         </Grid>
       </Grid>
     </Container>
