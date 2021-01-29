@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import LinkComponent from "../component/generic/LinkComponent";
 import ButtonComponent from "../component/generic/ButtonComponent";
+import KakaoIcon from "../component/login/KakaoIcon";
 const Login = (props) => {
   const formik = useFormik({
     initialValues: {
@@ -80,6 +81,12 @@ const Login = (props) => {
             <Box mt={2}>
               <ButtonComponent color="secondary" type="submit" fullWidth variant="contained" disabled={formik.isSubmitting}>
                 {!formik.isSubmitting ? props.translate("anonPages.login.buttonLogin") : props.translate("app.buttonWait")}
+              </ButtonComponent>
+            </Box>
+
+            <Box mt={2}>
+              <ButtonComponent startIcon={<KakaoIcon width={24} height={24} />} fullWidth variant="outlined">
+                카카오톡으로 로그인
               </ButtonComponent>
             </Box>
           </Grid>

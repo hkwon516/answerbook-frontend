@@ -22,7 +22,7 @@ export default function SignUp(props) {
         </Grid>
         <Grid item xs={12}>
           <Box mt={5}>
-            <Step1Graphic1 />
+            <Step1Graphic1 width="100%" />
           </Box>
         </Grid>
         <Grid item xs={12}>
