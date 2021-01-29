@@ -175,6 +175,19 @@ const UserLayout = (props) => {
                         <ListItem>
                           <LanguageComponent {...props} />
                         </ListItem>
+
+                        <ListItem
+                          button
+                          onClick={() => {
+                            router.push("/user/manage/textbook");
+                          }}
+                        >
+                          <ListItemText
+                            secondaryTypographyProps={{ style: { fontWeight: 500 }, variant: "caption" }}
+                            secondary={props.translate("userPages.sidebar.buttonManageTextbook")}
+                          />
+                        </ListItem>
+
                         <ListItem
                           button
                           onClick={() => {
