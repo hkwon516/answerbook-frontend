@@ -15,9 +15,11 @@ const AnonLayout = (props) => {
     <Container component="main" maxWidth="xs">
       <Grid container alignItems="center" className={classes.wrapper}>
         <Grid item xs={12}>
-          <Box>{props.children}</Box>
+          <Box mt={6} mb={6}>
+            {props.children}
+          </Box>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={8}>
           <Box mb={2}>
             <LanguageSwitcherComponent {...props} />
           </Box>
