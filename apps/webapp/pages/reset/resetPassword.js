@@ -30,7 +30,7 @@ const ResetPassword = (props) => {
       try {
         const params = {
           method: "POST",
-          header: {
+          headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
           body: JSON.stringify({
