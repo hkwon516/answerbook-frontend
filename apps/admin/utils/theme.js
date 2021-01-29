@@ -13,7 +13,6 @@ const theme = {
     },
   },
   typography: {
-    fontFamily: "Montserrat, Helvetica, Arial, sans-serif",
     h4: {
       fontSize: "2.25rem",
       fontWeight: 700,
@@ -31,8 +30,19 @@ const themeKO = {
   },
 };
 
+const themeEN = {
+  typography: {
+    fontFamily: "Montserrat, Helvetica, Arial, sans-serif",
+
+    fontWeightLight: 400,
+    fontWeightRegular: 500,
+    fontWeightMedium: 700,
+    fontWeightBold: 900,
+  },
+};
+
 const getTheme = (languageKey = "en-US") => {
-  return createMuiTheme(languageKey === "en-US" ? theme : deepmerge(theme, themeKO));
+  return createMuiTheme(languageKey === "en-US" ? deepmerge(theme, themeEN) : deepmerge(theme, themeKO));
 };
 
 export default getTheme;

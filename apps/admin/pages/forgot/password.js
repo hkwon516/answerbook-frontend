@@ -3,7 +3,6 @@ import { Typography, Button, Grid, makeStyles, Container, Box } from "@material-
 import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import parse from "../../utils/parse";
 import LinkComponent from "../../component/generic/LinkComponent";
 
 const useStyles = makeStyles((theme) => ({
@@ -25,7 +24,7 @@ export default function forgotPassword(props) {
     }),
     onSubmit: async (values) => {
       try {
-        await parse.User.requestPasswordReset(values.email);
+        await props.parse.User.requestPasswordReset(values.email);
         alert(JSON.stringify(values, null, 2));
       } catch (error) {
         props.showError(error.message);
@@ -35,7 +34,7 @@ export default function forgotPassword(props) {
 
   return (
     <>
-      {props.getTitle("anonPages.forgetPassword.title")}
+      {props.setTitlePageKey("anonPages.forgetPassword.title")}
 
       <form noValidate onSubmit={formik.handleSubmit}>
         <Grid container justify={"center"}>

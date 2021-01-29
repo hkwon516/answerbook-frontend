@@ -67,7 +67,7 @@ export default function SignUp(props) {
 
   return (
     <>
-      {props.getTitle("anonPages.signup.title")}
+      {props.setTitlePageKey("anonPages.signup.title")}
 
       <form noValidate onSubmit={formik.handleSubmit}>
         <Grid container justify={"center"}>

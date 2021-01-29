@@ -1,11 +1,12 @@
 {
-  "name": "webapp",
+  "name": "@answerbook-ke/webapp",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --port 9002",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "staging": "../../node_modules/.bin/vercel --prod"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.2",
