@@ -92,6 +92,7 @@
     },
     "sidebar": {
       "buttonManageAccount": "Manage Account",
+      "buttonManageTextbook": "Manage Textbook",
       "buttonSignOut": "Sign out"
     },
     "settings": {
