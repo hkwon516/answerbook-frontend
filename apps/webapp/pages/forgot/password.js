@@ -25,7 +25,7 @@ export default function forgotPassword(props) {
     onSubmit: async (values) => {
       try {
         await props.parse.User.requestPasswordReset(values.email);
-        alert(JSON.stringify(values, null, 2));
+        props.showSuccess("Please check your email...");
       } catch (error) {
         props.showError(error.message);
       }
