@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 9002",
+    "dev": "code . && next dev --port 9002 && code .",
     "build": "next build",
     "start": "next start",
     "staging": "../../node_modules/.bin/vercel --prod"
