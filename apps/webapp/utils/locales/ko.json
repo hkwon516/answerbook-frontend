@@ -82,6 +82,16 @@
       "emailValidate": "유효한 이메일을 입력하십시오.",
       "passwordRequired": "비밀번호는 필수 필드입니다.",
       "messageInvalidCredentials": "잘못된 이메일 / 비밀번호"
+    },
+    "reset": {
+      "title": "암호를 재설정",
+      "fieldPassword": "암호",
+      "fieldConfirmPassword": "비밀번호 확인",
+      "buttonReset": "암호를 재설정",
+      "passwordRequired": "비밀번호는 필수 필드입니다.",
+      "passwordLength": "비밀번호는 6 자 이상이어야합니다.",
+      "passwordConfirmationRequired": "비밀번호 확인은 필수 필드입니다.",
+      "passwordValidate": "비밀번호가 일치하지 않습니다."
     }
   },
   "userPages": {
