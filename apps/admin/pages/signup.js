@@ -50,7 +50,7 @@ export default function SignUp(props) {
         user.set("phone", values.phone);
         user.set("position", values.position);
         user.set("information", { academyName: values.academyName, companyEmail: values.companyEmail, purpose: values.purpose });
-        user.set("localse", props.router.locale);
+        user.set("locale", props.router.locale);
 
         await user.signUp();
         props.showSuccess(props.translate("anonPages.signup.messageSuccess"));
