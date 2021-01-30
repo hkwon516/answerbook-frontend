@@ -22,13 +22,14 @@ export default function forgotPassword(props) {
         .required(props.translate("anonPages.forgetPassword.emailRequired"))
         .email(props.translate("anonPages.forgetPassword.emailValidate")),
     }),
-    onSubmit: async (values) => {
+    onSubmit: async (values, actions) => {
       try {
         await props.parse.User.requestPasswordReset(values.email);
         props.showSuccess(props.translate("anonPages.forgetPassword.messageCheckEmail"));
       } catch (error) {
         props.showError(error.message);
       }
+      actions.setSubmitting(false);
     },
   });
 
@@ -59,8 +60,8 @@ export default function forgotPassword(props) {
           </Grid>
           <Grid item xs={12}>
             <Box mt={2}>
-              <Button color="secondary" type="submit" fullWidth variant="contained">
-                {props.translate("anonPages.forgetPassword.buttonSubmit")}{" "}
+              <Button color="secondary" type="submit" fullWidth variant="contained" disabled={formik.isSubmitting}>
+                {!formik.isSubmitting ? props.translate("anonPages.forgetPassword.buttonSubmit") : props.translate("app.buttonWait")}{" "}
               </Button>
             </Box>
           </Grid>
