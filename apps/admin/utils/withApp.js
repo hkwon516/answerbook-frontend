@@ -19,7 +19,6 @@ const withUser = (WrappedComponent) => {
       super(props);
 
       this.parse = getParse();
-      console.log("here", this.parse);
 
       this.state = {
         user: this.parse.User.current(),
@@ -148,7 +147,7 @@ const withApp = (WrappedComponent) => {
     };
 
     const changePage = (pathname) => {
-      props.router.push("/", "/", { locale: props.router.locale });
+      props.router.push(pathname, pathname, { locale: props.router.locale });
     };
 
     const getTitle = (prefix = true) => {
