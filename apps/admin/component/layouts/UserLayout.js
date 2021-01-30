@@ -23,6 +23,8 @@ import Alert from "@material-ui/lab/Alert";
 import WarningIcon from "@material-ui/icons/Warning";
 import LanguageComponent from "../generic/LanguageComponent";
 import Head from "next/head";
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
 
 const getDrawerWidth = (theme) => theme.breakpoints.values.sm / 2;
 const useStyles = makeStyles((theme) => {
@@ -128,28 +130,32 @@ const UserLayout = (props) => {
                       {/* <LogoComponent width={30} /> */}
                     </Grid>
                     <Grid item xs={12}>
-                      {/* <Box mt={5}>
+                      <Box mt={5}>
                         <List dense>
-                          <ListItem selected button>
+                          <ListItem selected button
+                          onClick={() => {
+                            router.push("/user/textbook");
+                          }}>
+                            
                             <ListItemIcon>
-                              <CollectionsBookmarkIcon />
+                              <MenuBookIcon />
                             </ListItemIcon>
                             <ListItemText secondary="Manage Textbook"></ListItemText>
                           </ListItem>
-                          <ListItem button>
+                          {/* <ListItem button>
                             <ListItemIcon>
-                              <CollectionsBookmarkIcon />
+                              <MenuBookIcon />
                             </ListItemIcon>
                             <ListItemText secondary="Manage Question"></ListItemText>
-                          </ListItem>
-                          <ListItem button>
+                          </ListItem> */}
+                          {/* <ListItem button>
                             <ListItemIcon>
-                              <CollectionsBookmarkIcon />
+                              <MenuBookIcon />
                             </ListItemIcon>
                             <ListItemText secondary="Manage Student"></ListItemText>
-                          </ListItem>
+                          </ListItem> */}
                         </List>
-                      </Box> */}
+                      </Box>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -174,18 +180,6 @@ const UserLayout = (props) => {
                       <List disablePadding dense>
                         <ListItem>
                           <LanguageComponent {...props} />
-                        </ListItem>
-
-                        <ListItem
-                          button
-                          onClick={() => {
-                            router.push("/user/manage/textbook");
-                          }}
-                        >
-                          <ListItemText
-                            secondaryTypographyProps={{ style: { fontWeight: 500 }, variant: "caption" }}
-                            secondary={props.translate("userPages.sidebar.buttonManageTextbook")}
-                          />
                         </ListItem>
 
                         <ListItem
