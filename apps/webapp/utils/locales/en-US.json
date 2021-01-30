@@ -91,7 +91,7 @@
       "passwordLength": "Password should be minimum 6 characters",
       "passwordConfirmationRequired": "Password Confirmation is a required field.",
       "passwordValidate": "Password does not match.",
-      "messageSuccess": "Password reset successfully."
+      "messageSuccess": "Your password has been reset successfully."
       
     }
   },
