@@ -41,18 +41,9 @@ const ResetPassword = (props) => {
             token: props.router.query.token,
           }),
         };
-        await fetch("http://localhost:9000/parse/apps/answerbookApi/request_password_reset", params).then(
-          (Response) => {
-            if (Response.status === 200) {
-              props.showSuccess("anonPages.forgotChoosePassword.messageSuccess");
-              router.push("/");
-            }
-          },
-          (error) => {
-            props.showError(error.message);
-          }
-        );
 
+        await fetch("http://localhost:9000/parse/apps/answerbookApi/request_password_reset", params);
+        props.showSuccess(props.translate("anonPages.forgotChoosePassword.messageSuccess"));
         console.log("value:-", values.password);
       } catch (error) {
         props.showError(error.message);
