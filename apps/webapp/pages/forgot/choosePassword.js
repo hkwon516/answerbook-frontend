@@ -6,8 +6,10 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useRouter } from "next/router";
 import ButtonComponent from "../../component/generic/ButtonComponent";
+import getParse from "../../utils/parse";
 
-const ResetPassword = (props) => {
+const ChoosePassword = (props) => {
+  console.log("props", props);
   const router = useRouter();
 
   const formik = useFormik({
@@ -109,4 +111,11 @@ const ResetPassword = (props) => {
   );
 };
 
-export default ResetPassword;
+ChoosePassword.getInitialProps = async ({ query }) => {
+  const Parse = getParse();
+  const isAdmin = await Parse.Cloud.run("isAdmin", { username: query.username });
+
+  return { isAdmin };
+};
+
+export default ChoosePassword;
