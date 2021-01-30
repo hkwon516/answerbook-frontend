@@ -30,7 +30,10 @@ const withUser = (WrappedComponent) => {
     }
 
     resolveUser = async () => {
-      const user = await this.parse.User.currentAsync();
+      let user = await this.parse.User.currentAsync();
+      if (user && !user.get("emailVerified")) {
+        user = await user.fetch();
+      }
       this.setState({ user });
     };
 
