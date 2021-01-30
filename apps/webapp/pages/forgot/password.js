@@ -25,7 +25,7 @@ export default function forgotPassword(props) {
     onSubmit: async (values) => {
       try {
         await props.parse.User.requestPasswordReset(values.email);
-        props.showSuccess("anonPages.forgotPassword.messageCheckEmail");
+        props.showSuccess(props.translate("anonPages.forgetPassword.messageCheckEmail"));
       } catch (error) {
         props.showError(error.message);
       }
