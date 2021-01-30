@@ -13,9 +13,7 @@ const GeneralComponent = (props) => {
       phone: props.user.get("phone"),
     },
     validationSchema: yup.object().shape({
-      name: yup
-        .string()
-        .required(props.translate("userPages.settings.passwordRequired")),
+      name: yup.string().required(props.translate("userPages.settings.passwordRequired")),
       email: yup
         .string()
         .required(props.translate("userPages.settings.emailRequired"))
@@ -101,9 +99,7 @@ const GeneralComponent = (props) => {
             </Grid>
             <Grid item xs={12}>
               <Button type="submit" color="secondary" size="small" disabled={props.isSubmitting}>
-                {!formik.isSubmitting
-                  ? props.translate("userPages.settings.buttonUpdate")
-                  : props.translate("app.buttonWait")}
+                {!formik.isSubmitting ? props.translate("userPages.settings.buttonUpdate") : props.translate("app.buttonWait")}
               </Button>
             </Grid>
           </Grid>

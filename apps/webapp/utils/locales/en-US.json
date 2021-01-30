@@ -80,6 +80,17 @@
       "emailValidate": "Please enter a valid email.",
       "passwordRequired": "Password is a required field.",
       "messageInvalidCredentials": "Invalid Email/Password"
+    },
+    "reset": {
+      "title": "Reset password",
+      "fieldPassword": "Password",
+      "fieldConfirmPassword": "Confirm Password",
+      "buttonReset": "RESET PASSWORD",
+      "passwordRequired": "Password is a required field.",
+      "passwordLength": "Password should be minimum 6 characters",
+      "passwordConfirmationRequired": "Password Confirmation is a required field.",
+      "passwordValidate": "Password does not match."
+      
     }
   },
   "userPages": {
