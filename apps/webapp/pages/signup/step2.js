@@ -94,6 +94,7 @@ const SignUp = (props) => {
         user.set("password", values.password);
         user.set("student", student);
         user.set("position", "student");
+        user.set("locale", props.router.locale);
 
         await user.signUp();
 
@@ -241,7 +242,6 @@ const SignUp = (props) => {
                         <InputLabel>{props.translate("anonPages.signupStep2.fieldSchool")} </InputLabel>
                         <Select value={formik.values.school} name="school" onChange={formik.handleChange}>
                           {props.schools.map((school, idx) => {
-                            console.log(school);
                             return (
                               <MenuItem key={idx} value={school.objectId}>
                                 {school.name}
@@ -260,7 +260,6 @@ const SignUp = (props) => {
                         <InputLabel>{props.translate("anonPages.signupStep2.fieldGrade")} </InputLabel>
                         <Select value={formik.values.grade} name="grade" onChange={formik.handleChange}>
                           {props.grades.map((grade, idx) => {
-                            console.log(grade);
                             return (
                               <MenuItem key={idx} value={grade.objectId}>
                                 {grade.name}
