@@ -19,6 +19,7 @@ const withUser = (WrappedComponent) => {
       super(props);
 
       this.parse = getParse();
+      console.log("here", this.parse);
 
       this.state = {
         user: this.parse.User.current(),
@@ -30,7 +31,10 @@ const withUser = (WrappedComponent) => {
     }
 
     resolveUser = async () => {
-      const user = await this.parse.User.currentAsync();
+      let user = await this.parse.User.currentAsync();
+      if (user && !user.get("emailVerified")) {
+        user = await user.fetch();
+      }
       this.setState({ user, loading: false });
     };
 
@@ -107,7 +111,7 @@ const withApp = (WrappedComponent) => {
 
     useEffect(() => {
       if (contexts.user && !isAuthenticatedRoute) {
-        props.router.push("/user/");
+        props.router.push("/user");
       }
 
       if (!contexts.user && isAuthenticatedRoute) {
@@ -144,7 +148,7 @@ const withApp = (WrappedComponent) => {
     };
 
     const changePage = (pathname) => {
-      props.router.push(pathname, pathname, { locale: props.router.locale });
+      props.router.push("/", "/", { locale: props.router.locale });
     };
 
     const getTitle = (prefix = true) => {
