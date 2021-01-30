@@ -139,11 +139,15 @@ const withApp = (WrappedComponent) => {
 
     const changeLanguage = async (locale) => {
       setCookie("NEXT_LOCALE", locale);
-      contexts.user.set("locale", locale);
-      props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
+      if (contexts.user) {
+        contexts.user.set("locale", locale);
+        props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
 
-      const updatedUser = await contexts.user.save();
-      contexts.setUser(updatedUser);
+        const updatedUser = await contexts.user.save();
+        contexts.setUser(updatedUser);
+      } else {
+        props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
+      }
     };
 
     const changePage = (pathname) => {
