@@ -84,7 +84,7 @@
       "passwordRequired": "비밀번호는 필수 필드입니다.",
       "messageInvalidCredentials": "잘못된 이메일 / 비밀번호"
     },
-    "reset": {
+    "forgotChoosePassword": {
       "title": "암호를 재설정",
       "fieldPassword": "암호",
       "fieldConfirmPassword": "비밀번호 확인",

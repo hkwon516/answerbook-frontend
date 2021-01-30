@@ -18,12 +18,12 @@ const ResetPassword = (props) => {
     validationSchema: yup.object().shape({
       password: yup
         .string()
-        .required(props.translate("anonPages.reset.passwordRequired"))
-        .min(6, props.translate("anonPages.reset.passwordLength")),
+        .required(props.translate("anonPages.forgotChoosePassword.passwordRequired"))
+        .min(6, props.translate("anonPages.forgotChoosePassword.passwordLength")),
       confirmPassword: yup
         .string()
-        .required(props.translate("anonPages.reset.passwordConfirmationRequired"))
-        .oneOf([yup.ref("password")], props.translate("anonPages.reset.passwordValidate")),
+        .required(props.translate("anonPages.forgotChoosePassword.passwordConfirmationRequired"))
+        .oneOf([yup.ref("password")], props.translate("anonPages.forgotChoosePassword.passwordValidate")),
     }),
 
     onSubmit: async (values, actions) => {
@@ -64,12 +64,12 @@ const ResetPassword = (props) => {
 
   return (
     <>
-      {props.setTitlePageKey("anonPages.reset.title")}
+      {props.setTitlePageKey("anonPages.forgotChoosePassword.title")}
       <form noValidate onSubmit={formik.handleSubmit}>
         <Grid container justify={"center"}>
           <Grid item xs={12}>
             <Box mb={2} textAlign="left">
-              <Typography variant="h4">{props.translate("anonPages.reset.title")}</Typography>
+              <Typography variant="h4">{props.translate("anonPages.forgotChoosePassword.title")}</Typography>
             </Box>
           </Grid>
           <Grid item xs={12}>
@@ -78,7 +78,7 @@ const ResetPassword = (props) => {
               required
               fullWidth
               name="password"
-              label={props.translate("anonPages.reset.fieldPassword")}
+              label={props.translate("anonPages.forgotChoosePassword.fieldPassword")}
               type="password"
               autoComplete="password"
               formik={formik}
@@ -90,7 +90,7 @@ const ResetPassword = (props) => {
               required
               fullWidth
               name="confirmPassword"
-              label={props.translate("anonPages.reset.fieldConfirmPassword")}
+              label={props.translate("anonPages.forgotChoosePassword.fieldConfirmPassword")}
               type="password"
               autoComplete="confirm-password"
               formik={formik}
@@ -99,7 +99,7 @@ const ResetPassword = (props) => {
           <Grid item xs={12}>
             <Box mt={2}>
               <ButtonComponent color="secondary" type="submit" fullWidth variant="contained" disabled={formik.isSubmitting}>
-                {!formik.isSubmitting ? props.translate("anonPages.reset.buttonReset") : props.translate("app.buttonWait")}
+                {!formik.isSubmitting ? props.translate("anonPages.forgotChoosePassword.buttonReset") : props.translate("app.buttonWait")}
               </ButtonComponent>
             </Box>
           </Grid>

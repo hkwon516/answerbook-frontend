@@ -82,7 +82,7 @@
       "passwordRequired": "Password is a required field.",
       "messageInvalidCredentials": "Invalid Email/Password"
     },
-    "reset": {
+    "forgotChoosePassword": {
       "title": "Reset password",
       "fieldPassword": "Password",
       "fieldConfirmPassword": "Confirm Password",
