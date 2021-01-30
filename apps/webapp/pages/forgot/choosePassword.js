@@ -28,23 +28,32 @@ const ResetPassword = (props) => {
 
     onSubmit: async (values, actions) => {
       try {
+        let body = {
+          new_password: values.password,
+          confirm_new_password: values.confirmPassword,
+          "utf-8": "✓",
+          username: props.router.query.username,
+          token: props.router.query.token,
+        };
+        var formBody = [];
+        for (var property in body) {
+          var encodedKey = encodeURIComponent(property);
+          var encodedValue = encodeURIComponent(body[property]);
+          formBody.push(encodedKey + "=" + encodedValue);
+        }
+        formBody = formBody.join("&");
+
         const params = {
           method: "POST",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
-          body: JSON.stringify({
-            new_password: values.password,
-            confirm_new_password: values.confirmPassword,
-            "utf-8": true,
-            username: props.router.query.username,
-            token: props.router.query.token,
-          }),
+          body: formBody,
         };
 
         await fetch("http://localhost:9000/parse/apps/answerbookApi/request_password_reset", params);
         props.showSuccess(props.translate("anonPages.forgotChoosePassword.messageSuccess"));
-        console.log("value:-", values.password);
+        router.push("/");
       } catch (error) {
         props.showError(error.message);
       }
