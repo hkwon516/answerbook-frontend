@@ -64,7 +64,8 @@
       "fieldEmail": "Email",
       "buttonSubmit": "Send Email Link",
       "emailRequired": "Email is a required field.",
-      "emailValidate": "Please enter a valid email."
+      "emailValidate": "Please enter a valid email.",
+      "messageCheckEmail": "Email has been sent to you, kindly please check your email..."
     },
     "login": {
       "title": "Sign In",
@@ -89,7 +90,8 @@
       "passwordRequired": "Password is a required field.",
       "passwordLength": "Password should be minimum 6 characters",
       "passwordConfirmationRequired": "Password Confirmation is a required field.",
-      "passwordValidate": "Password does not match."
+      "passwordValidate": "Password does not match.",
+      "messageSuccess": "Password reset successfully."
       
     }
   },

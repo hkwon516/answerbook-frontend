@@ -44,7 +44,7 @@ const ResetPassword = (props) => {
         await fetch("http://localhost:9000/parse/apps/answerbookApi/request_password_reset", params).then(
           (Response) => {
             if (Response.status === 200) {
-              props.showSuccess("Reset password successfully.");
+              props.showSuccess("anonPages.forgotChoosePassword.messageSuccess");
               router.push("/");
             }
           },
