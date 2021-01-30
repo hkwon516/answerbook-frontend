@@ -23,8 +23,9 @@ import Alert from "@material-ui/lab/Alert";
 import WarningIcon from "@material-ui/icons/Warning";
 import LanguageComponent from "../generic/LanguageComponent";
 import Head from "next/head";
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import MenuBookIcon from "@material-ui/icons/MenuBook";
+import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 
 const getDrawerWidth = (theme) => theme.breakpoints.values.sm / 2;
 const useStyles = makeStyles((theme) => {
@@ -132,22 +133,31 @@ const UserLayout = (props) => {
                     <Grid item xs={12}>
                       <Box mt={5}>
                         <List dense>
-                          <ListItem selected button
-                          onClick={() => {
-                            router.push("/user/textbook");
-                          }}>
-                            
+                          <ListItem
+                            selected
+                            button
+                            onClick={() => {
+                              router.push("/user/textbook");
+                            }}
+                          >
                             <ListItemIcon>
                               <MenuBookIcon />
                             </ListItemIcon>
                             <ListItemText secondary="Manage Textbook"></ListItemText>
                           </ListItem>
-                          {/* <ListItem button>
+
+                          <ListItem
+                            selected
+                            button
+                            onClick={() => {
+                              router.push("/user/question");
+                            }}
+                          >
                             <ListItemIcon>
-                              <MenuBookIcon />
+                              <QuestionAnswerIcon />
                             </ListItemIcon>
                             <ListItemText secondary="Manage Question"></ListItemText>
-                          </ListItem> */}
+                          </ListItem>
                           {/* <ListItem button>
                             <ListItemIcon>
                               <MenuBookIcon />
