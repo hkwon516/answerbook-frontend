@@ -11,6 +11,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import { CssBaseline } from "@material-ui/core";
 import { SnackbarProvider } from "notistack";
 import Head from "next/head";
+import Cookies from "universal-cookie";
 
 const withUser = (WrappedComponent) => {
   class ExtendedWithUser extends React.Component {
@@ -18,7 +19,6 @@ const withUser = (WrappedComponent) => {
       super(props);
 
       this.parse = getParse();
-      console.log("here", this.parse);
 
       this.state = {
         user: this.parse.User.current(),
@@ -34,7 +34,7 @@ const withUser = (WrappedComponent) => {
       if (user && !user.get("emailVerified")) {
         user = await user.fetch();
       }
-      this.setState({ user });
+      this.setState({ user, loading: false });
     };
 
     onLogout = async () => {
@@ -116,16 +116,42 @@ const withApp = (WrappedComponent) => {
       if (!contexts.user && isAuthenticatedRoute) {
         props.router.push("/");
       }
+
+      if (contexts.user) {
+        const userLocale = contexts.user.get("locale");
+        if (userLocale !== props.router.locale) {
+          changeLanguage(userLocale);
+        }
+      }
     }, [contexts.user]);
 
     const isMobile = props.width === "xs" || props.width === "sm";
 
-    const changeLanguage = (locale) => {
-      props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
+    const cookies = new Cookies();
+
+    const setCookie = (key, value) => {
+      cookies.set(key, value);
+    };
+
+    const getCookie = (key) => {
+      return cookies.get(key);
+    };
+
+    const changeLanguage = async (locale) => {
+      setCookie("NEXT_LOCALE", locale);
+      if (contexts.user) {
+        contexts.user.set("locale", locale);
+        props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
+
+        const updatedUser = await contexts.user.save();
+        contexts.setUser(updatedUser);
+      } else {
+        props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
+      }
     };
 
     const changePage = (pathname) => {
-      props.router.push("/", "/", { locale: props.router.locale });
+      props.router.push(pathname, pathname, { locale: props.router.locale });
     };
 
     const getTitle = (prefix = true) => {
