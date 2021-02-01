@@ -10,6 +10,7 @@ const theme = {
     },
     secondary: {
       main: "#FFBD2F",
+      dark: "#F77B28"
     },
   },
   typography: {
