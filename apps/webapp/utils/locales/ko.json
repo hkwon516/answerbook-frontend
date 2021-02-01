@@ -35,6 +35,10 @@
       "nameRequired": "이름은 필수 필드입니다.",
       "emailRequired": "이메일은 필수 필드입니다.",
       "emailValidate": "유효한 이메일을 입력하십시오.",
+      "nicknameRequired": "닉네임은 필수 필드입니다.",
+      "schoolRequired": "학교는 필수 필드입니다.",
+      "tocRequired": "이용 약관은 필수 입력란입니다.",
+      "gradeRequired": "등급은 필수 필드입니다.",
       "passwordRequired": "비밀번호는 필수 필드입니다.",
       "passwordLength": "비밀번호는 6 자 이상이어야합니다.",
       "passwordConfirmationRequired": "비밀번호 확인은 필수 필드입니다.",
@@ -78,6 +82,7 @@
       "emailRequired": "이메일은 필수 필드입니다.",
       "emailValidate": "유효한 이메일을 입력하십시오.",
       "passwordRequired": "비밀번호는 필수 필드입니다.",
+      "passwordLength": "비밀번호는 6 자 이상이어야합니다.",
       "messageInvalidCredentials": "잘못된 이메일 / 비밀번호"
     },
     "forgotChoosePassword": {

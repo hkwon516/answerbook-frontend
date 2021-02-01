@@ -18,7 +18,9 @@ const Login = (props) => {
         .string()
         .required(props.translate("anonPages.login.emailRequired"))
         .email(props.translate("anonPages.login.emailValidate")),
-      password: yup.string().required(props.translate("anonPages.login.passwordRequired")),
+      password: yup.string()
+        .required(props.translate("anonPages.login.passwordRequired"))
+        .min(6, props.translate("anonPages.login.passwordLength")),
     }),
     onSubmit: async (values, actions) => {
       try {
