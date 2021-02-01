@@ -94,7 +94,43 @@
     "sidebar": {
       "buttonManageAccount": "Manage Account",
       "buttonManageTextbook": "Manage Textbook",
+      "buttonManageQuestion": "Manage Question",
       "buttonSignOut": "Sign out"
+    },
+    "textBook": {
+      "buttonRegisterTextbook": "Register Textbook",
+      "labelTextbookTitle": "Textbook Title",
+      "labelSubject": "Subject",
+      "labelCategories": "Categories",
+      "labelPublisher": "Publisher",
+      "labelInstructor": "Instructor",
+      "labelRegisteredQuestion": "Registered Question",
+      "labelPutInAnswers": "Put In Answers",
+      "labelOpenPublic": "Open Public",
+      "labelRegisterTextbook": "Register Textbook",
+      "labelISBNNumber": "ISBN Number",
+      "labelFrontCoverImage": "Front Cover Image",
+      "buttonCancel": "Cancel",
+      "buttonSubmit": "Submit"
+    },
+    "question": {
+      "labelQuestionStatistics": "Question Statistics",
+      "labelTextbook": "Textbook",
+      "labelPage": "Page",
+      "labelQuestion": "Question",
+      "buttonSearch": "Search",
+      "columnPage": "Page",
+      "columnQuestionNumber": "Question number",
+      "columnStudents": "Students",
+      "columnGradedTimes": "Graded Times",
+      "columnIncorrectnessRate": "Incorrectness Rate",
+      "columnOpt1": "opt 1",
+      "columnOpt2": "opt 2",
+      "columnOpt3": "opt 3",
+      "columnOpt4": "opt 4",
+      "columnOpt5": "opt 5",
+      "columnShortAnswer": "Short Answer",
+      "columnTotalSolutions": "Total Solutions"
     },
     "settings": {
       "labelSuccessMessage": "Successfully Updated",

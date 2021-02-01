@@ -53,7 +53,7 @@ const ManageQuestion = (props) => {
               <Box p={2} pt={0}>
                 <Paper elevation={1}>
                   <Box p={2}>
-                    <Typography>Question Statistics</Typography>
+                    <Typography>{props.translate("userPages.question.labelQuestionStatistics")}</Typography>
                     <Box p={2}>
                       <Grid container spacing={1} justify={"center"}>
                         <Grid item xs={12} sm={4}>
@@ -63,7 +63,7 @@ const ManageQuestion = (props) => {
                             margin={"normal"}
                             fullWidth
                           >
-                            <InputLabel>Textbook</InputLabel>
+                            <InputLabel>{props.translate("userPages.question.labelTextbook")}</InputLabel>
                             <Select value={formik.values.textbook} name="textbook" onChange={formik.handleChange}>
                               <MenuItem value={"subject"}>Textbook</MenuItem>
                             </Select>
@@ -75,7 +75,7 @@ const ManageQuestion = (props) => {
 
                         <Grid item xs={12} sm={4}>
                           <FormControl error={formik.touched.page && formik.errors.page} variant="filled" margin={"normal"} fullWidth>
-                            <InputLabel>Page</InputLabel>
+                            <InputLabel>{props.translate("userPages.question.labelPage")}</InputLabel>
                             <Select value={formik.values.page} name="page" onChange={formik.handleChange}>
                               <MenuItem value={"subject"}>Subject</MenuItem>
                             </Select>
@@ -90,7 +90,7 @@ const ManageQuestion = (props) => {
                             margin={"normal"}
                             fullWidth
                           >
-                            <InputLabel>question</InputLabel>
+                            <InputLabel>{props.translate("userPages.question.labelQuestion")}</InputLabel>
                             <Select value={formik.values.question} name="question" onChange={formik.handleChange}>
                               <MenuItem value={"subject"}>Question</MenuItem>
                             </Select>
@@ -101,10 +101,10 @@ const ManageQuestion = (props) => {
                         </Grid>
 
                         <Grid item xs={12} sm={3}>
-                            <Box mt={2}>
-                          <Button type="submit" color="primary" fullWidth variant="contained" disabled={formik.isSubmitting}>
-                            Search
-                          </Button>
+                          <Box mt={2}>
+                            <Button type="submit" color="primary" fullWidth variant="contained" disabled={formik.isSubmitting}>
+                              {props.translate("userPages.question.buttonSearch")}
+                            </Button>
                           </Box>
                         </Grid>
                       </Grid>
@@ -116,84 +116,84 @@ const ManageQuestion = (props) => {
                     style={{ height: "85vh" }}
                     columns={[
                       {
-                        title: "Page",
+                        title: props.translate("userPages.question.columnPage"),
                         field: "page",
                         headerStyle: {
                           backgroundColor: "#D3D3D3",
                         },
                       },
                       {
-                        title: "Question number",
+                        title: props.translate("userPages.question.columnQuestionNumber"),
                         field: "questionNo",
                         headerStyle: {
                           backgroundColor: "#D3D3D3",
                         },
                       },
                       {
-                        title: "students",
+                        title: props.translate("userPages.question.columnStudents"),
                         field: "students",
                         headerStyle: {
                           backgroundColor: "#D3D3D3",
                         },
                       },
                       {
-                        title: "Graded Times",
+                        title: props.translate("userPages.question.columnGradedTimes"),
                         field: "gradedTimes",
                         headerStyle: {
                           backgroundColor: "#D3D3D3",
                         },
                       },
                       {
-                        title: "Incorrectness Rate",
+                        title: props.translate("userPages.question.columnIncorrectnessRate"),
                         field: "incorrectnessRate",
                         headerStyle: {
                           backgroundColor: "#D3D3D3",
                         },
                       },
                       {
-                        title: "opt1",
+                        title: props.translate("userPages.question.columnOpt1"),
                         field: "opt1",
                         headerStyle: {
                           backgroundColor: "#D3D3D3",
                         },
                       },
                       {
-                        title: "opt2",
+                        title: props.translate("userPages.question.columnOpt2"),
                         field: "opt2",
                         headerStyle: {
                           backgroundColor: "#D3D3D3",
                         },
                       },
                       {
-                        title: "opt3",
+                        title: props.translate("userPages.question.columnOpt3"),
                         field: "opt3",
                         headerStyle: {
                           backgroundColor: "#D3D3D3",
                         },
                       },
                       {
-                        title: "opt4",
+                        title: props.translate("userPages.question.columnOpt4"),
                         field: "opt4",
                         headerStyle: {
                           backgroundColor: "#D3D3D3",
                         },
                       },
                       {
-                        title: "opt5",
+                        title: props.translate("userPages.question.columnOpt5"),
                         field: "opt5",
                         headerStyle: {
                           backgroundColor: "#D3D3D3",
                         },
                       },
                       {
-                        title: "Short Answer",
+                        title: props.translate("userPages.question.columnShortAnswer"),
                         field: "shortAnswer",
                         headerStyle: {
                           backgroundColor: "#D3D3D3",
                         },
                       },
                       {
-                        title: "Total Solutions",
+                        title: props.translate("userPages.question.columnTotalSolutions"),
                         field: "total",
                         headerStyle: {
                           backgroundColor: "#D3D3D3",
