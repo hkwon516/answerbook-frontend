@@ -1,10 +1,11 @@
 
-import { Box, Grid, Button } from "@material-ui/core";
+import { Box, Grid, Button, Avatar ,colors} from "@material-ui/core";
 import React from "react";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import SecurityComponent from "../../component/settings/SecurityComponent";
 import GeneralComponent from "../../component/settings/GeneralComponent";
 import NotificationComponent from "../../component/settings/NotificationComponent";
+import getParse from "../../utils/parse";
 
 const Settings = (props) => {
   return (
@@ -50,6 +51,16 @@ const Settings = (props) => {
       </Box>
     </React.Fragment>
   );
+};
+
+Settings.getInitialProps = async () => {
+  const Parse = getParse();
+  const schoolQuery = new Parse.Query(Parse.Object.extend("School"));
+  const schools = await schoolQuery.find();
+
+  const gradeQuery = new Parse.Query(Parse.Object.extend("Grade"));
+  const grades = await gradeQuery.find();
+  return { schools: schools.map((school) => school.toJSON()), grades: grades.map((grade) => grade.toJSON()) };
 };
 
 export default Settings;
