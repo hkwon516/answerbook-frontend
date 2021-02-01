@@ -26,6 +26,7 @@ import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import { makeStyles } from "@material-ui/core/styles";
 import ButtonComponent from "../../component/generic/ButtonComponent";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import TocPart from "../../component/signup/TocPart";
 
 import getParse from "../../utils/parse";
 const useStyles = makeStyles((theme) => ({
@@ -62,7 +63,8 @@ const SignUp = (props) => {
     },
     validationSchema: yup.object().shape({
       name: yup.string().required(props.translate("anonPages.signupStep2.nameRequired")),
-      username: yup.string()
+      username: yup
+        .string()
         .required(props.translate("anonPages.signupStep2.emailRequired"))
         .email(props.translate("anonPages.signupStep2.emailValidate")),
       password: yup
@@ -245,7 +247,7 @@ const SignUp = (props) => {
                       <Autocomplete
                         value={formik.values.school}
                         onChange={(event, newValue) => {
-                          formik.setFieldValue('school', newValue);
+                          formik.setFieldValue("school", newValue);
                         }}
                         id="combo-box-demo"
                         options={props.schools}
@@ -253,9 +255,9 @@ const SignUp = (props) => {
                         style={{ backgroundColor: "#e3e3e3" }}
                         renderInput={(params) => <TextField {...params} label="School" variant="outlined" name="school" />}
                       />
-                        {formik.touched.school && formik.errors.school && <FormHelperText error>
-                          {props.translate("anonPages.signupStep2.schoolRequired")}
-                        </FormHelperText>}
+                      {formik.touched.school && formik.errors.school && (
+                        <FormHelperText error>{props.translate("anonPages.signupStep2.schoolRequired")}</FormHelperText>
+                      )}
                     </Box>
                   </Grid>
 
@@ -284,8 +286,12 @@ const SignUp = (props) => {
                       <FormGroup row>
                         <FormControlLabel
                           control={<Checkbox checked={formik.values.toc} onChange={formik.handleChange} name="toc" />}
-                          label={props.translate("anonPages.signupStep2.labelToc")}
+                          style={{ marginRight: "0px" }}
                         />
+                        <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart1")} />
+                        <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart2")} />
+                        <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart3")} />
+                        <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart4")} />
                       </FormGroup>
                       {formik.touched.toc && formik.errors.toc && <FormHelperText error>{formik.errors.toc}</FormHelperText>}
                     </FormControl>
