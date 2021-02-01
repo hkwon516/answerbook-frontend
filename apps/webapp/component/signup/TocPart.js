@@ -14,13 +14,13 @@ const TocPart = (props) => {
   if (props.strPart.startsWith("#")) {
     if (props.strPart.startsWith("#1")) {
       return (
-        <Link href="../../../signup/toc" style={{ paddingTop: "12px" }}>
+        <Link href="/signup/toc" style={{ paddingTop: "12px" }}>
           {trimTocTextByHash(props.strPart)}
         </Link>
       );
     } else {
       return (
-        <Link href="/toc?tab=privacy" style={{ paddingTop: "12px" }}>
+        <Link href="/signup/toc?tab=privacy" style={{ paddingTop: "12px" }}>
           {trimTocTextByHash(props.strPart)}
         </Link>
       );

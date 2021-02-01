@@ -20,6 +20,8 @@
     "signupStep2": {
       "subtitle1": "Answerbook",
       "subtitle2": "ANSWERBOOK 계정을 만들어주세요!",
+      "tocHeader": "T&C",
+      "privacyHeader": "Privacy policy",
       "messageSuccess": "Answerbook에 가입 해 주셔서 감사합니다.",
       "title": "가입하기",
       "linkLoginText": "이미 계정이 있습니까? 로그인",

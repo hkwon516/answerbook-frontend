@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Typography,
   Button,
@@ -17,6 +17,8 @@ import {
   InputAdornment,
   FormHelperText,
   TextField,
+  Tabs,
+  Tab
 } from "@material-ui/core";
 import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
@@ -30,41 +32,27 @@ import TocPart from "../../component/signup/TocPart";
 import Step1Graphic1 from "../../component/signup/Step1Graphic1";
 import KakaoIcon from "../../component/login/KakaoIcon";
 
-const Settings = (props) => {
+const Toc = (props) => {
+  const [value, setValue] = useState(props.router.query.tab === 'privacy' ? 1 : 0);
+  const handleChange = (event, newValue) => {
+    if (newValue === 0) {
+      props.changePage('/signup/toc');
+    } else {
+      props.changePage('/signup/toc?tab=privacy')
+    }
+  };
   return (
     <Grid container>
-      <Grid item xs={12} sm={6}>
-        <Box textAlign="center" m={1}>
-          <Box mt={1}>
-            <ButtonComponent
-              onClick={() => {
-                props.changePage("/signup/step2");
-              }}
-              variant="contained"
-              color="secondary"
-              fullWidth
-            >
-              {props.translate("anonPages.toc.buttonTermsOfUse")}
-            </ButtonComponent>{" "}
-          </Box>
-        </Box>
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <Box textAlign="center" m={1}>
-          <Box mt={1}>
-            <ButtonComponent
-              onClick={() => {
-                props.changePage("/signup/step2");
-              }}
-              variant="contained"
-              color="secondary"
-              fullWidth
-            >
-              {props.translate("anonPages.toc.buttonPrivacy")}
-            </ButtonComponent>{" "}
-          </Box>
-        </Box>
-      </Grid>
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        indicatorColor="primary"
+        textColor="primary"
+        centered
+      >
+        <Tab label={props.translate("anonPages.signupStep2.tocHeader")} />
+        <Tab label={props.translate("anonPages.signupStep2.privacyHeader")} />
+      </Tabs>
       <Grid item xs={12}>
         <Box textAlign="center" m={1}>
           <Box>
@@ -82,4 +70,4 @@ const Settings = (props) => {
   );
 };
 
-export default Settings;
+export default Toc;
