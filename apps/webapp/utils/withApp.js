@@ -35,7 +35,7 @@ const withUser = (WrappedComponent) => {
         user = await user.fetch();
       }
       if (user) {
-        await user.get('student').fetch();
+        await user.get("student").fetch();
       }
       this.setState({ user, loading: false });
     };
@@ -52,12 +52,11 @@ const withUser = (WrappedComponent) => {
         this.setState({ loading: true });
         const user = await this.parse.User.logIn(username, password, { usePost: true });
 
-        this.setState({ user });
+        await this.resolveUser();
       } catch (error) {
+        this.setState({ loading: false });
         throw error;
       }
-
-      this.setState({ loading: false });
     };
 
     componentDidMount = () => {
