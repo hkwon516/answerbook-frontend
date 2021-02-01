@@ -1,4 +1,4 @@
-import { Button, Grid, Box, Tabs, Tab, IconButton, Container } from "@material-ui/core";
+import { Button, Grid, Box, Tabs, Tab, IconButton, Container, Avatar, Typography } from "@material-ui/core";
 import React from "react";
 import HomeIcon from "@material-ui/icons/Home";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
@@ -6,7 +6,7 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import { makeStyles } from "@material-ui/core/styles";
-
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 const useStyles = makeStyles({
   scrollerOverride: {
     overflow: "visible !important",
@@ -18,13 +18,46 @@ const Dashboard = (props) => {
     <div>
       <Grid container style={{ height: "100vh" }} direction="column" justify="space-between">
         <Grid item>
-          <Button
-            onClick={() => {
-              props.onLogout();
-            }}
-          >
-            {props.translate("userPages.confirm.linkSignout")}
-          </Button>
+          <Box>
+            <Box height={110} bgcolor="secondary.dark"></Box>
+            <Box style={{ top: -25, position: "relative" }}>
+              <Grid container justify="center">
+                <Grid item>
+                  <Avatar
+                    alt={props.user.get("name")}
+                    style={{ width: 124, height: 124 }}
+                    src={"https://material-ui.com/static/images/avatar/1.jpg"}
+                  />
+                </Grid>
+              </Grid>
+            </Box>
+            <Box ml={4} mr={4}>
+              <Grid container>
+                <Grid item xs={12}>
+                  <Box textAlign="center">
+                    <Grid container justify="center" alignItems="center">
+                      <Grid item xs={11}>
+                        <Typography gutterBottom style={{ fontSize: 24 }} variant="h5">
+                          {props.user.get("name")} Answerbook
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={1}>
+                        <IconButton
+                          onClick={() => {
+                            props.changePage("/user/settings");
+                          }}
+                        >
+                          <MoreVertIcon />
+                        </IconButton>
+                      </Grid>
+                    </Grid>
+
+                    <Typography variant="body2">{props.user.get("student").get("school").get("name")}</Typography>
+                  </Box>
+                </Grid>
+              </Grid>
+            </Box>
+          </Box>
         </Grid>
         <Grid item>
           <Box pb={2} bgcolor="primary.main">
