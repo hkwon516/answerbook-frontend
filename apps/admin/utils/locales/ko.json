@@ -34,7 +34,7 @@
       "buttonSubmit": "이메일 링크 보내기",
       "emailRequired": "이메일은 필수 필드입니다.",
       "emailValidate": "유효한 이메일을 입력하십시오.",
-      "messageSuccess": "비밀번호가 성공적으로 재설정되었습니다."
+      "messageCheckEmail": "비밀번호가 성공적으로 재설정되었습니다."
     },
     "signup": {
       "messageSuccess": "Answerbook에 가입 해 주셔서 감사합니다.",
@@ -93,6 +93,8 @@
     },
     "sidebar": {
       "buttonManageAccount": "계정 관리",
+      "buttonManageTextbook": "교과서 관리",
+      "buttonManageQuestion": "질문 관리",
       "buttonSignOut": "로그 아웃"
     },
     "settings": {
@@ -114,6 +116,7 @@
       "fieldConfirmPassword": "비밀번호 확인",
       "buttonUpdate": "최신 정보",
       "buttonConfirm": "확인",
+      "nameRequired": "이름은 필수 필드입니다.",
       "passwordRequired": "비밀번호는 필수 필드입니다.",
       "passwordLength": "비밀번호는 6 자 이상이어야합니다.",
       "passwordConfirmationRequired": "비밀번호 확인은 필수 필드입니다.",
@@ -121,6 +124,7 @@
       "emailRequired": "이메일은 필수 필드입니다.",
       "emailValidate": "유효한 이메일을 입력하십시오.",
       "phoneValidate": "숫자 만 입력하세요.",
+      "phoneRequired": "이름은 필수 필드입니다",
       "positionRequired": "직위는 필수 필드입니다."
     }
   }

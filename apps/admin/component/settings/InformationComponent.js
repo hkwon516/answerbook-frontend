@@ -6,12 +6,12 @@ import InputComponent from "../../component/generic/InputComponent";
 const InformationComponent = (props) => {
   const informationPositionLabelMapping = {
     teacher: props.translate("userPages.settings.fieldAcademyName"),
-    publisher: props.translate("userPages.settings.lblCompanyName"),
+    publisher: props.translate("userPages.settings.labelCompanyName"),
     etc: props.translate("userPages.settings.labelPurpose"),
   };
   const informationPositionMapping = {
     teacher: "academyName",
-    publisher: "companyEmail",
+    publisher: "companyName",
     etc: "purpose",
   };
   const position = props.user.get("position");
