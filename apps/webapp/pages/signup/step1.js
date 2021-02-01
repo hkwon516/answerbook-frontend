@@ -2,6 +2,7 @@ import React from "react";
 import { Typography, Grid, Box } from "@material-ui/core";
 import Step1Graphic1 from "../../component/signup/Step1Graphic1";
 import ButtonComponent from "../../component/generic/ButtonComponent";
+import KakaoIcon from "../../component/login/KakaoIcon";
 
 export default function SignUp(props) {
   return (
@@ -36,6 +37,11 @@ export default function SignUp(props) {
               fullWidth
             >
               {props.translate("anonPages.signupStep1.buttonEmailSignup")}
+            </ButtonComponent>
+          </Box>
+          <Box mt={2}>
+            <ButtonComponent startIcon={<KakaoIcon width={24} height={24} />} fullWidth variant="outlined">
+              카카오톡으로 로그인
             </ButtonComponent>
           </Box>
         </Grid>
