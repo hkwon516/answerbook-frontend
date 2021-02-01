@@ -9,7 +9,6 @@ import { LinearProgress, withWidth } from "@material-ui/core";
 import AppContext from "../utils/AppContext";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { CssBaseline } from "@material-ui/core";
-import { SnackbarProvider } from "notistack";
 import Head from "next/head";
 import Cookies from "universal-cookie";
 
@@ -116,13 +115,6 @@ const withApp = (WrappedComponent) => {
       if (!contexts.user && isAuthenticatedRoute) {
         props.router.push("/");
       }
-
-      if (contexts.user) {
-        const userLocale = contexts.user.get("locale");
-        if (userLocale !== props.router.locale) {
-          changeLanguage(userLocale);
-        }
-      }
     }, [contexts.user]);
 
     const isMobile = props.width === "xs" || props.width === "sm";
@@ -144,7 +136,7 @@ const withApp = (WrappedComponent) => {
         props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
 
         const updatedUser = await contexts.user.save();
-        contexts.setUser(updatedUser);
+        props.setUser(updatedUser);
       } else {
         props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
       }
