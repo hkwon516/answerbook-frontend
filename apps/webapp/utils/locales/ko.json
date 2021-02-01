@@ -20,6 +20,8 @@
     "signupStep2": {
       "subtitle1": "Answerbook",
       "subtitle2": "ANSWERBOOK 계정을 만들어주세요!",
+      "tocHeader": "T&C",
+      "privacyHeader": "Privacy policy",
       "messageSuccess": "Answerbook에 가입 해 주셔서 감사합니다.",
       "title": "가입하기",
       "linkLoginText": "이미 계정이 있습니까? 로그인",
@@ -98,6 +100,11 @@
       "passwordConfirmationRequired": "비밀번호 확인은 필수 필드입니다.",
       "passwordValidate": "비밀번호가 일치하지 않습니다.",
       "messageSuccess": "비밀번호가 성공적으로 재설정되었습니다."
+    },
+    "toc": {
+      "title": "이용 약관",
+      "buttonTermsOfUse": "이용 약관",
+      "buttonPrivacy": "개인 정보 정책"
     }
   },
   "userPages": {
