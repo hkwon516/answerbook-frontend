@@ -85,7 +85,7 @@ const Dashboard = (props) => {
                     <Tab
                       icon={<CheckCircleOutlineIcon style={{ color: "#fff" }} />}
                       style={{ fontWeight: 500, minHeight: 62, fontSize: 10, color: "#fff" }}
-                      label={props.translate("userPages.home.lableGrading")}
+                      label={props.translate("userPages.home.labelGrading")}
                     />
                     <Tab
                       component={() => (
