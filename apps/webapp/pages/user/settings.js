@@ -1,6 +1,5 @@
-
-import { Box, Grid, Button, Avatar ,colors} from "@material-ui/core";
-import React from "react";
+import { Box, Grid, Button, Avatar, colors } from "@material-ui/core";
+import React, { useRef } from "react";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import SecurityComponent from "../../component/settings/SecurityComponent";
 import GeneralComponent from "../../component/settings/GeneralComponent";
@@ -8,6 +7,8 @@ import NotificationComponent from "../../component/settings/NotificationComponen
 import getParse from "../../utils/parse";
 
 const Settings = (props) => {
+  const cameraRef = useRef();
+
   return (
     <React.Fragment>
       {props.setTitlePageKey("userPages.settings.title")}
@@ -16,7 +17,15 @@ const Settings = (props) => {
         <Grid container justify="center">
           <Grid item xs={12}>
             <Box mb={2} textAlign="center" style={{ paddingTop: "50px" }}>
+              <input style={{ display: "none" }} type="file" accept="image/*;capture=camera" capture="camera" ref={cameraRef} />
+
               <Avatar
+                onClick={() => {
+                  if (cameraRef) {
+                    console.log(cameraRef);
+                    cameraRef.current.click();
+                  }
+                }}
                 style={{
                   backgroundColor: "transparent",
                   border: `1px solid ${colors.grey[400]}`,
@@ -42,10 +51,7 @@ const Settings = (props) => {
               <NotificationComponent {...props} />
             </Box>
 
-            <Button onClick={() => props.onLogout()}>
-            SIGN OUT
-            </Button>
-
+            <Button onClick={() => props.onLogout()}>SIGN OUT</Button>
           </Grid>
         </Grid>
       </Box>

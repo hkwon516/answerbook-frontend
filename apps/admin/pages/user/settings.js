@@ -18,7 +18,7 @@ const Settings = (props) => {
             <Box mt={2}>
               <InformationComponent {...props} />
             </Box>
-            <Box mt={2}>
+            <Box mt={2} mb={2}>
               <SecurityComponent {...props} />
             </Box>
           </Grid>

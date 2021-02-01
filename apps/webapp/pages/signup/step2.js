@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   Typography,
   Button,
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 
 const SignUp = (props) => {
   const emailProviders = ["naver.com", "hanmail.net", "daum.net", "gmail.net", "nate.com", "icloud.com", "hotmail.com", "yahoo.co.kr"];
-
+  const cameraRef = useRef();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -166,7 +166,14 @@ const SignUp = (props) => {
               <Grid container justify={"center"}>
                 <Grid item xs={12}>
                   <Box mb={2} textAlign="center">
+                    <input style={{ display: "none" }} type="file" accept="image/*;capture=camera" capture="camera" ref={cameraRef} />
                     <Avatar
+                      onClick={() => {
+                        if (cameraRef) {
+                          console.log(cameraRef);
+                          cameraRef.current.click();
+                        }
+                      }}
                       style={{
                         backgroundColor: "transparent",
                         border: `1px solid ${colors.grey[400]}`,

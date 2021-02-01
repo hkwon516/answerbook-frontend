@@ -16,7 +16,7 @@ const InformationComponent = (props) => {
   };
   const position = props.user.get("position");
   const intialInformation = props.user.get("information");
-  const positionInformation = intialInformation[informationPositionMapping[position]];
+  const positionInformation = position && intialInformation ? intialInformation[informationPositionMapping[position]] : "";
 
   const formik = useFormik({
     initialValues: {
@@ -80,9 +80,7 @@ const InformationComponent = (props) => {
 
             <Grid item xs={12}>
               <Button type="submit" color="secondary" size="small" disabled={props.isSubmitting}>
-                {!formik.isSubmitting
-                  ? props.translate("userPages.settings.buttonUpdate")
-                  : props.translate("app.buttonWait")}
+                {!formik.isSubmitting ? props.translate("userPages.settings.buttonUpdate") : props.translate("app.buttonWait")}
               </Button>
             </Grid>
           </Grid>
