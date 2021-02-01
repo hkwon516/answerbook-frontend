@@ -59,17 +59,17 @@ const SignUp = (props) => {
       toc: false,
     },
     validationSchema: yup.object().shape({
-      name: yup.string().required(props.translate("pages.anon.signup.form.validation.nameRequired")),
-      username: yup.string().required(props.translate("pages.anon.signup.form.validation.emailRequired")),
+      name: yup.string().required(props.translate("anonPages.signupStep2.nameRequired")),
+      username: yup.string().required(props.translate("anonPages.signupStep2.emailRequired")),
       password: yup
         .string()
-        .required(props.translate("pages.anon.signup.form.validation.passwordRequired"))
-        .min(6, props.translate("pages.anon.signup.form.validation.passwordLength")),
+        .required(props.translate("anonPages.signupStep2.passwordRequired"))
+        .min(6, props.translate("anonPages.signupStep2.passwordLength")),
 
-      nickname: yup.string().required("Nickname is required"),
-      school: yup.string().required("School field is required"),
-      toc: yup.boolean().oneOf([true], "Please accept the toc inorder to continue"),
-      grade: yup.string().required("grade field is required"),
+      nickname: yup.string().required(props.translate("anonPages.signupStep2.nickNameRequired")),
+      school: yup.string().required(props.translate("anonPages.signupStep2.nickNameRequired")),
+      toc: yup.boolean().oneOf([true], props.translate("anonPages.signupStep2.tocRequired")),
+      grade: yup.string().required(props.translate("anonpages.signupStep2.gradeRequired")),
     }),
 
     onSubmit: async (values, actions) => {
