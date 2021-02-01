@@ -16,6 +16,7 @@ import {
   Avatar,
   InputAdornment,
   FormHelperText,
+  TextField,
 } from "@material-ui/core";
 import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
@@ -24,6 +25,7 @@ import LinkComponent from "../../component/generic/LinkComponent";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import { makeStyles } from "@material-ui/core/styles";
 import ButtonComponent from "../../component/generic/ButtonComponent";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 import getParse from "../../utils/parse";
 const useStyles = makeStyles((theme) => ({
@@ -54,7 +56,7 @@ const SignUp = (props) => {
       password: "",
       emailProvider: emailProviders[0],
       nickname: "",
-      school: "",
+      school: null,
       grade: "",
       toc: false,
     },
@@ -67,7 +69,7 @@ const SignUp = (props) => {
         .min(6, props.translate("pages.anon.signup.form.validation.passwordLength")),
 
       nickname: yup.string().required("Nickname is required"),
-      school: yup.string().required("School field is required"),
+      school: yup.object().required("School is required"),
       toc: yup.boolean().oneOf([true], "Please accept the toc inorder to continue"),
       grade: yup.string().required("grade field is required"),
     }),
@@ -75,7 +77,7 @@ const SignUp = (props) => {
     onSubmit: async (values, actions) => {
       try {
         const schoolQuery = new props.parse.Query(props.parse.Object.extend("School"));
-        const school = await schoolQuery.get(values.school);
+        const school = await schoolQuery.get(values.school.objectId);
         const gradeQuery = new props.parse.Query(props.parse.Object.extend("Grade"));
         const grade = await gradeQuery.get(values.grade);
         const Student = props.parse.Object.extend("Student");
@@ -237,20 +239,19 @@ const SignUp = (props) => {
 
                 <Grid container>
                   <Grid item xs={6}>
-                    <Box mr={1}>
-                      <FormControl error={formik.touched.school && formik.errors.school} variant="filled" margin={"normal"} fullWidth>
-                        <InputLabel>{props.translate("anonPages.signupStep2.fieldSchool")} </InputLabel>
-                        <Select value={formik.values.school} name="school" onChange={formik.handleChange}>
-                          {props.schools.map((school, idx) => {
-                            return (
-                              <MenuItem key={idx} value={school.objectId}>
-                                {school.name}
-                              </MenuItem>
-                            );
-                          })}
-                        </Select>
-                        {formik.touched.school && formik.errors.school && <FormHelperText error>{formik.errors.school}</FormHelperText>}
-                      </FormControl>
+                    <Box mr={1} style={{ paddingTop: "18px" }}>
+                      <Autocomplete
+                        value={formik.values.school}
+                        onChange={(event, newValue) => {
+                          formik.setFieldValue('school', newValue);
+                        }}
+                        id="combo-box-demo"
+                        options={props.schools}
+                        getOptionLabel={(option) => option.name}
+                        style={{ backgroundColor: "#e3e3e3" }}
+                        renderInput={(params) => <TextField {...params} label="School" variant="outlined" name="school" />}
+                      />
+                        {formik.touched.school && formik.errors.school && <FormHelperText error>{'School is required'}</FormHelperText>}
                     </Box>
                   </Grid>
 
