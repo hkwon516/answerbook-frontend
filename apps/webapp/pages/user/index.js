@@ -57,7 +57,7 @@ const Dashboard = (props) => {
                         </Grid>
                       </Grid>
 
-                      <Typography variant="body2">{props.user.get("student")}</Typography>
+                      <Typography variant="body2">{props.user.get("student")?.get('school')?.get('name')}</Typography>
                     </Box>
                   </Grid>
                 </Grid>
