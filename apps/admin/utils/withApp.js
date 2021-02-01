@@ -33,6 +33,7 @@ const withUser = (WrappedComponent) => {
       if (user && !user.get("emailVerified")) {
         user = await user.fetch();
       }
+      await user.get('student').fetch();
       this.setState({ user, loading: false });
     };
 
@@ -183,7 +184,7 @@ const withApp = (WrappedComponent) => {
         </Head>
         <ThemeProvider theme={commonProps.theme}>
           <CssBaseline />
-          {commonProps.loading || (isAuthenticatedRoute && !commonProps.user) ? (
+          {contexts.loading || (isAuthenticatedRoute && !contexts.user) ? (
             <LinearProgress color="secondary" variant="indeterminate" />
           ) : (
             <Layout {...commonProps}>
