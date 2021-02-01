@@ -34,7 +34,7 @@
       "buttonSubmit": "이메일 링크 보내기",
       "emailRequired": "이메일은 필수 필드입니다.",
       "emailValidate": "유효한 이메일을 입력하십시오.",
-      "messageSuccess": "비밀번호가 성공적으로 재설정되었습니다."
+      "messageCheckEmail": "비밀번호가 성공적으로 재설정되었습니다."
     },
     "signup": {
       "messageSuccess": "Answerbook에 가입 해 주셔서 감사합니다.",
@@ -94,7 +94,44 @@
     },
     "sidebar": {
       "buttonManageAccount": "계정 관리",
+      "buttonManageTextbook": "교과서 관리",
+      "buttonManageQuestion": "질문 관리",
       "buttonSignOut": "로그 아웃"
+    },
+    "textBook": {
+      "buttonRegisterTextbook": "교과서 등록",
+      "labelTextbookTitle": "교과서 제목",
+      "labelSubject": "제목",
+      "labelCategories": "카테고리",
+      "labelPublisher": "발행자",
+      "labelInstructor": "강사",
+      "labelRegisteredQuestion": "등록 된 질문",
+      "labelPutInAnswers": "답변 입력",
+      "labelOpenPublic": "공개 공개",
+      "labelRegisterTextbook": "교과서 등록",
+      "labelISBNNumber": "ISBN 번호",
+      "labelFrontCoverImage": "앞 표지 이미지",
+      "buttonCancel": "취소",
+      "buttonSubmit": "제출"
+    },
+    "question": {
+      "labelQuestionStatistics": "질문 통계",
+      "labelTextbook": "교과서",
+      "labelPage": "페이지",
+      "labelQuestion": "질문",
+      "buttonSearch": "검색",
+      "columnPage": "페이지",
+      "columnQuestionNumber": "질문 번호",
+      "columnStudents": "재학생",
+      "columnGradedTimes": "등급별 시간",
+      "columnIncorrectnessRate": "부정 확률",
+      "columnOpt1": "선택 1",
+      "columnOpt2": "선택 2",
+      "columnOpt3": "선택 3",
+      "columnOpt4": "선택 4",
+      "columnOpt5": "선택 5",
+      "columnShortAnswer": "짧은 답변",
+      "columnTotalSolutions": "토탈 솔루션"
     },
     "settings": {
       "labelSuccessMessage": "성공적으로 업데이트 됨",
@@ -115,6 +152,7 @@
       "fieldConfirmPassword": "비밀번호 확인",
       "buttonUpdate": "최신 정보",
       "buttonConfirm": "확인",
+      "nameRequired": "이름은 필수 필드입니다.",
       "passwordRequired": "비밀번호는 필수 필드입니다.",
       "passwordLength": "비밀번호는 6 자 이상이어야합니다.",
       "passwordConfirmationRequired": "비밀번호 확인은 필수 필드입니다.",
@@ -122,6 +160,7 @@
       "emailRequired": "이메일은 필수 필드입니다.",
       "emailValidate": "유효한 이메일을 입력하십시오.",
       "phoneValidate": "숫자 만 입력하세요.",
+      "phoneRequired": "이름은 필수 필드입니다",
       "positionRequired": "직위는 필수 필드입니다."
     }
   }

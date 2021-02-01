@@ -95,7 +95,43 @@
     "sidebar": {
       "buttonManageAccount": "Manage Account",
       "buttonManageTextbook": "Manage Textbook",
+      "buttonManageQuestion": "Manage Question",
       "buttonSignOut": "Sign out"
+    },
+    "textBook": {
+      "buttonRegisterTextbook": "Register Textbook",
+      "labelTextbookTitle": "Textbook Title",
+      "labelSubject": "Subject",
+      "labelCategories": "Categories",
+      "labelPublisher": "Publisher",
+      "labelInstructor": "Instructor",
+      "labelRegisteredQuestion": "Registered Question",
+      "labelPutInAnswers": "Put In Answers",
+      "labelOpenPublic": "Open Public",
+      "labelRegisterTextbook": "Register Textbook",
+      "labelISBNNumber": "ISBN Number",
+      "labelFrontCoverImage": "Front Cover Image",
+      "buttonCancel": "Cancel",
+      "buttonSubmit": "Submit"
+    },
+    "question": {
+      "labelQuestionStatistics": "Question Statistics",
+      "labelTextbook": "Textbook",
+      "labelPage": "Page",
+      "labelQuestion": "Question",
+      "buttonSearch": "Search",
+      "columnPage": "Page",
+      "columnQuestionNumber": "Question number",
+      "columnStudents": "Students",
+      "columnGradedTimes": "Graded Times",
+      "columnIncorrectnessRate": "Incorrectness Rate",
+      "columnOpt1": "opt 1",
+      "columnOpt2": "opt 2",
+      "columnOpt3": "opt 3",
+      "columnOpt4": "opt 4",
+      "columnOpt5": "opt 5",
+      "columnShortAnswer": "Short Answer",
+      "columnTotalSolutions": "Total Solutions"
     },
     "settings": {
       "labelSuccessMessage": "Successfully Updated",
@@ -103,7 +139,7 @@
       "labelGeneral": "General",
       "labelInformation": "Information",
       "labelSecurity": "Change Password",
-      "labelCompanyEmail": "Company Email",
+      "labelCompanyName": "Company Name",
       "labelPurpose": "Purpose of signing up",
       "fieldName": "Name",
       "fieldId": "Id",
@@ -116,6 +152,7 @@
       "fieldConfirmPassword": "Confirm Password",
       "buttonUpdate": "Update",
       "buttonConfirm": "Confirm",
+      "nameRequired": "Name is a required field.",
       "passwordRequired": "Password is a required field.",
       "passwordLength": "Password should be minimum 6 characters",
       "passwordConfirmationRequired": "Password Confirmation is a required field.",
@@ -123,6 +160,7 @@
       "emailRequired": "Email is a required field.",
       "emailValidate": "Please enter a valid email.",
       "phoneValidate": "Please enter Numbers only.",
+      "phoneRequired": "Phone is a required field.",
       "positionRequired": "Position is a required field."
     }
   }
