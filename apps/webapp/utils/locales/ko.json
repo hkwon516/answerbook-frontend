@@ -14,7 +14,7 @@
     "signupStep1": {
       "title": "Answerbook",
       "subtitle1": "ANSERBOOK에서 친구들의",
-      "subtitle2": "Mentor이자 Mentee로 함께 공부해요",
+      "subtitle2": "멘토와 멘티로 함께 공부하세요",
       "buttonEmailSignup": "이메일주소로 가입하기"
     },
     "signupStep2": {
@@ -132,11 +132,14 @@
       "fieldName": "이름",
       "fieldId": "신분증",
       "fieldEmail": "이메일 주소",
+      "fieldNickName": "닉네임",
       "fieldPhone": "전화 번호",
       "fieldAcademyName": "아카데미 이름",
       "fieldPosition": "위치",
       "fieldCurrentPassword": "현재 비밀번호",
       "fieldNewPassword": "새 비밀번호",
+      "nameRequired": "이름은 필수 필드입니다.",
+      "nickNameRequired": "닉네임은 필수 필드입니다.",
       "fieldConfirmPassword": "비밀번호 확인",
       "buttonUpdate": "최신 정보",
       "buttonConfirm": "확인",
@@ -147,7 +150,19 @@
       "emailRequired": "이메일은 필수 필드입니다.",
       "emailValidate": "유효한 이메일을 입력하십시오.",
       "phoneValidate": "숫자 만 입력하세요.",
-      "positionRequired": "직위는 필수 필드입니다."
+      "positionRequired": "직위는 필수 필드입니다.",
+      "labelNotification": "알림",
+      "fieldSchool": "학교",
+      "fieldGrade": "등급",
+      "lableListSubheader": "푸시 알람 설정",
+      "lableSwitchOnePrimary": "내 솔루션에 좋아요",
+      "lableSwitchOneSecondary": "다른 사람들이 내 솔루션을 좋아할 때 경고합니다.",
+      "lableSwitchTwoPrimary": "내 솔루션 저장",
+      "lableSwitchTwoSecondary": "다른 사람이 내 솔루션을 저장하면 경고합니다.",
+      "lableSwitchThreePrimary": "코멘트",
+      "lableSwitchThreeSecondary": "누군가 내 댓글에 댓글을 달거나 누군가 내 솔루션에 댓글을 달면 경고합니다.",
+      "lableSwitchFourPrimary": "경보 솔루션",
+      "lableSwitchFourSecondary": "알림을 설정 한 질문에 새 솔루션이 업로드되면."
     },
     "home": {
       "labelHome": "집",
