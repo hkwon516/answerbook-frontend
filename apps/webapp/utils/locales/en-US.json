@@ -23,7 +23,6 @@
       "messageSuccess": "Thank you for signing up to Answerbook",
       "title": "Sign Up",
       "linkLogin": "Sign in",
-
       "linkLoginText": "Already have an account?",
       "fieldName": "Name",
       "fieldUsername": "Email",
@@ -39,6 +38,9 @@
       "passwordRequired": "Password is a required field.",
       "passwordLength": "Password should be minimum 6 characters",
       "passwordConfirmationRequired": "Password Confirmation is a required field.",
+      "nickNameRequired": "Nickname is a required field",
+      "gradeRequired": "grade is a required field",
+      "tocRequired": "Please accept the TOC inorder to continue",
       "passwordValidate": "Password does not match.",
       "messageAccountExists": "Account with above email already exists. Please try Signing In."
     },
@@ -69,7 +71,6 @@
     },
     "login": {
       "title": "Sign In",
-
       "linkForgotPassword": "Forgot password?",
       "linkForgotEmail": "Forgot Email?",
       "linkSignupText": "Don't have an account?",
@@ -92,7 +93,6 @@
       "passwordConfirmationRequired": "Password Confirmation is a required field.",
       "passwordValidate": "Password does not match.",
       "messageSuccess": "Your password has been reset successfully."
-      
     }
   },
   "userPages": {
