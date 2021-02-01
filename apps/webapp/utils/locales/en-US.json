@@ -23,7 +23,6 @@
       "messageSuccess": "Thank you for signing up to Answerbook",
       "title": "Sign Up",
       "linkLogin": "Sign in",
-
       "linkLoginText": "Already have an account?",
       "fieldName": "Name",
       "fieldUsername": "Email",
@@ -69,7 +68,6 @@
     },
     "login": {
       "title": "Sign In",
-
       "linkForgotPassword": "Forgot password?",
       "linkForgotEmail": "Forgot Email?",
       "linkSignupText": "Don't have an account?",
@@ -92,7 +90,6 @@
       "passwordConfirmationRequired": "Password Confirmation is a required field.",
       "passwordValidate": "Password does not match.",
       "messageSuccess": "Your password has been reset successfully."
-      
     }
   },
   "userPages": {
@@ -139,6 +136,12 @@
       "emailValidate": "Please enter a valid email.",
       "phoneValidate": "Please enter Numbers only.",
       "positionRequired": "Position is a required field."
+    },
+    "home": {
+      "labelHome": "Home",
+      "lableGrading": "Grading",
+      "labelNotes": "Notes",
+      "labelToday": "Today"
     }
   }
 }
