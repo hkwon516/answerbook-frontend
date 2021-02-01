@@ -1,16 +1,4 @@
-import {
-  Box,
-  Divider,
-  Grid,
-  Paper,
-  Typography,
-  Select,
-  InputAdornment,
-  MenuItem,
-  TextField,
-  FormControl,
-  InputLabel
-} from "@material-ui/core";
+import { Box, Divider, Paper, Typography } from "@material-ui/core";
 import React from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -40,14 +28,8 @@ const NotificationComponent = (props) => {
   };
 
   const formik = useFormik({
-    initialValues: {
-      school: props.schools.filter(s => s.id === props.user.get("student")?.get("school").objectId)[0],
-      grade: props.user.get("student")?.get("grade").id,
-    },
-    validationSchema: yup.object().shape({
-      school: yup.object().required("School is required"),
-      grade: yup.string().required("grade field is required"),
-    }),
+    initialValues: {},
+    validationSchema: yup.object().shape({}),
 
     onSubmit: async (values, actions) => {
       try {
@@ -80,103 +62,69 @@ const NotificationComponent = (props) => {
         </Box>
         <Divider />
         <Box p={2}>
-          <Grid container>
-            <Grid item xs={12} sm={6}>
-              <Autocomplete
-                value={formik.values.school}
-                onChange={(event, newValue) => {
-                  formik.setFieldValue("school", newValue);
-                }}
-                id="combo-box-demo"
-                options={props.schools}
-                getOptionLabel={(option) => option.name}
-                style={{ backgroundColor: "#e3e3e3" }}
-                renderInput={(params) => <TextField {...params} label={props.translate("userPages.settings.fieldSchool")} variant="outlined" name="school" />}
-              />
-            </Grid>
-
-            <Grid item xs={12} sm={6}>
-              <Box ml={1}>
-                <FormControl error={formik.touched.grade && formik.errors.grade} variant="filled" fullWidth>
-                  <InputLabel>{props.translate("userPages.settings.fieldGrade")} </InputLabel>
-                  <Select value={formik.values.grade} name="grade" onChange={formik.handleChange}>
-                    {props.grades.map((grade, idx) => {
-                      return (
-                        <MenuItem key={idx} value={grade.objectId}>
-                          {grade.name}
-                        </MenuItem>
-                      );
-                    })}
-                  </Select>
-                  {formik.touched.grade && formik.errors.grade && <FormHelperText error>{formik.errors.grade}</FormHelperText>}
-                </FormControl>
-              </Box>
-            </Grid>
-
-            <Grid item xs={12}>
-              <List subheader={<ListSubheader>{props.translate("userPages.settings.lableListSubheader")}</ListSubheader>}>
-                <ListItem>
-                  <ListItemText
-                    primary={props.translate("userPages.settings.lableSwitchOnePrimary")}
-                    secondary={props.translate("userPages.settings.lableSwitchOneSecondary")}
+          <Box mt={1}>
+            <List subheader={<ListSubheader disableGutters>{props.translate("userPages.settings.lableListSubheader")}</ListSubheader>}>
+              <ListItem disableGutters>
+                <ListItemText
+                  primary={props.translate("userPages.settings.lableSwitchOnePrimary")}
+                  secondary={props.translate("userPages.settings.lableSwitchOneSecondary")}
+                />
+                <ListItemSecondaryAction>
+                  <Switch
+                    edge="end"
+                    onChange={handleToggle("likes")}
+                    checked={checked.indexOf("likes") !== -1}
+                    inputProps={{ "aria-labelledby": "switch-list-label-likes" }}
                   />
-                  <ListItemSecondaryAction>
-                    <Switch
-                      edge="end"
-                      onChange={handleToggle("likes")}
-                      checked={checked.indexOf("likes") !== -1}
-                      inputProps={{ "aria-labelledby": "switch-list-label-likes" }}
-                    />
-                  </ListItemSecondaryAction>
-                </ListItem>
+                </ListItemSecondaryAction>
+              </ListItem>
 
-                <ListItem>
-                  <ListItemText
-                    primary={props.translate("userPages.settings.lableSwitchTwoPrimary")}
-                    secondary={props.translate("userPages.settings.lableSwitchTwoSecondary")}
+              <ListItem disableGutters>
+                <ListItemText
+                  primary={props.translate("userPages.settings.lableSwitchTwoPrimary")}
+                  secondary={props.translate("userPages.settings.lableSwitchTwoSecondary")}
+                />
+                <ListItemSecondaryAction>
+                  <Switch
+                    edge="end"
+                    onChange={handleToggle("saveSolution")}
+                    checked={checked.indexOf("saveSolution") !== -1}
+                    inputProps={{ "aria-labelledby": "switch-list-label-likes" }}
                   />
-                  <ListItemSecondaryAction>
-                    <Switch
-                      edge="end"
-                      onChange={handleToggle("saveSolution")}
-                      checked={checked.indexOf("saveSolution") !== -1}
-                      inputProps={{ "aria-labelledby": "switch-list-label-likes" }}
-                    />
-                  </ListItemSecondaryAction>
-                </ListItem>
+                </ListItemSecondaryAction>
+              </ListItem>
 
-                <ListItem>
-                  <ListItemText
-                    primary={props.translate("userPages.settings.lableSwitchThreePrimary")}
-                    secondary={props.translate("userPages.settings.lableSwitchThreeSecondary")}
+              <ListItem disableGutters>
+                <ListItemText
+                  primary={props.translate("userPages.settings.lableSwitchThreePrimary")}
+                  secondary={props.translate("userPages.settings.lableSwitchThreeSecondary")}
+                />
+                <ListItemSecondaryAction>
+                  <Switch
+                    edge="end"
+                    onChange={handleToggle("comments")}
+                    checked={checked.indexOf("comments") !== -1}
+                    inputProps={{ "aria-labelledby": "switch-list-label-likes" }}
                   />
-                  <ListItemSecondaryAction>
-                    <Switch
-                      edge="end"
-                      onChange={handleToggle("comments")}
-                      checked={checked.indexOf("comments") !== -1}
-                      inputProps={{ "aria-labelledby": "switch-list-label-likes" }}
-                    />
-                  </ListItemSecondaryAction>
-                </ListItem>
+                </ListItemSecondaryAction>
+              </ListItem>
 
-                <ListItem>
-                  <ListItemText
-                    primary={props.translate("userPages.settings.lableSwitchFourPrimary")}
-                    secondary={props.translate("userPages.settings.lableSwitchFourSecondary")}
+              <ListItem disableGutters>
+                <ListItemText
+                  primary={props.translate("userPages.settings.lableSwitchFourPrimary")}
+                  secondary={props.translate("userPages.settings.lableSwitchFourSecondary")}
+                />
+                <ListItemSecondaryAction>
+                  <Switch
+                    edge="end"
+                    onChange={handleToggle("alert")}
+                    checked={checked.indexOf("alert") !== -1}
+                    inputProps={{ "aria-labelledby": "switch-list-label-likes" }}
                   />
-                  <ListItemSecondaryAction>
-                    <Switch
-                      edge="end"
-                      onChange={handleToggle("alert")}
-                      checked={checked.indexOf("alert") !== -1}
-                      inputProps={{ "aria-labelledby": "switch-list-label-likes" }}
-                    />
-                  </ListItemSecondaryAction>
-                </ListItem>
-              </List>
-            </Grid>
-          </Grid>
+                </ListItemSecondaryAction>
+              </ListItem>
+            </List>
+          </Box>
         </Box>
       </Paper>
     </form>
