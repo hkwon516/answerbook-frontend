@@ -138,7 +138,19 @@
       "emailRequired": "Email is a required field.",
       "emailValidate": "Please enter a valid email.",
       "phoneValidate": "Please enter Numbers only.",
-      "positionRequired": "Position is a required field."
+      "positionRequired": "Position is a required field.",
+      "labelNotification": "Notifications",
+      "fieldSchool": "School",
+      "fieldGrade": "Grade",
+      "lableListSubheader": "Push Alarm Settings",
+      "lableSwitchOnePrimary": "Likes on my solution",
+      "lableSwitchOneSecondary": "Alert when others like my solution.",
+      "lableSwitchTwoPrimary": "Save my solution",
+      "lableSwitchTwoSecondary": "Alert when others save my solution.",
+      "lableSwitchThreePrimary": "Comments",
+      "lableSwitchThreeSecondary": "Alert when someone comments on my comment or anybody comment on my solution.",
+      "lableSwitchFourPrimary": "Alert Solution",
+      "lableSwitchFourSecondary": "when new solutions are uploaded to questions you set alert to."
     }
   }
 }

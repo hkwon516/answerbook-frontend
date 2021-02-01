@@ -3,6 +3,7 @@ import React from "react";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import SecurityComponent from "../../component/settings/SecurityComponent";
 import GeneralComponent from "../../component/settings/GeneralComponent";
+import NotificationComponent from "../../component/settings/NotificationComponent";
 
 const Settings = (props) => {
   return (
@@ -33,6 +34,10 @@ const Settings = (props) => {
 
             <Box mt={2}>
               <SecurityComponent {...props} />
+            </Box>
+
+            <Box mt={2}>
+              <NotificationComponent {...props} />
             </Box>
           </Grid>
         </Grid>
