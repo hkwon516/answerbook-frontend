@@ -1,4 +1,5 @@
-import { Box, Grid, Avatar, colors } from "@material-ui/core";
+
+import { Box, Grid, Button } from "@material-ui/core";
 import React from "react";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import SecurityComponent from "../../component/settings/SecurityComponent";
@@ -39,6 +40,11 @@ const Settings = (props) => {
             <Box mt={2}>
               <NotificationComponent {...props} />
             </Box>
+
+            <Button onClick={() => props.onLogout()}>
+            SIGN OUT
+            </Button>
+
           </Grid>
         </Grid>
       </Box>
