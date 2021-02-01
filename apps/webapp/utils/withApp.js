@@ -34,7 +34,9 @@ const withUser = (WrappedComponent) => {
       if (user && !user.get("emailVerified")) {
         user = await user.fetch();
       }
-      await user.get('student').fetch();
+      if (user) {
+        await user.get('student').fetch();
+      }
       this.setState({ user, loading: false });
     };
 
