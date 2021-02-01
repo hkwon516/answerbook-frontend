@@ -23,19 +23,25 @@
       "messageSuccess": "Thank you for signing up to Answerbook",
       "title": "Sign Up",
       "linkLogin": "Sign in",
-
       "linkLoginText": "Already have an account?",
       "fieldName": "Name",
       "fieldUsername": "Email",
       "fieldPassword": "Password",
       "fieldNickname": "Nickname",
       "fieldSchool": "School",
-      "labelToc": "I agree to the terms of use and privacy policy.",
+      "labelTocPart1": "I agree to the ",
+      "labelTocPart2": "#1terms of use",
+      "labelTocPart3": "and",
+      "labelTocPart4": "#2privacy policy.",
       "fieldGrade": "Grade",
       "buttonSignup": "Sign Up",
       "nameRequired": "Name is a required field.",
-      "emailRequired": "Email is a required field.",
       "emailValidate": "Please enter a valid email.",
+      "emailRequired": "Email is a required field.",
+      "nicknameRequired": "Nickname is a required field.",
+      "schoolRequired": "School is a required field.",
+      "tocRequired": "Terms and conditions is a required field.",
+      "gradeRequired": "Grade is a required field.",
       "passwordRequired": "Password is a required field.",
       "passwordLength": "Password should be minimum 6 characters",
       "passwordConfirmationRequired": "Password Confirmation is a required field.",
@@ -69,7 +75,6 @@
     },
     "login": {
       "title": "Sign In",
-
       "linkForgotPassword": "Forgot password?",
       "linkForgotEmail": "Forgot Email?",
       "linkSignupText": "Don't have an account?",
@@ -80,6 +85,7 @@
       "emailRequired": "Email is a required field.",
       "emailValidate": "Please enter a valid email.",
       "passwordRequired": "Password is a required field.",
+      "passwordLength": "Password should be minimum 6 characters",
       "messageInvalidCredentials": "Invalid Email/Password"
     },
     "forgotChoosePassword": {
@@ -92,7 +98,6 @@
       "passwordConfirmationRequired": "Password Confirmation is a required field.",
       "passwordValidate": "Password does not match.",
       "messageSuccess": "Your password has been reset successfully."
-      
     }
   },
   "userPages": {
@@ -151,6 +156,12 @@
       "lableSwitchThreeSecondary": "Alert when someone comments on my comment or anybody comment on my solution.",
       "lableSwitchFourPrimary": "Alert Solution",
       "lableSwitchFourSecondary": "when new solutions are uploaded to questions you set alert to."
+    },
+    "home": {
+      "labelHome": "Home",
+      "labelGrading": "Grading",
+      "labelNotes": "Notes",
+      "labelToday": "Today"
     }
   }
 }
