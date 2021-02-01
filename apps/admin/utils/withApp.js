@@ -177,7 +177,7 @@ const withApp = (WrappedComponent) => {
 
     const Layout = commonProps.user && isAuthenticatedRoute ? UserLayout : AnonLayout;
     return (
-      <>
+      <React.Fragment>
         <Head>
           <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         </Head>
@@ -191,7 +191,7 @@ const withApp = (WrappedComponent) => {
             </Layout>
           )}
         </ThemeProvider>
-      </>
+      </React.Fragment>
     );
   };
   return withWidth()(withUser(ExtendedWithApp));
