@@ -30,7 +30,10 @@ const withUser = (WrappedComponent) => {
     }
 
     resolveUser = async () => {
-      const user = await this.parse.User.currentAsync();
+      let user = await this.parse.User.currentAsync();
+      if (user && !user.get("emailVerified")) {
+        user = await user.fetch();
+      }
       this.setState({ user, loading: false });
     };
 
@@ -107,7 +110,7 @@ const withApp = (WrappedComponent) => {
 
     useEffect(() => {
       if (contexts.user && !isAuthenticatedRoute) {
-        props.router.push("/user/");
+        props.router.push("/user");
       }
 
       if (!contexts.user && isAuthenticatedRoute) {
@@ -136,11 +139,15 @@ const withApp = (WrappedComponent) => {
 
     const changeLanguage = async (locale) => {
       setCookie("NEXT_LOCALE", locale);
-      contexts.user.set("locale", locale);
-      props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
+      if (contexts.user) {
+        contexts.user.set("locale", locale);
+        props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
 
-      const updatedUser = await contexts.user.save();
-      contexts.setUser(updatedUser);
+        const updatedUser = await contexts.user.save();
+        contexts.setUser(updatedUser);
+      } else {
+        props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
+      }
     };
 
     const changePage = (pathname) => {
