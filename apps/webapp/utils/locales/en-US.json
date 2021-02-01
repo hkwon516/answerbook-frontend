@@ -98,6 +98,11 @@
       "passwordConfirmationRequired": "Password Confirmation is a required field.",
       "passwordValidate": "Password does not match.",
       "messageSuccess": "Your password has been reset successfully."
+    },
+    "toc": {
+      "title": "Terms and conditions",
+      "buttonTermsOfUse": "Terms of use",
+      "buttonPrivacy": "Privacy Policy"
     }
   },
   "userPages": {

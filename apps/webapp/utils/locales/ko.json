@@ -98,6 +98,11 @@
       "passwordConfirmationRequired": "비밀번호 확인은 필수 필드입니다.",
       "passwordValidate": "비밀번호가 일치하지 않습니다.",
       "messageSuccess": "비밀번호가 성공적으로 재설정되었습니다."
+    },
+    "toc": {
+      "title": "이용 약관",
+      "buttonTermsOfUse": "이용 약관",
+      "buttonPrivacy": "개인 정보 정책"
     }
   },
   "userPages": {

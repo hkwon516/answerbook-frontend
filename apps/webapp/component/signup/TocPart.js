@@ -14,7 +14,7 @@ const TocPart = (props) => {
   if (props.strPart.startsWith("#")) {
     if (props.strPart.startsWith("#1")) {
       return (
-        <Link href="/toc?tab=toc" style={{ paddingTop: "12px" }}>
+        <Link href="../../../signup/toc" style={{ paddingTop: "12px" }}>
           {trimTocTextByHash(props.strPart)}
         </Link>
       );
