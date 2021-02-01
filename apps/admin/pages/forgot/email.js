@@ -15,7 +15,8 @@ export default function forgotEmail(props) {
       name: yup.string().required(props.translate("anonPages.forgetEmail.nameRequired")),
       phone: yup
         .number(props.translate("anonPages.forgetEmail.phoneValidate"))
-        .required(props.translate("anonPages.forgetEmail.phoneRequired")),
+        .required(props.translate("anonPages.forgetEmail.phoneRequired"))
+        .typeError(props.translate("anonPages.forgetEmail.phoneValidate"))
     }),
     onSubmit: async (values, actions) => {
       try {

@@ -4,13 +4,13 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import InputComponent from "../../component/generic/InputComponent";
 import LanguageComponent from "../generic/LanguageComponent";
+
 const GeneralComponent = (props) => {
   const formik = useFormik({
     initialValues: {
       name: props.user.get("name"),
-      id: props.user.id,
       email: props.user.get("email"),
-      phone: props.user.get("phone"),
+      nickName: props.user.get("student")?.get("nickname"),
     },
     validationSchema: yup.object().shape({
       name: yup.string().required(props.translate("userPages.settings.nameRequired")),
@@ -18,17 +18,16 @@ const GeneralComponent = (props) => {
         .string()
         .required(props.translate("userPages.settings.emailRequired"))
         .email(props.translate("userPages.settings.emailValidate")),
-      phone: yup
-        .number(props.translate("userPages.settings.phoneValidate"))
-        .required(props.translate("userPages.settings.phoneRequired"))
-        .typeError(props.translate("userPages.settings.phoneValidate")),
+      nickName: yup.string().required(props.translate("userPages.settings.nickNameRequired")),
     }),
 
     onSubmit: async (values, actions) => {
       try {
         props.user.set("name", values.name);
         props.user.set("email", values.email);
-        props.user.set("phone", values.phone);
+        props.user.set("username", values.email);
+        props.user.get("student").set("nickname", values.nickName);
+
         const user = await props.user.save();
         props.setUser(user);
         props.showSuccess(props.translate("userPages.settings.labelSuccessMessage"));
@@ -53,6 +52,18 @@ const GeneralComponent = (props) => {
           <Grid container>
             <Grid item xs={12}>
               <InputComponent
+                required
+                fullWidth
+                label={props.translate("userPages.settings.fieldEmail")}
+                size="small"
+                name="email"
+                autoComplete="email"
+                formik={formik}
+              />
+            </Grid>
+
+            <Grid item xs={12}>
+              <InputComponent
                 autoComplete="name"
                 name="name"
                 required
@@ -65,35 +76,12 @@ const GeneralComponent = (props) => {
 
             <Grid item xs={12}>
               <InputComponent
-                disabled
-                required
-                fullWidth
-                label={props.translate("userPages.settings.fieldId")}
-                size="small"
-                name="id"
-                formik={formik}
-              />
-            </Grid>
-
-            <Grid item xs={12}>
-              <InputComponent
-                required
-                fullWidth
-                label={props.translate("userPages.settings.fieldEmail")}
-                size="small"
-                name="email"
-                autoComplete="email"
-                formik={formik}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <InputComponent
                 required
                 fullWidth
                 size="small"
-                label={props.translate("userPages.settings.fieldPhone")}
-                name="phone"
-                autoComplete="Phone Number"
+                label={props.translate("userPages.settings.fieldNickName")}
+                name="nickName"
+                autoComplete="Nick Name"
                 formik={formik}
               />
             </Grid>

@@ -68,48 +68,48 @@ const ManageTextbook = (props) => {
                 <Paper elevation={1}>
                   <Box p={2}>
                     <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                      Register Textbook
+                      {props.translate("userPages.textBook.buttonRegisterTextbook")}
                     </Button>
 
                     <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                      <DialogTitle id="form-dialog-title">Register Textbook</DialogTitle>
+                      <DialogTitle id="form-dialog-title">{props.translate("userPages.textBook.labelRegisterTextbook")}</DialogTitle>
                       <DialogContent>
                         <Grid container>
                           <Grid item xs={12}>
                             {/* <Box mr={1}> */}
-                              <FormControl
-                                error={formik.touched.school && formik.errors.school}
-                                variant="filled"
-                                margin={"normal"}
-                                fullWidth
-                              >
-                                <InputLabel>Subject</InputLabel>
-                                <Select value={formik.values.school} name="school" onChange={formik.handleChange}>
-                                  <MenuItem value={"subject"}>Subject</MenuItem>
-                                </Select>
-                                {formik.touched.school && formik.errors.school && (
-                                  <FormHelperText error>{formik.errors.school}</FormHelperText>
-                                )}
-                              </FormControl>
+                            <FormControl
+                              error={formik.touched.school && formik.errors.school}
+                              variant="filled"
+                              margin={"normal"}
+                              fullWidth
+                            >
+                              <InputLabel>{props.translate("userPages.textBook.labelSubject")}</InputLabel>
+                              <Select value={formik.values.school} name="school" onChange={formik.handleChange}>
+                                <MenuItem value={"subject"}>Subject</MenuItem>
+                              </Select>
+                              {formik.touched.school && formik.errors.school && (
+                                <FormHelperText error>{formik.errors.school}</FormHelperText>
+                              )}
+                            </FormControl>
                             {/* </Box> */}
                           </Grid>
 
                           <Grid item xs={12}>
                             {/* <Box mr={1}> */}
-                              <FormControl
-                                error={formik.touched.school && formik.errors.school}
-                                variant="filled"
-                                margin={"normal"}
-                                fullWidth
-                              >
-                                <InputLabel>Categories</InputLabel>
-                                <Select value={formik.values.school} name="school" onChange={formik.handleChange}>
-                                  <MenuItem value={"category"}>Category</MenuItem>
-                                </Select>
-                                {formik.touched.school && formik.errors.school && (
-                                  <FormHelperText error>{formik.errors.school}</FormHelperText>
-                                )}
-                              </FormControl>
+                            <FormControl
+                              error={formik.touched.school && formik.errors.school}
+                              variant="filled"
+                              margin={"normal"}
+                              fullWidth
+                            >
+                              <InputLabel>{props.translate("userPages.textBook.labelCategories")}</InputLabel>
+                              <Select value={formik.values.school} name="school" onChange={formik.handleChange}>
+                                <MenuItem value={"category"}>Category</MenuItem>
+                              </Select>
+                              {formik.touched.school && formik.errors.school && (
+                                <FormHelperText error>{formik.errors.school}</FormHelperText>
+                              )}
+                            </FormControl>
                             {/* </Box> */}
                           </Grid>
 
@@ -117,7 +117,7 @@ const ManageTextbook = (props) => {
                             <InputComponent
                               required
                               fullWidth
-                              label="Textbook Title"
+                              label={props.translate("userPages.textBook.labelTextbookTitle")}
                               size="small"
                               name="textbookTitle"
                               autoComplete="Textbook Title"
@@ -129,7 +129,7 @@ const ManageTextbook = (props) => {
                             <InputComponent
                               required
                               fullWidth
-                              label="Instructor"
+                              label={props.translate("userPages.textBook.labelInstructor")}
                               size="small"
                               name="instructor"
                               autoComplete="instructor"
@@ -141,7 +141,7 @@ const ManageTextbook = (props) => {
                               required
                               fullWidth
                               size="small"
-                              label="Publisher"
+                              label={props.translate("userPages.textBook.labelPublisher")}
                               name="publisher"
                               autoComplete="Publisher"
                               formik={formik}
@@ -153,7 +153,7 @@ const ManageTextbook = (props) => {
                               required
                               fullWidth
                               size="small"
-                              label="ISBN Number"
+                              label={props.translate("userPages.textBook.labelISBNNumber")}
                               name="isbnNumber"
                               autoComplete="Publisher"
                               formik={formik}
@@ -165,7 +165,7 @@ const ManageTextbook = (props) => {
                               required
                               fullWidth
                               size="small"
-                              label="Front Cover Image"
+                              label={props.translate("userPages.textBook.labelFrontCoverImage")}
                               name="frontCoverImage"
                               autoComplete="Front Cover Image"
                               formik={formik}
@@ -177,10 +177,10 @@ const ManageTextbook = (props) => {
                       </DialogContent>
                       <DialogActions>
                         <Button onClick={handleClose} color="primary">
-                          Cancel
+                          {props.translate("userPages.textBook.buttonCancel")}
                         </Button>
                         <Button onClick={handleClose} color="primary">
-                          Submit
+                          {props.translate("userPages.textBook.buttonSubmit")}
                         </Button>
                       </DialogActions>
                     </Dialog>
@@ -190,16 +190,16 @@ const ManageTextbook = (props) => {
                   <MaterialTable
                     style={{ height: "85vh" }}
                     columns={[
-                      { title: "Textbook title", field: "title" },
-                      { title: "Subject", field: "subject" },
-                      { title: "Publisher", field: "publisher" },
+                      { title: props.translate("userPages.textBook.labelTextbookTitle"), field: "title" },
+                      { title: props.translate("userPages.textBook.labelSubject"), field: "subject" },
+                      { title: props.translate("userPages.textBook.labelPublisher"), field: "publisher" },
                       {
-                        title: "Instructor",
+                        title: props.translate("userPages.textBook.labelInstructor"),
                         field: "instructor",
                       },
-                      { title: "Registered Questions", field: "registerQuestion" },
-                      { title: "Put in answers", field: "putInAnswer" },
-                      { title: "Open Public", field: "openPublic" },
+                      { title: props.translate("userPages.textBook.labelRegisteredQuestion"), field: "registerQuestion" },
+                      { title: props.translate("userPages.textBook.labelPutInAnswers"), field: "putInAnswer" },
+                      { title: props.translate("userPages.textBook.labelOpenPublic"), field: "openPublic" },
                     ]}
                     data={[
                       {
