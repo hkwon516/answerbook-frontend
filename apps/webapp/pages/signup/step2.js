@@ -56,7 +56,7 @@ const SignUp = (props) => {
       password: "",
       emailProvider: emailProviders[0],
       nickname: "",
-      school: "",
+      school: null,
       grade: "",
       toc: false,
     },
@@ -69,7 +69,7 @@ const SignUp = (props) => {
         .min(6, props.translate("pages.anon.signup.form.validation.passwordLength")),
 
       nickname: yup.string().required("Nickname is required"),
-      school: yup.string().required("School field is required"),
+      school: yup.object().required("School is required"),
       toc: yup.boolean().oneOf([true], "Please accept the toc inorder to continue"),
       grade: yup.string().required("grade field is required"),
     }),
@@ -77,7 +77,7 @@ const SignUp = (props) => {
     onSubmit: async (values, actions) => {
       try {
         const schoolQuery = new props.parse.Query(props.parse.Object.extend("School"));
-        const school = await schoolQuery.get(values.school);
+        const school = await schoolQuery.get(values.school.objectId);
         const gradeQuery = new props.parse.Query(props.parse.Object.extend("Grade"));
         const grade = await gradeQuery.get(values.grade);
         const Student = props.parse.Object.extend("Student");
@@ -243,13 +243,15 @@ const SignUp = (props) => {
                       <Autocomplete
                         value={formik.values.school}
                         onChange={(event, newValue) => {
-                          formik.handleChange(newValue);
+                          formik.setFieldValue('school', newValue);
                         }}
                         id="combo-box-demo"
-                        options={props.schools.map((school) => school.name)}
+                        options={props.schools}
+                        getOptionLabel={(option) => option.name}
                         style={{ backgroundColor: "#e3e3e3" }}
                         renderInput={(params) => <TextField {...params} label="School" variant="outlined" name="school" />}
                       />
+                        {formik.touched.school && formik.errors.school && <FormHelperText error>{'School is required'}</FormHelperText>}
                     </Box>
                   </Grid>
 
