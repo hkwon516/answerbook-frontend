@@ -4,12 +4,13 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import InputComponent from "../../component/generic/InputComponent";
 import LanguageComponent from "../generic/LanguageComponent";
+
 const GeneralComponent = (props) => {
   const formik = useFormik({
     initialValues: {
       name: props.user.get("name"),
       email: props.user.get("email"),
-      nickName: props.user.get("student").get("nickname"),
+      nickName: props.user.get("student")?.get("nickname"),
     },
     validationSchema: yup.object().shape({
       name: yup.string().required(props.translate("userPages.settings.nameRequired")),
