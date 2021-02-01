@@ -20,43 +20,45 @@ const Dashboard = (props) => {
         <Grid item>
           <Box>
             <Box height={110} bgcolor="secondary.dark"></Box>
-            <Box style={{ top: -25, position: "relative" }}>
-              <Grid container justify="center">
-                <Grid item>
-                  <Avatar
-                    alt={props.user.get("name")}
-                    style={{ width: 124, height: 124 }}
-                    src={"https://material-ui.com/static/images/avatar/1.jpg"}
-                  />
+            <Container maxWidth={"xs"}>
+              <Box style={{ top: -25, position: "relative" }}>
+                <Grid container justify="center">
+                  <Grid item>
+                    <Avatar
+                      alt={props.user.get("name")}
+                      style={{ width: 124, height: 124 }}
+                      src={"https://material-ui.com/static/images/avatar/1.jpg"}
+                    />
+                  </Grid>
                 </Grid>
-              </Grid>
-            </Box>
-            <Box ml={4} mr={4}>
-              <Grid container>
-                <Grid item xs={12}>
-                  <Box textAlign="center">
-                    <Grid container justify="center" alignItems="center">
-                      <Grid item xs={11}>
-                        <Typography gutterBottom style={{ fontSize: 24 }} variant="h5">
-                          {props.user.get("name")} Answerbook
-                        </Typography>
+              </Box>
+              <Box>
+                <Grid container>
+                  <Grid item xs={12}>
+                    <Box textAlign="center">
+                      <Grid container justify="center" alignItems="center">
+                        <Grid item xs={11}>
+                          <Typography gutterBottom style={{ fontSize: 24 }} variant="h5">
+                            {props.user.get("name")} Answerbook
+                          </Typography>
+                        </Grid>
+                        <Grid item xs={1}>
+                          <IconButton
+                            onClick={() => {
+                              props.changePage("/user/settings");
+                            }}
+                          >
+                            <MoreVertIcon />
+                          </IconButton>
+                        </Grid>
                       </Grid>
-                      <Grid item xs={1}>
-                        <IconButton
-                          onClick={() => {
-                            props.changePage("/user/settings");
-                          }}
-                        >
-                          <MoreVertIcon />
-                        </IconButton>
-                      </Grid>
-                    </Grid>
 
-                    <Typography variant="body2">{props.user.get("student").get("school").get("name")}</Typography>
-                  </Box>
+                      <Typography variant="body2">{props.user.get("student").get("school").get("name")}</Typography>
+                    </Box>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </Box>
+              </Box>
+            </Container>
           </Box>
         </Grid>
         <Grid item>
