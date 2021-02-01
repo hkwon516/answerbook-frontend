@@ -16,6 +16,7 @@ import {
   Avatar,
   InputAdornment,
   FormHelperText,
+  TextField,
 } from "@material-ui/core";
 import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
@@ -24,6 +25,7 @@ import LinkComponent from "../../component/generic/LinkComponent";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import { makeStyles } from "@material-ui/core/styles";
 import ButtonComponent from "../../component/generic/ButtonComponent";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 import getParse from "../../utils/parse";
 const useStyles = makeStyles((theme) => ({
@@ -237,20 +239,17 @@ const SignUp = (props) => {
 
                 <Grid container>
                   <Grid item xs={6}>
-                    <Box mr={1}>
-                      <FormControl error={formik.touched.school && formik.errors.school} variant="filled" margin={"normal"} fullWidth>
-                        <InputLabel>{props.translate("anonPages.signupStep2.fieldSchool")} </InputLabel>
-                        <Select value={formik.values.school} name="school" onChange={formik.handleChange}>
-                          {props.schools.map((school, idx) => {
-                            return (
-                              <MenuItem key={idx} value={school.objectId}>
-                                {school.name}
-                              </MenuItem>
-                            );
-                          })}
-                        </Select>
-                        {formik.touched.school && formik.errors.school && <FormHelperText error>{formik.errors.school}</FormHelperText>}
-                      </FormControl>
+                    <Box mr={1} style={{ paddingTop: "18px" }}>
+                      <Autocomplete
+                        value={formik.values.school}
+                        onChange={(event, newValue) => {
+                          formik.handleChange(newValue);
+                        }}
+                        id="combo-box-demo"
+                        options={props.schools.map((school) => school.name)}
+                        style={{ backgroundColor: "#e3e3e3" }}
+                        renderInput={(params) => <TextField {...params} label="School" variant="outlined" name="school" />}
+                      />
                     </Box>
                   </Grid>
 
