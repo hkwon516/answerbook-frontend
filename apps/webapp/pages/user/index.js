@@ -56,8 +56,8 @@ const Dashboard = (props) => {
                           </IconButton>
                         </Grid>
                       </Grid>
-
                       <Typography variant="body2">{props.user.get("student")?.get('school')?.get('name')}</Typography>
+
                     </Box>
                   </Grid>
                 </Grid>
@@ -80,12 +80,12 @@ const Dashboard = (props) => {
                     <Tab
                       icon={<HomeIcon style={{ color: "#fff" }} />}
                       style={{ fontWeight: 500, minHeight: 62, fontSize: 10, color: "#fff" }}
-                      label="Home"
+                      label={props.translate("userPages.home.labelHome")}
                     />
                     <Tab
                       icon={<CheckCircleOutlineIcon style={{ color: "#fff" }} />}
                       style={{ fontWeight: 500, minHeight: 62, fontSize: 10, color: "#fff" }}
-                      label="Grading"
+                      label={props.translate("userPages.home.labelGrading")}
                     />
                     <Tab
                       component={() => (
@@ -104,12 +104,12 @@ const Dashboard = (props) => {
                     <Tab
                       icon={<BookmarkIcon style={{ color: "#fff" }} />}
                       style={{ fontWeight: 500, minHeight: 62, fontSize: 10, color: "#fff" }}
-                      label="Notes"
+                      label={props.translate("userPages.home.labelNotes")}
                     />
                     <Tab
                       icon={<AssignmentIcon style={{ color: "#fff" }} />}
                       style={{ fontWeight: 500, minHeight: 62, fontSize: 10, color: "#fff" }}
-                      label="Today"
+                      label={props.translate("userPages.home.labelToday")}
                     />
                   </Tabs>
                 </Grid>
