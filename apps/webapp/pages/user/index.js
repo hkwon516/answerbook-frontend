@@ -1,5 +1,5 @@
 import { Button, Grid, Box, Tabs, Tab, IconButton, Container, Avatar, Typography } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import HomeIcon from "@material-ui/icons/Home";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
@@ -7,6 +7,8 @@ import AssignmentIcon from "@material-ui/icons/Assignment";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import { makeStyles } from "@material-ui/core/styles";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import BarcodeScannerComponent from "../../component/BarcodeScanner/BarcodeScannerComponent";
+
 const useStyles = makeStyles({
   scrollerOverride: {
     overflow: "visible !important",
@@ -14,8 +16,10 @@ const useStyles = makeStyles({
 });
 const Dashboard = (props) => {
   const classes = useStyles();
+  const [barcodeScannerOpen, setBarcodeScannerOpen] = useState(false);
   return (
-    <div>
+    <React.Fragment>
+      <BarcodeScannerComponent open={barcodeScannerOpen} onClose={setBarcodeScannerOpen} />
       <Grid container style={{ height: "100vh" }} direction="column" justify="space-between">
         <Grid item>
           <Box>
@@ -52,7 +56,7 @@ const Dashboard = (props) => {
                           </IconButton>
                         </Grid>
                       </Grid>
-
+                      <Typography variant="body2">{props.user.get("student")?.get('school')?.get('name')}</Typography>
 
                     </Box>
                   </Grid>
@@ -87,6 +91,9 @@ const Dashboard = (props) => {
                       component={() => (
                         <IconButton
                           size="small"
+                          onClick={() => {
+                            setBarcodeScannerOpen(true);
+                          }}
                           style={{ width: 52, height: 52, backgroundColor: props.theme.palette.secondary.main, zIndex: 1, top: -25 }}
                         >
                           <CameraAltIcon style={{ color: "#fff" }} />
@@ -111,7 +118,7 @@ const Dashboard = (props) => {
           </Box>
         </Grid>
       </Grid>
-    </div>
+    </React.Fragment>
   );
 };
 
