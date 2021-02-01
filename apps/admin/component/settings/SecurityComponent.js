@@ -5,7 +5,7 @@ import * as yup from "yup";
 import InputComponent from "../../component/generic/InputComponent";
 import MenuIcon from "@material-ui/icons/Menu";
 
-const GeneralComponent = (props) => {
+const SecurityComponent = (props) => {
   const formik = useFormik({
     initialValues: {
       currentPassword: "",
@@ -105,4 +105,4 @@ const GeneralComponent = (props) => {
   );
 };
 
-export default GeneralComponent;
+export default SecurityComponent;
