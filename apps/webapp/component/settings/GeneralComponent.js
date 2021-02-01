@@ -5,16 +5,11 @@ import * as yup from "yup";
 import InputComponent from "../../component/generic/InputComponent";
 import LanguageComponent from "../generic/LanguageComponent";
 const GeneralComponent = (props) => {
-  const getStudentData = async () => {
-    const student = await props.user.get("student").fetch();
-    console.log("student :-", student.get("nickname"));
-  };
-  getStudentData();
-
   const formik = useFormik({
     initialValues: {
       name: props.user.get("name"),
       email: props.user.get("email"),
+      nickName: props.user.get("student").get("nickname"),
     },
     validationSchema: yup.object().shape({
       name: yup.string().required(props.translate("userPages.settings.nameRequired")),
@@ -29,7 +24,9 @@ const GeneralComponent = (props) => {
       try {
         props.user.set("name", values.name);
         props.user.set("email", values.email);
-        props.user.set("nickName", values.nickName);
+        props.user.set("username", values.email);
+        props.user.get("student").set("nickname", values.nickName);
+
         const user = await props.user.save();
         props.setUser(user);
         props.showSuccess(props.translate("userPages.settings.labelSuccessMessage"));
