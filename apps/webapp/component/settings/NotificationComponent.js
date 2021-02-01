@@ -1,4 +1,16 @@
-import { Box, Divider, Grid, Paper, Typography, Select, InputAdornment, MenuItem, TextField } from "@material-ui/core";
+import {
+  Box,
+  Divider,
+  Grid,
+  Paper,
+  Typography,
+  Select,
+  InputAdornment,
+  MenuItem,
+  TextField,
+  FormControl,
+  InputLabel
+} from "@material-ui/core";
 import React from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -29,9 +41,8 @@ const NotificationComponent = (props) => {
 
   const formik = useFormik({
     initialValues: {
-      school: null,
-      grade: null,
-      
+      school: props.schools.filter(s => s.id === props.user.get("student")?.get("school").objectId)[0],
+      grade: props.user.get("student")?.get("grade").id,
     },
     validationSchema: yup.object().shape({
       school: yup.object().required("School is required"),
@@ -69,7 +80,7 @@ const NotificationComponent = (props) => {
         </Box>
         <Divider />
         <Box p={2}>
-          <Grid container spacing={1}>
+          <Grid container>
             <Grid item xs={12} sm={6}>
               <Autocomplete
                 value={formik.values.school}
@@ -80,34 +91,26 @@ const NotificationComponent = (props) => {
                 options={props.schools}
                 getOptionLabel={(option) => option.name}
                 style={{ backgroundColor: "#e3e3e3" }}
-                renderInput={(params) => <TextField {...params} label="School" variant="outlined" name="school" />}
+                renderInput={(params) => <TextField {...params} label={props.translate("userPages.settings.fieldSchool")} variant="outlined" name="school" />}
               />
             </Grid>
 
             <Grid item xs={12} sm={6}>
-              <Autocomplete
-                value={formik.values.grade}
-                onChange={(event, newValue) => {
-                  formik.setFieldValue("school", newValue);
-                }}
-                id="combo-box-demo"
-                options={props.grades}
-                getOptionLabel={(option) => option.name}
-                style={{ backgroundColor: "#e3e3e3" }}
-                renderInput={(params) => <TextField {...params} label="Grade" variant="outlined" name="grade" />}
-              />
-            </Grid>
-
-            <Grid item xs={12}>
-              <InputComponent
-                required
-                fullWidth
-                name="searchSchool"
-                label={props.translate("userPages.settings.fieldSchool")}
-                size="small"
-                autoComplete="school"
-                formik={formik}
-              />
+              <Box ml={1}>
+                <FormControl error={formik.touched.grade && formik.errors.grade} variant="filled" fullWidth>
+                  <InputLabel>{props.translate("userPages.settings.fieldGrade")} </InputLabel>
+                  <Select value={formik.values.grade} name="grade" onChange={formik.handleChange}>
+                    {props.grades.map((grade, idx) => {
+                      return (
+                        <MenuItem key={idx} value={grade.objectId}>
+                          {grade.name}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                  {formik.touched.grade && formik.errors.grade && <FormHelperText error>{formik.errors.grade}</FormHelperText>}
+                </FormControl>
+              </Box>
             </Grid>
 
             <Grid item xs={12}>
