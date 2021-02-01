@@ -95,6 +95,7 @@
     "sidebar": {
       "buttonManageAccount": "Manage Account",
       "buttonManageTextbook": "Manage Textbook",
+      "buttonManageQuestion": "Manage Question",
       "buttonSignOut": "Sign out"
     },
     "settings": {
@@ -103,7 +104,7 @@
       "labelGeneral": "General",
       "labelInformation": "Information",
       "labelSecurity": "Change Password",
-      "labelCompanyEmail": "Company Email",
+      "labelCompanyName": "Company Name",
       "labelPurpose": "Purpose of signing up",
       "fieldName": "Name",
       "fieldId": "Id",
@@ -116,6 +117,7 @@
       "fieldConfirmPassword": "Confirm Password",
       "buttonUpdate": "Update",
       "buttonConfirm": "Confirm",
+      "nameRequired": "Name is a required field.",
       "passwordRequired": "Password is a required field.",
       "passwordLength": "Password should be minimum 6 characters",
       "passwordConfirmationRequired": "Password Confirmation is a required field.",
@@ -123,6 +125,7 @@
       "emailRequired": "Email is a required field.",
       "emailValidate": "Please enter a valid email.",
       "phoneValidate": "Please enter Numbers only.",
+      "phoneRequired": "Phone is a required field.",
       "positionRequired": "Position is a required field."
     }
   }
