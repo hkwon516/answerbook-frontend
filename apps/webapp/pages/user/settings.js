@@ -1,4 +1,4 @@
-import { Box, Grid } from "@material-ui/core";
+import { Box, Grid, Button } from "@material-ui/core";
 import React from "react";
 import SecurityComponent from "../../component/settings/SecurityComponent";
 
@@ -13,6 +13,9 @@ const Settings = (props) => {
             <Box mt={2}>
               <SecurityComponent {...props} />
             </Box>
+            <Button onClick={() => props.onLogout()}>
+            SIGN OUT
+            </Button>
           </Grid>
         </Grid>
       </Box>
