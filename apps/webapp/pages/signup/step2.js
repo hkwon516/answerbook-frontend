@@ -62,17 +62,20 @@ const SignUp = (props) => {
       toc: false,
     },
     validationSchema: yup.object().shape({
-      name: yup.string().required(props.translate("pages.anon.signup.form.validation.nameRequired")),
-      username: yup.string().required(props.translate("pages.anon.signup.form.validation.emailRequired")),
+      name: yup.string().required(props.translate("anonPages.signupStep2.nameRequired")),
+      username: yup
+        .string()
+        .required(props.translate("anonPages.signupStep2.emailRequired"))
+        .email(props.translate("anonPages.signupStep2.emailValidate")),
       password: yup
         .string()
-        .required(props.translate("pages.anon.signup.form.validation.passwordRequired"))
-        .min(6, props.translate("pages.anon.signup.form.validation.passwordLength")),
+        .required(props.translate("anonPages.signupStep2.passwordRequired"))
+        .min(6, props.translate("anonPages.signupStep2.passwordLength")),
 
-      nickname: yup.string().required("Nickname is required"),
-      school: yup.object().required("School is required"),
-      toc: yup.boolean().oneOf([true], "Please accept the toc inorder to continue"),
-      grade: yup.string().required("grade field is required"),
+      nickname: yup.string().required(props.translate("anonPages.signupStep2.nicknameRequired")),
+      school: yup.object().required(props.translate("anonPages.signupStep2.schoolRequired")),
+      toc: yup.boolean().oneOf([true], props.translate("anonPages.signupStep2.tocRequired")),
+      grade: yup.string().required(props.translate("anonPages.signupStep2.gradeRequired")),
     }),
 
     onSubmit: async (values, actions) => {
@@ -252,7 +255,9 @@ const SignUp = (props) => {
                         style={{ backgroundColor: "#e3e3e3" }}
                         renderInput={(params) => <TextField {...params} label="School" variant="outlined" name="school" />}
                       />
-                      {formik.touched.school && formik.errors.school && <FormHelperText error>{"School is required"}</FormHelperText>}
+                      {formik.touched.school && formik.errors.school && (
+                        <FormHelperText error>{props.translate("anonPages.signupStep2.schoolRequired")}</FormHelperText>
+                      )}
                     </Box>
                   </Grid>
 

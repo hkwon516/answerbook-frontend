@@ -79,6 +79,7 @@
       "emailRequired": "이메일은 필수 필드입니다.",
       "emailValidate": "유효한 이메일을 입력하십시오.",
       "passwordRequired": "비밀번호는 필수 필드입니다.",
+      "passwordLength": "비밀번호는 6 자 이상이어야합니다.",
       "messageInvalidCredentials": "잘못된 이메일 / 비밀번호"
     }
   },
