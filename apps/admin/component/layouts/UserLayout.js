@@ -143,7 +143,7 @@ const UserLayout = (props) => {
                             <ListItemIcon>
                               <MenuBookIcon />
                             </ListItemIcon>
-                            <ListItemText secondary="Manage Textbook"></ListItemText>
+                            <ListItemText secondary={props.translate("userPages.sidebar.buttonManageTextbook")}></ListItemText>
                           </ListItem>
 
                           <ListItem
@@ -156,7 +156,7 @@ const UserLayout = (props) => {
                             <ListItemIcon>
                               <QuestionAnswerIcon />
                             </ListItemIcon>
-                            <ListItemText secondary="Manage Question"></ListItemText>
+                            <ListItemText secondary={props.translate("userPages.sidebar.buttonManageQuestion")}></ListItemText>
                           </ListItem>
                           {/* <ListItem button>
                             <ListItemIcon>

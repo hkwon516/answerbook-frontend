@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   Typography,
   Button,
@@ -16,6 +16,7 @@ import {
   Avatar,
   InputAdornment,
   FormHelperText,
+  TextField,
 } from "@material-ui/core";
 import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
@@ -24,8 +25,11 @@ import LinkComponent from "../../component/generic/LinkComponent";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import { makeStyles } from "@material-ui/core/styles";
 import ButtonComponent from "../../component/generic/ButtonComponent";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import TocPart from "../../component/signup/TocPart";
 
 import getParse from "../../utils/parse";
+
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
@@ -46,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 
 const SignUp = (props) => {
   const emailProviders = ["naver.com", "hanmail.net", "daum.net", "gmail.net", "nate.com", "icloud.com", "hotmail.com", "yahoo.co.kr"];
-
+  const cameraRef = useRef();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -54,28 +58,31 @@ const SignUp = (props) => {
       password: "",
       emailProvider: emailProviders[0],
       nickname: "",
-      school: "",
+      school: null,
       grade: "",
       toc: false,
     },
     validationSchema: yup.object().shape({
-      name: yup.string().required(props.translate("pages.anon.signup.form.validation.nameRequired")),
-      username: yup.string().required(props.translate("pages.anon.signup.form.validation.emailRequired")),
+      name: yup.string().required(props.translate("anonPages.signupStep2.nameRequired")),
+      username: yup
+        .string()
+        .required(props.translate("anonPages.signupStep2.emailRequired"))
+        .email(props.translate("anonPages.signupStep2.emailValidate")),
       password: yup
         .string()
-        .required(props.translate("pages.anon.signup.form.validation.passwordRequired"))
-        .min(6, props.translate("pages.anon.signup.form.validation.passwordLength")),
+        .required(props.translate("anonPages.signupStep2.passwordRequired"))
+        .min(6, props.translate("anonPages.signupStep2.passwordLength")),
 
-      nickname: yup.string().required("Nickname is required"),
-      school: yup.string().required("School field is required"),
-      toc: yup.boolean().oneOf([true], "Please accept the toc inorder to continue"),
-      grade: yup.string().required("grade field is required"),
+      nickname: yup.string().required(props.translate("anonPages.signupStep2.nicknameRequired")),
+      school: yup.object().required(props.translate("anonPages.signupStep2.schoolRequired")),
+      toc: yup.boolean().oneOf([true], props.translate("anonPages.signupStep2.tocRequired")),
+      grade: yup.string().required(props.translate("anonPages.signupStep2.gradeRequired")),
     }),
 
     onSubmit: async (values, actions) => {
       try {
         const schoolQuery = new props.parse.Query(props.parse.Object.extend("School"));
-        const school = await schoolQuery.get(values.school);
+        const school = await schoolQuery.get(values.school.objectId);
         const gradeQuery = new props.parse.Query(props.parse.Object.extend("Grade"));
         const grade = await gradeQuery.get(values.grade);
         const Student = props.parse.Object.extend("Student");
@@ -159,7 +166,14 @@ const SignUp = (props) => {
               <Grid container justify={"center"}>
                 <Grid item xs={12}>
                   <Box mb={2} textAlign="center">
+                    <input style={{ display: "none" }} type="file" accept="image/*;capture=camera" capture="camera" ref={cameraRef} />
                     <Avatar
+                      onClick={() => {
+                        if (cameraRef) {
+                          console.log(cameraRef);
+                          cameraRef.current.click();
+                        }
+                      }}
                       style={{
                         backgroundColor: "transparent",
                         border: `1px solid ${colors.grey[400]}`,
@@ -237,20 +251,21 @@ const SignUp = (props) => {
 
                 <Grid container>
                   <Grid item xs={6}>
-                    <Box mr={1}>
-                      <FormControl error={formik.touched.school && formik.errors.school} variant="filled" margin={"normal"} fullWidth>
-                        <InputLabel>{props.translate("anonPages.signupStep2.fieldSchool")} </InputLabel>
-                        <Select value={formik.values.school} name="school" onChange={formik.handleChange}>
-                          {props.schools.map((school, idx) => {
-                            return (
-                              <MenuItem key={idx} value={school.objectId}>
-                                {school.name}
-                              </MenuItem>
-                            );
-                          })}
-                        </Select>
-                        {formik.touched.school && formik.errors.school && <FormHelperText error>{formik.errors.school}</FormHelperText>}
-                      </FormControl>
+                    <Box mr={1} style={{ paddingTop: "18px" }}>
+                      <Autocomplete
+                        value={formik.values.school}
+                        onChange={(event, newValue) => {
+                          formik.setFieldValue("school", newValue);
+                        }}
+                        id="combo-box-demo"
+                        options={props.schools}
+                        getOptionLabel={(option) => option.name}
+                        style={{ backgroundColor: "#e3e3e3" }}
+                        renderInput={(params) => <TextField {...params} label="School" variant="outlined" name="school" />}
+                      />
+                      {formik.touched.school && formik.errors.school && (
+                        <FormHelperText error>{props.translate("anonPages.signupStep2.schoolRequired")}</FormHelperText>
+                      )}
                     </Box>
                   </Grid>
 
@@ -279,8 +294,12 @@ const SignUp = (props) => {
                       <FormGroup row>
                         <FormControlLabel
                           control={<Checkbox checked={formik.values.toc} onChange={formik.handleChange} name="toc" />}
-                          label={props.translate("anonPages.signupStep2.labelToc")}
+                          style={{ marginRight: "0px" }}
                         />
+                        <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart1")} />
+                        <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart2")} />
+                        <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart3")} />
+                        <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart4")} />
                       </FormGroup>
                       {formik.touched.toc && formik.errors.toc && <FormHelperText error>{formik.errors.toc}</FormHelperText>}
                     </FormControl>

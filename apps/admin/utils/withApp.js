@@ -9,7 +9,6 @@ import { LinearProgress, withWidth } from "@material-ui/core";
 import AppContext from "../utils/AppContext";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { CssBaseline } from "@material-ui/core";
-import { SnackbarProvider } from "notistack";
 import Head from "next/head";
 import Cookies from "universal-cookie";
 
@@ -34,6 +33,7 @@ const withUser = (WrappedComponent) => {
       if (user && !user.get("emailVerified")) {
         user = await user.fetch();
       }
+
       this.setState({ user, loading: false });
     };
 
@@ -116,13 +116,6 @@ const withApp = (WrappedComponent) => {
       if (!contexts.user && isAuthenticatedRoute) {
         props.router.push("/");
       }
-
-      if (contexts.user) {
-        const userLocale = contexts.user.get("locale");
-        if (userLocale !== props.router.locale) {
-          changeLanguage(userLocale);
-        }
-      }
     }, [contexts.user]);
 
     const isMobile = props.width === "xs" || props.width === "sm";
@@ -144,7 +137,7 @@ const withApp = (WrappedComponent) => {
         props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
 
         const updatedUser = await contexts.user.save();
-        contexts.setUser(updatedUser);
+        props.setUser(updatedUser);
       } else {
         props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
       }
@@ -185,13 +178,13 @@ const withApp = (WrappedComponent) => {
 
     const Layout = commonProps.user && isAuthenticatedRoute ? UserLayout : AnonLayout;
     return (
-      <>
+      <React.Fragment>
         <Head>
           <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         </Head>
         <ThemeProvider theme={commonProps.theme}>
           <CssBaseline />
-          {commonProps.loading || (isAuthenticatedRoute && !commonProps.user) ? (
+          {contexts.loading || (isAuthenticatedRoute && !contexts.user) ? (
             <LinearProgress color="secondary" variant="indeterminate" />
           ) : (
             <Layout {...commonProps}>
@@ -199,7 +192,7 @@ const withApp = (WrappedComponent) => {
             </Layout>
           )}
         </ThemeProvider>
-      </>
+      </React.Fragment>
     );
   };
   return withWidth()(withUser(ExtendedWithApp));

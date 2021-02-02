@@ -13,14 +13,14 @@ const GeneralComponent = (props) => {
       phone: props.user.get("phone"),
     },
     validationSchema: yup.object().shape({
-      name: yup.string().required(props.translate("userPages.settings.passwordRequired")),
+      name: yup.string().required(props.translate("userPages.settings.nameRequired")),
       email: yup
         .string()
         .required(props.translate("userPages.settings.emailRequired"))
         .email(props.translate("userPages.settings.emailValidate")),
       phone: yup
         .number(props.translate("userPages.settings.phoneValidate"))
-        .required(props.translate("userPages.settings.phoneValidate"))
+        .required(props.translate("userPages.settings.phoneRequired"))
         .typeError(props.translate("userPages.settings.phoneValidate")),
     }),
 

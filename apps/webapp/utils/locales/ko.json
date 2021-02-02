@@ -14,35 +14,40 @@
     "signupStep1": {
       "title": "Answerbook",
       "subtitle1": "ANSERBOOK에서 친구들의",
-      "subtitle2": "Mentor이자 Mentee로 함께 공부해요",
+      "subtitle2": "멘토와 멘티로 함께 공부하세요",
       "buttonEmailSignup": "이메일주소로 가입하기"
     },
-
     "signupStep2": {
       "subtitle1": "Answerbook",
       "subtitle2": "ANSWERBOOK 계정을 만들어주세요!",
+      "tocHeader": "T&C",
+      "privacyHeader": "Privacy policy",
       "messageSuccess": "Answerbook에 가입 해 주셔서 감사합니다.",
       "title": "가입하기",
       "linkLoginText": "이미 계정이 있습니까? 로그인",
       "linkLogin": "로그인",
-
       "fieldName": "이름",
       "fieldUsername": "이메일",
       "fieldPassword": "비밀번호",
       "fieldNickname": "닉네임",
-      "labelToc": "이용약관 및 개인정보/처리방침에 동의합니다. [필수]",
+      "labelTocPart1": "#1이용 약관",
+      "labelTocPart2": "과",
+      "labelTocPart3": "#2개인 정보 정책",
+      "labelTocPart4": "나는 찬성합니다.",
       "fieldSchool": "학교",
       "fieldGrade": "학년",
       "buttonSignup": "가입하기",
       "nameRequired": "이름은 필수 필드입니다.",
       "emailRequired": "이메일은 필수 필드입니다.",
       "emailValidate": "유효한 이메일을 입력하십시오.",
-
+      "nicknameRequired": "닉네임은 필수 필드입니다.",
+      "schoolRequired": "학교는 필수 필드입니다.",
+      "tocRequired": "이용 약관은 필수 입력란입니다.",
+      "gradeRequired": "등급은 필수 필드입니다.",
       "passwordRequired": "비밀번호는 필수 필드입니다.",
       "passwordLength": "비밀번호는 6 자 이상이어야합니다.",
       "passwordConfirmationRequired": "비밀번호 확인은 필수 필드입니다.",
       "passwordValidate": "비밀번호가 일치하지 않습니다.",
-
       "messageAccountExists": "위 이메일이있는 계정이 이미 존재합니다. 로그인을 시도하십시오."
     },
     "forgetEmail": {
@@ -82,6 +87,7 @@
       "emailRequired": "이메일은 필수 필드입니다.",
       "emailValidate": "유효한 이메일을 입력하십시오.",
       "passwordRequired": "비밀번호는 필수 필드입니다.",
+      "passwordLength": "비밀번호는 6 자 이상이어야합니다.",
       "messageInvalidCredentials": "잘못된 이메일 / 비밀번호"
     },
     "forgotChoosePassword": {
@@ -94,6 +100,11 @@
       "passwordConfirmationRequired": "비밀번호 확인은 필수 필드입니다.",
       "passwordValidate": "비밀번호가 일치하지 않습니다.",
       "messageSuccess": "비밀번호가 성공적으로 재설정되었습니다."
+    },
+    "toc": {
+      "title": "이용 약관",
+      "buttonTermsOfUse": "이용 약관",
+      "buttonPrivacy": "개인 정보 정책"
     }
   },
   "userPages": {
@@ -102,7 +113,6 @@
       "buttonResendVerification": "확인 이메일을 다시 보내",
       "messageVerificationEmail": "확인 이메일이 성공적으로 전송되었습니다"
     },
-
     "confirm": {
       "title": "회원가입 완료",
       "subtitle1": "닝닝이님,",
@@ -111,7 +121,6 @@
       "buttonStart": "나의 Aswerbook 시작하기",
       "linkSignout": "로그 아웃"
     },
-
     "settings": {
       "labelSuccessMessage": "성공적으로 업데이트 됨",
       "labelPasswordUpdateMessage": "비밀번호가 성공적으로 업데이트되었습니다.",
@@ -123,11 +132,14 @@
       "fieldName": "이름",
       "fieldId": "신분증",
       "fieldEmail": "이메일 주소",
+      "fieldNickName": "닉네임",
       "fieldPhone": "전화 번호",
       "fieldAcademyName": "아카데미 이름",
       "fieldPosition": "위치",
       "fieldCurrentPassword": "현재 비밀번호",
       "fieldNewPassword": "새 비밀번호",
+      "nameRequired": "이름은 필수 필드입니다.",
+      "nickNameRequired": "닉네임은 필수 필드입니다.",
       "fieldConfirmPassword": "비밀번호 확인",
       "buttonUpdate": "최신 정보",
       "buttonConfirm": "확인",
@@ -138,7 +150,25 @@
       "emailRequired": "이메일은 필수 필드입니다.",
       "emailValidate": "유효한 이메일을 입력하십시오.",
       "phoneValidate": "숫자 만 입력하세요.",
-      "positionRequired": "직위는 필수 필드입니다."
+      "positionRequired": "직위는 필수 필드입니다.",
+      "labelNotification": "알림",
+      "fieldSchool": "학교",
+      "fieldGrade": "등급",
+      "lableListSubheader": "푸시 알람 설정",
+      "lableSwitchOnePrimary": "내 솔루션에 좋아요",
+      "lableSwitchOneSecondary": "다른 사람들이 내 솔루션을 좋아할 때 경고합니다.",
+      "lableSwitchTwoPrimary": "내 솔루션 저장",
+      "lableSwitchTwoSecondary": "다른 사람이 내 솔루션을 저장하면 경고합니다.",
+      "lableSwitchThreePrimary": "코멘트",
+      "lableSwitchThreeSecondary": "누군가 내 댓글에 댓글을 달거나 누군가 내 솔루션에 댓글을 달면 경고합니다.",
+      "lableSwitchFourPrimary": "경보 솔루션",
+      "lableSwitchFourSecondary": "알림을 설정 한 질문에 새 솔루션이 업로드되면."
+    },
+    "home": {
+      "labelHome": "집",
+      "labelGrading": "채점",
+      "labelNotes": "노트",
+      "labelToday": "오늘"
     }
   }
 }

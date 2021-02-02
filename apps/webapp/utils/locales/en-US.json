@@ -20,22 +20,30 @@
     "signupStep2": {
       "subtitle1": "Answerbook",
       "subtitle2": "Create an ANSWERBOOK account!",
+      "tocHeader": "T&C",
+      "privacyHeader": "Privacy policy",
       "messageSuccess": "Thank you for signing up to Answerbook",
       "title": "Sign Up",
       "linkLogin": "Sign in",
-
       "linkLoginText": "Already have an account?",
       "fieldName": "Name",
       "fieldUsername": "Email",
       "fieldPassword": "Password",
       "fieldNickname": "Nickname",
       "fieldSchool": "School",
-      "labelToc": "I agree to the terms of use and privacy policy.",
+      "labelTocPart1": "I agree to the ",
+      "labelTocPart2": "#1terms of use",
+      "labelTocPart3": "and",
+      "labelTocPart4": "#2privacy policy.",
       "fieldGrade": "Grade",
       "buttonSignup": "Sign Up",
       "nameRequired": "Name is a required field.",
-      "emailRequired": "Email is a required field.",
       "emailValidate": "Please enter a valid email.",
+      "emailRequired": "Email is a required field.",
+      "nicknameRequired": "Nickname is a required field.",
+      "schoolRequired": "School is a required field.",
+      "tocRequired": "Terms and conditions is a required field.",
+      "gradeRequired": "Grade is a required field.",
       "passwordRequired": "Password is a required field.",
       "passwordLength": "Password should be minimum 6 characters",
       "passwordConfirmationRequired": "Password Confirmation is a required field.",
@@ -69,7 +77,6 @@
     },
     "login": {
       "title": "Sign In",
-
       "linkForgotPassword": "Forgot password?",
       "linkForgotEmail": "Forgot Email?",
       "linkSignupText": "Don't have an account?",
@@ -80,6 +87,7 @@
       "emailRequired": "Email is a required field.",
       "emailValidate": "Please enter a valid email.",
       "passwordRequired": "Password is a required field.",
+      "passwordLength": "Password should be minimum 6 characters",
       "messageInvalidCredentials": "Invalid Email/Password"
     },
     "forgotChoosePassword": {
@@ -92,7 +100,11 @@
       "passwordConfirmationRequired": "Password Confirmation is a required field.",
       "passwordValidate": "Password does not match.",
       "messageSuccess": "Your password has been reset successfully."
-      
+    },
+    "toc": {
+      "title": "Terms and conditions",
+      "buttonTermsOfUse": "Terms of use",
+      "buttonPrivacy": "Privacy Policy"
     }
   },
   "userPages": {
@@ -123,14 +135,14 @@
       "fieldName": "Name",
       "fieldId": "Id",
       "fieldEmail": "Email Address",
-      "fieldPhone": "Phone Number",
-      "fieldAcademyName": "Academy Name",
-      "fieldPosition": "Position",
+      "fieldNickName": "Nick Name",
       "fieldCurrentPassword": "Current Password",
       "fieldNewPassword": "New Password",
       "fieldConfirmPassword": "Confirm Password",
       "buttonUpdate": "Update",
       "buttonConfirm": "Confirm",
+      "nameRequired": "Name is a required field.",
+      "nickNameRequired": "Nick name is a required field.",
       "passwordRequired": "Password is a required field.",
       "passwordLength": "Password should be minimum 6 characters",
       "passwordConfirmationRequired": "Password Confirmation is a required field.",
@@ -138,7 +150,25 @@
       "emailRequired": "Email is a required field.",
       "emailValidate": "Please enter a valid email.",
       "phoneValidate": "Please enter Numbers only.",
-      "positionRequired": "Position is a required field."
+      "positionRequired": "Position is a required field.",
+      "labelNotification": "Notifications",
+      "fieldSchool": "School",
+      "fieldGrade": "Grade",
+      "lableListSubheader": "Push Alarm Settings",
+      "lableSwitchOnePrimary": "Likes on my solution",
+      "lableSwitchOneSecondary": "Alert when others like my solution.",
+      "lableSwitchTwoPrimary": "Save my solution",
+      "lableSwitchTwoSecondary": "Alert when others save my solution.",
+      "lableSwitchThreePrimary": "Comments",
+      "lableSwitchThreeSecondary": "Alert when someone comments on my comment or anybody comment on my solution.",
+      "lableSwitchFourPrimary": "Alert Solution",
+      "lableSwitchFourSecondary": "when new solutions are uploaded to questions you set alert to."
+    },
+    "home": {
+      "labelHome": "Home",
+      "labelGrading": "Grading",
+      "labelNotes": "Notes",
+      "labelToday": "Today"
     }
   }
 }
