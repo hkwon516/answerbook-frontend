@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SignUp = (props) => {
-  const emailProviders = ["naver.com", "hanmail.net", "daum.net", "gmail.net", "nate.com", "icloud.com", "hotmail.com", "yahoo.co.kr"];
+  const emailProviders = ["naver.com", "hanmail.net", "daum.net", "gmail.com", "nate.com", "icloud.com", "hotmail.com", "yahoo.co.kr"];
   const cameraRef = useRef();
   const formik = useFormik({
     initialValues: {
@@ -64,10 +64,7 @@ const SignUp = (props) => {
     },
     validationSchema: yup.object().shape({
       name: yup.string().required(props.translate("anonPages.signupStep2.nameRequired")),
-      username: yup
-        .string()
-        .required(props.translate("anonPages.signupStep2.emailRequired"))
-        .email(props.translate("anonPages.signupStep2.emailValidate")),
+      username: yup.string().required(props.translate("anonPages.signupStep2.emailRequired")),
       password: yup
         .string()
         .required(props.translate("anonPages.signupStep2.passwordRequired"))
