@@ -1,36 +1,22 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
   Typography,
-  Button,
   Grid,
   Box,
-  FormControl,
-  IconButton,
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
-  MenuItem,
-  InputLabel,
-  Select,
-  colors,
-  Avatar,
-  InputAdornment,
-  FormHelperText,
-  TextField,
-  Tabs,
   Tab
 } from "@material-ui/core";
-import InputComponent from "../../component/generic/InputComponent";
-import { useFormik } from "formik";
-import * as yup from "yup";
-import LinkComponent from "../../component/generic/LinkComponent";
-import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import { makeStyles } from "@material-ui/core/styles";
-import ButtonComponent from "../../component/generic/ButtonComponent";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import TocPart from "../../component/signup/TocPart";
-import Step1Graphic1 from "../../component/signup/Step1Graphic1";
-import KakaoIcon from "../../component/login/KakaoIcon";
+import TabContext from '@material-ui/lab/TabContext';
+import AppBar from '@material-ui/core/AppBar';
+import TabList from '@material-ui/lab/TabList';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import IconButton from '@material-ui/core/IconButton';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.background.secondary,
+  },
+}));
 
 const Toc = (props) => {
   const [value, setValue] = useState(props.router.query.tab === 'privacy' ? 1 : 0);
@@ -41,18 +27,39 @@ const Toc = (props) => {
       props.changePage('/signup/toc?tab=privacy')
     }
   };
+
+  const classes = useStyles();
+
   return (
     <Grid container>
-      <Tabs
-        value={value}
-        onChange={handleChange}
-        indicatorColor="primary"
-        textColor="primary"
-        centered
-      >
-        <Tab label={props.translate("anonPages.signupStep2.tocHeader")} />
-        <Tab label={props.translate("anonPages.signupStep2.privacyHeader")} />
-      </Tabs>
+      <Grid>
+        <Box mb={1}>
+          <IconButton color="primary" aria-label="upload picture" component="span">
+            <ArrowBackIcon />
+          </IconButton>
+        </Box>
+      </Grid>
+      <Grid>
+        <Box mt={1}>
+          <Typography variant="h6">
+            {props.translate("anonPages.signupStep2.tocTitle")}
+          </Typography>
+        </Box>
+      </Grid>
+
+      <Grid>
+        <TabContext value={value}
+          centered>
+          <AppBar position="static"
+            style={{ backgroundColor: props.theme.palette.secondary.light }}>
+            <TabList onChange={handleChange} textColor="primary" indicatorColor="primary">
+              <Tab label={props.translate("anonPages.signupStep2.tocHeader")} />
+              <Tab label={props.translate("anonPages.signupStep2.privacyHeader")} />
+            </TabList>
+          </AppBar>
+        </TabContext>
+      </Grid>
+
       <Grid item xs={12}>
         <Box textAlign="center" m={1}>
           <Box>
