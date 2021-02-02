@@ -34,6 +34,9 @@ const withUser = (WrappedComponent) => {
       if (user && !user.get("emailVerified")) {
         user = await user.fetch();
       }
+      if (user) {
+        await user.get("student").fetch();
+      }
       this.setState({ user, loading: false });
     };
 
@@ -49,12 +52,11 @@ const withUser = (WrappedComponent) => {
         this.setState({ loading: true });
         const user = await this.parse.User.logIn(username, password, { usePost: true });
 
-        this.setState({ user });
+        await this.resolveUser();
       } catch (error) {
+        this.setState({ loading: false });
         throw error;
       }
-
-      this.setState({ loading: false });
     };
 
     componentDidMount = () => {
@@ -116,13 +118,6 @@ const withApp = (WrappedComponent) => {
       if (!contexts.user && isAuthenticatedRoute) {
         props.router.push("/");
       }
-
-      if (contexts.user) {
-        const userLocale = contexts.user.get("locale");
-        if (userLocale !== props.router.locale) {
-          changeLanguage(userLocale);
-        }
-      }
     }, [contexts.user]);
 
     const isMobile = props.width === "xs" || props.width === "sm";
@@ -144,7 +139,7 @@ const withApp = (WrappedComponent) => {
         props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
 
         const updatedUser = await contexts.user.save();
-        contexts.setUser(updatedUser);
+        props.setUser(updatedUser);
       } else {
         props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
       }
@@ -191,7 +186,7 @@ const withApp = (WrappedComponent) => {
         </Head>
         <ThemeProvider theme={commonProps.theme}>
           <CssBaseline />
-          {commonProps.loading || (isAuthenticatedRoute && !commonProps.user) ? (
+          {contexts.loading || (isAuthenticatedRoute && !contexts.user) ? (
             <LinearProgress color="secondary" variant="indeterminate" />
           ) : (
             <Layout {...commonProps}>

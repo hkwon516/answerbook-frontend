@@ -6,7 +6,7 @@ import SecurityComponent from "../../component/settings/SecurityComponent";
 
 const Settings = (props) => {
   return (
-    <>
+    <React.Fragment>
       {props.setTitlePageKey("userPages.settings.title")}
 
       <Box mt={2}>
@@ -18,13 +18,13 @@ const Settings = (props) => {
             <Box mt={2}>
               <InformationComponent {...props} />
             </Box>
-            <Box mt={2}>
+            <Box mt={2} mb={2}>
               <SecurityComponent {...props} />
             </Box>
           </Grid>
         </Grid>
       </Box>
-    </>
+    </React.Fragment>
   );
 };
 
