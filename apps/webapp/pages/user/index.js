@@ -19,7 +19,18 @@ const Dashboard = (props) => {
   const [barcodeScannerOpen, setBarcodeScannerOpen] = useState(false);
   return (
     <React.Fragment>
-      <BarcodeScannerComponent open={barcodeScannerOpen} onClose={setBarcodeScannerOpen} />
+      <BarcodeScannerComponent
+        open={barcodeScannerOpen}
+        onClose={(code) => {
+          setBarcodeScannerOpen(false);
+
+          if (code) {
+            setTimeout(() => {
+              alert(code);
+            }, 1000);
+          }
+        }}
+      />
       <Grid container style={{ height: "100vh" }} direction="column" justify="space-between">
         <Grid item>
           <Box>
@@ -56,8 +67,7 @@ const Dashboard = (props) => {
                           </IconButton>
                         </Grid>
                       </Grid>
-                      <Typography variant="body2">{props.user.get("student")?.get('school')?.get('name')}</Typography>
-
+                      <Typography variant="body2">{props.user.get("student")?.get("school")?.get("name")}</Typography>
                     </Box>
                   </Grid>
                 </Grid>
