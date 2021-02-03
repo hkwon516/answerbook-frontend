@@ -1,7 +1,6 @@
 import { Box, Grid, Button, Avatar, colors } from "@material-ui/core";
 import React, { useRef } from "react";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
-import SecurityComponent from "../../component/settings/SecurityComponent";
 import GeneralComponent from "../../component/settings/GeneralComponent";
 import NotificationComponent from "../../component/settings/NotificationComponent";
 import getParse from "../../utils/parse";
@@ -39,14 +38,7 @@ const Settings = (props) => {
             </Box>
           </Grid>
           <Grid item xs={12} md={4} sm={6}>
-            <Box mt={2}>
-              <GeneralComponent {...props} />
-            </Box>
-
-            <Box mt={2}>
-              <SecurityComponent {...props} />
-            </Box>
-
+            <GeneralComponent {...props} />
             <Box mt={2}>
               <NotificationComponent {...props} />
             </Box>

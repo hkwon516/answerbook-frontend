@@ -45,12 +45,12 @@ const SecurityComponent = (props) => {
   return (
     <form noValidate onSubmit={formik.handleSubmit}>
       <Paper elevation={1}>
-        <Box p={2} pt={1} pb={1}>
-          <Typography style={{ opacity: 0.5 }} variant="body2">
+        {/* <Box p={2} pt={1} pb={1}> */}
+          {/* <Typography style={{ opacity: 0.5 }} variant="body2">
             {props.translate("userPages.settings.labelSecurity")}
-          </Typography>
-        </Box>
-        <Divider />
+          </Typography> */}
+        {/* </Box> */}
+        {/* <Divider /> */}
         <Box p={2}>
           <Grid container>
             <Grid item xs={12}>

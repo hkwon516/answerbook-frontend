@@ -157,6 +157,52 @@ const GeneralComponent = (props) => {
                 {!formik.isSubmitting ? props.translate("userPages.settings.buttonUpdate") : props.translate("app.buttonWait")}
               </Button>
             </Grid>
+
+            <Grid item xs={12}>
+              <InputComponent
+                required
+                fullWidth
+                name="currentPassword"
+                label={props.translate("userPages.settings.fieldCurrentPassword")}
+                type="password"
+                size="small"
+                autoComplete="current-password"
+                formik={formik}
+              />
+            </Grid>
+
+            <Grid item xs={12}>
+              <InputComponent
+                required
+                fullWidth
+                name="password"
+                label={props.translate("userPages.settings.fieldNewPassword")}
+                type="password"
+                size="small"
+                autoComplete="password"
+                formik={formik}
+              />
+            </Grid>
+
+            <Grid item xs={12}>
+              <InputComponent
+                required
+                fullWidth
+                name="passwordConfirm"
+                label={props.translate("userPages.settings.fieldConfirmPassword")}
+                type="password"
+                size="small"
+                autoComplete="confirm-password"
+                formik={formik}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Button type="submit" color="secondary" size="small" disabled={formik.isSubmitting}>
+                {!formik.isSubmitting
+                  ? props.translate("userPages.settings.buttonConfirm")
+                  : props.translate("app.buttonWait")}
+              </Button>
+            </Grid>
           </Grid>
         </Box>
       </Paper>
