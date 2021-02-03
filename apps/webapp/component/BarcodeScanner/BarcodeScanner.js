@@ -1,30 +1,42 @@
-import React from "react";
-import { BrowserMultiFormatReader, Result } from "@zxing/library";
+import React, { useRef, useState, useCallback, useEffect } from "react";
 import Webcam from "react-webcam";
 
 const BarcodeScannerComponent = ({ onUpdate }) => {
-  const webcamRef = React.useRef(null);
-  const codeReader = new BrowserMultiFormatReader();
+  const webcamRef = useRef(null);
+  const { BrowserBarcodeReader } = require("@zxing/library");
+  const codeReader = new BrowserBarcodeReader();
+  const [device, setDevice] = useState(undefined);
 
-  const capture = React.useCallback(() => {
-    const imageSrc = webcamRef?.current?.getScreenshot();
-    if (imageSrc) {
-      codeReader
-        .decodeFromImage(undefined, imageSrc)
-        .then((result) => {
-          onUpdate(null, result);
-        })
-        .catch((err) => {
-          onUpdate(err);
-        });
+  const initReader = async () => {
+    const devices = await codeReader.getVideoInputDevices();
+    if (devices && devices[0]) {
+      setDevice(devices[0]);
+    } else {
+      onUpdate(new Error("Device Error"));
     }
-  }, [codeReader, onUpdate]);
+  };
 
-  React.useEffect(() => {
-    setInterval(capture, 100);
+  const read = async () => {
+    try {
+      const result = await codeReader.decodeOnceFromVideoDevice(device.deviceId);
+
+      onUpdate(undefined, result);
+    } catch (error) {
+      onUpdate(error);
+    }
+  };
+
+  useEffect(() => {
+    if (device && device.deviceId) {
+      read();
+    }
+  }, [device]);
+
+  useEffect(() => {
+    initReader();
   }, []);
 
-  return (
+  return device && device.deviceId ? (
     <Webcam
       ref={webcamRef}
       width="100%"
@@ -33,9 +45,11 @@ const BarcodeScannerComponent = ({ onUpdate }) => {
       videoConstraints={{
         facingMode: "environment",
         aspectRatio: 0.7,
-        
+        deviceId: device.deviceId,
       }}
     />
+  ) : (
+    <React.Fragment></React.Fragment>
   );
 };
 
