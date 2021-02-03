@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Toc = (props) => {
   const [value, setValue] = useState(props.router.query.tab === 'privacy' ? 1 : 0);
+
   const handleChange = (event, newValue) => {
     if (newValue === 0) {
       props.changePage('/signup/toc');
@@ -32,27 +33,44 @@ const Toc = (props) => {
 
   return (
     <Grid container>
-      <Grid>
-        <Box mb={1}>
-          <IconButton color="primary" aria-label="upload picture" component="span">
-            <ArrowBackIcon />
-          </IconButton>
+      <Grid item xs={12}>
+        <Box>
+          <Grid alignItems="center" container>
+            <Grid item>
+              <Box mr={2}>
+                <IconButton color="primary" component="span">
+                  <ArrowBackIcon />
+                </IconButton>
+              </Box>
+            </Grid>
+            <Grid item>
+              <Box>
+                <Typography variant="h6">
+                  {props.translate("anonPages.signupStep2.tocTitle")}
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
         </Box>
       </Grid>
-      <Grid>
-        <Box mt={1}>
+
+      {/* <Grid item xs={12} sm={8}>
+        <Box>
           <Typography variant="h6">
             {props.translate("anonPages.signupStep2.tocTitle")}
           </Typography>
         </Box>
-      </Grid>
+      </Grid> */}
 
-      <Grid>
+      <Grid item xs={12} justify={"center"}>
         <TabContext value={value}
           centered>
           <AppBar position="static"
-            style={{ backgroundColor: props.theme.palette.secondary.light }}>
-            <TabList onChange={handleChange} textColor="primary" indicatorColor="primary">
+            style={{
+              backgroundColor: props.theme.palette.secondary.light,
+              borderRadius: "25px"
+            }} >
+            <TabList onChange={handleChange} textColor="primary">
               <Tab label={props.translate("anonPages.signupStep2.tocHeader")} />
               <Tab label={props.translate("anonPages.signupStep2.privacyHeader")} />
             </TabList>
