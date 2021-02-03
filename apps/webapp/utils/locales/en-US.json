@@ -20,6 +20,7 @@
     "signupStep2": {
       "subtitle1": "Answerbook",
       "subtitle2": "Create an ANSWERBOOK account!",
+      "tocTitle": "Terms and Conditions",
       "tocHeader": "T&C",
       "privacyHeader": "Privacy policy",
       "messageSuccess": "Thank you for signing up to Answerbook",
