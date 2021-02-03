@@ -7,7 +7,7 @@ import AssignmentIcon from "@material-ui/icons/Assignment";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import { makeStyles } from "@material-ui/core/styles";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import BarcodeScannerComponent from "../../component/BarcodeScanner/BarcodeScannerComponent";
+import BarcodeScannerComponent from "../../component/barcode/BarcodeScannerComponent";
 
 const useStyles = makeStyles({
   scrollerOverride: {
@@ -17,6 +17,7 @@ const useStyles = makeStyles({
 const Dashboard = (props) => {
   const classes = useStyles();
   const [barcodeScannerOpen, setBarcodeScannerOpen] = useState(false);
+  console.log(props.user.get("profilePicture"))
   return (
     <React.Fragment>
       <BarcodeScannerComponent open={barcodeScannerOpen} onClose={setBarcodeScannerOpen} />
@@ -31,7 +32,7 @@ const Dashboard = (props) => {
                     <Avatar
                       alt={props.user.get("name")}
                       style={{ width: 124, height: 124 }}
-                      src={"https://material-ui.com/static/images/avatar/1.jpg"}
+                      src={props.user.get("profilePicture").url()}
                     />
                   </Grid>
                 </Grid>
