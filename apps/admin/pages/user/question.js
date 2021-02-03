@@ -107,6 +107,14 @@ const ManageQuestion = (props) => {
                             </Button>
                           </Box>
                         </Grid>
+
+                        <Grid item xs={12} sm={3}>
+                          <Box mt={2}>
+                            <Button type="submit" color="primary" fullWidth variant="contained" disabled={formik.isSubmitting}>
+                              Add Question
+                            </Button>
+                          </Box>
+                        </Grid>
                       </Grid>
                     </Box>
                   </Box>
