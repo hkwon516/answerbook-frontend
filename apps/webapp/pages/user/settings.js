@@ -1,8 +1,9 @@
-import { Box, Grid, Button, Avatar, colors } from "@material-ui/core";
+import { Box, Grid, Button, Avatar, colors, Paper} from "@material-ui/core";
 import React, { useRef } from "react";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import GeneralComponent from "../../component/settings/GeneralComponent";
 import NotificationComponent from "../../component/settings/NotificationComponent";
+import SecurityComponent from "../../component/settings/SecurityComponent";
 import getParse from "../../utils/parse";
 
 const Settings = (props) => {
@@ -38,7 +39,12 @@ const Settings = (props) => {
             </Box>
           </Grid>
           <Grid item xs={12} md={4} sm={6}>
+          <Paper elevation={1}>
+          <Box p={2}>
             <GeneralComponent {...props} />
+            <SecurityComponent {...props} />
+            </Box>
+            </Paper>
             <Box mt={2}>
               <NotificationComponent {...props} />
             </Box>
