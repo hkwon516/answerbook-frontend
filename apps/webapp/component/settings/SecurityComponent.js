@@ -44,63 +44,51 @@ const SecurityComponent = (props) => {
 
   return (
     <form noValidate onSubmit={formik.handleSubmit}>
-      <Paper elevation={1}>
-        <Box p={2} pt={1} pb={1}>
-          <Typography style={{ opacity: 0.5 }} variant="body2">
-            {props.translate("userPages.settings.labelSecurity")}
-          </Typography>
-        </Box>
-        <Divider />
-        <Box p={2}>
-          <Grid container>
-            <Grid item xs={12}>
-              <InputComponent
-                required
-                fullWidth
-                name="currentPassword"
-                label={props.translate("userPages.settings.fieldCurrentPassword")}
-                type="password"
-                size="small"
-                autoComplete="current-password"
-                formik={formik}
-              />
-            </Grid>
+      <Grid container>
+        <Grid item xs={12}>
+          <InputComponent
+            required
+            fullWidth
+            name="currentPassword"
+            label={props.translate("userPages.settings.fieldCurrentPassword")}
+            type="password"
+            size="small"
+            autoComplete="current-password"
+            formik={formik}
+          />
+        </Grid>
 
-            <Grid item xs={12}>
-              <InputComponent
-                required
-                fullWidth
-                name="password"
-                label={props.translate("userPages.settings.fieldNewPassword")}
-                type="password"
-                size="small"
-                autoComplete="password"
-                formik={formik}
-              />
-            </Grid>
+        <Grid item xs={12}>
+          <InputComponent
+            required
+            fullWidth
+            name="password"
+            label={props.translate("userPages.settings.fieldNewPassword")}
+            type="password"
+            size="small"
+            autoComplete="password"
+            formik={formik}
+          />
+        </Grid>
 
-            <Grid item xs={12}>
-              <InputComponent
-                required
-                fullWidth
-                name="passwordConfirm"
-                label={props.translate("userPages.settings.fieldConfirmPassword")}
-                type="password"
-                size="small"
-                autoComplete="confirm-password"
-                formik={formik}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <Button type="submit" color="secondary" size="small" disabled={formik.isSubmitting}>
-                {!formik.isSubmitting
-                  ? props.translate("userPages.settings.buttonConfirm")
-                  : props.translate("app.buttonWait")}
-              </Button>
-            </Grid>
-          </Grid>
-        </Box>
-      </Paper>
+        <Grid item xs={12}>
+          <InputComponent
+            required
+            fullWidth
+            name="passwordConfirm"
+            label={props.translate("userPages.settings.fieldConfirmPassword")}
+            type="password"
+            size="small"
+            autoComplete="confirm-password"
+            formik={formik}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Button type="submit" color="secondary" size="small" disabled={formik.isSubmitting}>
+            {!formik.isSubmitting ? props.translate("userPages.settings.buttonConfirm") : props.translate("app.buttonWait")}
+          </Button>
+        </Grid>
+      </Grid>
     </form>
   );
 };
