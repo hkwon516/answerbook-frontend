@@ -34,7 +34,7 @@
       "buttonSubmit": "Send Email Link",
       "emailRequired": "Email is a required field.",
       "emailValidate": "Please enter a valid email.",
-      "messageCheckEmail": "Email has been sent to you, kindly please check your email..."
+      "messageCheckEmail": "Email has been sent to you, please check your email."
     },
     "signup": {
       "messageSuccess": "Thank you for signing up to Answerbook",

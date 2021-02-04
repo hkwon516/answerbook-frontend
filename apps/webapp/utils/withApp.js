@@ -34,7 +34,13 @@ const withUser = (WrappedComponent) => {
       if (user && !user.get("emailVerified")) {
         user = await user.fetch();
       }
+
       if (user) {
+        if (user.get("position") != "student") {
+          this.onLogout();
+          return;
+        }
+
         await user.get("student").fetch();
       }
       this.setState({ user, loading: false });
@@ -150,7 +156,7 @@ const withApp = (WrappedComponent) => {
     };
 
     const getTitle = (prefix = true) => {
-      const pageTitle = titlePageKey && translate(titlePageKey) ? ` | ${translate(titlePageKey)}` : '';
+      const pageTitle = titlePageKey && translate(titlePageKey) ? ` | ${translate(titlePageKey)}` : "";
       const title = (prefix ? `${translate("app.title")}` : null) + pageTitle;
       return title;
     };
