@@ -79,48 +79,38 @@ const Toc = (props) => {
       <Grid item xs={12}>
         <Box m={1}>
           <Box>
-            <Typography style={{ textTransform: "uppercase" }}>
+            <Typography style={{ textTransform: "uppercase" }, { fontWeight: "10pt" }, { marginTop: 30 }}>
               {props.translate("anonPages.toc.textMainTitle")}
             </Typography>
           </Box>
-          <Box mt={1}>
-            <Typography variant="body2" style={{ marginTop: 16 }, { fontWeight: "bold" }}>
-              {props.translate("anonPages.toc.title1")}
-            </Typography>
+          <Box>
 
-            <Typography variant="body2" style={{ marginTop: 16 }, { fontWeight: "bold" }}>
-              {props.translate("anonPages.toc.title2")}
-            </Typography>
-            <Typography variant="body2" style={{ marginTop: 16 }}>
-              {props.translate("anonPages.toc.paragraph1")}
-            </Typography>
+            <Box mt={1}>
+              <Typography variant="body2" style={{ fontWeight: "bold" }}>
+                {props.translate("anonPages.toc.title1")}
+              </Typography>
+            </Box>
 
-            <Typography variant="body2" style={{ marginTop: 16 }, { fontWeight: "bold" }}>
-              {props.translate("anonPages.toc.title3")}
-            </Typography>
+            <Box mt={1.5}>
+              <Typography variant="body2" style={{ fontWeight: "bold" }}>
+                {props.translate("anonPages.toc.title2")}
+              </Typography>
+            </Box>
+
+            <Box mt={1}>
+              <Typography variant="body2">
+                {props.translate("anonPages.toc.paragraph1")}
+              </Typography>
+            </Box>
+
+            <Box mt={3}>
+              <Typography variant="body2" style={{ marginTop: 16 }, { fontWeight: "bold" }}>
+                {props.translate("anonPages.toc.title3")}
+              </Typography>
+            </Box>
+
             <Typography variant="body2" style={{ marginTop: 16 }}>
-              The definitions of terms used in these terms and conditions are as follows.
-              All. For the definition of terms in the terms and conditions other than the terms defined in each issue
-              The information is in accordance with the relevant laws and regulations and service information.
-              1. Contents: 「Information and communication network use promotion and information protection
-              In the information and communication network according to the provisions of Article 2 (1) 1 of the Act
-              With the code, text, voice, sound, image or video used
-              Expressed data or information, useful in preservation and use
-              In order to increase the quality of the product,
-              It refers to what has been processed.
-              2. Company: Those who engage in economic activities related to the “contents” industry
-              Content services (including web and mobile web/app services)
-              C) and a person who provides all services.
-              3. Member: Signs a contract with the'company' and provides information on the'company'.
-              And use the services provided by the ‘company’
-              It refers to those who can.
-              4. Post: Tech written in the process of using the service by the'member'
-              Refers to information or materials such as text, images, audio, video, and links.
-              is.
-              5. My Library: List of'Contents' and'Postings' written by'Members'
-              It means a virtual space that stores'water'.
-              6. Pen name: A unique name given to a ‘member’ when registering as a member
-              Is automatically assigned and can be changed by the'member'.
+              {props.translate("anonPages.toc.paragraph2")}
             </Typography>
           </Box>
         </Box>
