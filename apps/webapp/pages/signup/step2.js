@@ -123,6 +123,7 @@ const SignUp = (props) => {
   });
 
   useEffect(() => {
+    props.setTitlePageKey("anonPages.signupStep2.title");
     if (formik.values.profilePicture) {
       const reader = new FileReader();
       reader.onloadend = () => {

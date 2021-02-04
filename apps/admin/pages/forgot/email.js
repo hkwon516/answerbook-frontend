@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Typography, Button, Grid, Box } from "@material-ui/core";
 import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
@@ -34,9 +34,12 @@ export default function forgotEmail(props) {
     },
   });
 
+  useEffect(() => {
+    props.setTitlePageKey("anonPages.forgetEmail.title");
+  }, [])
+
   return (
     <>
-      {props.setTitlePageKey("anonPages.forgetEmail.title")}
 
       <form noValidate onSubmit={formik.handleSubmit}>
         <Grid container justify={"center"}>

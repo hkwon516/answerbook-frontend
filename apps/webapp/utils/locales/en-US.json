@@ -126,6 +126,7 @@
       "labelmyAccount": "My Account"
     },
     "settings": {
+      "title": "Settings",
       "labelSuccessMessage": "Successfully Updated",
       "labelPasswordUpdateMessage": "Password updated successfully",
       "labelGeneral": "General",

@@ -44,7 +44,6 @@ const Login = (props) => {
 
   return (
     <>
-      {props.setTitlePageKey("anonPages.login.title")}
       <form noValidate onSubmit={formik.handleSubmit}>
         <Grid container justify={"center"}>
           <Grid item xs={12}>

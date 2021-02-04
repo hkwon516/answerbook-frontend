@@ -1,5 +1,5 @@
 import { Box, Button, Divider, Grid, Paper, Typography, TextField, MenuItem, InputLabel, FormControl } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
 import MaterialTable from "material-table";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -57,9 +57,13 @@ const ManageTextbook = (props) => {
     setOpen(false);
   };
 
+  useEffect(() => {
+    props.setTitlePageKey("userPages.settings.title");
+  }, [])
+
   return (
     <>
-      {props.setTitlePageKey("userPages.settings.title")}
+
       <form noValidate>
         <Box mt={2}>
           <Grid container justify="center">
@@ -77,42 +81,42 @@ const ManageTextbook = (props) => {
                         <Grid container>
                           <Grid item xs={12}>
 
-                              <FormControl
-                                error={formik.touched.subject && formik.errors.subject}
-                                variant="filled"
-                                margin={"normal"}
-                                fullWidth
-                              >
-                                <InputLabel>{props.translate("userPages.textBook.labelSubject")}</InputLabel>
-                                <Select value={formik.values.subject} name="school" onChange={formik.handleChange}>
-                                  <MenuItem value={"Korean"}>Korean</MenuItem>
-                                  <MenuItem value={"Math"}>Math</MenuItem>
-                                  <MenuItem value={"English"}>English</MenuItem>
-                                  <MenuItem value={"Social studies"}>Social studies</MenuItem>
-                                  <MenuItem value={"Science"}>Science</MenuItem>
-                                </Select>
-                                {formik.touched.subject && formik.errors.subject && (
-                                  <FormHelperText error>{formik.errors.subject}</FormHelperText>
-                                )}
-                              </FormControl>
+                            <FormControl
+                              error={formik.touched.subject && formik.errors.subject}
+                              variant="filled"
+                              margin={"normal"}
+                              fullWidth
+                            >
+                              <InputLabel>{props.translate("userPages.textBook.labelSubject")}</InputLabel>
+                              <Select value={formik.values.subject} name="school" onChange={formik.handleChange}>
+                                <MenuItem value={"Korean"}>Korean</MenuItem>
+                                <MenuItem value={"Math"}>Math</MenuItem>
+                                <MenuItem value={"English"}>English</MenuItem>
+                                <MenuItem value={"Social studies"}>Social studies</MenuItem>
+                                <MenuItem value={"Science"}>Science</MenuItem>
+                              </Select>
+                              {formik.touched.subject && formik.errors.subject && (
+                                <FormHelperText error>{formik.errors.subject}</FormHelperText>
+                              )}
+                            </FormControl>
 
                           </Grid>
 
                           <Grid item xs={12}>
-                              <FormControl
-                                error={formik.touched.category && formik.errors.category}
-                                variant="filled"
-                                margin={"normal"}
-                                fullWidth
-                              >
-                                <InputLabel>{props.translate("userPages.textBook.labelCategories")}</InputLabel>
-                                <Select value={formik.values.category} name="category" onChange={formik.handleChange}>
-                                  <MenuItem value={"category"}>Category</MenuItem>
-                                </Select>
-                                {formik.touched.category && formik.errors.category && (
-                                  <FormHelperText error>{formik.errors.category}</FormHelperText>
-                                )}
-                              </FormControl>
+                            <FormControl
+                              error={formik.touched.category && formik.errors.category}
+                              variant="filled"
+                              margin={"normal"}
+                              fullWidth
+                            >
+                              <InputLabel>{props.translate("userPages.textBook.labelCategories")}</InputLabel>
+                              <Select value={formik.values.category} name="category" onChange={formik.handleChange}>
+                                <MenuItem value={"category"}>Category</MenuItem>
+                              </Select>
+                              {formik.touched.category && formik.errors.category && (
+                                <FormHelperText error>{formik.errors.category}</FormHelperText>
+                              )}
+                            </FormControl>
                           </Grid>
 
                           <Grid item xs={12}>

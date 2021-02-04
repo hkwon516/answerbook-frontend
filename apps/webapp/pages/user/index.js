@@ -1,5 +1,5 @@
 import { Button, Grid, Box, Tabs, Tab, IconButton, Container, Avatar, Typography } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HomeIcon from "@material-ui/icons/Home";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
@@ -18,6 +18,11 @@ const Dashboard = (props) => {
   const classes = useStyles();
   const [barcodeScannerOpen, setBarcodeScannerOpen] = useState(false);
   console.log(props.user.get("profilePicture"));
+
+  useEffect(() => {
+    props.setTitlePageKey("userPages.home.labelHome");
+  }, []);
+
   return (
     <React.Fragment>
       <BarcodeScannerComponent

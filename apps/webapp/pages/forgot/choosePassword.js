@@ -69,9 +69,12 @@ const ChoosePassword = (props) => {
     },
   });
 
+  useEffect(() => {
+    props.setTitlePageKey("anonPages.forgotChoosePassword.title");
+  }, []);
+
   return (
     <>
-      {props.setTitlePageKey("anonPages.forgotChoosePassword.title")}
       <form noValidate onSubmit={formik.handleSubmit}>
         <Grid container justify={"center"}>
           <Grid item xs={12}>

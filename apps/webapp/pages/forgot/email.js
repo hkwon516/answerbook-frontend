@@ -33,9 +33,12 @@ export default function forgotEmail(props) {
     },
   });
 
+  useEffect(() => {
+    props.setTitlePageKey("anonPages.forgetEmail.title");
+  }, []);
+
   return (
     <>
-      {props.setTitlePageKey("anonPages.forgetEmail.title")}
 
       <form noValidate onSubmit={formik.handleSubmit}>
         <Grid container justify={"center"}>
