@@ -1,5 +1,5 @@
 import { Box, Grid, Button, Avatar, colors, Paper, AppBar, Toolbar, IconButton, Typography, Badge } from "@material-ui/core";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import GeneralComponent from "../../component/settings/GeneralComponent";
 import NotificationComponent from "../../component/settings/NotificationComponent";
 import SecurityComponent from "../../component/settings/SecurityComponent";
@@ -8,9 +8,12 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 const Settings = (props) => {
 
+  useEffect(() => {
+    props.setTitlePageKey("userPages.settings.title");
+  }, []);
+
   return (
     <React.Fragment>
-      {props.setTitlePageKey("userPages.settings.title")}
       <AppBar elevation={0} color="transparent" position="static">
         <Toolbar>
           <Grid alignItems="center" container justify="space-between">
@@ -19,7 +22,7 @@ const Settings = (props) => {
                 onClick={() => {
                   props.router.back()
                 }}
-                
+
               >
                 <ArrowBackIcon />
               </IconButton>
@@ -36,7 +39,7 @@ const Settings = (props) => {
                 onClick={() => {
                   setDrawerOpen(!drawerOpen);
                 }}
-                
+
               >
                 <Badge color="secondary" variant="dot">
                   <NotificationsIcon />

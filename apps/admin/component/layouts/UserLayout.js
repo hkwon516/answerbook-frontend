@@ -15,7 +15,7 @@ import {
   IconButton,
   Button,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MenuIcon from "@material-ui/icons/Menu";
 import clsx from "clsx";
 import { useRouter } from "next/router";
@@ -83,9 +83,13 @@ const UserLayout = (props) => {
   const drawerWidth = getDrawerWidth(props.theme);
   const popperWidth = drawerWidth - drawerWidth * 0.1;
 
+  // useEffect(() => {
+  //   props.setTitlePageKey("app.title");
+  // }, [])
+
   return (
     <>
-     
+
       <Grid container>
         <Grid item xs={12}>
           <AppBar

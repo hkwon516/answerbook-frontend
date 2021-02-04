@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Typography, Grid, Box } from "@material-ui/core";
 import Step1Graphic1 from "../../component/signup/Step1Graphic1";
 import ButtonComponent from "../../component/generic/ButtonComponent";
 import KakaoIcon from "../../component/login/KakaoIcon";
 
 export default function SignUp(props) {
+  useEffect(() => {
+    props.setTitlePageKey("anonPages.signupStep2.title");
+  }, []);
+
   return (
     <>
       <Grid container>
