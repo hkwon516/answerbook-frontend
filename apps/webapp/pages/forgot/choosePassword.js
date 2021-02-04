@@ -7,6 +7,7 @@ import * as yup from "yup";
 import { useRouter } from "next/router";
 import ButtonComponent from "../../component/generic/ButtonComponent";
 import getParse from "../../utils/parse";
+import config from "../../config/";
 
 const ChoosePassword = (props) => {
   console.log("props", props);
@@ -55,7 +56,7 @@ const ChoosePassword = (props) => {
 
         await fetch("http://localhost:9000/parse/apps/answerbookApi/request_password_reset", params);
         props.showSuccess(props.translate("anonPages.forgotChoosePassword.messageSuccess"));
-        router.push("/");
+        window.location.href = config.adminURL;
       } catch (error) {
         props.showError(error.message);
       }

@@ -22,7 +22,7 @@ import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import LinkComponent from "../../component/generic/LinkComponent";
-import AddCircleIcon from '@material-ui/icons/AddCircle';
+import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { makeStyles } from "@material-ui/core/styles";
 import ButtonComponent from "../../component/generic/ButtonComponent";
 import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -62,7 +62,7 @@ const SignUp = (props) => {
       school: null,
       grade: "",
       toc: false,
-      profilePicture: undefined
+      profilePicture: undefined,
     },
     validationSchema: yup.object().shape({
       name: yup.string().required(props.translate("anonPages.signupStep2.nameRequired")),
@@ -103,11 +103,10 @@ const SignUp = (props) => {
         user.set("position", "student");
         user.set("locale", props.router.locale);
 
-        const profilePicture = new props.parse.File('profilePicture', values.profilePicture);
-
-
-        user.set("profilePicture", profilePicture);
-
+        if (values.profilePicture) {
+          const profilePicture = new props.parse.File("profilePicture", values.profilePicture);
+          user.set("profilePicture", profilePicture);
+        }
         await user.signUp();
 
         props.showSuccess(props.translate("anonPages.signupStep2.messageSuccess"));
@@ -134,7 +133,6 @@ const SignUp = (props) => {
     }
   }, [formik.values.profilePicture]);
 
-  console.log("profilePicture", formik.values.profilePicture)
   return (
     <>
       <Grid container>
@@ -190,10 +188,10 @@ const SignUp = (props) => {
                       capture="camera"
                       ref={cameraRef}
                       multiple={false}
-                      onChange={(e)=>{
-                        console.log(e.target.files)
+                      onChange={(e) => {
+                        console.log(e.target.files);
                         if (e.target && e.target.files && e.target.files[0]) {
-                          formik.setFieldValue("profilePicture",e.target.files[0]);
+                          formik.setFieldValue("profilePicture", e.target.files[0]);
                         }
                       }}
                       name="profilePicture"
