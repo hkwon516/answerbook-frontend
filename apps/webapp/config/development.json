@@ -1,4 +1,5 @@
 {
   "appId": "answerbookApi",
-  "serverURL": "http://localhost:9000/parse"
+  "serverURL": "http://localhost:9000/parse",
+  "adminURL": "http://localhost:9001"
 }

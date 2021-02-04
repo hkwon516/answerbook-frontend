@@ -12,18 +12,21 @@ const AnonLayout = (props) => {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
-      <Grid container alignItems="center" className={classes.wrapper}>
-        <Grid item xs={12}>
-          <Box>{props.children}</Box>
+    <>
+
+      <Container component="main" maxWidth="xs">
+        <Grid container alignItems="center" className={classes.wrapper}>
+          <Grid item xs={12}>
+            <Box>{props.children}</Box>
+          </Grid>
+          <Grid item xs={6}>
+            <Box mb={2}>
+              <LanguageSwitcherComponent {...props} />
+            </Box>
+          </Grid>
         </Grid>
-        <Grid item xs={6}>
-          <Box mb={2}>
-            <LanguageSwitcherComponent {...props} />
-          </Box>
-        </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </>
   );
 };
 
