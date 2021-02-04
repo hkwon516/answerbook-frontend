@@ -1,9 +1,10 @@
-import { AppBar, Box, Button, Divider, Grid, IconButton, Paper, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Box, Button, Divider, Grid, IconButton, ListSubheader, Paper, Toolbar, Typography } from "@material-ui/core";
 import React from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import InputComponent from "../../component/generic/InputComponent";
 import MenuIcon from "@material-ui/icons/Menu";
+import ButtonComponent from "../generic/ButtonComponent";
 
 const SecurityComponent = (props) => {
   const formik = useFormik({
@@ -44,6 +45,7 @@ const SecurityComponent = (props) => {
 
   return (
     <form noValidate onSubmit={formik.handleSubmit}>
+      <ListSubheader disableGutters>{props.translate("userPages.settings.lableListSubheader")}</ListSubheader>
       <Grid container>
         <Grid item xs={12}>
           <InputComponent
@@ -84,9 +86,11 @@ const SecurityComponent = (props) => {
           />
         </Grid>
         <Grid item xs={12}>
-          <Button type="submit" color="secondary" size="small" disabled={formik.isSubmitting}>
-            {!formik.isSubmitting ? props.translate("userPages.settings.buttonConfirm") : props.translate("app.buttonWait")}
-          </Button>
+          <Box mt={2}>
+            <ButtonComponent variant="contained"n fullWidth type="submit" color="secondary"  disabled={formik.isSubmitting}>
+              {!formik.isSubmitting ? props.translate("userPages.settings.buttonConfirm") : props.translate("app.buttonWait")}
+            </ButtonComponent>
+          </Box>
         </Grid>
       </Grid>
     </form>
