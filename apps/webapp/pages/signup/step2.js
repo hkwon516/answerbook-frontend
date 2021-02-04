@@ -57,6 +57,7 @@ const SignUp = (props) => {
       name: "",
       username: "",
       password: "",
+      phone: "",
       emailProvider: emailProviders[0],
       nickname: "",
       school: null,
@@ -71,6 +72,10 @@ const SignUp = (props) => {
         .string()
         .required(props.translate("anonPages.signupStep2.passwordRequired"))
         .min(6, props.translate("anonPages.signupStep2.passwordLength")),
+      phone: yup
+        .number(props.translate("anonPages.signupStep2.phoneValidate"))
+        .required(props.translate("anonPages.signupStep2.phoneRequired"))
+        .typeError(props.translate("anonPages.signupStep2.phoneValidate")),
 
       nickname: yup.string().required(props.translate("anonPages.signupStep2.nicknameRequired")),
       school: yup.object().required(props.translate("anonPages.signupStep2.schoolRequired")),
@@ -98,6 +103,7 @@ const SignUp = (props) => {
         user.set("name", values.name);
         user.set("username", email);
         user.set("email", email);
+        user.set("phone", values.phone);
         user.set("password", values.password);
         user.set("student", student);
         user.set("position", "student");
@@ -231,6 +237,19 @@ const SignUp = (props) => {
                     formik={formik}
                   />
                 </Grid>
+
+                <Grid item xs={12}>
+                  <InputComponent
+                    required
+                    fullWidth
+                    name="phone"
+                    label={props.translate("anonPages.signupStep2.fieldPhone")}
+                    size="small"
+                    autoComplete="Phone Number"
+                    formik={formik}
+                  />
+                </Grid>
+
                 <Grid item xs={12}>
                   <InputComponent
                     required
