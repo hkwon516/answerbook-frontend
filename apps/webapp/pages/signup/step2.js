@@ -73,7 +73,7 @@ const SignUp = (props) => {
         .required(props.translate("anonPages.signupStep2.passwordRequired"))
         .min(6, props.translate("anonPages.signupStep2.passwordLength")),
       phone: yup
-        .number(props.translate("anonPages.signupStep2.phoneValidate"))
+        .number()
         .required(props.translate("anonPages.signupStep2.phoneRequired"))
         .typeError(props.translate("anonPages.signupStep2.phoneValidate")),
 
