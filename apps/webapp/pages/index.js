@@ -1,4 +1,4 @@
-import React from "react";
+import React, {withApp} from "react";
 import Head from "next/head";
 import { Typography, Button, Grid, Box } from "@material-ui/core";
 import InputComponent from "../component/generic/InputComponent";
@@ -36,6 +36,10 @@ const Login = (props) => {
       actions.setSubmitting(false);
     },
   });
+
+  useEffect(()=>{
+    props.setTitlePageKey("anonPages.login.title");
+  }, [])
 
   return (
     <>
