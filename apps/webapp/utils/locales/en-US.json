@@ -105,7 +105,12 @@
     "toc": {
       "title": "Terms and conditions",
       "buttonTermsOfUse": "Terms of use",
-      "buttonPrivacy": "Privacy Policy"
+      "buttonPrivacy": "Privacy Policy",
+      "textMainTitle": "Millie's Library Terms and Conditions",
+      "title1": "Chapter 1: General Provisions",
+      "title2": "Article 1 [Purpose]",
+      "paragraph1": "These terms and conditions are provided by Milli's library (hereinafter referred to as the ``company'') and provide content services (including web, mobile web and app services, paper book subscription services, etc.) and all services. The purpose is to stipulate basic matters such as rights, obligations and responsibilities among'company', and conditions of service use.",
+      "title3": "Article 2 [Terminology]"
     }
   },
   "userPages": {
