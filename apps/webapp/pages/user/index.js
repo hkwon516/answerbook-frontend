@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 const Dashboard = (props) => {
   const classes = useStyles();
   const [barcodeScannerOpen, setBarcodeScannerOpen] = useState(false);
-  console.log(props.user.get("profilePicture"))
+  console.log(props.user.get("profilePicture"));
   return (
     <React.Fragment>
       <BarcodeScannerComponent
@@ -43,7 +43,10 @@ const Dashboard = (props) => {
                     <Avatar
                       alt={props.user.get("name")}
                       style={{ width: 124, height: 124 }}
-                      src={props.user.get("profilePicture").url()}
+                      src={
+                        props.user.get("profilePicture")?.url() ||
+                        "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.jpg"
+                      }
                     />
                   </Grid>
                 </Grid>
