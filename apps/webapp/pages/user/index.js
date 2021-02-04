@@ -7,7 +7,7 @@ import AssignmentIcon from "@material-ui/icons/Assignment";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import { makeStyles } from "@material-ui/core/styles";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import BarcodeScannerComponent from "../../component/BarcodeScanner/BarcodeScannerComponent";
+import BarcodeScannerComponent from "../../component/barcode/BarcodeScannerComponent";
 
 const useStyles = makeStyles({
   scrollerOverride: {
@@ -17,9 +17,21 @@ const useStyles = makeStyles({
 const Dashboard = (props) => {
   const classes = useStyles();
   const [barcodeScannerOpen, setBarcodeScannerOpen] = useState(false);
+  console.log(props.user.get("profilePicture"));
   return (
     <React.Fragment>
-      <BarcodeScannerComponent open={barcodeScannerOpen} onClose={setBarcodeScannerOpen} />
+      <BarcodeScannerComponent
+        open={barcodeScannerOpen}
+        onClose={(code) => {
+          setBarcodeScannerOpen(false);
+
+          if (code) {
+            setTimeout(() => {
+              alert(code);
+            }, 1000);
+          }
+        }}
+      />
       <Grid container style={{ height: "100vh" }} direction="column" justify="space-between">
         <Grid item>
           <Box>
@@ -31,7 +43,10 @@ const Dashboard = (props) => {
                     <Avatar
                       alt={props.user.get("name")}
                       style={{ width: 124, height: 124 }}
-                      src={"https://material-ui.com/static/images/avatar/1.jpg"}
+                      src={
+                        props.user.get("profilePicture")?.url() ||
+                        "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.jpg"
+                      }
                     />
                   </Grid>
                 </Grid>
@@ -56,8 +71,7 @@ const Dashboard = (props) => {
                           </IconButton>
                         </Grid>
                       </Grid>
-                      <Typography variant="body2">{props.user.get("student")?.get('school')?.get('name')}</Typography>
-
+                      <Typography variant="body2">{props.user.get("student")?.get("school")?.get("name")}</Typography>
                     </Box>
                   </Grid>
                 </Grid>

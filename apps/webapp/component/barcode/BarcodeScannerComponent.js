@@ -17,7 +17,12 @@ const BarcodeScannerComponent = (props) => {
               <Box mt={5} style={{ position: "relative" }}>
                 <BarcodeScanner
                   onUpdate={(err, result) => {
-                    console.log(result);
+                    if (err) {
+                      alert(err.message);
+                    }
+                    if (result && result.text) {
+                      props.onClose(result.text);
+                    }
                   }}
                 />
                 <Box style={{ position: "absolute", top: 0, left: 0, height: "100%", width: "100%" }}>

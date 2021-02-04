@@ -54,79 +54,74 @@ const NotificationComponent = (props) => {
   });
   return (
     <form noValidate onSubmit={formik.handleSubmit}>
-      <Paper elevation={1}>
-        <Box p={2} pt={1} pb={1}>
-          <Typography style={{ opacity: 0.5 }} variant="body2">
-            {props.translate("userPages.settings.labelNotification")}
-          </Typography>
+        <Box mt={1}>
+          <List subheader={<ListSubheader disableGutters>{props.translate("userPages.settings.lableListSubheader")}</ListSubheader>}>
+            <ListItem disableGutters>
+              <ListItemText
+                style={{paddingRight: 10}}
+                primary={props.translate("userPages.settings.lableSwitchOnePrimary")}
+                secondary={props.translate("userPages.settings.lableSwitchOneSecondary")}
+              />
+              <ListItemSecondaryAction>
+                <Switch
+                  edge="end"
+                  onChange={handleToggle("likes")}
+                  checked={checked.indexOf("likes") !== -1}
+                  inputProps={{ "aria-labelledby": "switch-list-label-likes" }}
+                />
+              </ListItemSecondaryAction>
+            </ListItem>
+
+            <ListItem disableGutters>
+              <ListItemText
+                style={{paddingRight: 10}}
+                primary={props.translate("userPages.settings.lableSwitchTwoPrimary")}
+                secondary={props.translate("userPages.settings.lableSwitchTwoSecondary")}
+              />
+              <ListItemSecondaryAction>
+                <Switch
+                  edge="end"
+                  onChange={handleToggle("saveSolution")}
+                  checked={checked.indexOf("saveSolution") !== -1}
+                  inputProps={{ "aria-labelledby": "switch-list-label-likes" }}
+                />
+              </ListItemSecondaryAction>
+            </ListItem>
+
+            <ListItem disableGutters>
+              <ListItemText
+                style={{paddingRight: 10}}
+                primary={props.translate("userPages.settings.lableSwitchThreePrimary")}
+                secondary={props.translate("userPages.settings.lableSwitchThreeSecondary")}
+              />
+              <ListItemSecondaryAction>
+                <Switch
+                  edge="end"
+                  onChange={handleToggle("comments")}
+                  checked={checked.indexOf("comments") !== -1}
+                  inputProps={{ "aria-labelledby": "switch-list-label-likes" }}
+                />
+              </ListItemSecondaryAction>
+            </ListItem>
+
+            <ListItem disableGutters>
+              <ListItemText
+                style={{paddingRight: 10}}
+                primary={props.translate("userPages.settings.lableSwitchFourPrimary")}
+                secondary={props.translate("userPages.settings.lableSwitchFourSecondary")}
+              />
+              <ListItemSecondaryAction>
+                <Switch
+                  edge="end"
+                  onChange={handleToggle("alert")}
+                  checked={checked.indexOf("alert") !== -1}
+                  inputProps={{ "aria-labelledby": "switch-list-label-likes" }}
+                />
+              </ListItemSecondaryAction>
+            </ListItem>
+          </List>
         </Box>
-        <Divider />
-        <Box p={2}>
-          <Box mt={1}>
-            <List subheader={<ListSubheader disableGutters>{props.translate("userPages.settings.lableListSubheader")}</ListSubheader>}>
-              <ListItem disableGutters>
-                <ListItemText
-                  primary={props.translate("userPages.settings.lableSwitchOnePrimary")}
-                  secondary={props.translate("userPages.settings.lableSwitchOneSecondary")}
-                />
-                <ListItemSecondaryAction>
-                  <Switch
-                    edge="end"
-                    onChange={handleToggle("likes")}
-                    checked={checked.indexOf("likes") !== -1}
-                    inputProps={{ "aria-labelledby": "switch-list-label-likes" }}
-                  />
-                </ListItemSecondaryAction>
-              </ListItem>
-
-              <ListItem disableGutters>
-                <ListItemText
-                  primary={props.translate("userPages.settings.lableSwitchTwoPrimary")}
-                  secondary={props.translate("userPages.settings.lableSwitchTwoSecondary")}
-                />
-                <ListItemSecondaryAction>
-                  <Switch
-                    edge="end"
-                    onChange={handleToggle("saveSolution")}
-                    checked={checked.indexOf("saveSolution") !== -1}
-                    inputProps={{ "aria-labelledby": "switch-list-label-likes" }}
-                  />
-                </ListItemSecondaryAction>
-              </ListItem>
-
-              <ListItem disableGutters>
-                <ListItemText
-                  primary={props.translate("userPages.settings.lableSwitchThreePrimary")}
-                  secondary={props.translate("userPages.settings.lableSwitchThreeSecondary")}
-                />
-                <ListItemSecondaryAction>
-                  <Switch
-                    edge="end"
-                    onChange={handleToggle("comments")}
-                    checked={checked.indexOf("comments") !== -1}
-                    inputProps={{ "aria-labelledby": "switch-list-label-likes" }}
-                  />
-                </ListItemSecondaryAction>
-              </ListItem>
-
-              <ListItem disableGutters>
-                <ListItemText
-                  primary={props.translate("userPages.settings.lableSwitchFourPrimary")}
-                  secondary={props.translate("userPages.settings.lableSwitchFourSecondary")}
-                />
-                <ListItemSecondaryAction>
-                  <Switch
-                    edge="end"
-                    onChange={handleToggle("alert")}
-                    checked={checked.indexOf("alert") !== -1}
-                    inputProps={{ "aria-labelledby": "switch-list-label-likes" }}
-                  />
-                </ListItemSecondaryAction>
-              </ListItem>
-            </List>
-          </Box>
-        </Box>
-      </Paper>
+      
     </form>
   );
 };

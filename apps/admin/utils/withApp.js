@@ -34,6 +34,13 @@ const withUser = (WrappedComponent) => {
         user = await user.fetch();
       }
 
+      if (user) {
+        if (user.get("position") == "student") {
+          this.onLogout();
+          return;
+        }
+      }
+
       this.setState({ user, loading: false });
     };
 
@@ -49,7 +56,7 @@ const withUser = (WrappedComponent) => {
         this.setState({ loading: true });
         const user = await this.parse.User.logIn(username, password, { usePost: true });
 
-        this.setState({ user });
+        await this.resolveUser()
       } catch (error) {
         throw error;
       }
@@ -148,8 +155,9 @@ const withApp = (WrappedComponent) => {
     };
 
     const getTitle = (prefix = true) => {
-      const pageTitle = titlePageKey && translate(titlePageKey) ? translate(titlePageKey) : undefined;
-      return prefix ? `${translate("app.title")}` : null + pageTitle ? ` | ${translate(pageTitle)}` : null;
+      const pageTitle = titlePageKey && translate(titlePageKey) ? ` | ${translate(titlePageKey)}` : '';
+      const title = (prefix ? `${translate("app.title")}` : null) + pageTitle;
+      return title;
     };
 
     const commonProps = {
@@ -181,6 +189,7 @@ const withApp = (WrappedComponent) => {
       <React.Fragment>
         <Head>
           <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+          <title>{getTitle()}</title>
         </Head>
         <ThemeProvider theme={commonProps.theme}>
           <CssBaseline />
