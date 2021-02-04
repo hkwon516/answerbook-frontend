@@ -1,4 +1,4 @@
-import React, {withApp} from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import { Typography, Button, Grid, Box } from "@material-ui/core";
 import InputComponent from "../component/generic/InputComponent";
@@ -18,7 +18,8 @@ const Login = (props) => {
         .string()
         .required(props.translate("anonPages.login.emailRequired"))
         .email(props.translate("anonPages.login.emailValidate")),
-      password: yup.string()
+      password: yup
+        .string()
         .required(props.translate("anonPages.login.passwordRequired"))
         .min(6, props.translate("anonPages.login.passwordLength")),
     }),
@@ -37,9 +38,9 @@ const Login = (props) => {
     },
   });
 
-  useEffect(()=>{
+  useEffect(() => {
     props.setTitlePageKey("anonPages.login.title");
-  }, [])
+  }, []);
 
   return (
     <>
