@@ -17,7 +17,7 @@ const Settings = (props) => {
             <Grid item>
               <IconButton
                 onClick={() => {
-                  setDrawerOpen(!drawerOpen);
+                  props.router.back()
                 }}
                 
               >
