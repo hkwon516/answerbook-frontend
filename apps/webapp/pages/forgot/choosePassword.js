@@ -56,7 +56,11 @@ const ChoosePassword = (props) => {
 
         await fetch("http://localhost:9000/parse/apps/answerbookApi/request_password_reset", params);
         props.showSuccess(props.translate("anonPages.forgotChoosePassword.messageSuccess"));
-        window.location.href = config.adminURL;
+        if (props.isAdmin) {
+          window.location.href = config.adminURL;
+        } else {
+          props.router.push("/");
+        }
       } catch (error) {
         props.showError(error.message);
       }
