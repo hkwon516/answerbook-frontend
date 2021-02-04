@@ -2,15 +2,13 @@ import React, { useState } from "react";
 import {
   Typography,
   Grid,
-  Box,
-  Tab
+  Box
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import TabContext from '@material-ui/lab/TabContext';
-import AppBar from '@material-ui/core/AppBar';
-import TabList from '@material-ui/lab/TabList';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import IconButton from '@material-ui/core/IconButton';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Toc = (props) => {
   const [value, setValue] = useState(props.router.query.tab === 'privacy' ? 1 : 0);
+  const [backgroundColor, setBackgroudColor] = useState("black");
 
   const handleChange = (event, newValue) => {
     if (newValue === 0) {
@@ -54,28 +53,23 @@ const Toc = (props) => {
         </Box>
       </Grid>
 
-      {/* <Grid item xs={12} sm={8}>
-        <Box>
-          <Typography variant="h6">
-            {props.translate("anonPages.signupStep2.tocTitle")}
-          </Typography>
-        </Box>
-      </Grid> */}
-
       <Grid item xs={12} justify={"center"}>
-        <TabContext value={value}
-          centered>
-          <AppBar position="static"
-            style={{
-              backgroundColor: props.theme.palette.secondary.light,
-              borderRadius: "25px"
-            }} >
-            <TabList onChange={handleChange} textColor="primary">
-              <Tab label={props.translate("anonPages.signupStep2.tocHeader")} />
-              <Tab label={props.translate("anonPages.signupStep2.privacyHeader")} />
-            </TabList>
-          </AppBar>
-        </TabContext>
+
+        <BottomNavigation
+          style={{
+            backgroundColor: props.theme.palette.secondary.light,
+            borderRadius: "25px"
+          }}
+          value={value}
+          onChange={handleChange}
+          showLabels
+          className={classes.root}>
+
+          <BottomNavigationAction label={props.translate("anonPages.signupStep2.tocHeader")} />
+          <BottomNavigationAction label={props.translate("anonPages.signupStep2.privacyHeader")} />
+
+        </BottomNavigation>
+
       </Grid>
 
       <Grid item xs={12}>
