@@ -44,7 +44,7 @@ const ManageQuestion = (props) => {
   });
 
   useEffect(() => {
-    props.setTitlePageKey("userPages.settings.title");
+    props.setTitlePageKey("userPages.question.title");
   }, [])
 
   return (
