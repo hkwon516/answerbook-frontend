@@ -58,7 +58,7 @@ const ManageTextbook = (props) => {
   };
 
   useEffect(() => {
-    props.setTitlePageKey("userPages.settings.title");
+    props.setTitlePageKey("userPages.textBook.title");
   }, [])
 
   return (

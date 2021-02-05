@@ -155,8 +155,8 @@ const withApp = (WrappedComponent) => {
     };
 
     const getTitle = (prefix = true) => {
-      const pageTitle = titlePageKey && translate(titlePageKey) ? ` | ${translate(titlePageKey)}` : '';
-      const title = (prefix ? `${translate("app.title")}` : null) + pageTitle;
+      const pageTitle = titlePageKey && translate(titlePageKey) ? `${translate(titlePageKey)}` : '';
+      const title = (prefix ? `${translate("app.title")} | ` : "") + pageTitle;
       return title;
     };
 
@@ -196,10 +196,10 @@ const withApp = (WrappedComponent) => {
           {contexts.loading || (isAuthenticatedRoute && !contexts.user) ? (
             <LinearProgress color="secondary" variant="indeterminate" />
           ) : (
-            <Layout {...commonProps}>
-              <WrappedComponent {...commonProps} />
-            </Layout>
-          )}
+              <Layout {...commonProps}>
+                <WrappedComponent {...commonProps} />
+              </Layout>
+            )}
         </ThemeProvider>
       </React.Fragment>
     );
