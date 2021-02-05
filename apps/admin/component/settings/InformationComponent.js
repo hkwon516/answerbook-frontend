@@ -18,7 +18,7 @@ const InformationComponent = (props) => {
   }
 
   if (position === "publisher") {
-    positionInformation = props.user.get("teacher").get("companyEmail");
+    positionInformation = props.user.get("publisher").get("companyEmail");
   }
 
   const formik = useFormik({
