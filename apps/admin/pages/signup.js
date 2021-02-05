@@ -28,7 +28,10 @@ export default function SignUp(props) {
         .string()
         .required(props.translate("anonPages.signup.emailRequired"))
         .email(props.translate("anonPages.signup.emailValidate")),
-      phone: yup.number(props.translate("anonPages.signup.phoneValidate")).required(props.translate("anonPages.signup.phoneRequired")),
+      phone: yup
+        .number()
+        .required(props.translate("anonPages.signup.phoneRequired"))
+        .typeError(props.translate("anonPages.signup.phoneValidate")),
       password: yup
         .string()
         .required(props.translate("anonPages.signup.passwordRequired"))
@@ -37,7 +40,19 @@ export default function SignUp(props) {
         .string()
         .required(props.translate("anonPages.signup.passwordConfirmationRequired"))
         .oneOf([yup.ref("password")], props.translate("anonPages.signup.passwordValidate")),
-      academyName: yup.string().required(props.translate("anonPages.signup.academyNameRequired")),
+      academyName: yup.string().when(["position"], (position, schema) => {
+        return position === "teacher" ? schema.required(props.translate("anonPages.signup.academyNameRequired")) : schema;
+      }),
+      companyEmail: yup.string().when(["position"], (position, schema) => {
+        return position === "publisher"
+          ? schema
+              .required(props.translate("anonPages.signup.companyEmailRequired"))
+              .email(props.translate(props.translate("anonPages.signup.comapnyEmailValidate")))
+          : schema;
+      }),
+      purpose: yup.string().when(["position"], (position, schema) => {
+        return position === "etc" ? schema.required(props.translate("anonPages.signup.purposeRequired")) : schema;
+      }),
     }),
 
     onSubmit: async (values, actions) => {
@@ -49,8 +64,24 @@ export default function SignUp(props) {
         user.set("password", values.password);
         user.set("phone", values.phone);
         user.set("position", values.position);
-        user.set("information", { academyName: values.academyName, companyEmail: values.companyEmail, purpose: values.purpose });
+        user.set("information", { purpose: values.purpose });
         user.set("locale", props.router.locale);
+
+        if (values.position === "teacher") {
+          const Teacher = props.parse.Object.extend("Teacher");
+          const newTeacher = new Teacher();
+          newTeacher.set("academyName", values.academyName);
+          const teacher = await newTeacher.save();
+          user.set("teacher", teacher);
+        }
+
+        if (values.position === "publisher") {
+          const Publisher = props.parse.Object.extend("Publisher");
+          const newPublisher = new Publisher();
+          newPublisher.set("companyEmail", values.companyEmail);
+          const publisher = await newPublisher.save();
+          user.set("publisher", publisher);
+        }
 
         await user.signUp();
         props.showSuccess(props.translate("anonPages.signup.messageSuccess"));
