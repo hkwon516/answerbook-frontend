@@ -37,7 +37,19 @@ export default function SignUp(props) {
         .string()
         .required(props.translate("anonPages.signup.passwordConfirmationRequired"))
         .oneOf([yup.ref("password")], props.translate("anonPages.signup.passwordValidate")),
-      academyName: yup.string().required(props.translate("anonPages.signup.academyNameRequired")),
+      academyName: yup.string().when(["position"], (position, schema) => {
+        return position === "teacher" ? schema.required(props.translate("anonPages.signup.academyNameRequired")) : schema;
+      }),
+      companyEmail: yup.string().when(["position"], (position, schema) => {
+        return position === "publisher"
+          ? schema
+              .required(props.translate("anonPages.signup.companyEmailRequired"))
+              .email(props.translate(props.translate("anonPages.signup.comapnyEmailValidate")))
+          : schema;
+      }),
+      purpose: yup.string().when(["position"], (position, schema) => {
+        return position === "etc" ? schema.required(props.translate("anonPages.signup.purposeRequired")) : schema;
+      }),
     }),
 
     onSubmit: async (values, actions) => {
@@ -49,7 +61,7 @@ export default function SignUp(props) {
         user.set("password", values.password);
         user.set("phone", values.phone);
         user.set("position", values.position);
-        user.set("information", { academyName: values.academyName, companyEmail: values.companyEmail, purpose: values.purpose });
+        user.set("information", { purpose: values.purpose });
         user.set("locale", props.router.locale);
 
         await user.signUp();
