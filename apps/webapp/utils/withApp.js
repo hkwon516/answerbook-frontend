@@ -38,13 +38,12 @@ const withUser = (WrappedComponent) => {
 
         if (user) {
           if (user.get("position") != "student") {
-            this.onLogout();
+            this.onLogout("app.notAuthorized");
             return;
           }
 
           await user.get("student").fetch();
           await user.get("preferences").fetch();
-
         }
         this.setState({ user, loading: false });
       } catch (error) {
@@ -52,15 +51,16 @@ const withUser = (WrappedComponent) => {
       }
     };
 
-    onLogout = async () => {
+    onLogout = async (messageKey = undefined) => {
       try {
         this.setState({ loading: true });
-
         await this.parse.User.logOut();
         this.setState({ user: undefined });
       } catch (error) {
-        this.props.router.push("/");
+        console.error("Logout Error", error);
       }
+
+      this.props.router.push("/" + messageKey ? `?message=${messageKey}` : "");
     };
 
     onLogin = async (username, password) => {
@@ -123,6 +123,10 @@ const withApp = (WrappedComponent) => {
       const jssStyles = document.querySelector("#jss-server-side");
       if (jssStyles) {
         jssStyles.parentElement.removeChild(jssStyles);
+      }
+
+      if (props.router.query.message) {
+        showError(translate(props.router.query.message));
       }
     }, []);
 

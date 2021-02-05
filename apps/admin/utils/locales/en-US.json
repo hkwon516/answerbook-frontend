@@ -8,7 +8,8 @@
     "buttonOk": "OK",
     "buttonWait": "Please wait...",
     "toastSuccess": "Success",
-    "toastError": "Error"
+    "toastError": "Error",
+    "notAuthorized": "Not Authorized"
   },
   "anonPages": {
     "forgetEmail": {

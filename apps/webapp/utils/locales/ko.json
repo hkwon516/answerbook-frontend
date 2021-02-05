@@ -8,7 +8,8 @@
     "buttonOk": "확인",
     "buttonWait": "기다려주세요 ...",
     "toastSuccess": "성공",
-    "toastError": "오류"
+    "toastError": "오류",
+    "notAuthorized": "승인되지 않음"
   },
   "anonPages": {
     "signupStep1": {
