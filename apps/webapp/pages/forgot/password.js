@@ -34,7 +34,7 @@ export default function forgotPassword(props) {
   });
 
   return (
-    <>
+    <Box p={2}  mt={6.5}>
       {props.setTitlePageKey("anonPages.forgetPassword.title")}
 
       <form noValidate onSubmit={formik.handleSubmit}>
@@ -77,6 +77,6 @@ export default function forgotPassword(props) {
           </Grid>
         </Grid>
       </form>
-    </>
+    </Box>
   );
 }

@@ -2,23 +2,13 @@ import { Container, Grid, makeStyles, Box } from "@material-ui/core";
 import React from "react";
 import LanguageSwitcherComponent from "../generic/LanguageComponent";
 
-const useStyles = makeStyles((theme) => ({
-  wrapper: {
-    height: "100vh",
-  },
-}));
-
 const AnonLayout = (props) => {
-  const classes = useStyles();
-
   return (
-    <Container component="main" maxWidth="xs">
-      <Grid container alignItems="center" className={classes.wrapper}>
-        <Grid item xs={12}>
-          {props.children}
-        </Grid>
-        <Grid item xs={8}>
-          <Box mb={2}>
+    <Container disableGutters component="main" maxWidth="xs" style={{ background: "#fff", minHeight: "100vh" }}>
+      <Grid container style={{height: "100%"}}>
+        <Grid item>{props.children}</Grid>
+        <Grid item>
+          <Box mb={2} mt={2} p={2}>
             <LanguageSwitcherComponent {...props} />
           </Box>
         </Grid>

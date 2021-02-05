@@ -14,7 +14,7 @@ export default function forgotEmail(props) {
     validationSchema: yup.object().shape({
       name: yup.string().required(props.translate("anonPages.forgetEmail.nameRequired")),
       phone: yup
-        .number(props.translate("anonPages.forgetEmail.phoneValidate"))
+        .number()
         .required(props.translate("anonPages.forgetEmail.phoneRequired"))
         .typeError(props.translate("anonPages.forgetEmail.phoneValidate"))
     }),
