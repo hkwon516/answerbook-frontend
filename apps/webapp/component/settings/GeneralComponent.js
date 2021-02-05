@@ -13,7 +13,7 @@ import {
   FormHelperText,
   Avatar,
 } from "@material-ui/core";
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import InputComponent from "../../component/generic/InputComponent";
@@ -21,6 +21,7 @@ import LanguageComponent from "../generic/LanguageComponent";
 import { Autocomplete } from "@material-ui/lab";
 import ButtonComponent from "../../component/generic/ButtonComponent";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
+import ProfilePicture from "../generic/ProfilePicture";
 
 const GeneralComponent = (props) => {
   const cameraRef = useRef();
@@ -35,6 +36,7 @@ const GeneralComponent = (props) => {
       currentPassword: "",
       password: "",
       passwordConfirm: "",
+      profilePicture: undefined,
     },
     validationSchema: yup.object().shape({
       name: yup.string().required(props.translate("userPages.settings.nameRequired")),
@@ -61,6 +63,10 @@ const GeneralComponent = (props) => {
 
     onSubmit: async (values, actions) => {
       try {
+        if (values.profilePicture) {
+          const profilePicture = new props.parse.File("profilePicture", values.profilePicture);
+          props.user.set("profilePicture", profilePicture);
+        }
         await props.user.verifyPassword(values.currentPassword);
         props.user.set("password", values.password);
         await props.user.save();
@@ -75,28 +81,15 @@ const GeneralComponent = (props) => {
 
   return (
     <form noValidate onSubmit={formik.handleSubmit}>
-      <Grid container>
-        <Grid item xs={12}>
-          <Box textAlign="center">
-            <input style={{ display: "none" }} type="file" accept="image/*;capture=camera" capture="camera" ref={cameraRef} />
-
-            <Avatar
-              onClick={() => {
-                if (cameraRef) {
-                  console.log(cameraRef);
-                  cameraRef.current.click();
-                }
+      <Grid container justify="center">
+        <Grid item>
+          <Box mb={1} textAlign="center">
+            <ProfilePicture
+              value={formik.values.profilePicture}
+              setValue={(value) => {
+                formik.setFieldValue("profilePicture", value);
               }}
-              style={{
-                backgroundColor: "transparent",
-                border: `1px solid ${colors.grey[400]}`,
-                width: 120,
-                height: 120,
-                margin: "0 auto",
-              }}
-            >
-              <CameraAltIcon color="primary" />
-            </Avatar>
+            />
           </Box>
         </Grid>
         <Grid item xs={12}>
@@ -185,7 +178,7 @@ const GeneralComponent = (props) => {
         </Grid>
         <Grid item xs={12}>
           <Box mt={2}>
-            <ButtonComponent type="submit" fullWidth variant="contained" color="secondary"  disabled={props.isSubmitting}>
+            <ButtonComponent type="submit" fullWidth variant="contained" color="secondary" disabled={props.isSubmitting}>
               {!formik.isSubmitting ? props.translate("userPages.settings.buttonUpdate") : props.translate("app.buttonWait")}
             </ButtonComponent>
           </Box>
