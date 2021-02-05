@@ -11,7 +11,7 @@ const InformationComponent = (props) => {
   };
 
   const position = props.user.get("position");
-  const initialInformation = props.user.get("information");
+  const initialInformation = props.user.get("information") || {};
   let positionInformation = initialInformation.purpose;
   if (position === "teacher") {
     positionInformation = props.user.get("teacher").get("academyName");
@@ -48,7 +48,7 @@ const InformationComponent = (props) => {
 
     onSubmit: async (values, actions) => {
       try {
-        if (values.position === "etc") props.user.set("information", { ...intialInformation, purpose: values.positionInformation });
+        if (values.position === "etc") props.user.set("information", { ...initialInformation, purpose: values.positionInformation });
         if (values.position === "teacher") {
           props.user.get("teacher").set("academyName", values.positionInformation);
           await props.user.get("teacher").save();
