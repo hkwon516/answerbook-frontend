@@ -27,7 +27,17 @@ export default function SignUp(props) {
       email: yup
         .string()
         .required(props.translate("anonPages.signup.emailRequired"))
-        .email(props.translate("anonPages.signup.emailValidate")),
+        .email(props.translate("anonPages.signup.emailValidate"))
+        .test("checkDuplicate", props.translate("anonPages.signup.messageAccountExists"), (username) => {
+          return new Promise(async (resolve, reject) => {
+            try {
+              const exists = await props.parse.Cloud.run("usernameAvailable", { username });
+              resolve(exists);
+            } catch (error) {
+              reject(error);
+            }
+          });
+        }),
       phone: yup
         .number()
         .required(props.translate("anonPages.signup.phoneRequired"))
