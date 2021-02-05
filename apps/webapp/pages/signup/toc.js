@@ -9,6 +9,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import IconButton from '@material-ui/core/IconButton';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import Header from "../../component/common/Header";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,26 +33,10 @@ const Toc = (props) => {
 
   return (
     <Grid container>
-      <Grid item xs={12}>
-        <Box>
-          <Grid alignItems="center" container>
-            <Grid item>
-              <Box mr={2}>
-                <IconButton color="primary" component="span">
-                  <ArrowBackIcon />
-                </IconButton>
-              </Box>
-            </Grid>
-            <Grid item>
-              <Box>
-                <Typography variant="h6">
-                  {props.translate("anonPages.signupStep2.tocTitle")}
-                </Typography>
-              </Box>
-            </Grid>
-          </Grid>
-        </Box>
-      </Grid>
+      <Header
+        router={props.router}
+        title={props.translate("anonPages.signupStep2.tocTitle")}
+        hideNotificationsBell={true} />
 
       <Grid item xs={12} justify={"center"}>
 
