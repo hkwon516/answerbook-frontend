@@ -48,20 +48,6 @@ const GeneralComponent = (props) => {
         .required(props.translate("userPages.settings.phoneRequired"))
         .typeError(props.translate("userPages.settings.phoneValidate")),
       nickname: yup.string().required(props.translate("userPages.settings.nickNameRequired")),
-      school: yup.string().required("School is required"),
-      grade: yup.string().required("grade field is required"),
-      currentPassword: yup
-        .string()
-        .required(props.translate("userPages.settings.passwordRequired"))
-        .min(6, props.translate("userPages.settings.passwordLength")),
-      password: yup
-        .string()
-        .required(props.translate("userPages.settings.passwordRequired"))
-        .min(6, props.translate("userPages.settings.passwordLength")),
-      passwordConfirm: yup
-        .string()
-        .required(props.translate("userPages.settings.passwordConfirmationRequired"))
-        .oneOf([yup.ref("password")], props.translate("userPages.settings.passwordValidate")),
     }),
 
     onSubmit: async (values, actions) => {
@@ -205,7 +191,7 @@ const GeneralComponent = (props) => {
         </Grid>
         <Grid item xs={12}>
           <Box mt={2}>
-            <ButtonComponent type="submit" fullWidth variant="contained" color="secondary" disabled={props.isSubmitting}>
+            <ButtonComponent type="submit" fullWidth variant="contained" color="secondary" disabled={formik.isSubmitting}>
               {!formik.isSubmitting ? props.translate("userPages.settings.buttonUpdate") : props.translate("app.buttonWait")}
             </ButtonComponent>
           </Box>
