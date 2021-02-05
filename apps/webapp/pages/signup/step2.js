@@ -80,7 +80,6 @@ const SignUp = (props) => {
 
     onSubmit: async (values, actions) => {
       try {
-        console.log(values.profilePicture);
         const schoolQuery = new props.parse.Query(props.parse.Object.extend("School"));
         const school = await schoolQuery.get(values.school.objectId);
         const gradeQuery = new props.parse.Query(props.parse.Object.extend("Grade"));

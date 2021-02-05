@@ -6,17 +6,20 @@ import InputComponent from "../../component/generic/InputComponent";
 const InformationComponent = (props) => {
   const informationPositionLabelMapping = {
     teacher: props.translate("userPages.settings.fieldAcademyName"),
-    publisher: props.translate("userPages.settings.labelCompanyName"),
+    publisher: props.translate("userPages.settings.labelCompanyEmail"),
     etc: props.translate("userPages.settings.labelPurpose"),
   };
-  const informationPositionMapping = {
-    teacher: "academyName",
-    publisher: "companyName",
-    etc: "purpose",
-  };
+
   const position = props.user.get("position");
-  const intialInformation = props.user.get("information");
-  const positionInformation = position && intialInformation ? intialInformation[informationPositionMapping[position]] : "";
+  const initialInformation = props.user.get("information");
+  let positionInformation = initialInformation.purpose;
+  if (position === "teacher") {
+    positionInformation = props.user.get("teacher").get("academyName");
+  }
+
+  if (position === "publisher") {
+    positionInformation = props.user.get("teacher").get("companyEmail");
+  }
 
   const formik = useFormik({
     initialValues: {
@@ -24,14 +27,41 @@ const InformationComponent = (props) => {
       positionInformation: positionInformation,
     },
     validationSchema: yup.object().shape({
-      positionInformation: yup.string().required(props.translate("userPages.settings.positionRequired")),
+      positionInformation: yup.string().when([position], (position, schema) => {
+        if (position === "etc") {
+          return schema.required(props.translate("userPages.settings.purposeRequired"));
+        }
+
+        if (position === "teacher") {
+          return schema.required(props.translate("userPages.settings.academyNameRequired"));
+        }
+
+        if (position === "publisher") {
+          return schema
+            .required(props.translate("userPages.settings.companyEmailRequired"))
+            .email(props.translate("userPages.settings.comapnyEmailValidate"));
+        }
+
+        return schema;
+      }),
     }),
 
     onSubmit: async (values, actions) => {
       try {
-        props.user.set("information", { ...intialInformation, [informationPositionMapping[position]]: values.positionInformation });
+        if (values.position === "etc") props.user.set("information", { ...intialInformation, purpose: values.positionInformation });
+        if (values.position === "teacher") {
+          props.user.get("teacher").set("academyName", values.positionInformation);
+          await props.user.get("teacher").save();
+        }
+
+        if (values.position === "publisher") {
+          props.user.get("publisher").set("companyEmail", values.positionInformation);
+          await props.user.get("publisher").save();
+        }
+
         const user = await props.user.save();
-        props.setUser(user);
+        await user.get("teacher");
+        await user.get("publisher");
         props.showSuccess(props.translate("userPages.settings.labelSuccessMessage"));
       } catch (error) {
         props.showError(error.message);

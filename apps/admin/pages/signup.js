@@ -64,6 +64,22 @@ export default function SignUp(props) {
         user.set("information", { purpose: values.purpose });
         user.set("locale", props.router.locale);
 
+        if (values.position === "teacher") {
+          const Teacher = props.parse.Object.extend("Teacher");
+          const newTeacher = new Teacher();
+          newTeacher.set("academyName", values.academyName);
+          const teacher = await newTeacher.save();
+          user.set("teacher", teacher);
+        }
+
+        if (values.position === "publisher") {
+          const Publisher = props.parse.Object.extend("Publisher");
+          const newPublisher = new Publisher();
+          newPublisher.set("academyName", values.academyName);
+          const publisher = await newPublisher.save();
+          user.set("teacher", publisher);
+        }
+
         await user.signUp();
         props.showSuccess(props.translate("anonPages.signup.messageSuccess"));
         router.push("/user");
