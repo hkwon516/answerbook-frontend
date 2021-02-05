@@ -19,7 +19,7 @@ const GeneralComponent = (props) => {
         .required(props.translate("userPages.settings.emailRequired"))
         .email(props.translate("userPages.settings.emailValidate")),
       phone: yup
-        .number(props.translate("userPages.settings.phoneValidate"))
+        .number()
         .required(props.translate("userPages.settings.phoneRequired"))
         .typeError(props.translate("userPages.settings.phoneValidate")),
     }),

@@ -30,6 +30,7 @@
       "fieldName": "이름",
       "fieldUsername": "이메일",
       "fieldPassword": "비밀번호",
+      "fieldPhone": "전화 번호",
       "fieldNickname": "닉네임",
       "labelTocPart1": "#1이용 약관",
       "labelTocPart2": "과",
@@ -49,6 +50,8 @@
       "passwordLength": "비밀번호는 6 자 이상이어야합니다.",
       "passwordConfirmationRequired": "비밀번호 확인은 필수 필드입니다.",
       "passwordValidate": "비밀번호가 일치하지 않습니다.",
+      "phoneRequired": "이름은 필수 필드입니다",
+      "phoneValidate": "숫자 만 입력하세요.",
       "messageAccountExists": "위 이메일이있는 계정이 이미 존재합니다. 로그인을 시도하십시오."
     },
     "forgetEmail": {
@@ -146,6 +149,7 @@
       "fieldPosition": "위치",
       "fieldCurrentPassword": "현재 비밀번호",
       "fieldNewPassword": "새 비밀번호",
+      "phoneRequired": "이름은 필수 필드입니다",
       "nameRequired": "이름은 필수 필드입니다.",
       "nickNameRequired": "닉네임은 필수 필드입니다.",
       "fieldConfirmPassword": "비밀번호 확인",

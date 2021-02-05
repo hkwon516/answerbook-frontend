@@ -30,27 +30,35 @@ const withUser = (WrappedComponent) => {
     }
 
     resolveUser = async () => {
-      let user = await this.parse.User.currentAsync();
-      if (user && !user.get("emailVerified")) {
-        user = await user.fetch();
-      }
-
-      if (user) {
-        if (user.get("position") != "student") {
-          this.onLogout();
-          return;
+      try {
+        let user = await this.parse.User.currentAsync();
+        if (user && !user.get("emailVerified")) {
+          user = await user.fetch();
         }
 
-        await user.get("student").fetch();
+        if (user) {
+          if (user.get("position") != "student") {
+            this.onLogout();
+            return;
+          }
+
+          await user.get("student").fetch();
+        }
+        this.setState({ user, loading: false });
+      } catch (error) {
+        this.onLogout();
       }
-      this.setState({ user, loading: false });
     };
 
     onLogout = async () => {
-      this.setState({ loading: true });
+      try {
+        this.setState({ loading: true });
 
-      await this.parse.User.logOut();
-      this.setState({ user: undefined });
+        await this.parse.User.logOut();
+        this.setState({ user: undefined });
+      } catch (error) {
+        this.props.router.push("/");
+      }
     };
 
     onLogin = async (username, password) => {

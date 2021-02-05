@@ -13,7 +13,7 @@ import {
   FormHelperText,
   Avatar,
 } from "@material-ui/core";
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import InputComponent from "../../component/generic/InputComponent";
@@ -21,6 +21,7 @@ import LanguageComponent from "../generic/LanguageComponent";
 import { Autocomplete } from "@material-ui/lab";
 import ButtonComponent from "../../component/generic/ButtonComponent";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
+import ProfilePicture from "../generic/ProfilePicture";
 
 const GeneralComponent = (props) => {
   const cameraRef = useRef();
@@ -29,12 +30,14 @@ const GeneralComponent = (props) => {
     initialValues: {
       name: props.user.get("name"),
       email: props.user.get("email"),
+      phone: props.user.get("phone"),
       nickname: props.user.get("student").get("nickname"),
       school: props.user.get("student").get("school").id,
       grade: props.user.get("student")?.get("grade").id,
       currentPassword: "",
       password: "",
       passwordConfirm: "",
+      profilePicture: undefined,
     },
     validationSchema: yup.object().shape({
       name: yup.string().required(props.translate("userPages.settings.nameRequired")),
@@ -42,30 +45,27 @@ const GeneralComponent = (props) => {
         .string()
         .required(props.translate("userPages.settings.emailRequired"))
         .email(props.translate("userPages.settings.emailValidate")),
+      phone: yup
+        .number()
+        .required(props.translate("userPages.settings.phoneRequired"))
+        .typeError(props.translate("userPages.settings.phoneValidate")),
       nickname: yup.string().required(props.translate("userPages.settings.nickNameRequired")),
-      school: yup.string().required("School is required"),
-      grade: yup.string().required("grade field is required"),
-      currentPassword: yup
-        .string()
-        .required(props.translate("userPages.settings.passwordRequired"))
-        .min(6, props.translate("userPages.settings.passwordLength")),
-      password: yup
-        .string()
-        .required(props.translate("userPages.settings.passwordRequired"))
-        .min(6, props.translate("userPages.settings.passwordLength")),
-      passwordConfirm: yup
-        .string()
-        .required(props.translate("userPages.settings.passwordConfirmationRequired"))
-        .oneOf([yup.ref("password")], props.translate("userPages.settings.passwordValidate")),
     }),
 
     onSubmit: async (values, actions) => {
       try {
-        await props.user.verifyPassword(values.currentPassword);
-        props.user.set("password", values.password);
-        await props.user.save();
-        props.showSuccess(props.translate("userPages.settings.labelPasswordUpdateMessage"));
-        actions.resetForm();
+if (values.profilePicture) {
+  const profilePicture = new props.parse.File("profilePicture", values.profilePicture);
+  props.user.set("profilePicture", profilePicture);
+}
+        props.user.set("name", values.name);
+        props.user.set("email", values.email);
+        props.user.set("phone", values.phone);
+        props.user.set("username", values.email);
+        props.user.get("student").set("nickname", values.nickname);
+        const user = await props.user.save();
+        props.setUser(user);
+        props.showSuccess(props.translate("userPages.settings.labelSuccessMessage"));
       } catch (error) {
         props.showError(error.message);
       }
@@ -75,28 +75,16 @@ const GeneralComponent = (props) => {
 
   return (
     <form noValidate onSubmit={formik.handleSubmit}>
-      <Grid container>
-        <Grid item xs={12}>
-          <Box textAlign="center">
-            <input style={{ display: "none" }} type="file" accept="image/*;capture=camera" capture="camera" ref={cameraRef} />
-
-            <Avatar
-              onClick={() => {
-                if (cameraRef) {
-                  console.log(cameraRef);
-                  cameraRef.current.click();
-                }
+      <Grid container justify="center">
+        <Grid item>
+          <Box mb={1} textAlign="center">
+            <ProfilePicture
+              value={formik.values.profilePicture}
+              src={props.user.get("profilePicture")?.url()}
+              setValue={(value) => {
+                formik.setFieldValue("profilePicture", value);
               }}
-              style={{
-                backgroundColor: "transparent",
-                border: `1px solid ${colors.grey[400]}`,
-                width: 120,
-                height: 120,
-                margin: "0 auto",
-              }}
-            >
-              <CameraAltIcon color="primary" />
-            </Avatar>
+            />
           </Box>
         </Grid>
         <Grid item xs={12}>
@@ -107,6 +95,18 @@ const GeneralComponent = (props) => {
             size="small"
             name="email"
             autoComplete="email"
+            formik={formik}
+          />
+        </Grid>
+
+        <Grid item xs={12}>
+          <InputComponent
+            required
+            fullWidth
+            size="small"
+            label={props.translate("userPages.settings.fieldPhone")}
+            name="phone"
+            autoComplete="Phone Number"
             formik={formik}
           />
         </Grid>
@@ -185,7 +185,7 @@ const GeneralComponent = (props) => {
         </Grid>
         <Grid item xs={12}>
           <Box mt={2}>
-            <ButtonComponent type="submit" fullWidth variant="contained" color="secondary"  disabled={props.isSubmitting}>
+            <ButtonComponent type="submit" fullWidth variant="contained" color="secondary" disabled={formik.isSubmitting}>
               {!formik.isSubmitting ? props.translate("userPages.settings.buttonUpdate") : props.translate("app.buttonWait")}
             </ButtonComponent>
           </Box>
