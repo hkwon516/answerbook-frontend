@@ -1,4 +1,5 @@
 {
   "appId": "answerbookApi",
-  "serverURL": "https://answerbook-ke-staging.herokuapp.com/parse"
+  "serverURL": "https://answerbook-ke-staging.herokuapp.com/parse",
+  "adminURL": "https://admin.answerbook-staging.codesymphony.in"
 }

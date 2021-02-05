@@ -1,54 +1,60 @@
-import { Box, Grid, Button, Avatar, colors } from "@material-ui/core";
+import { Box, Grid, Button, Avatar, colors, Paper, AppBar, Toolbar, IconButton, Typography, Badge } from "@material-ui/core";
 import React, { useRef } from "react";
-import CameraAltIcon from "@material-ui/icons/CameraAlt";
-import SecurityComponent from "../../component/settings/SecurityComponent";
 import GeneralComponent from "../../component/settings/GeneralComponent";
 import NotificationComponent from "../../component/settings/NotificationComponent";
+import SecurityComponent from "../../component/settings/SecurityComponent";
 import getParse from "../../utils/parse";
-
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import NotificationsIcon from "@material-ui/icons/Notifications";
 const Settings = (props) => {
-  const cameraRef = useRef();
 
   return (
     <React.Fragment>
       {props.setTitlePageKey("userPages.settings.title")}
-
+      <AppBar elevation={0} color="transparent" position="static">
+        <Toolbar>
+          <Grid alignItems="center" container justify="space-between">
+            <Grid item>
+              <IconButton
+                onClick={() => {
+                  props.router.back()
+                }}
+                
+              >
+                <ArrowBackIcon />
+              </IconButton>
+            </Grid>
+            <Grid item xs={8}>
+              <Box textAlign="center">
+                <Typography style={{ overflow: "hidden" }} variant="subtitle2" color="inherit">
+                  Settings
+                </Typography>
+              </Box>
+            </Grid>
+            <Grid item >
+              <IconButton
+                onClick={() => {
+                  setDrawerOpen(!drawerOpen);
+                }}
+                
+              >
+                <Badge color="secondary" variant="dot">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+            </Grid>
+          </Grid>
+        </Toolbar>
+      </AppBar>
       <Box mt={2}>
         <Grid container justify="center">
-          <Grid item xs={12}>
-            <Box mb={2} textAlign="center" style={{ paddingTop: "50px" }}>
-              <input style={{ display: "none" }} type="file" accept="image/*;capture=camera" capture="camera" ref={cameraRef} />
-
-              <Avatar
-                onClick={() => {
-                  if (cameraRef) {
-                    console.log(cameraRef);
-                    cameraRef.current.click();
-                  }
-                }}
-                style={{
-                  backgroundColor: "transparent",
-                  border: `1px solid ${colors.grey[400]}`,
-                  width: 120,
-                  height: 120,
-                  margin: "0 auto",
-                }}
-              >
-                <CameraAltIcon color="primary" />
-              </Avatar>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={4} sm={6}>
-            <Box mt={2}>
+          <Grid item xs={12} md={3} sm={4}>
+            <Box p={2}>
               <GeneralComponent {...props} />
-            </Box>
 
-            <Box mt={2}>
-              <SecurityComponent {...props} />
-            </Box>
-
-            <Box mt={2}>
               <NotificationComponent {...props} />
+
+              <SecurityComponent {...props} />
             </Box>
 
             <Button onClick={() => props.onLogout()}>SIGN OUT</Button>
