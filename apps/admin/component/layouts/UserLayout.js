@@ -22,7 +22,6 @@ import { useRouter } from "next/router";
 import Alert from "@material-ui/lab/Alert";
 import WarningIcon from "@material-ui/icons/Warning";
 import LanguageComponent from "../generic/LanguageComponent";
-import Head from "next/head";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
@@ -86,9 +85,7 @@ const UserLayout = (props) => {
 
   return (
     <>
-      <Head>
-        <title>{props.getTitle()}</title>
-      </Head>
+     
       <Grid container>
         <Grid item xs={12}>
           <AppBar

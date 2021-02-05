@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   Typography,
   Button,
@@ -22,7 +22,7 @@ import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import LinkComponent from "../../component/generic/LinkComponent";
-import CameraAltIcon from "@material-ui/icons/CameraAlt";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { makeStyles } from "@material-ui/core/styles";
 import ButtonComponent from "../../component/generic/ButtonComponent";
 import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -49,7 +49,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SignUp = (props) => {
-  const emailProviders = ["naver.com", "hanmail.net", "daum.net", "gmail.net", "nate.com", "icloud.com", "hotmail.com", "yahoo.co.kr"];
+  const [profilePicture, setProfilePicture] = useState(undefined);
+  const emailProviders = ["naver.com", "hanmail.net", "daum.net", "gmail.com", "nate.com", "icloud.com", "hotmail.com", "yahoo.co.kr"];
   const cameraRef = useRef();
   const formik = useFormik({
     initialValues: {
@@ -61,13 +62,11 @@ const SignUp = (props) => {
       school: null,
       grade: "",
       toc: false,
+      profilePicture: undefined,
     },
     validationSchema: yup.object().shape({
       name: yup.string().required(props.translate("anonPages.signupStep2.nameRequired")),
-      username: yup
-        .string()
-        .required(props.translate("anonPages.signupStep2.emailRequired"))
-        .email(props.translate("anonPages.signupStep2.emailValidate")),
+      username: yup.string().required(props.translate("anonPages.signupStep2.emailRequired")),
       password: yup
         .string()
         .required(props.translate("anonPages.signupStep2.passwordRequired"))
@@ -81,6 +80,7 @@ const SignUp = (props) => {
 
     onSubmit: async (values, actions) => {
       try {
+        console.log(values.profilePicture);
         const schoolQuery = new props.parse.Query(props.parse.Object.extend("School"));
         const school = await schoolQuery.get(values.school.objectId);
         const gradeQuery = new props.parse.Query(props.parse.Object.extend("Grade"));
@@ -103,6 +103,10 @@ const SignUp = (props) => {
         user.set("position", "student");
         user.set("locale", props.router.locale);
 
+        if (values.profilePicture) {
+          const profilePicture = new props.parse.File("profilePicture", values.profilePicture);
+          user.set("profilePicture", profilePicture);
+        }
         await user.signUp();
 
         props.showSuccess(props.translate("anonPages.signupStep2.messageSuccess"));
@@ -117,6 +121,17 @@ const SignUp = (props) => {
       actions.setSubmitting(false);
     },
   });
+
+  useEffect(() => {
+    if (formik.values.profilePicture) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfilePicture(reader.result);
+      };
+
+      reader.readAsDataURL(formik.values.profilePicture);
+    }
+  }, [formik.values.profilePicture]);
 
   return (
     <>
@@ -164,10 +179,28 @@ const SignUp = (props) => {
           <Box mt={3.35}>
             <form noValidate onSubmit={formik.handleSubmit}>
               <Grid container justify={"center"}>
-                <Grid item xs={12}>
-                  <Box mb={2} textAlign="center">
-                    <input style={{ display: "none" }} type="file" accept="image/*;capture=camera" capture="camera" ref={cameraRef} />
+                <Grid item>
+                  <Box mb={2} textAlign="center" style={{ position: "relative" }}>
+                    <input
+                      style={{ display: "none" }}
+                      type="file"
+                      accept="image/*;capture=camera"
+                      capture="camera"
+                      ref={cameraRef}
+                      multiple={false}
+                      onChange={(e) => {
+                        console.log(e.target.files);
+                        if (e.target && e.target.files && e.target.files[0]) {
+                          formik.setFieldValue("profilePicture", e.target.files[0]);
+                        }
+                      }}
+                      name="profilePicture"
+                    />
                     <Avatar
+                      src={
+                        profilePicture ||
+                        "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.jpg"
+                      }
                       onClick={() => {
                         if (cameraRef) {
                           console.log(cameraRef);
@@ -175,15 +208,15 @@ const SignUp = (props) => {
                         }
                       }}
                       style={{
+                        cursor: "pointer",
                         backgroundColor: "transparent",
                         border: `1px solid ${colors.grey[400]}`,
                         width: 120,
                         height: 120,
                         margin: "0 auto",
                       }}
-                    >
-                      <CameraAltIcon color="primary" />
-                    </Avatar>
+                    ></Avatar>
+                    <AddCircleIcon color="primary" style={{ position: "absolute", bottom: 8, right: 8 }} />
                   </Box>
                 </Grid>
                 <Grid item xs={12}>

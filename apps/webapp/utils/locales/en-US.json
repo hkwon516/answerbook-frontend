@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "Answerbook Admin",
+    "title": "Answerbook",
     "langLabel": "Language",
     "langEnglish": "English",
     "langKorean": "한국어",
@@ -122,7 +122,7 @@
     },
     "confirm": {
       "title": "Membership registration completed",
-      "subtitle1": "Hello,",
+      "subtitle1": "Hello",
       "subtitle2": "Welcome to ANSERBOOK!",
       "subtitle3": "Become a new Mentor and Mentee and start studying together.",
       "buttonStart": "Get Started",
