@@ -70,7 +70,7 @@ const ChoosePassword = (props) => {
   });
 
   return (
-    <>
+    <Box p={2}  mt={6.5}>
       {props.setTitlePageKey("anonPages.forgotChoosePassword.title")}
       <form noValidate onSubmit={formik.handleSubmit}>
         <Grid container justify={"center"}>
@@ -112,7 +112,7 @@ const ChoosePassword = (props) => {
           </Grid>
         </Grid>
       </form>
-    </>
+    </Box>
   );
 };
 
