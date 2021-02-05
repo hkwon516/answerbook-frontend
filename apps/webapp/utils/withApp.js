@@ -43,6 +43,8 @@ const withUser = (WrappedComponent) => {
           }
 
           await user.get("student").fetch();
+          await user.get("preferences").fetch();
+
         }
         this.setState({ user, loading: false });
       } catch (error) {

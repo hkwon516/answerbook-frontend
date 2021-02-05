@@ -86,6 +86,17 @@ const SignUp = (props) => {
         const Student = props.parse.Object.extend("Student");
         const newStudent = new Student();
 
+        const Preferences = props.parse.Object.extend("Preferences");
+        const newPreferences = new Preferences();
+
+        newPreferences.set("solutionLike", true)
+        newPreferences.set("solutionSave", true)
+        newPreferences.set("solutionAlert", true)
+        newPreferences.set("commentAlert", true)
+
+        const preferences = await newPreferences.save();
+
+    
         newStudent.set("school", school);
         newStudent.set("grade", grade);
         newStudent.set("nickname", values.nickname);
@@ -101,6 +112,7 @@ const SignUp = (props) => {
         user.set("student", student);
         user.set("position", "student");
         user.set("locale", props.router.locale);
+        user.set("preferences", preferences);
 
         if (values.profilePicture) {
           const profilePicture = new props.parse.File("profilePicture", values.profilePicture);
