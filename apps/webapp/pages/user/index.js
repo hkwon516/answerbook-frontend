@@ -18,7 +18,6 @@ const useStyles = makeStyles({
 const Dashboard = (props) => {
   const classes = useStyles();
   const [barcodeScannerOpen, setBarcodeScannerOpen] = useState(false);
-  console.log(props.user.get("profilePicture"));
   return (
     <React.Fragment>
       <BarcodeScannerComponent
@@ -41,7 +40,7 @@ const Dashboard = (props) => {
               <Box mt={-5} mb={2}>
                 <Grid container justify="center">
                   <Grid item>
-                    <ProfilePicture value={props.user.get("profilePicture")?.url()} />
+                    <ProfilePicture src={props.user.get("profilePicture")?.url()} />
                   </Grid>
                 </Grid>
               </Box>

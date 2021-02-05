@@ -171,6 +171,8 @@ const SignUp = (props) => {
                   <Box mb={2}>
                     <ProfilePicture
                       value={formik.values.profilePicture}
+                     
+
                       setValue={(value) => {
                         formik.setFieldValue("profilePicture", value);
                       }}
