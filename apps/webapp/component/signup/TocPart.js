@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, TextField } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-
+import LinkComponent from "../generic/LinkComponent";
 const TocPart = (props) => {
   const trimTocTextByHash = (linkString) => {
     if (linkString.indexOf("#") > -1) {
@@ -14,21 +14,21 @@ const TocPart = (props) => {
   if (props.strPart.startsWith("#")) {
     if (props.strPart.startsWith("#1")) {
       return (
-        <Link href="/signup/toc" style={{ paddingTop: "12px" }} color="secondary">
+        <LinkComponent href="/signup/toc" color="secondary">
           {trimTocTextByHash(props.strPart)}
-        </Link>
+        </LinkComponent>
       );
     } else {
       return (
-        <Link href="/signup/toc?tab=privacy" style={{ paddingTop: "12px" }} color="secondary">
+        <LinkComponent href="/signup/toc?tab=privacy"  color="secondary">
           {trimTocTextByHash(props.strPart)}
-        </Link>
+        </LinkComponent>
       );
     }
   } else {
     return (
-      <Typography variant="caption" style={{ fontSize: "14px", paddingTop: "10px" }}>
-        &nbsp;{trimTocTextByHash(props.strPart)}&nbsp;
+      <Typography variant="caption" style={{ fontSize: "14px" }}>
+       &nbsp;{trimTocTextByHash(props.strPart)}&nbsp;
       </Typography>
     );
   }

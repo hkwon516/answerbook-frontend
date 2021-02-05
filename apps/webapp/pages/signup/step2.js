@@ -1,19 +1,15 @@
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import {
   Typography,
-  Button,
   Grid,
   Box,
   FormControl,
-  IconButton,
   FormGroup,
   FormControlLabel,
   Checkbox,
   MenuItem,
   InputLabel,
   Select,
-  colors,
-  Avatar,
   InputAdornment,
   FormHelperText,
   TextField,
@@ -22,12 +18,11 @@ import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import LinkComponent from "../../component/generic/LinkComponent";
-import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { makeStyles } from "@material-ui/core/styles";
 import ButtonComponent from "../../component/generic/ButtonComponent";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import TocPart from "../../component/signup/TocPart";
-
+import ProfilePicture from "../../component/generic/ProfilePicture";
 import getParse from "../../utils/parse";
 
 const useStyles = makeStyles((theme) => ({
@@ -49,9 +44,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SignUp = (props) => {
-  const [profilePicture, setProfilePicture] = useState(undefined);
   const emailProviders = ["naver.com", "hanmail.net", "daum.net", "gmail.com", "nate.com", "icloud.com", "hotmail.com", "yahoo.co.kr"];
-  const cameraRef = useRef();
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -85,7 +79,6 @@ const SignUp = (props) => {
 
     onSubmit: async (values, actions) => {
       try {
-        console.log(values.profilePicture);
         const schoolQuery = new props.parse.Query(props.parse.Object.extend("School"));
         const school = await schoolQuery.get(values.school.objectId);
         const gradeQuery = new props.parse.Query(props.parse.Object.extend("Grade"));
@@ -93,6 +86,17 @@ const SignUp = (props) => {
         const Student = props.parse.Object.extend("Student");
         const newStudent = new Student();
 
+        const Preferences = props.parse.Object.extend("Preferences");
+        const newPreferences = new Preferences();
+
+        newPreferences.set("solutionLike", true)
+        newPreferences.set("solutionSave", true)
+        newPreferences.set("solutionAlert", true)
+        newPreferences.set("commentAlert", true)
+
+        const preferences = await newPreferences.save();
+
+    
         newStudent.set("school", school);
         newStudent.set("grade", grade);
         newStudent.set("nickname", values.nickname);
@@ -108,6 +112,7 @@ const SignUp = (props) => {
         user.set("student", student);
         user.set("position", "student");
         user.set("locale", props.router.locale);
+        user.set("preferences", preferences);
 
         if (values.profilePicture) {
           const profilePicture = new props.parse.File("profilePicture", values.profilePicture);
@@ -128,22 +133,11 @@ const SignUp = (props) => {
     },
   });
 
-  useEffect(() => {
-    if (formik.values.profilePicture) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setProfilePicture(reader.result);
-      };
-
-      reader.readAsDataURL(formik.values.profilePicture);
-    }
-  }, [formik.values.profilePicture]);
-
   return (
-    <>
+    <Box p={2}>
       <Grid container>
         <Grid item xs={12}>
-          <Box textAlign="right" mt={1.17}>
+          <Box textAlign="right">
             <Grid alignItems="center" container justify="flex-end">
               <Grid item>
                 <Box style={{ opacity: 0.5 }}>
@@ -155,7 +149,7 @@ const SignUp = (props) => {
                 </Box>
               </Grid>
               <Grid item>
-                <Box ml={1.7} mr={1.7}>
+                <Box ml={1.3} mr={1.3}>
                   <Typography variant="body2" style={{ textTransform: "uppercase" }}>
                     |
                   </Typography>
@@ -172,57 +166,27 @@ const SignUp = (props) => {
         <Grid item xs={12}>
           <Box mt={3.75} textAlign="center">
             <Box>
-              <Typography variant="h5" style={{ textTransform: "uppercase" }}>
+              <Typography gutterBottom variant="h5" style={{ textTransform: "uppercase" }}>
                 {props.translate("anonPages.signupStep2.subtitle1")}
               </Typography>
             </Box>
-            <Box mt={2.5}>
+            <Box>
               <Typography variant="body2">{props.translate("anonPages.signupStep2.subtitle2")}</Typography>
             </Box>
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <Box mt={3.35}>
+          <Box mt={3}>
             <form noValidate onSubmit={formik.handleSubmit}>
               <Grid container justify={"center"}>
                 <Grid item>
-                  <Box mb={2} textAlign="center" style={{ position: "relative" }}>
-                    <input
-                      style={{ display: "none" }}
-                      type="file"
-                      accept="image/*;capture=camera"
-                      capture="camera"
-                      ref={cameraRef}
-                      multiple={false}
-                      onChange={(e) => {
-                        console.log(e.target.files);
-                        if (e.target && e.target.files && e.target.files[0]) {
-                          formik.setFieldValue("profilePicture", e.target.files[0]);
-                        }
+                  <Box mb={2}>
+                    <ProfilePicture
+                      value={formik.values.profilePicture}
+                      setValue={(value) => {
+                        formik.setFieldValue("profilePicture", value);
                       }}
-                      name="profilePicture"
                     />
-                    <Avatar
-                      src={
-                        profilePicture ||
-                        "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.jpg"
-                      }
-                      onClick={() => {
-                        if (cameraRef) {
-                          console.log(cameraRef);
-                          cameraRef.current.click();
-                        }
-                      }}
-                      style={{
-                        cursor: "pointer",
-                        backgroundColor: "transparent",
-                        border: `1px solid ${colors.grey[400]}`,
-                        width: 120,
-                        height: 120,
-                        margin: "0 auto",
-                      }}
-                    ></Avatar>
-                    <AddCircleIcon color="primary" style={{ position: "absolute", bottom: 8, right: 8 }} />
                   </Box>
                 </Grid>
                 <Grid item xs={12}>
@@ -343,16 +307,19 @@ const SignUp = (props) => {
                 <Grid item xs={12}>
                   <Box mt={1} mb={3.3}>
                     <FormControl error={formik.touched.toc && formik.errors.toc}>
-                      <FormGroup row>
-                        <FormControlLabel
-                          control={<Checkbox checked={formik.values.toc} onChange={formik.handleChange} name="toc" />}
-                          style={{ marginRight: "0px" }}
-                        />
-                        <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart1")} />
-                        <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart2")} />
-                        <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart3")} />
-                        <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart4")} />
-                      </FormGroup>
+                      <Grid alignItems="center" container>
+                        <Grid item xs={1}>
+                          <Box ml={-1}>
+                          <Checkbox checked={formik.values.toc} onChange={formik.handleChange} name="toc" />
+                          </Box>
+                        </Grid>
+                        <Grid item xs={11}>
+                          <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart1")} />
+                          <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart2")} />
+                          <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart3")} />
+                          <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart4")} />
+                        </Grid>
+                      </Grid>
                       {formik.touched.toc && formik.errors.toc && <FormHelperText error>{formik.errors.toc}</FormHelperText>}
                     </FormControl>
                   </Box>
@@ -377,7 +344,7 @@ const SignUp = (props) => {
           </Box>
         </Grid>
       </Grid>
-    </>
+    </Box>
   );
 };
 
