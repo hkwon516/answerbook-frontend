@@ -36,16 +36,16 @@ const withUser = (WrappedComponent) => {
         }
 
         if (user) {
-          if (user.get("position") == "student") {
-            this.onLogout();
+          if (user.get("position") === "student") {
+            this.onLogout("app.notAuthorized");
             return;
           }
 
-          if (user.get("position") == "teacher") {
+          if (user.get("position") === "teacher") {
             await user.get("teacher").fetch();
           }
 
-          if (user.get("position") == "publisher") {
+          if (user.get("position") === "publisher") {
             await user.get("publisher").fetch();
           }
         }
@@ -56,15 +56,16 @@ const withUser = (WrappedComponent) => {
       }
     };
 
-    onLogout = async () => {
+    onLogout = async (messageKey = undefined) => {
       try {
         this.setState({ loading: true });
-
         await this.parse.User.logOut();
         this.setState({ user: undefined });
       } catch (error) {
-        this.props.router.push("/");
+        console.error("Logout Error", error);
       }
+
+      this.props.router.push("/" + messageKey ? `?message=${messageKey}` : "");
     };
 
     onLogin = async (username, password) => {
@@ -128,6 +129,10 @@ const withApp = (WrappedComponent) => {
       const jssStyles = document.querySelector("#jss-server-side");
       if (jssStyles) {
         jssStyles.parentElement.removeChild(jssStyles);
+      }
+
+      if (props.router.query.message) {
+        showError(translate(props.router.query.message));
       }
     }, []);
 
