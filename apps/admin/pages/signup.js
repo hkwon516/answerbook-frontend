@@ -28,7 +28,10 @@ export default function SignUp(props) {
         .string()
         .required(props.translate("anonPages.signup.emailRequired"))
         .email(props.translate("anonPages.signup.emailValidate")),
-      phone: yup.number(props.translate("anonPages.signup.phoneValidate")).required(props.translate("anonPages.signup.phoneRequired")),
+      phone: yup
+        .number()
+        .required(props.translate("anonPages.signup.phoneRequired"))
+        .typeError(props.translate("anonPages.signup.phoneValidate")),
       password: yup
         .string()
         .required(props.translate("anonPages.signup.passwordRequired"))
