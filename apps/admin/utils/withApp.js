@@ -156,7 +156,10 @@ const withApp = (WrappedComponent) => {
 
     const getTitle = (prefix = true) => {
       const pageTitle = titlePageKey && translate(titlePageKey) ? `${translate(titlePageKey)}` : '';
-      const title = (prefix ? `${translate("app.title")} | ` : "") + pageTitle;
+
+      let homeTitle = `${translate("app.title")}`
+      const mainTitle = (pageTitle ? homeTitle + ' | ' : homeTitle + ' | ' + translate("app.subTitle"));
+      const title = (prefix ? mainTitle : "") + pageTitle;
       return title;
     };
 
