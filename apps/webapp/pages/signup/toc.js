@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Typography,
   Grid,
@@ -29,6 +29,10 @@ const Toc = (props) => {
   };
 
   const classes = useStyles();
+
+  useEffect(() => {
+    props.setTitlePageKey("anonPages.toc.title");
+  }, [])
 
   return (
     <Grid container>
