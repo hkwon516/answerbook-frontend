@@ -29,26 +29,42 @@ const withUser = (WrappedComponent) => {
     }
 
     resolveUser = async () => {
-      let user = await this.parse.User.currentAsync();
-      if (user && !user.get("emailVerified")) {
-        user = await user.fetch();
-      }
-
-      if (user) {
-        if (user.get("position") == "student") {
-          this.onLogout();
-          return;
+      try {
+        let user = await this.parse.User.currentAsync();
+        if (user && !user.get("emailVerified")) {
+          user = await user.fetch();
         }
-      }
 
-      this.setState({ user, loading: false });
+        if (user) {
+          if (user.get("position") == "student") {
+            this.onLogout();
+            return;
+          }
+
+          if (user.get("position") == "teacher") {
+            await user.get("teacher").fetch();
+          }
+
+          if (user.get("position") == "publisher") {
+            await user.get("publisher").fetch();
+          }
+        }
+
+        this.setState({ user, loading: false });
+      } catch (error) {
+        this.onLogout();
+      }
     };
 
     onLogout = async () => {
-      this.setState({ loading: true });
+      try {
+        this.setState({ loading: true });
 
-      await this.parse.User.logOut();
-      this.setState({ user: undefined });
+        await this.parse.User.logOut();
+        this.setState({ user: undefined });
+      } catch (error) {
+        this.props.router.push("/");
+      }
     };
 
     onLogin = async (username, password) => {
@@ -56,7 +72,7 @@ const withUser = (WrappedComponent) => {
         this.setState({ loading: true });
         const user = await this.parse.User.logIn(username, password, { usePost: true });
 
-        await this.resolveUser()
+        await this.resolveUser();
       } catch (error) {
         throw error;
       }
@@ -117,7 +133,7 @@ const withApp = (WrappedComponent) => {
 
     useEffect(() => {
       if (contexts.user && !isAuthenticatedRoute) {
-        props.router.push("/user");
+        changeLanguage(contexts.user.get("locale"), "/user");
       }
 
       if (!contexts.user && isAuthenticatedRoute) {
@@ -133,20 +149,17 @@ const withApp = (WrappedComponent) => {
       cookies.set(key, value);
     };
 
-    const getCookie = (key) => {
-      return cookies.get(key);
-    };
-
-    const changeLanguage = async (locale) => {
+    const changeLanguage = async (locale, pathname = undefined) => {
+      pathname = pathname || props.router.pathname;
       setCookie("NEXT_LOCALE", locale);
       if (contexts.user) {
         contexts.user.set("locale", locale);
-        props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
+        props.router.push(pathname, pathname, { locale: locale });
 
         const updatedUser = await contexts.user.save();
         props.setUser(updatedUser);
       } else {
-        props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
+        props.router.push(pathname, pathname, { locale: locale });
       }
     };
 
@@ -155,7 +168,7 @@ const withApp = (WrappedComponent) => {
     };
 
     const getTitle = (prefix = true) => {
-      const pageTitle = titlePageKey && translate(titlePageKey) ? ` | ${translate(titlePageKey)}` : '';
+      const pageTitle = titlePageKey && translate(titlePageKey) ? ` | ${translate(titlePageKey)}` : "";
       const title = (prefix ? `${translate("app.title")}` : null) + pageTitle;
       return title;
     };

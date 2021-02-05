@@ -6,10 +6,10 @@ import KakaoIcon from "../../component/login/KakaoIcon";
 
 export default function SignUp(props) {
   return (
-    <>
+    <Box p={2}>
       <Grid container>
         <Grid item xs={12}>
-          <Box textAlign="center">
+          <Box mt={3.75} textAlign="center">
             <Box>
               <Typography variant="h5" style={{ textTransform: "uppercase" }}>
                 {props.translate("anonPages.signupStep1.title")}
@@ -46,6 +46,6 @@ export default function SignUp(props) {
           </Box>
         </Grid>
       </Grid>
-    </>
+    </Box>
   );
 }

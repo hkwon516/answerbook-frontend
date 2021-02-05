@@ -139,7 +139,7 @@
       "labelGeneral": "General",
       "labelInformation": "Information",
       "labelSecurity": "Change Password",
-      "labelCompanyName": "Company Name",
+      "labelCompanyEmail": "Company Name",
       "labelPurpose": "Purpose of signing up",
       "fieldName": "Name",
       "fieldId": "Id",
@@ -161,7 +161,13 @@
       "emailValidate": "Please enter a valid email.",
       "phoneValidate": "Please enter Numbers only.",
       "phoneRequired": "Phone is a required field.",
-      "positionRequired": "Position is a required field."
+      "positionRequired": "Position is a required field.",
+      "academyNameRequired": "Academy name is a required field.",
+      "companyEmailRequired": "Company email is a required field.",
+      "comapnyEmailValidate": "Please enter a valid company email.",
+      "purposeRequired": "Purpose of signing up is a required field.",
+      "messageAccountExists": "Account with above email already exists."
+
     }
   }
 }

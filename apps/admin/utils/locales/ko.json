@@ -161,7 +161,13 @@
       "emailValidate": "유효한 이메일을 입력하십시오.",
       "phoneValidate": "숫자 만 입력하세요.",
       "phoneRequired": "이름은 필수 필드입니다",
-      "positionRequired": "직위는 필수 필드입니다."
+      "positionRequired": "직위는 필수 필드입니다.",
+      "academyNameRequired": "아카데미 이름은 필수 필드입니다.",
+      "companyEmailRequired": "회사 이메일은 필수 필드입니다.",
+      "comapnyEmailValidate": "유효한 회사 이메일을 입력하십시오.",
+      "purposeRequired": "가입 목적은 필수 항목입니다.",
+      "messageAccountExists": "위 이메일이있는 계정이 이미 존재합니다."
+
     }
   }
 }
