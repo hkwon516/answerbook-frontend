@@ -30,6 +30,7 @@ const GeneralComponent = (props) => {
     initialValues: {
       name: props.user.get("name"),
       email: props.user.get("email"),
+      phone: props.user.get("phone"),
       nickname: props.user.get("student").get("nickname"),
       school: props.user.get("student").get("school").id,
       grade: props.user.get("student")?.get("grade").id,
@@ -44,34 +45,27 @@ const GeneralComponent = (props) => {
         .string()
         .required(props.translate("userPages.settings.emailRequired"))
         .email(props.translate("userPages.settings.emailValidate")),
+      phone: yup
+        .number()
+        .required(props.translate("userPages.settings.phoneRequired"))
+        .typeError(props.translate("userPages.settings.phoneValidate")),
       nickname: yup.string().required(props.translate("userPages.settings.nickNameRequired")),
-      school: yup.string().required("School is required"),
-      grade: yup.string().required("grade field is required"),
-      currentPassword: yup
-        .string()
-        .required(props.translate("userPages.settings.passwordRequired"))
-        .min(6, props.translate("userPages.settings.passwordLength")),
-      password: yup
-        .string()
-        .required(props.translate("userPages.settings.passwordRequired"))
-        .min(6, props.translate("userPages.settings.passwordLength")),
-      passwordConfirm: yup
-        .string()
-        .required(props.translate("userPages.settings.passwordConfirmationRequired"))
-        .oneOf([yup.ref("password")], props.translate("userPages.settings.passwordValidate")),
     }),
 
     onSubmit: async (values, actions) => {
       try {
-        if (values.profilePicture) {
-          const profilePicture = new props.parse.File("profilePicture", values.profilePicture);
-          props.user.set("profilePicture", profilePicture);
-        }
-        await props.user.verifyPassword(values.currentPassword);
-        props.user.set("password", values.password);
-        await props.user.save();
-        props.showSuccess(props.translate("userPages.settings.labelPasswordUpdateMessage"));
-        actions.resetForm();
+if (values.profilePicture) {
+  const profilePicture = new props.parse.File("profilePicture", values.profilePicture);
+  props.user.set("profilePicture", profilePicture);
+}
+        props.user.set("name", values.name);
+        props.user.set("email", values.email);
+        props.user.set("phone", values.phone);
+        props.user.set("username", values.email);
+        props.user.get("student").set("nickname", values.nickname);
+        const user = await props.user.save();
+        props.setUser(user);
+        props.showSuccess(props.translate("userPages.settings.labelSuccessMessage"));
       } catch (error) {
         props.showError(error.message);
       }
@@ -100,6 +94,18 @@ const GeneralComponent = (props) => {
             size="small"
             name="email"
             autoComplete="email"
+            formik={formik}
+          />
+        </Grid>
+
+        <Grid item xs={12}>
+          <InputComponent
+            required
+            fullWidth
+            size="small"
+            label={props.translate("userPages.settings.fieldPhone")}
+            name="phone"
+            autoComplete="Phone Number"
             formik={formik}
           />
         </Grid>
@@ -178,7 +184,7 @@ const GeneralComponent = (props) => {
         </Grid>
         <Grid item xs={12}>
           <Box mt={2}>
-            <ButtonComponent type="submit" fullWidth variant="contained" color="secondary" disabled={props.isSubmitting}>
+            <ButtonComponent type="submit" fullWidth variant="contained" color="secondary" disabled={formik.isSubmitting}>
               {!formik.isSubmitting ? props.translate("userPages.settings.buttonUpdate") : props.translate("app.buttonWait")}
             </ButtonComponent>
           </Box>
