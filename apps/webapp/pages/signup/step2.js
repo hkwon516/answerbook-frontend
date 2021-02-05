@@ -125,7 +125,7 @@ const SignUp = (props) => {
     <Box p={2}>
       <Grid container>
         <Grid item xs={12}>
-          <Box textAlign="right" mt={1.17}>
+          <Box textAlign="right">
             <Grid alignItems="center" container justify="flex-end">
               <Grid item>
                 <Box style={{ opacity: 0.5 }}>

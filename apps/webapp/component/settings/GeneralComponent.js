@@ -1,31 +1,13 @@
-import {
-  Box,
-  Button,
-  Divider,
-  Grid,
-  Typography,
-  Select,
-  MenuItem,
-  TextField,
-  colors,
-  FormControl,
-  InputLabel,
-  FormHelperText,
-  Avatar,
-} from "@material-ui/core";
+import { Box, Grid, Select, MenuItem, TextField, FormControl, InputLabel, FormHelperText } from "@material-ui/core";
 import React, { useRef } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import InputComponent from "../../component/generic/InputComponent";
-import LanguageComponent from "../generic/LanguageComponent";
 import { Autocomplete } from "@material-ui/lab";
 import ButtonComponent from "../../component/generic/ButtonComponent";
-import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import ProfilePicture from "../generic/ProfilePicture";
 
 const GeneralComponent = (props) => {
-  const cameraRef = useRef();
-
   const formik = useFormik({
     initialValues: {
       name: props.user.get("name"),
@@ -54,10 +36,20 @@ const GeneralComponent = (props) => {
 
     onSubmit: async (values, actions) => {
       try {
-if (values.profilePicture) {
-  const profilePicture = new props.parse.File("profilePicture", values.profilePicture);
-  props.user.set("profilePicture", profilePicture);
-}
+        if (values.profilePicture) {
+          const profilePicture = new props.parse.File("profilePicture", values.profilePicture);
+          props.user.set("profilePicture", profilePicture);
+        }
+
+        const schoolQuery = new props.parse.Query(props.parse.Object.extend("School"));
+        const school = await schoolQuery.get(values.school);
+        const gradeQuery = new props.parse.Query(props.parse.Object.extend("Grade"));
+        const grade = await gradeQuery.get(values.grade);
+
+        props.user.get("student").set("school", school);
+        props.user.get("student").set("grade", grade);
+
+
         props.user.set("name", values.name);
         props.user.set("email", values.email);
         props.user.set("phone", values.phone);

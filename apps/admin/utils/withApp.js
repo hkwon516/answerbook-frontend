@@ -58,10 +58,10 @@ const withUser = (WrappedComponent) => {
 
     onLogout = async () => {
       try {
-      this.setState({ loading: true });
+        this.setState({ loading: true });
 
-      await this.parse.User.logOut();
-      this.setState({ user: undefined });
+        await this.parse.User.logOut();
+        this.setState({ user: undefined });
       } catch (error) {
         this.props.router.push("/");
       }
@@ -133,7 +133,7 @@ const withApp = (WrappedComponent) => {
 
     useEffect(() => {
       if (contexts.user && !isAuthenticatedRoute) {
-        props.router.push("/user");
+        changeLanguage(contexts.user.get("locale"), "/user");
       }
 
       if (!contexts.user && isAuthenticatedRoute) {
@@ -149,20 +149,17 @@ const withApp = (WrappedComponent) => {
       cookies.set(key, value);
     };
 
-    const getCookie = (key) => {
-      return cookies.get(key);
-    };
-
-    const changeLanguage = async (locale) => {
+    const changeLanguage = async (locale, pathname = undefined) => {
+      pathname = pathname || props.router.pathname;
       setCookie("NEXT_LOCALE", locale);
       if (contexts.user) {
         contexts.user.set("locale", locale);
-        props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
+        props.router.push(pathname, pathname, { locale: locale });
 
         const updatedUser = await contexts.user.save();
         props.setUser(updatedUser);
       } else {
-        props.router.push(props.router.pathname, props.router.pathname, { locale: locale });
+        props.router.push(pathname, pathname, { locale: locale });
       }
     };
 

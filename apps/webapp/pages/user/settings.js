@@ -7,6 +7,7 @@ import Header from "../../component/common/Header";
 import getParse from "../../utils/parse";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import NotificationsIcon from "@material-ui/icons/Notifications";
+import LanguageComponent from "../../component/generic/LanguageComponent";
 const Settings = (props) => {
 
   return (
@@ -20,13 +21,12 @@ const Settings = (props) => {
           <Grid item xs={12} md={3} sm={4}>
             <Box p={2}>
               <GeneralComponent {...props} />
-
               <NotificationComponent {...props} />
-
               <SecurityComponent {...props} />
             </Box>
 
             <Button onClick={() => props.onLogout()}>SIGN OUT</Button>
+            <LanguageComponent {...props} />
           </Grid>
         </Grid>
       </Box>
