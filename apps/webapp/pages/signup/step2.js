@@ -122,7 +122,7 @@ const SignUp = (props) => {
   });
 
   return (
-    <>
+    <Box p={2}>
       <Grid container>
         <Grid item xs={12}>
           <Box textAlign="right" mt={1.17}>
@@ -137,7 +137,7 @@ const SignUp = (props) => {
                 </Box>
               </Grid>
               <Grid item>
-                <Box ml={1.7} mr={1.7}>
+                <Box ml={1.3} mr={1.3}>
                   <Typography variant="body2" style={{ textTransform: "uppercase" }}>
                     |
                   </Typography>
@@ -154,25 +154,23 @@ const SignUp = (props) => {
         <Grid item xs={12}>
           <Box mt={3.75} textAlign="center">
             <Box>
-              <Typography variant="h5" style={{ textTransform: "uppercase" }}>
+              <Typography gutterBottom variant="h5" style={{ textTransform: "uppercase" }}>
                 {props.translate("anonPages.signupStep2.subtitle1")}
               </Typography>
             </Box>
-            <Box mt={2.5}>
+            <Box>
               <Typography variant="body2">{props.translate("anonPages.signupStep2.subtitle2")}</Typography>
             </Box>
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <Box mt={3.35}>
+          <Box mt={3}>
             <form noValidate onSubmit={formik.handleSubmit}>
               <Grid container justify={"center"}>
                 <Grid item>
                   <Box mb={2}>
                     <ProfilePicture
                       value={formik.values.profilePicture}
-                     
-
                       setValue={(value) => {
                         formik.setFieldValue("profilePicture", value);
                       }}
@@ -297,16 +295,19 @@ const SignUp = (props) => {
                 <Grid item xs={12}>
                   <Box mt={1} mb={3.3}>
                     <FormControl error={formik.touched.toc && formik.errors.toc}>
-                      <FormGroup row>
-                        <FormControlLabel
-                          control={<Checkbox checked={formik.values.toc} onChange={formik.handleChange} name="toc" />}
-                          style={{ marginRight: "0px" }}
-                        />
-                        <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart1")} />
-                        <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart2")} />
-                        <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart3")} />
-                        <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart4")} />
-                      </FormGroup>
+                      <Grid alignItems="center" container>
+                        <Grid item xs={1}>
+                          <Box ml={-1}>
+                          <Checkbox checked={formik.values.toc} onChange={formik.handleChange} name="toc" />
+                          </Box>
+                        </Grid>
+                        <Grid item xs={11}>
+                          <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart1")} />
+                          <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart2")} />
+                          <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart3")} />
+                          <TocPart strPart={props.translate("anonPages.signupStep2.labelTocPart4")} />
+                        </Grid>
+                      </Grid>
                       {formik.touched.toc && formik.errors.toc && <FormHelperText error>{formik.errors.toc}</FormHelperText>}
                     </FormControl>
                   </Box>
@@ -331,7 +332,7 @@ const SignUp = (props) => {
           </Box>
         </Grid>
       </Grid>
-    </>
+    </Box>
   );
 };
 
