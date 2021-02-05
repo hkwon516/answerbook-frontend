@@ -83,10 +83,6 @@ const UserLayout = (props) => {
   const drawerWidth = getDrawerWidth(props.theme);
   const popperWidth = drawerWidth - drawerWidth * 0.1;
 
-  // useEffect(() => {
-  //   props.setTitlePageKey("app.title");
-  // }, [])
-
   return (
     <>
 
