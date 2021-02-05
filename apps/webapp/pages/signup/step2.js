@@ -1,19 +1,15 @@
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import {
   Typography,
-  Button,
   Grid,
   Box,
   FormControl,
-  IconButton,
   FormGroup,
   FormControlLabel,
   Checkbox,
   MenuItem,
   InputLabel,
   Select,
-  colors,
-  Avatar,
   InputAdornment,
   FormHelperText,
   TextField,
@@ -22,12 +18,11 @@ import InputComponent from "../../component/generic/InputComponent";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import LinkComponent from "../../component/generic/LinkComponent";
-import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { makeStyles } from "@material-ui/core/styles";
 import ButtonComponent from "../../component/generic/ButtonComponent";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import TocPart from "../../component/signup/TocPart";
-
+import ProfilePicture from "../../component/generic/ProfilePicture";
 import getParse from "../../utils/parse";
 
 const useStyles = makeStyles((theme) => ({
@@ -49,9 +44,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SignUp = (props) => {
-  const [profilePicture, setProfilePicture] = useState(undefined);
   const emailProviders = ["naver.com", "hanmail.net", "daum.net", "gmail.com", "nate.com", "icloud.com", "hotmail.com", "yahoo.co.kr"];
-  const cameraRef = useRef();
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -121,17 +115,6 @@ const SignUp = (props) => {
     },
   });
 
-  useEffect(() => {
-    if (formik.values.profilePicture) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setProfilePicture(reader.result);
-      };
-
-      reader.readAsDataURL(formik.values.profilePicture);
-    }
-  }, [formik.values.profilePicture]);
-
   return (
     <>
       <Grid container>
@@ -179,43 +162,13 @@ const SignUp = (props) => {
             <form noValidate onSubmit={formik.handleSubmit}>
               <Grid container justify={"center"}>
                 <Grid item>
-                  <Box mb={2} textAlign="center" style={{ position: "relative" }}>
-                    <input
-                      style={{ display: "none" }}
-                      type="file"
-                      accept="image/*;capture=camera"
-                      capture="camera"
-                      ref={cameraRef}
-                      multiple={false}
-                      onChange={(e) => {
-                        console.log(e.target.files);
-                        if (e.target && e.target.files && e.target.files[0]) {
-                          formik.setFieldValue("profilePicture", e.target.files[0]);
-                        }
+                  <Box mb={2}>
+                    <ProfilePicture
+                      value={formik.values.profilePicture}
+                      setValue={(value) => {
+                        formik.setFieldValue("profilePicture", value);
                       }}
-                      name="profilePicture"
                     />
-                    <Avatar
-                      src={
-                        profilePicture ||
-                        "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.jpg"
-                      }
-                      onClick={() => {
-                        if (cameraRef) {
-                          console.log(cameraRef);
-                          cameraRef.current.click();
-                        }
-                      }}
-                      style={{
-                        cursor: "pointer",
-                        backgroundColor: "transparent",
-                        border: `1px solid ${colors.grey[400]}`,
-                        width: 120,
-                        height: 120,
-                        margin: "0 auto",
-                      }}
-                    ></Avatar>
-                    <AddCircleIcon color="primary" style={{ position: "absolute", bottom: 8, right: 8 }} />
                   </Box>
                 </Grid>
                 <Grid item xs={12}>

@@ -8,6 +8,7 @@ import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import { makeStyles } from "@material-ui/core/styles";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import BarcodeScannerComponent from "../../component/barcode/BarcodeScannerComponent";
+import ProfilePicture from "../../component/generic/ProfilePicture";
 
 const useStyles = makeStyles({
   scrollerOverride: {
@@ -37,17 +38,10 @@ const Dashboard = (props) => {
           <Box>
             <Box height={110} bgcolor="secondary.dark"></Box>
             <Container maxWidth={"xs"}>
-              <Box style={{ top: -25, position: "relative" }}>
+              <Box mt={-5} mb={2}>
                 <Grid container justify="center">
                   <Grid item>
-                    <Avatar
-                      alt={props.user.get("name")}
-                      style={{ width: 124, height: 124 }}
-                      src={
-                        props.user.get("profilePicture")?.url() ||
-                        "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.jpg"
-                      }
-                    />
+                    <ProfilePicture value={props.user.get("profilePicture")?.url()} />
                   </Grid>
                 </Grid>
               </Box>
