@@ -16,6 +16,7 @@ const ProfilePicture = (props) => {
       reader.readAsDataURL(props.value);
     }
   }, [props.value]);
+  
   return (
     <Box style={{ position: "relative" }}>
       <input
@@ -33,7 +34,7 @@ const ProfilePicture = (props) => {
         name="profilePicture"
       />
       <Avatar
-        src={profilePicture}
+        src={ profilePicture || props.src}
         onClick={() => {
           if (cameraRef && props.setValue) {
             cameraRef.current.click();

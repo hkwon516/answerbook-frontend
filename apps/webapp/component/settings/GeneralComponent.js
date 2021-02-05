@@ -80,6 +80,7 @@ if (values.profilePicture) {
           <Box mb={1} textAlign="center">
             <ProfilePicture
               value={formik.values.profilePicture}
+              src={props.user.get("profilePicture")?.url()}
               setValue={(value) => {
                 formik.setFieldValue("profilePicture", value);
               }}
