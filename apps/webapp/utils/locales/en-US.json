@@ -169,6 +169,7 @@
       "fieldSchool": "School",
       "fieldGrade": "Grade",
       "lableListSubheader": "Push Alarm Settings",
+      "securitySettings": "Security Settings",
       "lableSwitchOnePrimary": "Likes on my solution",
       "lableSwitchOneSecondary": "Alert when others like my solution.",
       "lableSwitchTwoPrimary": "Save my solution",

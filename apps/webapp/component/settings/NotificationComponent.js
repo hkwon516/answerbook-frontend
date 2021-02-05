@@ -53,7 +53,7 @@ const NotificationComponent = (props) => {
   return (
     <form noValidate onSubmit={formik.handleSubmit}>
       <Box mt={1}>
-        <List subheader={<ListSubheader disableGutters>{props.translate("userPages.settings.lableListSubheader")}</ListSubheader>}>
+        <List subheader={<ListSubheader disableSticky disableGutters>{props.translate("userPages.settings.lableListSubheader")}</ListSubheader>}>
           <ListItem disableGutters>
             <ListItemText
               style={{ paddingRight: 10 }}

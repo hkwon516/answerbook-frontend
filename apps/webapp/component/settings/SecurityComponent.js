@@ -45,7 +45,7 @@ const SecurityComponent = (props) => {
 
   return (
     <form noValidate onSubmit={formik.handleSubmit}>
-      <ListSubheader disableGutters>{props.translate("userPages.settings.lableListSubheader")}</ListSubheader>
+      <ListSubheader  disableSticky disableGutters>{props.translate("userPages.settings.securitySettings")}</ListSubheader>
       <Grid container>
         <Grid item xs={12}>
           <InputComponent
