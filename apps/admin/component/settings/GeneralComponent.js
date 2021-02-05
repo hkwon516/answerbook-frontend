@@ -17,9 +17,19 @@ const GeneralComponent = (props) => {
       email: yup
         .string()
         .required(props.translate("userPages.settings.emailRequired"))
-        .email(props.translate("userPages.settings.emailValidate")),
+        .email(props.translate("userPages.settings.emailValidate"))
+        .test("checkDuplicate", props.translate("userPages.settings.messageAccountExists"), (username) => {
+          return new Promise(async (resolve, reject) => {
+            try {
+              const exists = await props.parse.Cloud.run("usernameAvailable", { username });
+              resolve(exists);
+            } catch (error) {
+              reject(error);
+            }
+          });
+        }),
       phone: yup
-        .number(props.translate("userPages.settings.phoneValidate"))
+        .number()
         .required(props.translate("userPages.settings.phoneRequired"))
         .typeError(props.translate("userPages.settings.phoneValidate")),
     }),
@@ -28,12 +38,17 @@ const GeneralComponent = (props) => {
       try {
         props.user.set("name", values.name);
         props.user.set("email", values.email);
+        props.user.set("username", values.username);
         props.user.set("phone", values.phone);
         const user = await props.user.save();
         props.setUser(user);
         props.showSuccess(props.translate("userPages.settings.labelSuccessMessage"));
       } catch (error) {
-        props.showError(error.message);
+        if (error.code === 202) {
+          props.showError(props.translate("anonPages.settings.messageAccountExists"));
+        } else {
+          props.showError(error.message);
+        }
       }
 
       actions.setSubmitting(false);

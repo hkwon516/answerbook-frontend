@@ -74,7 +74,7 @@ const ChoosePassword = (props) => {
   }, []);
 
   return (
-    <>
+    <Box p={2} mt={6.5}>
       <form noValidate onSubmit={formik.handleSubmit}>
         <Grid container justify={"center"}>
           <Grid item xs={12}>
@@ -115,7 +115,7 @@ const ChoosePassword = (props) => {
           </Grid>
         </Grid>
       </form>
-    </>
+    </Box>
   );
 };
 

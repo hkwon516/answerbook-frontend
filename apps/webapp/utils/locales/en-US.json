@@ -8,7 +8,8 @@
     "buttonOk": "OK",
     "buttonWait": "Please wait...",
     "toastSuccess": "Success",
-    "toastError": "Error"
+    "toastError": "Error",
+    "notAuthorized": "Not Authorized"
   },
   "anonPages": {
     "signupStep1": {
@@ -30,6 +31,7 @@
       "fieldName": "Name",
       "fieldUsername": "Email",
       "fieldPassword": "Password",
+      "fieldPhone": "Phone Number",
       "fieldNickname": "Nickname",
       "fieldSchool": "School",
       "labelTocPart1": "I agree to the ",
@@ -48,6 +50,8 @@
       "passwordRequired": "Password is a required field.",
       "passwordLength": "Password should be minimum 6 characters",
       "passwordConfirmationRequired": "Password Confirmation is a required field.",
+      "phoneRequired": "Phone is a required field.",
+      "phoneValidate": "Please enter Numbers only.",
       "passwordValidate": "Password does not match.",
       "messageAccountExists": "Account with above email already exists. Please try Signing In."
     },
@@ -105,7 +109,13 @@
     "toc": {
       "title": "Terms and conditions",
       "buttonTermsOfUse": "Terms of use",
-      "buttonPrivacy": "Privacy Policy"
+      "buttonPrivacy": "Privacy Policy",
+      "textMainTitle": "Millie's Library Terms and Conditions",
+      "title1": "Chapter 1: General Provisions",
+      "title2": "Article 1 [Purpose]",
+      "paragraph1": "These terms and conditions are provided by Milli's library (hereinafter referred to as the ``company'') and provide content services (including web, mobile web and app services, paper book subscription services, etc.) and all services. The purpose is to stipulate basic matters such as rights, obligations and responsibilities among'company', and conditions of service use.",
+      "title3": "Article 2 [Terminology]",
+      "paragraph2": "The definitions of terms used in these terms and conditions are as follows. All. For the definition of terms in the terms and conditions other than the terms defined in each issue The information is in accordance with the relevant laws and regulations and service information. 1. Contents: 「Information and communication network use promotion and information protection In the information and communication network according to the provisions of Article 2 (1) 1 of the Act With the code, text, voice, sound, image or video used Expressed data or information, useful in preservation and use In order to increase the quality of the product, It refers to what has been processed.2. Company: Those who engage in economic activities related to the “contents” industry Content services (including web and mobile web/app services) C) and a person who provides all services. 3. Member: Signs a contract with the'company' and provides information on the'company'. And use the services provided by the ‘company’ It refers to those who can. 4. Post: Tech written in the process of using the service by the'member' Refers to information or materials such as text, images, audio, video, and links. is. 5. My Library: List of'Contents' and'Postings' written by'Members' It means a virtual space that stores'water'. 6. Pen name: A unique name given to a ‘member’ when registering as a member Is automatically assigned and can be changed by the'member'."
     }
   },
   "userPages": {
@@ -132,6 +142,7 @@
       "labelGeneral": "General",
       "labelInformation": "Information",
       "labelSecurity": "Change Password",
+      "fieldPhone": "Phone Number",
       "labelCompanyEmail": "Company Email",
       "labelPurpose": "Purpose of signing up",
       "fieldName": "Name",
@@ -144,6 +155,7 @@
       "buttonUpdate": "Update",
       "buttonConfirm": "Confirm",
       "nameRequired": "Name is a required field.",
+      "phoneRequired": "Phone is a required field.",
       "nickNameRequired": "Nick name is a required field.",
       "passwordRequired": "Password is a required field.",
       "passwordLength": "Password should be minimum 6 characters",
