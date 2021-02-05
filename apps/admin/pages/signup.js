@@ -75,9 +75,9 @@ export default function SignUp(props) {
         if (values.position === "publisher") {
           const Publisher = props.parse.Object.extend("Publisher");
           const newPublisher = new Publisher();
-          newPublisher.set("academyName", values.academyName);
+          newPublisher.set("companyEmail", values.companyEmail);
           const publisher = await newPublisher.save();
-          user.set("teacher", publisher);
+          user.set("publisher", publisher);
         }
 
         await user.signUp();
