@@ -1,6 +1,7 @@
 {
   "app": {
     "title": "Answerbook 관리자",
+    "subTitle": "집",
     "langLabel": "언어",
     "langEnglish": "English",
     "langKorean": "한국어",
