@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, MenuItem, Typography, Button, Menu } from "@material-ui/core";
+import { Grid, MenuItem, Typography, Button, Menu, Box } from "@material-ui/core";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
 const LanguageComponent = (props) => {
@@ -15,9 +15,11 @@ const LanguageComponent = (props) => {
   };
 
   return (
-    <Grid container style={{ width: "100%" }} justify="space-between" alignItems="center">
+    <Grid container justify="space-between" alignItems="center">
       <Grid item>
-        <Typography variant="caption">{props.translate("app.langLabel")}</Typography>
+        <Box mr={1}>
+          <Typography variant="caption">{props.translate("app.langLabel")}</Typography>
+        </Box>
       </Grid>
       <Grid item>
         <Button

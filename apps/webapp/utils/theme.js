@@ -12,6 +12,9 @@ const theme = {
       main: "#FFBD2F",
       dark: "#F77B28"
     },
+    background: {
+      default: "#f5f6fa"
+    }
   },
   typography: {
     fontFamily: "Montserrat, Helvetica, Arial, sans-serif",

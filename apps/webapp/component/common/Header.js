@@ -6,15 +6,14 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 const Header = (props) => {
   return (
     <React.Fragment>
-      <AppBar elevation={0} color="transparent" position="static">
-        <Toolbar>
+      <AppBar  elevation={0} color="#fff" position="static">
+        <Toolbar disableGutters>
           <Grid alignItems="center" container justify="space-between">
-            <Grid item>
+            <Grid item xs={2}>
               <IconButton
                 onClick={() => {
-                  props.router.back()
+                  props.router.back();
                 }}
-                
               >
                 <ArrowBackIcon />
               </IconButton>
@@ -26,17 +25,18 @@ const Header = (props) => {
                 </Typography>
               </Box>
             </Grid>
-            <Grid item >
-              {!props.hideNotificationsBell ? 
-              <IconButton
-                onClick={() => {
-                  // open drawer
-                }}
-              >
-                <Badge color="secondary" variant="dot">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton> : null}
+            <Grid item xs={2}>
+              {!props.hideNotificationsBell ? (
+                <IconButton
+                  onClick={() => {
+                    // open drawer
+                  }}
+                >
+                  <Badge color="secondary" variant="dot">
+                    <NotificationsIcon />
+                  </Badge>
+                </IconButton>
+              ) : null}
             </Grid>
           </Grid>
         </Toolbar>
