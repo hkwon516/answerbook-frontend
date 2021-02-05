@@ -18,15 +18,11 @@ const useStyles = makeStyles({
 const Dashboard = (props) => {
   const classes = useStyles();
   const [barcodeScannerOpen, setBarcodeScannerOpen] = useState(false);
-<<<<<<< HEAD
-  console.log(props.user.get("profilePicture"));
 
   useEffect(() => {
     props.setTitlePageKey("userPages.home.labelHome");
   }, []);
 
-=======
->>>>>>> 297c627060004a52e6cda9fda326a7dbd7c254dd
   return (
     <React.Fragment>
       <BarcodeScannerComponent
