@@ -67,7 +67,7 @@ const withUser = (WrappedComponent) => {
       }
 
       this.setState({ loading: false });
-      this.props.router.push("/" + messageKey ? `?message=${messageKey}` : "");
+      this.props.router.push("/" + (messageKey ? `?message=${messageKey}` : ""));
     };
 
     onLogin = async (username, password) => {
