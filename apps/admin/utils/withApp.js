@@ -78,6 +78,8 @@ const withUser = (WrappedComponent) => {
         this.setState({ loading: false });
         throw error;
       }
+
+      this.setState({ loading: false });
     };
 
     componentDidMount = () => {
