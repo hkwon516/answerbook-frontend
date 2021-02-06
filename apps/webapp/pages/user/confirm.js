@@ -19,7 +19,9 @@ export default function SignUp(props) {
                       {props.translate("userPages.confirm.title")}
                     </Typography>
                     <Box mt={2.5}>
-                      <Typography variant="body2">{props.translate("userPages.confirm.subtitle1")} {props.user.get("name")},</Typography>
+                      <Typography variant="body2">
+                        {props.translate("userPages.confirm.subtitle1")} {props.user.get("name")},
+                      </Typography>
                       <Typography variant="body2">{props.translate("userPages.confirm.subtitle2")}</Typography>
                       <Box mt={1}>
                         <Typography variant="body2">{props.translate("userPages.confirm.subtitle3")}</Typography>
