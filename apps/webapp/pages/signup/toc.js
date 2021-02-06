@@ -24,14 +24,7 @@ const Toc = (props) => {
       <Header router={props.router} title={props.translate("anonPages.signupStep2.tocTitle")} hideNotificationsBell={true} />
       <Box p={2} style={{ backgroundColor: "#f5f6fa" }}>
         <Box mb={2}>
-          <ButtonGroup
-            style={{ borderRadius: 25 }}
-            variant="contained"
-            fullWidth
-            color="secondary"
-           
-            showLabels
-          >
+          <ButtonGroup style={{ borderRadius: 25 }} variant="contained" fullWidth color="secondary" showLabels>
             <Button
               style={{
                 fontWeight: "bold",
