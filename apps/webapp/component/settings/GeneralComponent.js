@@ -26,7 +26,17 @@ const GeneralComponent = (props) => {
       email: yup
         .string()
         .required(props.translate("userPages.settings.emailRequired"))
-        .email(props.translate("userPages.settings.emailValidate")),
+        .email(props.translate("userPages.settings.emailValidate"))
+        .test("checkDuplicate", props.translate("anonPages.signup.messageAccountExists"), (username) => {
+          return new Promise(async (resolve, reject) => {
+            try {
+              const exists = await props.parse.Cloud.run("usernameAvailable", { username });
+              resolve(exists);
+            } catch (error) {
+              reject(error);
+            }
+          });
+        }),
       phone: yup
         .number()
         .required(props.translate("userPages.settings.phoneRequired"))
@@ -48,7 +58,6 @@ const GeneralComponent = (props) => {
 
         props.user.get("student").set("school", school);
         props.user.get("student").set("grade", grade);
-
 
         props.user.set("name", values.name);
         props.user.set("email", values.email);
