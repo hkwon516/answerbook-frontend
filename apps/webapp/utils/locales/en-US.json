@@ -177,7 +177,8 @@
       "lableSwitchThreePrimary": "Comments",
       "lableSwitchThreeSecondary": "Alert when someone comments on my comment or anybody comment on my solution.",
       "lableSwitchFourPrimary": "Alert Solution",
-      "lableSwitchFourSecondary": "when new solutions are uploaded to questions you set alert to."
+      "lableSwitchFourSecondary": "when new solutions are uploaded to questions you set alert to.",
+      "messageAccountExists": "Account with above email already exists."
     },
     "home": {
       "labelHome": "Home",
