@@ -29,7 +29,7 @@ const Toc = (props) => {
             variant="contained"
             fullWidth
             color="secondary"
-           
+
             showLabels
           >
             <Button
