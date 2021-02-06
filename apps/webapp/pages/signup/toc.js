@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Typography, Grid, Box, Tab } from "@material-ui/core";
+import { Typography, Grid, Box, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import IconButton from "@material-ui/core/IconButton";
@@ -18,8 +18,6 @@ const Toc = (props) => {
       props.changePage("/signup/toc?tab=privacy");
     }
   };
-
-  const classes = useStyles();
 
   useEffect(() => {
     props.setTitlePageKey("anonPages.toc.title");
