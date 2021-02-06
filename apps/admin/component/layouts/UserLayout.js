@@ -85,7 +85,6 @@ const UserLayout = (props) => {
 
   return (
     <>
-
       <Grid container>
         <Grid item xs={12}>
           <AppBar

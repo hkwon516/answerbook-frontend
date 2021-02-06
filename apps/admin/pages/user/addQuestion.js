@@ -185,7 +185,7 @@ const addQuestion = (props) => {
                             </Tabs>
                             <TabPanel value={value} index={0}>
                               <Grid container justify={"center"}>
-                                <Grid item xs={12} sm={4} >
+                                <Grid item xs={12} sm={4}>
                                   <Box
                                     style={{
                                       backgroundColor: "transparent",

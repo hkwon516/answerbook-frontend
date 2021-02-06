@@ -89,13 +89,12 @@ const SignUp = (props) => {
         const Preferences = props.parse.Object.extend("Preferences");
         const newPreferences = new Preferences();
 
-        newPreferences.set("solutionLike", true)
-        newPreferences.set("solutionSave", true)
-        newPreferences.set("solutionAlert", true)
-        newPreferences.set("commentAlert", true)
+        newPreferences.set("solutionLike", true);
+        newPreferences.set("solutionSave", true);
+        newPreferences.set("solutionAlert", true);
+        newPreferences.set("commentAlert", true);
 
         const preferences = await newPreferences.save();
-
 
         newStudent.set("school", school);
         newStudent.set("grade", grade);
