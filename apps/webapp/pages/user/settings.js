@@ -18,7 +18,7 @@ const Settings = (props) => {
       <Header router={props.router} title={props.translate("userPages.settings.title")} />
       <Box mt={2}>
         <Grid container justify="center">
-          <Grid item xs={12} md={3} sm={4}>
+          <Grid item xs={12} md={3} sm={6}>
             <Box p={2}>
               <GeneralComponent {...props} />
               <NotificationComponent {...props} />
