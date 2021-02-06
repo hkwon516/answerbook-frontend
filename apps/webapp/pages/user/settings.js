@@ -9,16 +9,13 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import LanguageComponent from "../../component/generic/LanguageComponent";
 const Settings = (props) => {
-
   useEffect(() => {
     props.setTitlePageKey("userPages.settings.title");
   }, []);
 
   return (
     <React.Fragment>
-      <Header
-        router={props.router}
-        title={props.translate("userPages.settings.title")} />
+      <Header router={props.router} title={props.translate("userPages.settings.title")} />
       <Box mt={2}>
         <Grid container justify="center">
           <Grid item xs={12} md={3} sm={4}>

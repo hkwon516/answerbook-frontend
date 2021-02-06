@@ -59,11 +59,10 @@ const ManageTextbook = (props) => {
 
   useEffect(() => {
     props.setTitlePageKey("userPages.textBook.title");
-  }, [])
+  }, []);
 
   return (
     <>
-
       <form noValidate>
         <Box mt={2}>
           <Grid container justify="center">
@@ -80,7 +79,6 @@ const ManageTextbook = (props) => {
                       <DialogContent>
                         <Grid container>
                           <Grid item xs={12}>
-
                             <FormControl
                               error={formik.touched.subject && formik.errors.subject}
                               variant="filled"
@@ -99,7 +97,6 @@ const ManageTextbook = (props) => {
                                 <FormHelperText error>{formik.errors.subject}</FormHelperText>
                               )}
                             </FormControl>
-
                           </Grid>
 
                           <Grid item xs={12}>
