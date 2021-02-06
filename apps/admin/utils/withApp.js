@@ -65,7 +65,7 @@ const withUser = (WrappedComponent) => {
         console.error("Logout Error", error);
       }
 
-      this.props.router.push("/" + (messageKey ? `?message=${messageKey}` : ""));
+      this.props.router.push("/" + messageKey ? `?message=${messageKey}` : "");
     };
 
     onLogin = async (username, password) => {
@@ -75,10 +75,9 @@ const withUser = (WrappedComponent) => {
 
         await this.resolveUser();
       } catch (error) {
+        this.setState({ loading: false });
         throw error;
       }
-
-      this.setState({ loading: false });
     };
 
     componentDidMount = () => {
