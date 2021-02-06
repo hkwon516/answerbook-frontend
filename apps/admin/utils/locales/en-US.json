@@ -1,6 +1,7 @@
 {
   "app": {
     "title": "Answerbook Admin",
+    "subTitle": "Home",
     "langLabel": "Language",
     "langEnglish": "English",
     "langKorean": "한국어",
@@ -100,6 +101,7 @@
       "buttonSignOut": "Sign out"
     },
     "textBook": {
+      "title": "Textbook",
       "buttonRegisterTextbook": "Register Textbook",
       "labelTextbookTitle": "Textbook Title",
       "labelSubject": "Subject",
@@ -116,6 +118,7 @@
       "buttonSubmit": "Submit"
     },
     "question": {
+      "title": "Questions",
       "labelQuestionStatistics": "Question Statistics",
       "labelTextbook": "Textbook",
       "labelPage": "Page",
@@ -135,6 +138,7 @@
       "columnTotalSolutions": "Total Solutions"
     },
     "settings": {
+      "title": "Settings",
       "labelSuccessMessage": "Successfully Updated",
       "labelPasswordUpdateMessage": "Password updated successfully",
       "labelGeneral": "General",

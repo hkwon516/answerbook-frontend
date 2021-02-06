@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Typography,
   Grid,
@@ -131,6 +131,10 @@ const SignUp = (props) => {
       actions.setSubmitting(false);
     },
   });
+
+  useEffect(() => {
+    props.setTitlePageKey("anonPages.signupStep2.title");
+  }, []);
 
   return (
     <Box p={2}>

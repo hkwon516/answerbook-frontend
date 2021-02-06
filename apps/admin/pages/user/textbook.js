@@ -1,5 +1,5 @@
 import { Box, Button, Divider, Grid, Paper, Typography, TextField, MenuItem, InputLabel, FormControl } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
 import MaterialTable from "material-table";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -57,9 +57,12 @@ const ManageTextbook = (props) => {
     setOpen(false);
   };
 
+  useEffect(() => {
+    props.setTitlePageKey("userPages.textBook.title");
+  }, []);
+
   return (
     <>
-      {props.setTitlePageKey("userPages.settings.title")}
       <form noValidate>
         <Box mt={2}>
           <Grid container justify="center">
