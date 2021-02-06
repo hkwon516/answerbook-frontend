@@ -15,7 +15,7 @@ import {
   IconButton,
   Button,
 } from "@material-ui/core";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import MenuIcon from "@material-ui/icons/Menu";
 import clsx from "clsx";
 import { useRouter } from "next/router";
