@@ -172,12 +172,12 @@ const withApp = (WrappedComponent) => {
       props.router.push(pathname, pathname, { locale: props.router.locale });
     };
 
-    const getTitle = (prefix = true) => {
-      const pageTitle = titlePageKey && translate(titlePageKey) ? ` | ${translate(titlePageKey)}` : "";
-      const title = (prefix ? `${translate("app.title")}` : null) + pageTitle;
+    const getTitle = (prefix = true, verticalBar = true) => {
+      let pageTitle = titlePageKey && translate(titlePageKey) ? `${verticalBar ? " | " : ""}${translate(titlePageKey)}` : "";
+      const title = (prefix ? `${translate("app.title")}` : "") + pageTitle;
       return title;
     };
-
+    
     const commonProps = {
       ...props,
       onLogout: async () => {

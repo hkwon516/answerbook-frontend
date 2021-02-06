@@ -107,7 +107,7 @@ const UserLayout = (props) => {
                 <MenuIcon />
               </IconButton>
               <Typography style={{ overflow: "hidden" }} variant="subtitle2" color="inherit">
-                {props.getTitle(false)}
+                {props.getTitle(false, false)}
               </Typography>
             </Toolbar>
           </AppBar>
