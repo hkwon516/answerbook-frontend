@@ -1,5 +1,5 @@
 import { Box, Button, Divider, Grid, Paper, Typography, TextField, MenuItem, InputLabel, FormControl } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
 import MaterialTable from "material-table";
 
 import InputComponent from "../../component/generic/InputComponent";
@@ -43,9 +43,12 @@ const ManageQuestion = (props) => {
     },
   });
 
+  useEffect(() => {
+    props.setTitlePageKey("userPages.question.title");
+  }, [])
+
   return (
     <>
-      {props.setTitlePageKey("userPages.settings.title")}
       <form noValidate>
         <Box mt={2}>
           <Grid container justify="center">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import { Typography, Button, Grid, Box } from "@material-ui/core";
 import InputComponent from "../../component/generic/InputComponent";
@@ -69,9 +69,12 @@ const ChoosePassword = (props) => {
     },
   });
 
+  useEffect(() => {
+    props.setTitlePageKey("anonPages.forgotChoosePassword.title");
+  }, []);
+
   return (
-    <Box p={2}  mt={6.5}>
-      {props.setTitlePageKey("anonPages.forgotChoosePassword.title")}
+    <Box p={2} mt={6.5}>
       <form noValidate onSubmit={formik.handleSubmit}>
         <Grid container justify={"center"}>
           <Grid item xs={12}>

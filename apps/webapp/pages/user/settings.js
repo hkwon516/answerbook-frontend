@@ -1,5 +1,5 @@
 import { Box, Grid, Button, Avatar, colors, Paper, AppBar, Toolbar, IconButton, Typography, Badge } from "@material-ui/core";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import GeneralComponent from "../../component/settings/GeneralComponent";
 import NotificationComponent from "../../component/settings/NotificationComponent";
 import SecurityComponent from "../../component/settings/SecurityComponent";
@@ -9,16 +9,16 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import LanguageComponent from "../../component/generic/LanguageComponent";
 const Settings = (props) => {
+  useEffect(() => {
+    props.setTitlePageKey("userPages.settings.title");
+  }, []);
 
   return (
     <React.Fragment>
-      {props.setTitlePageKey("userPages.settings.title")}
-      <Header
-        router={props.router}
-        title={props.translate("userPages.settings.title")} />
+      <Header router={props.router} title={props.translate("userPages.settings.title")} />
       <Box mt={2}>
         <Grid container justify="center">
-          <Grid item xs={12} md={3} sm={4}>
+          <Grid item xs={12} md={3} sm={6}>
             <Box p={2}>
               <GeneralComponent {...props} />
               <NotificationComponent {...props} />
