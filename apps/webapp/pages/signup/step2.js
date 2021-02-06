@@ -61,7 +61,19 @@ const SignUp = (props) => {
     },
     validationSchema: yup.object().shape({
       name: yup.string().required(props.translate("anonPages.signupStep2.nameRequired")),
-      username: yup.string().required(props.translate("anonPages.signupStep2.emailRequired")),
+      username: yup
+        .string()
+        .required(props.translate("anonPages.signupStep2.emailRequired"))
+        .test("checkDuplicate", props.translate("anonPages.signupStep2.messageAccountExists"), function (value) {
+          return new Promise(async (resolve, reject) => {
+            try {
+              const exists = await props.parse.Cloud.run("usernameAvailable", { username: value + "@" + this.parent.emailProvider });
+              resolve(exists);
+            } catch (error) {
+              reject(error);
+            }
+          });
+        }),
       password: yup
         .string()
         .required(props.translate("anonPages.signupStep2.passwordRequired"))

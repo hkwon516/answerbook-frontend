@@ -176,7 +176,9 @@
       "lableSwitchThreePrimary": "코멘트",
       "lableSwitchThreeSecondary": "누군가 내 댓글에 댓글을 달거나 누군가 내 솔루션에 댓글을 달면 경고합니다.",
       "lableSwitchFourPrimary": "경보 솔루션",
-      "lableSwitchFourSecondary": "알림을 설정 한 질문에 새 솔루션이 업로드되면."
+      "lableSwitchFourSecondary": "알림을 설정 한 질문에 새 솔루션이 업로드되면.",
+      "messageAccountExists": "위 이메일이있는 계정이 이미 존재합니다."
+
     },
     "home": {
       "labelHome": "집",
