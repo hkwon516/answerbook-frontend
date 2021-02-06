@@ -27,7 +27,7 @@ const GeneralComponent = (props) => {
         .string()
         .required(props.translate("userPages.settings.emailRequired"))
         .email(props.translate("userPages.settings.emailValidate"))
-        .test("checkDuplicate", props.translate("anonPages.signup.messageAccountExists"), (username) => {
+        .test("checkDuplicate", props.translate("userPages.settings.messageAccountExists"), (username) => {
           return new Promise(async (resolve, reject) => {
             try {
               const exists = await props.parse.Cloud.run("usernameAvailable", { username });
