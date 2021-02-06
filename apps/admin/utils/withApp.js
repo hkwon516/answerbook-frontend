@@ -65,7 +65,7 @@ const withUser = (WrappedComponent) => {
         console.error("Logout Error", error);
       }
 
-      this.props.router.push("/" + messageKey ? `?message=${messageKey}` : "");
+      this.props.router.push("/" + (messageKey ? `?message=${messageKey}` : ""));
     };
 
     onLogin = async (username, password) => {
@@ -172,10 +172,10 @@ const withApp = (WrappedComponent) => {
     };
 
     const getTitle = (prefix = true) => {
-      const pageTitle = titlePageKey && translate(titlePageKey) ? `${translate(titlePageKey)}` : '';
+      const pageTitle = titlePageKey && translate(titlePageKey) ? `${translate(titlePageKey)}` : "";
 
-      let homeTitle = `${translate("app.title")}`
-      const mainTitle = (pageTitle ? homeTitle + ' | ' : homeTitle + ' | ' + translate("app.subTitle"));
+      let homeTitle = `${translate("app.title")}`;
+      const mainTitle = pageTitle ? homeTitle + " | " : homeTitle + " | " + translate("app.subTitle");
       const title = (prefix ? mainTitle : "") + pageTitle;
       return title;
     };
@@ -216,10 +216,10 @@ const withApp = (WrappedComponent) => {
           {contexts.loading || (isAuthenticatedRoute && !contexts.user) ? (
             <LinearProgress color="secondary" variant="indeterminate" />
           ) : (
-              <Layout {...commonProps}>
-                <WrappedComponent {...commonProps} />
-              </Layout>
-            )}
+            <Layout {...commonProps}>
+              <WrappedComponent {...commonProps} />
+            </Layout>
+          )}
         </ThemeProvider>
       </React.Fragment>
     );
