@@ -27,7 +27,8 @@ const InformationComponent = (props) => {
       positionInformation: positionInformation,
     },
     validationSchema: yup.object().shape({
-      positionInformation: yup.string().when([position], (position, schema) => {
+
+      positionInformation: yup.string().when(["position"], (position, schema) => {
         if (position === "etc") {
           return schema.required(props.translate("userPages.settings.purposeRequired"));
         }

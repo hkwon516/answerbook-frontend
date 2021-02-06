@@ -31,6 +31,8 @@ const withUser = (WrappedComponent) => {
 
     resolveUser = async () => {
       try {
+        this.setState({ loading: true });
+
         let user = await this.parse.User.currentAsync();
         if (user && !user.get("emailVerified")) {
           user = await user.fetch();
@@ -45,7 +47,11 @@ const withUser = (WrappedComponent) => {
           await user.get("student").fetch();
           await user.get("preferences").fetch();
         }
-        this.setState({ user, loading: false });
+        this.setState({ user }, () => {
+          setTimeout(() => {
+            this.setState({ loading: false });
+          }, 1000);
+        });
       } catch (error) {
         this.onLogout();
       }
@@ -60,12 +66,12 @@ const withUser = (WrappedComponent) => {
         console.error("Logout Error", error);
       }
 
-      this.props.router.push("/" + messageKey ? `?message=${messageKey}` : "");
+      this.setState({ loading: false });
+      this.props.router.push("/" + (messageKey ? `?message=${messageKey}` : ""));
     };
 
     onLogin = async (username, password) => {
       try {
-        this.setState({ loading: true });
         const user = await this.parse.User.logIn(username, password, { usePost: true });
 
         await this.resolveUser();
