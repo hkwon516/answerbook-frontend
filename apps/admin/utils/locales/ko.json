@@ -10,7 +10,6 @@
     "toastSuccess": "성공",
     "toastError": "오류",
     "notAuthorized": "승인되지 않음"
-
   },
   "anonPages": {
     "forgetEmail": {
@@ -169,7 +168,6 @@
       "comapnyEmailValidate": "유효한 회사 이메일을 입력하십시오.",
       "purposeRequired": "가입 목적은 필수 항목입니다.",
       "messageAccountExists": "위 이메일이있는 계정이 이미 존재합니다."
-
     }
   }
 }

@@ -96,7 +96,7 @@ const SignUp = (props) => {
 
         const preferences = await newPreferences.save();
 
-    
+
         newStudent.set("school", school);
         newStudent.set("grade", grade);
         newStudent.set("nickname", values.nickname);
@@ -310,7 +310,7 @@ const SignUp = (props) => {
                       <Grid alignItems="center" container>
                         <Grid item xs={1}>
                           <Box ml={-1}>
-                          <Checkbox checked={formik.values.toc} onChange={formik.handleChange} name="toc" />
+                            <Checkbox checked={formik.values.toc} onChange={formik.handleChange} name="toc" />
                           </Box>
                         </Grid>
                         <Grid item xs={11}>
