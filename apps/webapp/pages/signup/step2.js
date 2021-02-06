@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Typography,
   Grid,
@@ -61,7 +61,19 @@ const SignUp = (props) => {
     },
     validationSchema: yup.object().shape({
       name: yup.string().required(props.translate("anonPages.signupStep2.nameRequired")),
-      username: yup.string().required(props.translate("anonPages.signupStep2.emailRequired")),
+      username: yup
+        .string()
+        .required(props.translate("anonPages.signupStep2.emailRequired"))
+        .test("checkDuplicate", props.translate("anonPages.signupStep2.messageAccountExists"), function (value) {
+          return new Promise(async (resolve, reject) => {
+            try {
+              const exists = await props.parse.Cloud.run("usernameAvailable", { username: value + "@" + this.parent.emailProvider });
+              resolve(exists);
+            } catch (error) {
+              reject(error);
+            }
+          });
+        }),
       password: yup
         .string()
         .required(props.translate("anonPages.signupStep2.passwordRequired"))
@@ -89,14 +101,13 @@ const SignUp = (props) => {
         const Preferences = props.parse.Object.extend("Preferences");
         const newPreferences = new Preferences();
 
-        newPreferences.set("solutionLike", true)
-        newPreferences.set("solutionSave", true)
-        newPreferences.set("solutionAlert", true)
-        newPreferences.set("commentAlert", true)
+        newPreferences.set("solutionLike", true);
+        newPreferences.set("solutionSave", true);
+        newPreferences.set("solutionAlert", true);
+        newPreferences.set("commentAlert", true);
 
         const preferences = await newPreferences.save();
 
-    
         newStudent.set("school", school);
         newStudent.set("grade", grade);
         newStudent.set("nickname", values.nickname);
@@ -132,6 +143,10 @@ const SignUp = (props) => {
       actions.setSubmitting(false);
     },
   });
+
+  useEffect(() => {
+    props.setTitlePageKey("anonPages.signupStep2.title");
+  }, []);
 
   return (
     <Box p={2}>
@@ -310,7 +325,7 @@ const SignUp = (props) => {
                       <Grid alignItems="center" container>
                         <Grid item xs={1}>
                           <Box ml={-1}>
-                          <Checkbox checked={formik.values.toc} onChange={formik.handleChange} name="toc" />
+                            <Checkbox checked={formik.values.toc} onChange={formik.handleChange} name="toc" />
                           </Box>
                         </Grid>
                         <Grid item xs={11}>

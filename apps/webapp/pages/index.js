@@ -43,12 +43,11 @@ const Login = (props) => {
   }, []);
 
   return (
-    <Box p={2}  mt={6.5}>
-      {props.setTitlePageKey("anonPages.login.title")}
+    <Box p={2} mt={6.5}>
       <form noValidate onSubmit={formik.handleSubmit}>
         <Grid container justify={"center"}>
           <Grid item xs={12}>
-            <Box  mb={2} textAlign="left">
+            <Box mb={2} textAlign="left">
               <Typography variant="h4">{props.translate("anonPages.login.title")}</Typography>
             </Box>
           </Grid>

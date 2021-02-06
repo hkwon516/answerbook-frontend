@@ -1,5 +1,5 @@
 import { Box, Button, Divider, Grid, Paper, Typography, makeStyles, InputAdornment, TextField, colors } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -84,9 +84,12 @@ const addQuestion = (props) => {
     setValue(newValue);
   };
 
+  useEffect(() => {
+    props.setTitlePageKey("userPages.settings.title");
+  }, [])
+
   return (
     <>
-      {props.setTitlePageKey("userPages.settings.title")}
       <form noValidate>
         <Box mt={2}>
           <Grid container justify="center">
@@ -182,45 +185,45 @@ const addQuestion = (props) => {
                             </Tabs>
                             <TabPanel value={value} index={0}>
                               <Grid container justify={"center"}>
-                                <Grid item xs={12} sm={4} >
+                                <Grid item xs={12} sm={4}>
                                   <Box
                                     style={{
-                                        backgroundColor: "transparent",
-                                        border: `1px solid ${colors.grey[400]}`,
-                                        width: 180,
-                                        height: 30,
-                                        margin: "0 auto",
-                                      }}
+                                      backgroundColor: "transparent",
+                                      border: `1px solid ${colors.grey[400]}`,
+                                      width: 180,
+                                      height: 30,
+                                      margin: "0 auto",
+                                    }}
                                   >
                                     <Typography>Question Number</Typography>
                                   </Box>
                                 </Grid>
 
                                 <Grid item xs={12} sm={4}>
-                                <Box
+                                  <Box
                                     style={{
-                                        backgroundColor: "transparent",
-                                        border: `1px solid ${colors.grey[400]}`,
-                                        width: 180,
-                                        height: 30,
-                                        margin: "0 auto",
-                                      }}
+                                      backgroundColor: "transparent",
+                                      border: `1px solid ${colors.grey[400]}`,
+                                      width: 180,
+                                      height: 30,
+                                      margin: "0 auto",
+                                    }}
                                   >
-                                  <Typography>Answer</Typography>
+                                    <Typography>Answer</Typography>
                                   </Box>
                                 </Grid>
 
                                 <Grid item xs={12} sm={4} alignItems={"center"}>
-                                <Box
+                                  <Box
                                     style={{
-                                        backgroundColor: "transparent",
-                                        border: `1px solid ${colors.grey[400]}`,
-                                        width: 180,
-                                        height: 30,
-                                        margin: "0 auto",
-                                      }}
+                                      backgroundColor: "transparent",
+                                      border: `1px solid ${colors.grey[400]}`,
+                                      width: 180,
+                                      height: 30,
+                                      margin: "0 auto",
+                                    }}
                                   >
-                                  <Typography>Author's Note</Typography>
+                                    <Typography>Author's Note</Typography>
                                   </Box>
                                 </Grid>
                               </Grid>
