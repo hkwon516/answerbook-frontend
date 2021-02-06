@@ -168,7 +168,6 @@
       "comapnyEmailValidate": "Please enter a valid company email.",
       "purposeRequired": "Purpose of signing up is a required field.",
       "messageAccountExists": "Account with above email already exists."
-
     }
   }
 }
