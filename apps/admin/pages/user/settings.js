@@ -1,13 +1,16 @@
 import { Box, Grid } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
 import GeneralComponent from "../../component/settings/GeneralComponent";
 import InformationComponent from "../../component/settings/InformationComponent";
 import SecurityComponent from "../../component/settings/SecurityComponent";
 
 const Settings = (props) => {
+  useEffect(() => {
+    props.setTitlePageKey("userPages.settings.title");
+  }, [])
+
   return (
     <React.Fragment>
-      {props.setTitlePageKey("userPages.settings.title")}
 
       <Box mt={2}>
         <Grid container justify="center">

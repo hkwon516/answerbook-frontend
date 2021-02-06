@@ -1,6 +1,7 @@
 {
   "app": {
     "title": "Answerbook 관리자",
+    "subTitle": "집",
     "langLabel": "언어",
     "langEnglish": "English",
     "langKorean": "한국어",
@@ -100,6 +101,7 @@
       "buttonSignOut": "로그 아웃"
     },
     "textBook": {
+      "title": "교과서",
       "buttonRegisterTextbook": "교과서 등록",
       "labelTextbookTitle": "교과서 제목",
       "labelSubject": "제목",
@@ -116,6 +118,7 @@
       "buttonSubmit": "제출"
     },
     "question": {
+      "title": "질문",
       "labelQuestionStatistics": "질문 통계",
       "labelTextbook": "교과서",
       "labelPage": "페이지",
@@ -135,6 +138,7 @@
       "columnTotalSolutions": "토탈 솔루션"
     },
     "settings": {
+      "title": "설정",
       "labelSuccessMessage": "성공적으로 업데이트 됨",
       "labelPasswordUpdateMessage": "비밀번호가 성공적으로 업데이트되었습니다.",
       "labelGeneral": "일반",

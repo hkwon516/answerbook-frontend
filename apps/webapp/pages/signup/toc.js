@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Typography, Grid, Box, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -18,6 +18,10 @@ const Toc = (props) => {
       props.changePage("/signup/toc?tab=privacy");
     }
   };
+
+  useEffect(() => {
+    props.setTitlePageKey("anonPages.toc.title");
+  }, []);
 
   return (
     <React.Fragment>

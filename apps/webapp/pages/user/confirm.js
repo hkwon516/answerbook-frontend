@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Typography, Button, Grid, Box, Container } from "@material-ui/core";
 import ConfirmGraphic1 from "../../component/user/ConfirmGraphic1";
 import ButtonComponent from "../../component/generic/ButtonComponent";
@@ -6,6 +6,9 @@ import LanguageComponent from "../../component/generic/LanguageComponent";
 import LinkComponent from "../../component/generic/LinkComponent";
 
 export default function SignUp(props) {
+  useEffect(() => {
+    props.setTitlePageKey("userPages.confirm.title");
+  }, []);
   return (
     <>
       <Container component="main" maxWidth="xs">
