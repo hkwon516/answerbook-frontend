@@ -214,10 +214,10 @@ const withApp = (WrappedComponent) => {
           {contexts.loading || (isAuthenticatedRoute && !contexts.user) ? (
             <LinearProgress color="secondary" variant="indeterminate" />
           ) : (
-              <Layout {...commonProps}>
-                <WrappedComponent {...commonProps} />
-              </Layout>
-            )}
+            <Layout {...commonProps}>
+              <WrappedComponent {...commonProps} />
+            </Layout>
+          )}
         </ThemeProvider>
       </React.Fragment>
     );
