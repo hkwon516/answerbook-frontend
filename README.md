@@ -1,3 +1,23 @@
+**Description**
+
+Answerbook supports students by
+presenting personalized study plans to individuals based on reliable
+big data for free, easy, and fast. I was able to raise $30k in funding from an edutech company in South Korea with Answerbook.
+
+How does it work? Students use their phones and
+do a barcode recognition of the textbook. Then it automatically
+collects the textbook’s name, subject, and difficulty that are
+stored in the barcode(ISBN). As it accumulates, it tracks the student’s study
+pattern and time by total, subject, textbook, difficulty categories.
+Then when it comes to an one year portfolio and is able to track
+where students are at the end of the year, it gets able to modelized
+their study pattern by different grades and positions. Then individual
+students can compare and contrast with their goal model and get
+specific plans about how much they have to study and how they
+have to study.
+
+We will have our front-end codebase public whereas our back-end private for safety issues.
+
 **Commands**
 
 > First time developers  
